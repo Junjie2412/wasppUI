@@ -12,7 +12,7 @@ const search = (props) => {
 
     return (
         <div className={classes.Search}>
-            <input className={classes['SearchText-O']} type="text" placeholder={props.placeholder}/>
+            <input className={classes.SearchText} type="text" placeholder={props.placeholder}/>
             <select className={classes.SearchSelect}>
                 {options}
             </select>
