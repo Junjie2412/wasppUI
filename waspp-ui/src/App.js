@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Search from './components/UI/Search/Search';
 import Login from './containers/Auth/Login/Login';
 
 class App extends Component {
@@ -7,7 +6,6 @@ class App extends Component {
     return (
       <div>
         <h1 style={{textAlign: 'center'}}>Welcome to Syspay</h1>
-        <Search/>
         <Login/>
       </div>
     );

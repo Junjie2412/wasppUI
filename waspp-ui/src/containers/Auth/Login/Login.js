@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Login.css';
+import classes from './Login.css';
 
 class Login extends Component {
 
@@ -14,13 +14,13 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <form className=".Login" onSubmit={this.loginHandler}>
+            <div className={classes.Login}>
+                <form onSubmit={this.loginHandler}>
                     Username: <input/>
                     <br/>
                     Password: <input/>
                     <br/>
-                    <button>SUBMIT</button>
+                    <button>Login</button>
                 </form>
             </div>
         )
