@@ -13,6 +13,11 @@ const graph = (props) => {
                 <td>Steve</td>
                 <td>Week of Steve</td>
             </tr>
+            <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+            </tr>
         </table>
     );
 }
