@@ -28,6 +28,7 @@ class App extends Component {
                 <Redirect to="/"/>
             </Switch>
         </div>
+        
       );
   }
 }

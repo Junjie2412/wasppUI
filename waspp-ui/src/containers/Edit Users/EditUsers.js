@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Search from '../../components/UI/Search/Search';
-import Graph from '../../components/UI/Graph/Graph';
 import * as Links from '../../shared/databaseHttpLinks';
 import axios from 'axios';
+import Table from '../../components/Table/Table';
 
 class EditUsers extends Component {
 
@@ -51,7 +51,7 @@ class EditUsers extends Component {
                     change={(event) => this.onChangeSelect(event)}
                     value={this.state.userLookup}
                     changeText={(event) => this.onChangeText(event)}/>
-                <Graph/>
+                    <Table />
             </div>
         );
     };
