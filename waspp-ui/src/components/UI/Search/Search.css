@@ -6,8 +6,8 @@
     box-sizing: border-box;
     border: 1px solid #eee;
     border-radius: 5px 5px 5px 5px;
-    box-shadow: 4px 4px #eee;
-    background-color: #87fefa;
+    box-shadow: 0px 4px 8px 0px #eee;
+    background-color: white;
 }
 
 .SearchText {

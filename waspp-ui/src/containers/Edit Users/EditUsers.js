@@ -4,7 +4,7 @@ import axios from 'axios';
 import * as links from '../../shared/Links';
 import User from '../../components/User/User';
 import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
+import EditBonus from '../../components/EditUser/EditBonus/EditBonus';
 
 class EditUsers extends Component {
 
@@ -90,6 +90,7 @@ class EditUsers extends Component {
                     changeText={(event) => this.onChangeText(event)}/>
                     <div className={[classes.row]}>
                         <User />
+                        <EditBonus/>
                     </div>
             </div>
         );
