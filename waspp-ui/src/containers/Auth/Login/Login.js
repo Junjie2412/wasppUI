@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-//import classes from './Login.css';
 import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -34,7 +33,6 @@ class Login extends Component {
                         </div>
                     </div>
                 </div>
-
         )
     }
 
