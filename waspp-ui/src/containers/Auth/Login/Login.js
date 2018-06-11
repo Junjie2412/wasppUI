@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import classes from './Login.css';
+//import classes from './Login.css';
+import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+
 
 class Login extends Component {
 
@@ -14,15 +17,24 @@ class Login extends Component {
 
     render() {
         return (
-            <div className={classes.Login}>
-                <form onSubmit={this.loginHandler}>
-                    Username: <input/>
-                    <br/>
-                    Password: <input/>
-                    <br/>
-                    <button>Login</button>
-                </form>
-            </div>
+                <div className={[classes['w-25'], classes['mx-auto']].join(' ')}>
+                    <div class={[classes.card]}>
+                        <div class={[classes['card-body']]}>
+                            <form onSUbmit={this.loginHandler}>
+                            <div className={[classes['form-group']]}>
+                                    <label>Username:</label>
+                                    <input type='text' className={[classes['form-control']]} placeholder='Username'></input>
+                            </div>
+                            <div className={[classes['form-group']]}>
+                                    <label>Password:</label>
+                                    <input type='text' className={[classes['form-control']]} placeholder='Password'></input>
+                            </div>
+                            <button className={[classes.btn, classes['btn-primary']].join(' ')}>Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
         )
     }
 
