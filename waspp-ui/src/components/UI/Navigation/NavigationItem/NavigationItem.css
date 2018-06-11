@@ -1,0 +1,12 @@
+.NavigationLinks {
+    border-radius: 0px 0px 0px 0px;
+    background-color: #007bff;
+    color: white;
+    font-size: 25px;
+    border: none;
+}
+
+.NavigationLinks:hover {
+    background-color: #376ec6;
+    text-decoration: none;
+}

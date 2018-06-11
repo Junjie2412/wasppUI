@@ -10,14 +10,29 @@ const toolBar = (props) => {
             <nav>
                 <ul className={classes.Navigation}>
                     <NavigationItem
-                        link="/"
+                        link="/payrollProcessing"
                         exact>
-                        Login
+                        Payroll Processing
                     </NavigationItem>
                     <NavigationItem
                         link="/editUsers"
                         exact>
                         Edit Users
+                    </NavigationItem>
+                    <NavigationItem
+                        link="/reports"
+                        exact>
+                        Reports
+                    </NavigationItem>
+                    <NavigationItem
+                        link="/tools"
+                        exact>
+                        Tools
+                    </NavigationItem>
+                    <NavigationItem
+                        link="/help"
+                        exact>
+                        Help
                     </NavigationItem>
                 </ul>
             </nav>
