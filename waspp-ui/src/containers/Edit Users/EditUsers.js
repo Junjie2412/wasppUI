@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Search from '../../components/UI/Search/Search';
 import axios from 'axios';
 import * as links from '../../shared/Links';
-import Table from '../../components/Table/Table';
+import EditBonus from '../../components/EditUser/EditBonus/EditBonus';
 
 class EditUsers extends Component {
 
@@ -85,7 +85,7 @@ class EditUsers extends Component {
                     change={(event) => this.onChangeSelect(event)}
                     value={this.state.userLookup}
                     changeText={(event) => this.onChangeText(event)}/>
-                    <Table />
+                <EditBonus/>
             </div>
         );
     };

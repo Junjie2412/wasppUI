@@ -18,9 +18,9 @@ class Login extends Component {
     render() {
         return (
                 <div className={[classes['w-25'], classes['mx-auto']].join(' ')}>
-                    <div class={[classes.card]}>
-                        <div class={[classes['card-body']]}>
-                            <form onSUbmit={this.loginHandler}>
+                    <div className={[classes.card]}>
+                        <div className={[classes['card-body']]}>
+                            <form onSubmit={this.loginHandler}>
                             <div className={[classes['form-group']]}>
                                     <label>Username:</label>
                                     <input type='text' className={[classes['form-control']]} placeholder='Username'></input>
