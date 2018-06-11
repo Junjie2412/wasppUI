@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Search from '../../components/UI/Search/Search';
-import Graph from '../../components/UI/Graph/Graph';
+import Table from '../../components/Table/Table';
 
 class EditUsers extends Component {
 
@@ -44,7 +44,7 @@ class EditUsers extends Component {
                     change={(event) => this.onChangeSelect(event)}
                     value={this.state.text}
                     changeText={(event) => this.onChangeText(event)}/>
-                <Graph/>
+                    <Table />
             </div>
         );
     };

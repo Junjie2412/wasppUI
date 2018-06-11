@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar/Navbar';
-import Table from './components/Table/Table';
 import Toolbar from './components/UI/Navigation/Toolbar/Toolbar';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import Login from "./containers/Auth/Login/Login";
@@ -28,7 +27,6 @@ class App extends Component {
                 <Route path="/" component={Login}/>
                 <Redirect to="/"/>
             </Switch>
-            <Table />
         </div>
         
       );
