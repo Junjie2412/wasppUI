@@ -1,23 +1,33 @@
 import React, {Component} from 'react';
 import Search from '../../components/UI/Search/Search';
-import * as Links from '../../shared/databaseHttpLinks';
 import axios from 'axios';
+import * as links from '../../shared/Links';
 import Table from '../../components/Table/Table';
 
 class EditUsers extends Component {
 
     state = {
-        searchBy: ['AS400 ID', 'Active Directory', 'Payroll Number'],
-        AS400List: ['AS4001', 'AS4002', 'AS4003', 'AS4004'],
-        ADList: ['AD1', 'AD2', 'AD3', 'AD4'],
-        PayrollList: ['Payroll1', 'Payroll2', 'Payroll3', 'Payroll4'],
-        datalist: ['AS4001', 'AS4002', 'AS4003', 'AS4004'],
+        users: [],
+        searchBy: [' ','AS400 ID', 'Active Directory', 'Payroll Number'],
+        searchList: [],
         userLookup: '',
         placeholder: 'AS400 ID'
     }
 
+    test='dsdd';
+
     componentDidMount() {
-        console.log(axios.get(Links.EDIT_USER_DB))
+        axios.get(links.EDIT_USERS_DB)
+            .then(response => {
+                const dataList = [];
+                for(let user in response.data ) {
+                    dataList.push( {
+                        ...response.data[user],
+                        id: [user]
+                    })
+                }
+                return this.setState({users: dataList});
+            });
     }
 
     //This handler changes what the value property is whenever we change the search input text
@@ -27,16 +37,40 @@ class EditUsers extends Component {
 
     //This handler changes the state properties based on which value was selected
     onChangeSelect = (event) => {
-        this.setState({text: '', placeholder: event.target.value});
+        this.setState({placeholder: event.target.value, userLookup: ''});
+
+        let searchData = [];
+
         switch(event.target.value){
             case 'AS400 ID':
-                return this.setState({datalist: this.state.AS400List});
+                for(let user in this.state.users ) {
+                    searchData.push(
+                        this.state.users[user].AS400ID
+                    )
+                }
+                console.log(searchData);
+                return this.setState({searchList: searchData});
             case 'Active Directory':
-                return this.setState({datalist: this.state.ADList});
+                for(let user in this.state.users ) {
+                    searchData.push(
+                        this.state.users[user].ADID
+                    )
+                }
+                return this.setState({searchList: searchData});
             case 'Payroll Number':
-                return this.setState({datalist: this.state.PayrollList});
+                for(let user in this.state.users ) {
+                    searchData.push(
+                        this.state.users[user].FileNumber
+                    )
+                }
+                return this.setState({searchList: searchData});
             default:
-                return this.setState({datalist: this.state.AS400List});
+                for(let user in this.state.users ) {
+                    searchData.push(
+                        this.state.users[user].AS400ID
+                    )
+                }
+                return;
         }
     }
 
@@ -47,7 +81,7 @@ class EditUsers extends Component {
                 <Search
                     placeholder={this.state.placeholder}
                     options={this.state.searchBy}
-                    dataList={this.state.datalist}
+                    dataList={this.state.searchList}
                     change={(event) => this.onChangeSelect(event)}
                     value={this.state.userLookup}
                     changeText={(event) => this.onChangeText(event)}/>

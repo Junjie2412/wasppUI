@@ -1,5 +1,0 @@
-//NOTE
-//We are having issues connecting with AS400 and AD for our database
-//For now, I have created a dummy database so that we can test our code
-
-export const EDIT_USER_DB = 'https://waspp-fake-data.firebaseio.com/users.json';
