@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import Search from '../../components/UI/Search/Search';
 import axios from 'axios';
 import * as links from '../../shared/Links';
-import Table from '../../components/Table/Table';
+import User from '../../components/User/User';
+import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 
 class EditUsers extends Component {
 
@@ -47,6 +49,7 @@ class EditUsers extends Component {
                     searchData.push(
                         this.state.users[user].AS400ID
                     )
+                    console.log(this.state.users);
                 }
                 console.log(searchData);
                 return this.setState({searchList: searchData});
@@ -85,7 +88,9 @@ class EditUsers extends Component {
                     change={(event) => this.onChangeSelect(event)}
                     value={this.state.userLookup}
                     changeText={(event) => this.onChangeText(event)}/>
-                    <Table />
+                    <div className={[classes.row]}>
+                        <User />
+                    </div>
             </div>
         );
     };
