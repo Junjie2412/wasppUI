@@ -11,7 +11,8 @@ const search = (props) => {
     ));
 
     const dataList = props.dataList.map(data => (
-        <option key={data}>
+        <option
+            key={data}>
             {data}
         </option>
     ));
