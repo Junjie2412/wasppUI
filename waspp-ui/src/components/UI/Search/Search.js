@@ -17,6 +17,10 @@ const search = (props) => {
         </option>
     ));
 
+    // const changeDetected = (event) =>{
+    //     console.log('Changed: ' + event.target.value);
+    // }
+
     return (
         <div className={classes.Search}>
             <input

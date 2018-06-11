@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Search from '../../components/UI/Search/Search';
 import axios from 'axios';
 import * as links from '../../shared/Links';
+import User from '../../components/EditUser/User/User';
+import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import EditBonus from '../../components/EditUser/EditBonus/EditBonus';
 
 class EditUsers extends Component {
@@ -11,7 +13,16 @@ class EditUsers extends Component {
         searchBy: [' ','AS400 ID', 'Active Directory', 'Payroll Number'],
         searchList: [],
         userLookup: '',
-        placeholder: 'AS400 ID'
+        placeholder: 'AS400 ID',
+        currentUser: {
+            ADID: null,
+            AS400: null,
+            Base: null,
+            CommissionAdv: null,
+            FileNumber: null,
+            TerrDescription: null,
+            TerrID: null
+        }
     }
 
     test='dsdd';
@@ -33,9 +44,14 @@ class EditUsers extends Component {
     //This handler changes what the value property is whenever we change the search input text
     onChangeText = (event) => {
         this.setState({userLookup: event.target.value});
-        for(let user in this.state.users) {
-            console.log(this.state.users[user].AS400ID);
+
+        for(let user in this.state.users){
+            console.log('if ' + this.state.users[user].AS400ID + ' === '+ event.target.value);
+            if(this.state.users[user].AS400ID === event.target.value){
+                this.setState({currentUser: user});
+            }
         }
+        console.log(this.state.currentUser);
     }
 
     //This handler changes the state properties based on which value was selected
@@ -87,7 +103,10 @@ class EditUsers extends Component {
                     change={(event) => this.onChangeSelect(event)}
                     value={this.state.userLookup}
                     changeText={(event) => this.onChangeText(event)}/>
-                <EditBonus/>
+                    <div className={[classes.row]}>
+                        <User />
+                        <EditBonus/>
+                    </div>
             </div>
         );
     };
