@@ -33,6 +33,9 @@ class EditUsers extends Component {
     //This handler changes what the value property is whenever we change the search input text
     onChangeText = (event) => {
         this.setState({userLookup: event.target.value});
+        for(let user in this.state.users) {
+            console.log(this.state.users[user].AS400ID);
+        }
     }
 
     //This handler changes the state properties based on which value was selected
@@ -48,7 +51,6 @@ class EditUsers extends Component {
                         this.state.users[user].AS400ID
                     )
                 }
-                console.log(searchData);
                 return this.setState({searchList: searchData});
             case 'Active Directory':
                 for(let user in this.state.users ) {
