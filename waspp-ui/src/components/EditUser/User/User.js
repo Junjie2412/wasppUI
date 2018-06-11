@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import css from './User.css';
 
 const user = (props) =>{
