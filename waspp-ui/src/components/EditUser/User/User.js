@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import css from './User.css';
 import Modal from '../../UI/Modal/Modal';
 
 class user extends Component{
@@ -10,6 +9,10 @@ class user extends Component{
 
     editUserModal = () => {
         return this.setState({modalShow: true});
+    }
+
+    closeModal = () => {
+        return this.setState({modalShow: false});
     }
 
     render(){
@@ -35,6 +38,7 @@ class user extends Component{
                         </div>
                         <div className={[classes['col-sm-12']]}>
                             <button onClick={this.editUserModal} className={[classes.btn, classes['btn-primary'], classes['offset-sm-3']].join(' ')}>Edit Employee</button>
+                            <Modal show={this.state.modalShow} modalClosed={this.closeModal} />
                         </div>
                     </div>
                 </div>
