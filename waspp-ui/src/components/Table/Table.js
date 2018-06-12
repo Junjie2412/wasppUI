@@ -4,7 +4,8 @@ import './Table.css';
 
 const table = () =>{
     return(
-        <table className={[classes.table]}>
+        
+        <table className={[[classes.table]]}>
             <thead style={{backgroundColor: '#4285F4'}}>
                 <tr>
                     <th>HR EmployeeID</th>
