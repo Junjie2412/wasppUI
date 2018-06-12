@@ -7,7 +7,7 @@ const editUserTable = () =>{
     return (
         <div className={classes['col-sm-5']}>
             <div className={classes.card}>
-                <div className={[classes['card-body'], classes['shadow-lg']].join(' ')}>
+                <div className={[classes['card-body'], classes['shadow-lg']].join(' ')} style={{overflow: 'auto'}}>
                     <Table />
                     <div className={classes.row}>
                         <div className={classes['col-sm-12']}>

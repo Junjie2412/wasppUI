@@ -1,25 +1,44 @@
 import React, {Component} from 'react';
 import classes from './EditBonuses.css';
 import Modal from '../../UI/Modal/Modal';
+import EditBonus from './EditBonus/EditBonus';
 
-class editBonuses extends Component {
+class EditBonuses extends Component {
 
     state = {
-        editStates: ['Edit Subsidy', 'Edit Buy Out', 'Edit Floors'],
+        titleStates: ['Edit Subsidy', 'Edit Buy Out', 'Edit Floors'],
+        currentTitle: '',
+        editStates: ['Original Subsidy', 'Buy Out Amount', 'Floor Adjustments'],
         currentEdit: '',
+        version: '',
         modalShow: false
     }
 
     editSubsidyModal = () => {
-        return this.setState({currentEdit: this.state.editStates[0], modalShow: true});
+        return this.setState({
+            currentTitle: 'Edit Subsidy',
+            modalShow: true,
+            currentEdit: 'Original Subsidy',
+            version: 'version 1'
+        });
     }
 
     editBuyOutModal = () => {
-        return this.setState({currentEdit: this.state.editStates[1], modalShow: true});
+        return this.setState({
+            currentTitle: 'Edit Buy Out',
+            modalShow: true,
+            currentEdit: 'Buy Out Amount',
+            version: 'version 1'
+        });
     }
 
     editFloorsModal = () => {
-        return this.setState({currentEdit: this.state.editStates[2], modalShow: true});
+        return this.setState({
+            currentTitle: 'Edit Floors',
+            modalShow: true,
+            currentEdit: 'Floor Adjustments',
+            version: 'version 2'
+        });
     }
 
     closeModal = () => {
@@ -32,10 +51,16 @@ class editBonuses extends Component {
                 <button onClick={this.editSubsidyModal}>{this.state.editStates[0]}</button>
                 <button onClick={this.editBuyOutModal}>{this.state.editStates[1]}</button>
                 <button onClick={this.editFloorsModal}>{this.state.editStates[2]}</button>
-                <Modal show={this.state.modalShow} modalClosed={this.closeModal}>{this.state.currentEdit}</Modal>
+                <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
+                    <EditBonus
+                        title={this.state.currentTitle}
+                        editState={this.state.currentEdit}
+                        version={this.state.version}
+                    />
+                </Modal>
             </div>
         );
     }
 }
 
-export default editBonuses;
+export default EditBonuses;
