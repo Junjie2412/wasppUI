@@ -1,11 +1,12 @@
 import React from 'react';
 import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import {NavLink} from 'react-router-dom';
 
 const navbar = () =>{
     return (
 
     <nav className={[classes.navbar, classes['navbar-expand-sm'], classes['navbar-light'], classes['bg-primary']].join(' ')}>
-        <a classes={[classes['navbar-brand']]} href="/" style={{color: 'white'}}>Sysco</a>
+        <NavLink classes={[classes['navbar-brand']]} to="/" style={{color: 'white'}}>Sysco</NavLink>
         <ul className={[classes['navbar-nav'], classes['ml-auto']].join(' ')}>
             <li><i className={[classes['nav-item'], classes['nav-link'], 'fas', 'fa-user'].join(' ')} style={{color: 'white'}}> User</i></li>
             <li><i className={[classes['nav-item'], classes['nav-link'], 'fas', 'fa-power-off'].join(' ')}  style={{color: 'white'}}></i></li>

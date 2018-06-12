@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import classes from './EditBonus.css';
+import classes from './EditBonuses.css';
 import Modal from '../../UI/Modal/Modal';
 
-class editBonus extends Component {
+class editBonuses extends Component {
 
     state = {
         editStates: ['Edit Subsidy', 'Edit Buy Out', 'Edit Floors'],
@@ -38,4 +38,4 @@ class editBonus extends Component {
     }
 }
 
-export default editBonus;
+export default editBonuses;
