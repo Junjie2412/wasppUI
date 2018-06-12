@@ -3,9 +3,9 @@
     height: 40%;
     box-shadow: 0 8px 16px 0 #cccccc;
     transition: 0.3s;
-    border-radius: 5px; /* 5px rounded corners */
+    border-radius: 5px; 
     align-content: center;
-    margin: 50px 50px;
+    margin: 50px 50px; 
     padding: 24px 10px;
 }
 

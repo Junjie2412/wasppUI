@@ -40,7 +40,7 @@ class user extends Component{
                         <div className={[classes['col-sm-12']]}>
                             <button onClick={this.editUserModal} className={[classes.btn, classes['btn-primary'], classes['offset-sm-3']].join(' ')}>Edit Employee</button>
                             <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
-                                <EditEmployeeForm />
+                                <EditEmployeeForm user={this.props.user}/>
                             </Modal>
                         </div>
                     </div>

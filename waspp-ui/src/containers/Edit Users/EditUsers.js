@@ -143,10 +143,12 @@ class EditUsers extends Component {
                     change={(event) => this.onChangeSelect(event)}
                     value={this.state.userLookup}
                     changeText={(event) => this.onChangeText(event)}/>
-                    <div className={[classes.row]}>
-                        <User user={this.state.currentUser}/>
-                        <EditBonuses/>
-                        <EditUserTable />
+                    <div className={classes['container-fluid']}>
+                        <div className={[classes.row]}>
+                            <User user={this.state.currentUser}/>
+                            <EditBonuses/>
+                            <EditUserTable />
+                        </div>
                     </div>
             </div>
         );

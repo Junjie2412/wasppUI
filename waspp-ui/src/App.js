@@ -8,6 +8,8 @@ import PayrollProcessing from "./containers/Payroll Processing/PayrollProcessing
 import Reports from "./containers/Reports/Reports";
 import Tools from "./containers/Tools/Tools";
 import Help from "./containers/Help/Help";
+import classes from '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 
 //"navbar navbar-expand-sm navbar-light bg-primary"
 
@@ -27,6 +29,13 @@ class App extends Component {
                 <Route path="/" component={Login}/>
                 <Redirect to="/"/>
             </Switch>
+            {/* <div className={classes['container-fluid']} style={{background:'pink'}}>
+                <div className={[classes.row]}>
+                    <p className={classes['col-sm-4']} style={{background:'yellow'}}>Test</p>
+                    <p className={classes['col-sm-4']} style={{background:'lightgreen'}}>Test</p>
+                    <p className={classes['col-sm-4']} style={{background:'lightblue'}}>Test</p>
+                </div>
+            </div> */}
         </div>
         
       );
