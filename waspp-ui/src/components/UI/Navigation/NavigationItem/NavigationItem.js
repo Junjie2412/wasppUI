@@ -10,7 +10,7 @@ const navigationItem = (props) => {
                 to={props.link}
                 exact={props.exact}>
                 <button type="button"
-                        className={[bootStrapClasses["btn"], classes.NavigationLinks].join(' ')}>{props.children}
+                        className={[bootStrapClasses["btn"], classes.NavigationLinks, classes.NavigationItem].join(' ')}>{props.children}
                 </button>
             </NavLink>
         </li>
