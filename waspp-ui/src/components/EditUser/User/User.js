@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import css from './User.css';
 import Modal from '../../UI/Modal/Modal';
 
 class user extends Component{
