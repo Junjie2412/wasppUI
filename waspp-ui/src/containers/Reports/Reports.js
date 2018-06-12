@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReportNav from '../../components/Report/ReportNav/ReportNav';
 
 class Reports extends Component {
     render() {
@@ -7,6 +8,7 @@ class Reports extends Component {
                 <h1 style={{textAlign: 'center', marginTop: '20px'}}>
                     Reports
                 </h1>
+                <ReportNav/>
             </div>
         );
     };

@@ -6,6 +6,7 @@ import User from '../../components/EditUser/User/User';
 import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import EditBonuses from '../../components/EditUser/EditBonuses/EditBonuses';
 import EditUserTable from '../../components/EditUser/EditUserTable/EditUserTable';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 class EditUsers extends Component {
 
@@ -23,12 +24,14 @@ class EditUsers extends Component {
             FileNumber: '',
             TerrDescription: '',
             TerrID: ''
-        }
+        },
+        loading: false
     }
 
     test='dsdd';
 
     componentDidMount() {
+        this.setState({loading: true});
         axios.get(links.EDIT_USERS_DB)
             .then(response => {
                 const dataList = [];
@@ -38,7 +41,7 @@ class EditUsers extends Component {
                         id: [user]
                     })
                 }
-                return this.setState({users: dataList});
+                return this.setState({users: dataList, loading: false});
             });
     }
 
@@ -130,6 +133,7 @@ class EditUsers extends Component {
 
     render() {
         return (
+            this.state.loading ? <Spinner/>:
             <div>
                 <h1 style={{textAlign: 'center', marginTop: '20px'}}>Users List</h1>
                 <Search
