@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import classes from './EditBonuses.css';
 import Modal from '../../UI/Modal/Modal';
 import EditBonus from './EditBonus/EditBonus';
+import Aux from '../../../hoc/Auxiliary/Auxiliary';
 
 class EditBonuses extends Component {
 
@@ -47,10 +48,12 @@ class EditBonuses extends Component {
 
     render() {
         return (
-            <div className={classes.btnGroup}>
-                <button onClick={this.editSubsidyModal}>{this.state.editStates[0]}</button>
-                <button onClick={this.editBuyOutModal}>{this.state.editStates[1]}</button>
-                <button onClick={this.editFloorsModal}>{this.state.editStates[2]}</button>
+            <Aux>
+                <div className={classes.btnGroup}>
+                    <button onClick={this.editSubsidyModal}>{this.state.editStates[0]}</button>
+                    <button onClick={this.editBuyOutModal}>{this.state.editStates[1]}</button>
+                    <button onClick={this.editFloorsModal}>{this.state.editStates[2]}</button>
+                </div>
                 <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
                     <EditBonus
                         title={this.state.currentTitle}
@@ -58,7 +61,7 @@ class EditBonuses extends Component {
                         version={this.state.version}
                     />
                 </Modal>
-            </div>
+            </Aux>
         );
     }
 }

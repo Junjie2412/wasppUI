@@ -2,7 +2,6 @@ import React from 'react';
 import Table from '../../Table/Table';
 import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-
 const editUserTable = () =>{
     return (
         <div className={classes['col-sm-5']}>

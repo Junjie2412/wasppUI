@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Modal from '../../UI/Modal/Modal';
+import EditEmployeeForm from './EditEmployeeForm/EditEmployeeForm';
 
 class user extends Component{
     state = {
@@ -38,7 +39,9 @@ class user extends Component{
                         </div>
                         <div className={[classes['col-sm-12']]}>
                             <button onClick={this.editUserModal} className={[classes.btn, classes['btn-primary'], classes['offset-sm-3']].join(' ')}>Edit Employee</button>
-                            <Modal show={this.state.modalShow} modalClosed={this.closeModal} />
+                            <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
+                                <EditEmployeeForm />
+                            </Modal>
                         </div>
                     </div>
                 </div>

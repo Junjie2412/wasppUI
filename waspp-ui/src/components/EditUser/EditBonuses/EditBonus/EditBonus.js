@@ -18,13 +18,13 @@ const editBonus = (props) => {
                 // </div>
                 <div>
                     <div className={[classes['form-group'], classes.row].join(' ')}>
-                        <label className={[classes['col-sm-4'], classes['col-form-label']].join(' ')}>End Date</label>
+                        <label className={[classes['col-sm-4'], classes['col-form-label']].join(' ')}>Open Amount</label>
                         <div>
                         <input type='text' className={classes['form-control']} />
                         </div>
                     </div>
                     <div className={[classes['form-group'], classes.row].join(' ')}>
-                        <label className={[classes['col-sm-4'], classes['col-form-label']].join(' ')}>End Date</label>
+                        <label className={[classes['col-sm-4'], classes['col-form-label']].join(' ')}>Weeks Left</label>
                         <div>
                         <input type='text' className={classes['form-control']} />
                         </div>
@@ -69,7 +69,7 @@ const editBonus = (props) => {
             // </div>
             <div>
                 <form >
-                    <h1>{props.title}</h1>
+                    <h1 style={{textAlign: 'center'}}>{props.title}</h1>
                     <div className={[classes['form-group'], classes.row].join(' ')}>
                         <label className={[classes['col-sm-4'], classes['col-form-label']].join(' ')}>{props.editState}</label>
                         <div>
@@ -90,8 +90,10 @@ const editBonus = (props) => {
                         </div>
                     </div>
                 </form>
-                <div >
-                    <button>Add</button>
+                <div className={classes['col-sm-12']}>
+                    <button className={[classes.btn, classes['btn-success'], classes['col-sm-2']].join(' ')}>Save</button>
+                    <button className={[classes.btn, classes['btn-warning'],classes['col-sm-2']].join(' ')} style={{margin: '4px', backgroundColor: '#FF9900'}}>Cancel</button>
+                    <button className={[classes.btn, classes['btn-danger'], classes['col-sm-2']].join(' ')}>Delete</button>
                 </div>
             </div>
         );
