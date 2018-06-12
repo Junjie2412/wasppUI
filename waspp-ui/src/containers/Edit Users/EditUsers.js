@@ -15,13 +15,13 @@ class EditUsers extends Component {
         userLookup: '',
         placeholder: 'AS400 ID',
         currentUser: {
-            ADID: null,
-            AS400: null,
-            Base: null,
-            CommissionAdv: null,
-            FileNumber: null,
-            TerrDescription: null,
-            TerrID: null
+            ADID: '',
+            AS400: '',
+            Base: '',
+            CommissionAdv: '',
+            FileNumber: '',
+            TerrDescription: '',
+            TerrID: ''
         }
     }
 
@@ -45,13 +45,48 @@ class EditUsers extends Component {
     onChangeText = (event) => {
         this.setState({userLookup: event.target.value});
 
-        for(let user in this.state.users){
-            console.log('if ' + this.state.users[user].AS400ID + ' === '+ event.target.value);
-            if(this.state.users[user].AS400ID === event.target.value){
-                this.setState({currentUser: user});
-            }
+        switch (this.state.placeholder) {
+            case 'AS400 ID':
+                {
+                    let currUser = this.state.currentUser;
+
+                    for(let user in this.state.users){
+                        if(this.state.users[user].AS400ID === event.target.value){
+                            currUser = this.state.users[user];
+                        }
+                    }
+                    this.setState({currentUser: currUser});
+                    break;
+                }
+            case 'Active Directory':
+                {
+                    let currUser = this.state.currentUser;
+
+                    for(let user in this.state.users){
+                        if(this.state.users[user].ADID === event.target.value){
+                            currUser = this.state.users[user];
+                        }
+                    }
+                    this.setState({currentUser: currUser});
+                    break;
+                }
+            case 'Payroll Number':
+                {
+                    let currUser = this.state.currentUser;
+
+                    for(let user in this.state.users){
+                        if(this.state.users[user].FileNumber === event.target.value){
+                            currUser = this.state.users[user];
+                        }
+                    }
+                    this.setState({currentUser: currUser});
+                    break;
+                }
+            default:
+                break;
+
+
         }
-        console.log(this.state.currentUser);
     }
 
     //This handler changes the state properties based on which value was selected
@@ -104,7 +139,7 @@ class EditUsers extends Component {
                     value={this.state.userLookup}
                     changeText={(event) => this.onChangeText(event)}/>
                     <div className={[classes.row]}>
-                        <User />
+                        <User user={this.state.currentUser}/>
                         <EditBonus/>
                     </div>
             </div>
