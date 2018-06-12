@@ -17,7 +17,7 @@ class App extends Component {
         <div>
           <Navbar />  
           <Toolbar/>
-          <h1 style={{textAlign: 'center', marginTop: '70px'}}>Welcome to Syspay</h1>
+          <h1 style={{textAlign: 'center', marginTop: '90px'}}>Welcome to Syspay</h1>
             <Switch>
                 <Route path="/payrollProcessing" exact component={PayrollProcessing}/>
                 <Route path="/reports" exact component={Reports}/>
