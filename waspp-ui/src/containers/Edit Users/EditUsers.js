@@ -7,6 +7,7 @@ import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import EditBonuses from '../../components/EditUser/EditBonuses/EditBonuses';
 import EditUserTable from '../../components/EditUser/EditUserTable/EditUserTable';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import AfterFloorAdjustments from '../../components/EditUser/AfterFloorAdjustments/AfterFloorAdjustments';
 
 class EditUsers extends Component {
 
@@ -146,7 +147,8 @@ class EditUsers extends Component {
                     <div className={[classes.row]}>
                         <User user={this.state.currentUser}/>
                         <EditBonuses/>
-                        <EditUserTable />
+                        <EditUserTable/>
+                        <AfterFloorAdjustments/>
                     </div>
             </div>
         );

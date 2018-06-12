@@ -1,5 +1,5 @@
 .NavigationItem {
-    width: 300px;
+    width: 20%;
 }
 
 .NavigationLinks {
@@ -8,9 +8,11 @@
     color: white;
     font-size: 25px;
     border: none;
+    width: 100%;
 }
 
 .NavigationLinks:hover {
     background-color: #376ec6;
     text-decoration: none;
+    width: 100%;
 }

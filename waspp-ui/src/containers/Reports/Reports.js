@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
 import ReportNav from '../../components/Report/ReportNav/ReportNav';
+import Report from '../../components/Report/Report';
 
 class Reports extends Component {
+
+    state = {
+        currentReport: {
+
+        }
+    }
+
     render() {
         return (
             <div>
@@ -9,6 +17,7 @@ class Reports extends Component {
                     Reports
                 </h1>
                 <ReportNav/>
+                <Report/>
             </div>
         );
     };
