@@ -1,5 +1,5 @@
 .Search {
-    width: 400px;
+    width: 350px;
     padding: 10px;
     margin-left: 10px;
     margin-right: 10px;
@@ -7,16 +7,16 @@
     box-sizing: border-box;
     border: 1px solid #eee;
     border-radius: 5px 5px 5px 5px;
-    box-shadow: 0px 4px 8px 0px #eee;
+    box-shadow: 0px 4px 8px 0px #cccccc;
     background-color: white;
 }
 
 .SearchText {
-    width: 50%;
+    width: 60%;
     padding: 6px;
     border: none;
     margin-top: 6px;
-    margin-right: 16px;
+    margin-right: 6px;
     font-size: 17px;
     border-radius: 5px 5px 5px 5px;
 }
@@ -24,6 +24,7 @@
 .SearchSelect {
     width: 35%;
     padding: 6px;
+    margin-right: 10px;
 }
 
 @media (max-width: 500px) {

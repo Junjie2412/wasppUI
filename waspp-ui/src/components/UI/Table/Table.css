@@ -1,6 +1,19 @@
 .Table {
     margin-top: 0px;
     width: 100%;
+    box-shadow: none;
+    border: none;
+}
+
+.TableHeader {
+    box-shadow: none;
+    border: none;
+}
+
+.TableHeader th {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
 }
 
 tbody tr:hover{

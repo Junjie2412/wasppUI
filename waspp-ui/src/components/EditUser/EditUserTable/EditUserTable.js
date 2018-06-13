@@ -4,7 +4,6 @@ import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.c
 import Modal from '../../UI/Modal/Modal';
 import AdjustmentForm from './AdjustmentForm/AdjustmentForm';
 
-
 class EditUserTable extends Component{
     state = {
         modalShow: false
@@ -23,7 +22,7 @@ class EditUserTable extends Component{
             <div style={{width: '43%', margin: '4.8% 3%'}}>
                 <div className={classes.card}>
                     <div className={[classes['card-body'], classes['shadow-lg']].join(' ')} style={{overflow: 'auto'}}>
-                        <Table title={'Edit Adjustments'}/>
+                        <Table title={'Edit Adjustments'} tableData={['','','']}/>
                         <div className={classes.row}>
                             <div className={classes['col-sm-12']}>
                                 <button onClick={this.editAdjustmentFormModel} className={[classes.btn, classes['btn-success'], classes['col-sm-2']].join(' ')}>Add</button>

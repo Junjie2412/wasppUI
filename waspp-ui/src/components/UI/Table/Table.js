@@ -5,13 +5,22 @@ import Aux from '../../../hoc/Auxiliary/Auxiliary';
 
 const table = (props) =>{
 
+    const tableData = props.tableData.map(data => (
+        <tr>
+            <td>000000000</td>
+            <td>000000000</td>
+            <td>000000000</td>
+            <td>1000</td>
+            <td>0</td>
+        </tr>
+    ));
     return(
 
         <Aux>
             <h3 className={classes.TableTitle}>{props.title}</h3>
             <table className={[bootStrapClasses.table, classes.Table].join(' ')}>
-                <thead style={{backgroundColor: '#4285F4'}}>
-                    <tr>
+                <thead style={{backgroundColor: '#007bff'}}>
+                    <tr className={classes.TableHeader}>
                         <th>HR EmployeeID</th>
                         <th>File Number</th>
                         <th>AS400 ID</th>
@@ -19,22 +28,8 @@ const table = (props) =>{
                         <th>Bonus Flight</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {/* dummy data */}
-                    <tr>
-                        <td>000000000</td>
-                        <td>000000000</td>
-                        <td>000000000</td>
-                        <td>1000</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>000000001</td>
-                        <td>000000001</td>
-                        <td>000000001</td>
-                        <td>1000</td>
-                        <td>0</td>
-                    </tr>
+                <tbody style={{backgroundColor: 'white'}}>
+                {tableData}
                 </tbody>
             </table>
         </Aux>

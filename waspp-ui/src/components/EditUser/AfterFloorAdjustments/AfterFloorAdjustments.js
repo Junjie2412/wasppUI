@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Aux from '../../../hoc/Auxiliary/Auxiliary';
-import Modal from "../../UI/Modal/Modal";
 import Table from "../../UI/Table/Table";
 import classes from './AfterFloorAdjustments.css';
+import EditUserTable from '../../EditUser/EditUserTable/EditUserTable';
 
 class AfterFloorAdjustments extends Component {
 
@@ -13,9 +13,10 @@ class AfterFloorAdjustments extends Component {
 
     openModal = () => {
         this.setState({modalOpened: true});
+        console.log('hi');
     }
 
-    modalClosed = () => {
+    closeModal = () => {
         this.setState({modalOpened: false});
     }
 
@@ -28,7 +29,7 @@ class AfterFloorAdjustments extends Component {
     }
 
     render() {
-
+/*
         let editingAdjustments = null;
 
         switch (this.state.editing) {
@@ -49,23 +50,28 @@ class AfterFloorAdjustments extends Component {
                 break
             default:
                 break;
-        }
+        }*/
 
         return (
             <Aux>
-                <button onClick={this.openModal} className={classes.Button}>
-                    Edit After Floor Adjustments
-                </button>
-                <Modal show={this.state.modalOpened} modalClosed={this.modalClosed}>
-                    <div className={classes.ModalDisplay}>
+                <div className={this.state.modalOpened ?  classes.AFAOpened : classes.AFA}>
+                    <button onClick={this.state.modalOpened ? this.closeModal : this.openModal} className={classes.Button}>
+                        <p className={classes.Text} onClick={this.state.modalOpened ? this.closeModal : this.openModal}>Edit After Floor Adjustments</p>
+                    </button>
+                    <div className={classes.Table} onClick={this.openModal}>
+                        <EditUserTable title={'Edit After Floor Adjustments'}/>
+                    </div>
+                </div>
+                {/*<Modal show={this.state.modalOpened} modalClosed={this.modalClosed}>
+                    <div>
                         <Aux>
-                            <Table/>
+                            <EditUserTable/>
                             <button onClick={this.editAdjustments}>Add</button>
                             <button onClick={this.modalClosed}>Exit</button>
                         </Aux>
                         {editingAdjustments}
                     </div>
-                </Modal>
+                </Modal>*/}
             </Aux>
         )
     }
