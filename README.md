@@ -16,6 +16,8 @@ If your project does not work, run the following installs.
     npm install --save react-redux
     npm install --save bootstrap
     npm install --save axios
+    npm install --save moment
+    npm install --save react-datepicker
     
 If we are forgetting something, or there are other things you would liek to install, please let me know.
 
