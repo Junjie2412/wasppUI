@@ -2,12 +2,12 @@ import React from 'react';
 import Table from '../../UI/Table/Table';
 import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-const editUserTable = () =>{
+const editUserTable = (props) =>{
     return (
         <div style={{width: '43%', margin: '4.8% 3%'}}>
             <div className={classes.card}>
                 <div className={[classes['card-body'], classes['shadow-lg']].join(' ')} style={{overflow: 'auto'}}>
-                    <Table title={'Edit Adjustments'}/>
+                    <Table title={props.title} tableData={['','','']}/>
                     <div className={classes.row}>
                         <div className={classes['col-sm-12']}>
                             <button className={[classes.btn, classes['btn-success'], classes['col-sm-2']].join(' ')}>Add</button>

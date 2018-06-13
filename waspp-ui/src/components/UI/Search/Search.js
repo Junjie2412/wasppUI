@@ -23,6 +23,9 @@ const search = (props) => {
 
     return (
         <div className={classes.Search}>
+            <select className={classes.SearchSelect} onChange={props.change}>
+                {options}
+            </select>
             <input
                 className={classes.SearchText}
                 type="text"
@@ -33,9 +36,6 @@ const search = (props) => {
                 <datalist id="data">
                     {dataList}
                 </datalist>
-            <select className={classes.SearchSelect} onChange={props.change}>
-                {options}
-            </select>
         </div>
     );
 }

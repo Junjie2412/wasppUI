@@ -1,19 +1,46 @@
-.Button {
-    background-color: #007bff; /* Green background */
-    border-radius: 5px;
-    border: none;
-    color: white;
-    padding: 10px 24px;
-    margin: auto;
+.AFA {
+    position: absolute;
+    right: -90%;
+    transition: 0.3s;
+    margin-top: 190px;
+    width: 100%;
+}
+.AFA:hover {
+    right: -85%;
     cursor: pointer;
-    width: 20%; /* Set a width if needed */
 }
 
-.ModalDisplay {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+.AFAOpened {
+    position: absolute;
+    right: -43%;
+    transition: 0.3s;
+    margin-top: 190px;
+    width: 100%;
+}
+
+.ButtonWrap {
+    
+}
+
+.Button {
+    transition: 0.3s;
+    width: 280px;
+    height: 60px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    border: none;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #007bff;
+    transform: rotate(270deg);
+    cursor: pointer;
+    z-index: 1500;
+}
+
+.Text {
+    transform: translateY(-10%);
+}
+
+.Table {
+    transform: translateY(-73%) translateX(120px);
 }

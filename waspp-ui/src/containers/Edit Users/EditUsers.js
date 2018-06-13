@@ -7,21 +7,23 @@ import EditBonuses from '../../components/EditUser/EditBonuses/EditBonuses';
 import EditUserTable from '../../components/EditUser/EditUserTable/EditUserTable';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import AfterFloorAdjustments from '../../components/EditUser/AfterFloorAdjustments/AfterFloorAdjustments';
-import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+//import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import classes from './EditUser.css';
 
 class EditUsers extends Component {
 
     state = {
         users: [],
-        searchBy: [' ','AS400 ID', 'Active Directory', 'Payroll Number'],
+        searchBy: ['Payroll Number','AS400 ID', 'Active Directory'],
         searchList: [],
         userLookup: '',
-        placeholder: 'AS400 ID',
+        placeholder: 'Payroll Number',
         currentUser: {
             ADID: '',
             AS400: '',
             Base: '',
             CommissionAdv: '',
+            PayrollNumber: '',
             FileNumber: '',
             TerrDescription: '',
             TerrID: ''
@@ -36,13 +38,15 @@ class EditUsers extends Component {
         axios.get(links.EDIT_USERS_DB)
             .then(response => {
                 const dataList = [];
+                let searchData = [];
                 for(let user in response.data ) {
                     dataList.push( {
                         ...response.data[user],
                         id: [user]
                     })
+                    searchData.push(response.data[user].PayrollNumber)
                 }
-                return this.setState({users: dataList, loading: false});
+                return this.setState({users: dataList, searchList: searchData, loading: false});
             });
     }
 
@@ -80,7 +84,7 @@ class EditUsers extends Component {
                     let currUser = this.state.currentUser;
 
                     for(let user in this.state.users){
-                        if(this.state.users[user].FileNumber === event.target.value){
+                        if(this.state.users[user].PayrollNumber === event.target.value){
                             currUser = this.state.users[user];
                         }
                     }
@@ -88,7 +92,17 @@ class EditUsers extends Component {
                     break;
                 }
             default:
+            {
+                let currUser = this.state.currentUser;
+
+                for(let user in this.state.users){
+                    if(this.state.users[user].PayrollNumber === event.target.value){
+                        currUser = this.state.users[user];
+                    }
+                }
+                this.setState({currentUser: currUser});
                 break;
+            }
 
 
         }
@@ -118,14 +132,14 @@ class EditUsers extends Component {
             case 'Payroll Number':
                 for(let user in this.state.users ) {
                     searchData.push(
-                        this.state.users[user].FileNumber
+                        this.state.users[user].PayrollNumber
                     )
                 }
                 return this.setState({searchList: searchData});
             default:
                 for(let user in this.state.users ) {
                     searchData.push(
-                        this.state.users[user].AS400ID
+                        this.state.users[user].PayrollNumber
                     )
                 }
                 return;
@@ -135,8 +149,8 @@ class EditUsers extends Component {
     render() {
         return (
             this.state.loading ? <Spinner/>:
-            <div>
-                <h1 style={{textAlign: 'center', marginTop: '20px'}}>Users List</h1>
+            <div className={classes.EditUser}>
+                <h1 style={{textAlign: 'center', marginTop: '20px'}}>Edit Users</h1>
                 <Search
                     placeholder={this.state.placeholder}
                     options={this.state.searchBy}
@@ -147,7 +161,7 @@ class EditUsers extends Component {
                 <div className={classes.row}>
                     <User user={this.state.currentUser}/>
                     <EditBonuses/>
-                    <EditUserTable/>
+                    <EditUserTable title={'Edit Adjustments'}/>
                     <AfterFloorAdjustments/>
                 </div>
             </div>

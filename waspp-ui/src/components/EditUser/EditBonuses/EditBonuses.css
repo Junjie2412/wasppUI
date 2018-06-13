@@ -5,12 +5,9 @@
     transition: 0.3s;
     border-radius: 5px; 
     align-content: center;
-<<<<<<< HEAD
-=======
-    margin: 50px 50px; 
->>>>>>> 983261d17f3ed720d270a6364e26380fe7c3d619
     padding: 24px 10px;
     margin: 4.3% 0%;
+    background-color: white;
 }
 
 .btnGroup button {

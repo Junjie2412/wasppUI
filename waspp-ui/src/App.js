@@ -8,6 +8,7 @@ import PayrollProcessing from "./containers/Payroll Processing/PayrollProcessing
 import Reports from "./containers/Reports/Reports";
 import Tools from "./containers/Tools/Tools";
 import Help from "./containers/Help/Help";
+import classes from './App.css';
 
 
 //"navbar navbar-expand-sm navbar-light bg-primary"
@@ -15,10 +16,9 @@ import Help from "./containers/Help/Help";
 class App extends Component {
     render() {
       return (
-        <div>
+        <div className={classes.App}>
           <Navbar />  
           <Toolbar/>
-          <h1 style={{textAlign: 'center', marginTop: '90px'}}>Welcome to Syspay</h1>
             <Switch>
                 <Route path="/payrollProcessing" exact component={PayrollProcessing}/>
                 <Route path="/reports" exact component={Reports}/>

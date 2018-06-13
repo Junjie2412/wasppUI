@@ -23,7 +23,7 @@ class user extends Component{
                     <div className={[classes['card-body']]}>
                         <h5 className={[classes['text-center'], classes['card-title']].join(' ')}>First Last</h5>
                         <p>AS400 ID: {this.props.user.AS400ID}</p>
-                        <p>HR Employee ID: {this.props.user.ADID}</p>
+                        <p>HR Employee ID: {this.props.user.PayrollNumber}</p>
                         <p>File Number: {this.props.user.FileNumber}</p>
                         <p>Weekly Base: {this.props.user.Base}</p>
                         <p>Bonus Flight: </p>
