@@ -8,7 +8,7 @@ const editEmployeeForm = (props) =>{
             <form>
                 <h1 style={{textAlign: 'center'}}>Edit Employee</h1>
                 <div className={[classes['form-group'], classes.row].join(' ')}>
-                    <label className={[classes['col-sm-4'], classes['col-form-label']].join(' ')}>HR Eployee ID</label>
+                    <label className={[classes['col-sm-4'], classes['col-form-label']].join(' ')}>HR Employee ID</label>
                     <div>
                         <input type='text' className={classes['form-control-plaintext']} value={props.user.ADID} readOnly />
                     </div>
