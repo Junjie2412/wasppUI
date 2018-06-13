@@ -151,13 +151,15 @@ class EditUsers extends Component {
             this.state.loading ? <Spinner/>:
             <div className={classes.EditUser}>
                 <h1 style={{textAlign: 'center', marginTop: '20px'}}>Edit Users</h1>
-                <Search
-                    placeholder={this.state.placeholder}
-                    options={this.state.searchBy}
-                    dataList={this.state.searchList}
-                    change={(event) => this.onChangeSelect(event)}
-                    value={this.state.userLookup}
-                    changeText={(event) => this.onChangeText(event)}/>
+                <div style={{transform: 'translateX(2.3%)'}}>
+                    <Search
+                        placeholder={this.state.placeholder}
+                        options={this.state.searchBy}
+                        dataList={this.state.searchList}
+                        change={(event) => this.onChangeSelect(event)}
+                        value={this.state.userLookup}
+                        changeText={(event) => this.onChangeText(event)}/>
+                </div>
                 <div className={classes.row}>
                     <User user={this.state.currentUser}/>
                     <EditBonuses/>

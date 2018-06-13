@@ -9,9 +9,10 @@ const navigationItem = (props) => {
             <NavLink
                 to={props.link}
                 exact={props.exact}
-                className={classes.NavigationLinks}>
+                className={classes.NavigationLinks}
+                activeClassName={classes.ActiveLink}>
                 <button type="button"
-                        className={[bootStrapClasses["btn"], classes.NavigationLinks].join(' ')}>{props.children}
+                        className={[bootStrapClasses["btn"], classes.NavigationButton].join(' ')}>{props.children}
                 </button>
             </NavLink>
         </li>

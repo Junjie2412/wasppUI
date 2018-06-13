@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import ReportNav from '../../components/Report/ReportNav/ReportNav';
 import Report from '../../components/Report/Report';
+import classes from './Reports.css';
 
 class Reports extends Component {
 
@@ -16,8 +16,18 @@ class Reports extends Component {
                 <h1 style={{textAlign: 'center', marginTop: '20px'}}>
                     Reports
                 </h1>
-                <ReportNav/>
-                <Report/>
+                <div className={classes.ButtonGroup}>
+                    <button className={classes.Button}>
+                        Weekly Commissions Proof
+                    </button>
+                    <button className={classes.Button}>
+                        Monthly Bonus Proof
+                    </button>
+                    <button className={classes.Button}>
+                        Compensation Recap Report
+                    </button>
+                </div>
+                <Report title={'Compensation Recap Report'}/>
             </div>
         );
     };

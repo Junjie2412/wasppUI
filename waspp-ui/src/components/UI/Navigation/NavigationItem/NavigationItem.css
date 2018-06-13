@@ -1,7 +1,6 @@
 .NavigationItem {
     width: 20%;
 }
-
 .NavigationLinks {
     border-radius: 0px 0px 0px 0px;
     background-color: #007bff;
@@ -11,8 +10,18 @@
     width: 100%;
 }
 
-.NavigationLinks:hover {
-    background-color: #376ec6;
+.NavigationLinks:hover,
+.ActiveLink {
+    background: linear-gradient(to bottom right, #007bff, #eee);
     text-decoration: none;
+    width: 100%;
+}
+
+.NavigationButton {
+    border-radius: 0px 0px 0px 0px;
+    background-color: transparent;
+    color: white;
+    font-size: 25px;
+    border: none;
     width: 100%;
 }
