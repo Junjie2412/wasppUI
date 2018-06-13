@@ -18,7 +18,7 @@ class user extends Component{
 
     render(){
         return(
-            <div className={[classes['w-25']]}>
+            <div style={{width: '25%', margin: '3%'}}>
                 <div className={[[classes.card], classes['shadow-lg']].join(' ')}>
                     <div className={[classes['card-body']]}>
                         <h5 className={[classes['text-center'], classes['card-title']].join(' ')}>First Last</h5>

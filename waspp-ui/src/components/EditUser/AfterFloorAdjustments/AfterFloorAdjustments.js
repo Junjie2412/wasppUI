@@ -46,6 +46,8 @@ class AfterFloorAdjustments extends Component {
                 break;
             case false:
                 editingAdjustments = null;
+                break
+            default:
                 break;
         }
 

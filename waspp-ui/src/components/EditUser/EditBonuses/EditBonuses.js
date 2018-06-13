@@ -9,7 +9,7 @@ class EditBonuses extends Component {
     state = {
         titleStates: ['Edit Subsidy', 'Edit Buy Out', 'Edit Floors'],
         currentTitle: '',
-        editStates: ['Original Subsidy', 'Buy Out Amount', 'Floor Adjustments'],
+        editStates: ['Subsidy Amount', 'Buy Out Amount', 'Floor Adjustments'],
         currentEdit: '',
         version: '',
         modalShow: false

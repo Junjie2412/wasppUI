@@ -3,11 +3,11 @@ import Search from '../../components/UI/Search/Search';
 import axios from 'axios';
 import * as links from '../../shared/Links';
 import User from '../../components/EditUser/User/User';
-import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import EditBonuses from '../../components/EditUser/EditBonuses/EditBonuses';
 import EditUserTable from '../../components/EditUser/EditUserTable/EditUserTable';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import AfterFloorAdjustments from '../../components/EditUser/AfterFloorAdjustments/AfterFloorAdjustments';
+import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class EditUsers extends Component {
 
@@ -144,12 +144,12 @@ class EditUsers extends Component {
                     change={(event) => this.onChangeSelect(event)}
                     value={this.state.userLookup}
                     changeText={(event) => this.onChangeText(event)}/>
-                    <div className={[classes.row]}>
-                        <User user={this.state.currentUser}/>
-                        <EditBonuses/>
-                        <EditUserTable/>
-                        <AfterFloorAdjustments/>
-                    </div>
+                <div className={classes.row}>
+                    <User user={this.state.currentUser}/>
+                    <EditBonuses/>
+                    <EditUserTable/>
+                    <AfterFloorAdjustments/>
+                </div>
             </div>
         );
     };

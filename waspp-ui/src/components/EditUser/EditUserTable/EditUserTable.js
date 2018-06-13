@@ -4,7 +4,7 @@ import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.c
 
 const editUserTable = () =>{
     return (
-        <div className={classes['col-sm-5']}>
+        <div style={{width: '43%', margin: '4.8% 3%'}}>
             <div className={classes.card}>
                 <div className={[classes['card-body'], classes['shadow-lg']].join(' ')} style={{overflow: 'auto'}}>
                     <Table title={'Edit Adjustments'}/>

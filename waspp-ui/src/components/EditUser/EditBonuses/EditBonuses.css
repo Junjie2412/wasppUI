@@ -5,8 +5,8 @@
     transition: 0.3s;
     border-radius: 5px; /* 5px rounded corners */
     align-content: center;
-    margin: 50px 50px;
     padding: 24px 10px;
+    margin: 4.3% 0%;
 }
 
 .btnGroup button {
