@@ -2,7 +2,7 @@
     position: absolute;
     right: -90%;
     transition: 0.3s;
-    margin-top: 190px;
+    transform: translateY(38%);
     width: 100%;
 }
 .AFA:hover {
@@ -12,21 +12,19 @@
 
 .AFAOpened {
     position: absolute;
-    right: -43%;
+    right: -44%;
     transition: 0.3s;
-    margin-top: 190px;
+    transform: translateY(38%);
     width: 100%;
 }
 
 .ButtonWrap {
-    
+
 }
 
 .Button {
-    transition: 0.3s;
     width: 280px;
     height: 60px;
-    text-decoration: none;
     font-size: 20px;
     color: white;
     border: none;
@@ -34,7 +32,12 @@
     background-color: #007bff;
     transform: rotate(270deg);
     cursor: pointer;
-    z-index: 1500;
+    z-index: 200;
+    margin: 0;
+}
+
+.Button:hover {
+    background-color: darkblue;
 }
 
 .Text {
@@ -42,5 +45,6 @@
 }
 
 .Table {
-    transform: translateY(-73%) translateX(120px);
+    transform: translateY(-73%) translateX(150px);
+    z-index: 100;
 }

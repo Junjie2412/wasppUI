@@ -55,9 +55,11 @@ class AfterFloorAdjustments extends Component {
         return (
             <Aux>
                 <div className={this.state.modalOpened ?  classes.AFAOpened : classes.AFA}>
+                    <div>
                     <button onClick={this.state.modalOpened ? this.closeModal : this.openModal} className={classes.Button}>
                         <p className={classes.Text} onClick={this.state.modalOpened ? this.closeModal : this.openModal}>Edit After Floor Adjustments</p>
                     </button>
+                    </div>
                     <div className={classes.Table} onClick={this.openModal}>
                         <EditUserTable title={'Edit After Floor Adjustments'}/>
                     </div>
