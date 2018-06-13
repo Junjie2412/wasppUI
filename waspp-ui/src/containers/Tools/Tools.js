@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import OPCODefaults from './OPCODefaults/OPCODefaults';
 
 class Tools extends Component {
     render() {
         return (
             <div>
                 <h1 style={{textAlign: 'center', marginTop: '20px'}}>
-                    Tools
+                    <OPCODefaults />
                 </h1>
             </div>
         );
