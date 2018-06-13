@@ -1,0 +1,19 @@
+.Button {
+    background-color: #007bff; /* Green background */
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    margin: 10px auto;
+    cursor: pointer;
+    width: 20%; /* Set a width if needed */
+}
+
+.ModalDisplay {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}

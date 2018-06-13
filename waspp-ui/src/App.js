@@ -29,13 +29,6 @@ class App extends Component {
                 <Route path="/" component={Login}/>
                 <Redirect to="/"/>
             </Switch>
-            {/* <div className={classes['container-fluid']} style={{background:'pink'}}>
-                <div className={[classes.row]}>
-                    <p className={classes['col-sm-4']} style={{background:'yellow'}}>Test</p>
-                    <p className={classes['col-sm-4']} style={{background:'lightgreen'}}>Test</p>
-                    <p className={classes['col-sm-4']} style={{background:'lightblue'}}>Test</p>
-                </div>
-            </div> */}
         </div>
         
       );
