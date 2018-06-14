@@ -20,7 +20,7 @@ const opocDefaults = () =>{
                     <label className={[classes['col-sm-2'], classes['col-form-label']].join(' ')}>Commission Models</label>
                     <input type='text' className={[classes['col-sm-9'], classes['form-control']].join(' ')} />
                 </div>
-                <div className={[classes['form-group'], classes.row].join(' ')}>
+                {/* <div className={[classes['form-group'], classes.row].join(' ')}>
                     <label className={[classes['col-sm-2'], classes['col-form-label']].join(' ')}>Click Down option</label>
                     <div className={[classes['col-sm-2'], css.alignRadio].join(' ')}>
                         <input type='radio' className={classes['form-check-input']} />
@@ -30,7 +30,7 @@ const opocDefaults = () =>{
                         <input type='radio' className={classes['form-check-input']} />
                         <label className={classes['form-check-label']}>PercentGroup(100,75,50,25)</label>
                     </div>
-                </div>
+                </div> */}
                 <div className={[classes['form-group'], classes.row].join(' ')}>
                     <label className={[classes['col-sm-2'], classes['col-form-label']].join(' ')}>Floor</label>
                     <input type='text' className={[classes['col-sm-2'], classes['form-control']].join(' ')} />
@@ -56,41 +56,87 @@ const opocDefaults = () =>{
                     <input type = 'text' className={[classes['col-sm-6'], classes['form-control']].join(' ')}/>
                 </div>
                 <div className={[classes['form-group'], classes.row].join(' ')}>
-                    <label className={[classes['col-sm-2'], classes['col-form-label']].join(' ')}>Click Down option</label>
-                    <div className={[classes['col-sm-2'], css.alignRadio].join(' ')}>
+                    <label className={[classes['col-sm-2'], classes['col-form-label']].join(' ')}>Bonus Level</label>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
                         <input type='radio' className={classes['form-check-input']} />
                         <label className={classes['form-check-label']}>Low</label>
                     </div>
-                    <div className={[classes['offset-sm-1'], classes['col-sm-2'], css.alignRadio].join(' ')}>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
                         <input type='radio' className={classes['form-check-input']} />
                         <label className={classes['form-check-label']}>Medium</label>
                     </div>
-                    <div className={[classes['offset-sm-1'], classes['col-sm-2'], css.alignRadio].join(' ')}>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
                         <input type='radio' className={classes['form-check-input']} />
                         <label className={classes['form-check-label']}>High</label>
                     </div>
                 </div>
                 <div className={[classes['form-group'], classes.row].join(' ')}>
                     <label className={[classes['col-sm-2'], classes['col-form-label']].join(' ')}>Default Flights</label>
-                    <div className={[classes['col-sm-2'], css.alignRadio].join(' ')}>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
                         <input type='radio' className={classes['form-check-input']} />
                         <label className={classes['form-check-label']}>Flight A</label>
                     </div>
-                    <div className={[classes['col-sm-2'], css.alignRadio].join(' ')}>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
                         <input type='radio' className={classes['form-check-input']} />
                         <label className={classes['form-check-label']}>Flight B</label>
                     </div>
-                    <div className={[classes['col-sm-2'], css.alignRadio].join(' ')}>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
                         <input type='radio' className={classes['form-check-input']} />
                         <label className={classes['form-check-label']}>Flight C</label>
                     </div>
-                    <div className={[classes['col-sm-2'], css.alignRadio].join(' ')}>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
                         <input type='radio' className={classes['form-check-input']} />
                         <label className={classes['form-check-label']}>Flight D</label>
                     </div>
-                    <div className={[classes['col-sm-2'], css.alignRadio].join(' ')}>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
                         <input type='radio' className={classes['form-check-input']} />
                         <label className={classes['form-check-label']}>Flight E</label>
+                    </div>
+                </div>
+                <div className={[classes['form-group'], classes.row].join(' ')}>
+                    <label className={[classes['col-sm-2'], classes['col-form-label']].join(' ')}>Row Axis</label>
+                    <select className={[classes['col-sm-2'], classes['form-control']].join(' ')} />
+                    <label className={[classes['col-sm-2'], classes['col-form-label']].join(' ')}>Column Axis</label>
+                    <select className={[classes['col-sm-2'], classes['form-control']].join(' ')} />
+                </div>
+                <div className={[classes['form-group'], classes.row].join(' ')}>
+                    <label className={[classes['col-sm-2'], classes['col-form-label']].join(' ')}>Bonus Field</label>
+                    <select className={[classes['col-sm-2'], classes['form-control']].join(' ')} />
+                    <label className={[classes['col-sm-2'], classes['col-form-label']].join(' ')}>Account Types</label>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>Flight E</label>
+                    </div>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>Flight E</label>
+                    </div>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>Flight E</label>
+                    </div>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>Flight E</label>
+                    </div>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>Flight E</label>
+                    </div>
+                </div>
+                <div className={[classes['form-group'], classes.row].join(' ')}>
+                    <label className={[classes['col-sm-2'], classes['col-form-label']].join(' ')}>Default Flights</label>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>Low</label>
+                    </div>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>Meidum</label>
+                    </div>
+                    <div className={[classes['col-sm-1'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>High</label>
                     </div>
                 </div>
             </form>
