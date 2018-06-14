@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Payroll from '../../components/PayrollProcessing/Payrolls';
-// import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 class PayrollProcessing extends Component {
       state={
         showTable:"none"
