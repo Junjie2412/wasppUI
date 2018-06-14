@@ -150,7 +150,7 @@ class EditUsers extends Component {
         return (
             this.state.loading ? <Spinner/>:
             <div className={classes.EditUser}>
-                <h1 style={{textAlign: 'center', marginTop: '20px'}}>Edit Users</h1>
+                <h1 style={{textAlign: 'center', marginTop: '20px', color: '#0057a6'}}>Edit Users</h1>
                 <div style={{transform: 'translateX(2.3%)'}}>
                     <Search
                         placeholder={this.state.placeholder}
