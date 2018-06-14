@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import bootStrapClasses from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -16,19 +16,19 @@ class Login extends Component {
 
     render() {
         return (
-                <div className={[classes['w-25'], classes['mx-auto']].join(' ')}>
-                    <div className={[classes.card]}>
-                        <div className={[classes['card-body']]}>
+                <div className={[bootStrapClasses['w-25'], bootStrapClasses['mx-auto']].join(' ')}>
+                    <div className={[bootStrapClasses.card]}>
+                        <div className={[bootStrapClasses['card-body']]}>
                             <form onSubmit={this.loginHandler}>
-                            <div className={[classes['form-group']]}>
+                            <div className={[bootStrapClasses['form-group']]}>
                                     <label>Username:</label>
-                                    <input type='text' className={[classes['form-control']]} placeholder='Username'></input>
+                                    <input type='text' className={[bootStrapClasses['form-control']]} placeholder='Username'></input>
                             </div>
-                            <div className={[classes['form-group']]}>
+                            <div className={[bootStrapClasses['form-group']]}>
                                     <label>Password:</label>
-                                    <input type='text' className={[classes['form-control']]} placeholder='Password'></input>
+                                    <input type='text' className={[bootStrapClasses['form-control']]} placeholder='Password'></input>
                             </div>
-                            <button className={[classes.btn, classes['btn-primary']].join(' ')}>Login</button>
+                            <button className={[bootStrapClasses.btn, bootStrapClasses['btn-primary']].join(' ')}>Login</button>
                             </form>
                         </div>
                     </div>
