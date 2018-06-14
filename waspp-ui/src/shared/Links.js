@@ -1,1 +1,0 @@
-export const EDIT_USERS_DB = 'https://waspp-fake-data.firebaseio.com/users.json';
