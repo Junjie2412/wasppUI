@@ -5,7 +5,7 @@ import Table from '../UI/Table/Table';
 const report = (props) => {
     return (
         <div className={classes.Table}>
-            <Table tableData={['','','']}/>
+            <Table tableData={['','','']} title={props.title}/>
         </div>
     );
 }

@@ -22,7 +22,7 @@ class EditUserTable extends Component{
             <div style={{width: '43%', margin: '3% 0%'}}>
                 <div className={classes.card}>
                     <div className={[classes['card-body'], classes['shadow-lg']].join(' ')} style={{overflow: 'auto'}}>
-                        <Table title={'Edit Adjustments'} tableData={['','','']}/>
+                        <Table title={this.props.title ? this.props.title : 'Edit Adjustments'} tableData={['','','']}/>
                         <div className={classes.row}>
                             <div className={classes['col-sm-12']}>
                                 <button onClick={this.editAdjustmentFormModel} className={[classes.btn, classes['btn-success'], classes['col-sm-2']].join(' ')}>Add</button>

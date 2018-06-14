@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Aux from '../../../hoc/Auxiliary/Auxiliary';
-import Table from "../../UI/Table/Table";
 import classes from './AfterFloorAdjustments.css';
 import EditUserTable from '../../EditUser/EditUserTable/EditUserTable';
 

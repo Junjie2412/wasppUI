@@ -1,13 +1,13 @@
 .btnGroup {
     width: 20%;
-    height: 40%;
+    height: 345px;
     box-shadow: 0 8px 16px 0 #cccccc;
-    transition: 0.3s;
-    border-radius: 5px; 
+    border-radius: 5px;
     align-content: center;
-    padding: 24px 10px;
+    padding: 43px 10px;
     margin: 4.3% 3% 4.3% 0%;
     background-color: white;
+    transform: translateY(-20px);
 }
 
 .btnGroup button {
