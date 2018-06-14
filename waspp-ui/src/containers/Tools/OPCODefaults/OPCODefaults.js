@@ -70,6 +70,29 @@ const opocDefaults = () =>{
                         <label className={classes['form-check-label']}>High</label>
                     </div>
                 </div>
+                <div className={[classes['form-group'], classes.row].join(' ')}>
+                    <label className={[classes['col-sm-2'], classes['col-form-label']].join(' ')}>Default Flights</label>
+                    <div className={[classes['col-sm-2'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>Flight A</label>
+                    </div>
+                    <div className={[classes['col-sm-2'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>Flight B</label>
+                    </div>
+                    <div className={[classes['col-sm-2'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>Flight C</label>
+                    </div>
+                    <div className={[classes['col-sm-2'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>Flight D</label>
+                    </div>
+                    <div className={[classes['col-sm-2'], css.alignRadio].join(' ')}>
+                        <input type='radio' className={classes['form-check-input']} />
+                        <label className={classes['form-check-label']}>Flight E</label>
+                    </div>
+                </div>
             </form>
         </div>
     );
