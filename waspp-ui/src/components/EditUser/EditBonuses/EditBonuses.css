@@ -1,17 +1,17 @@
 .btnGroup {
     width: 20%;
     height: 345px;
-    box-shadow: 0 8px 16px 0 #cccccc;
+    box-shadow: 0 8px 16px 0 #999;
     border-radius: 5px;
     align-content: center;
     padding: 43px 10px;
     margin: 4.3% 3% 4.3% 0%;
-    background-color: white;
+    background-color: rgba(0, 153, 204, 0.5);
     transform: translateY(-20px);
 }
 
 .btnGroup button {
-    background-color: #007bff; /* Green background */
+    background-color: #006699;
     border-radius: 5px;
     border: none;
     color: white;
@@ -19,7 +19,7 @@
     margin: 30px auto;
     cursor: pointer; /* Pointer/hand icon */
     width: 75%; /* Set a width if needed */
-    display: block; /* Make the buttons appear below each other */
+    display: block;
 }
 
 .btnGroup button:not(:last-child) {
@@ -28,5 +28,5 @@
 
 /* Add a background color on hover */
 .btnGroup button:hover {
-    background-color: #376ec6;
+    background-color: #0066;
 }

@@ -7,7 +7,7 @@
     box-sizing: border-box;
     border: 1px solid #eee;
     border-radius: 5px 5px 5px 5px;
-    box-shadow: 0px 4px 8px 0px #cccccc;
+    box-shadow: 0px 4px 8px 0px #417ebb;
     background-color: white;
 }
 
@@ -19,12 +19,18 @@
     margin-right: 6px;
     font-size: 17px;
     border-radius: 5px 5px 5px 5px;
+    color: #00449c;
 }
 
 .SearchSelect {
     width: 35%;
     padding: 6px;
     margin-right: 10px;
+    color: #00449c;
+}
+
+.Options {
+    color: #00449c;
 }
 
 @media (max-width: 500px) {

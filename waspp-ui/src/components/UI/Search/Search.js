@@ -11,7 +11,7 @@ const search = (props) => {
     ));
 
     const dataList = props.dataList.map(data => (
-        <option
+        <option className={classes.Options}
             key={data}>
             {data}
         </option>

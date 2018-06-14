@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import bootStrapClasses from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Modal from '../../UI/Modal/Modal';
 import EditEmployeeForm from './EditEmployeeForm/EditEmployeeForm';
 
@@ -19,26 +19,26 @@ class user extends Component{
     render(){
         return(
             <div style={{width: '25%', margin: '3%'}}>
-                <div className={[[classes.card], classes['shadow-lg']].join(' ')}>
+                <div className={[[classes.card], classes['shadow-lg']].join(' ')} style={{backgroundColor:'#0099cc'}}>
                     <div className={[classes['card-body']]}>
-                        <h5 className={[classes['text-center'], classes['card-title']].join(' ')}>First Last</h5>
-                        <p>AS400 ID: {this.props.user.AS400ID}</p>
-                        <p>HR Employee ID: {this.props.user.PayrollNumber}</p>
-                        <p>File Number: {this.props.user.FileNumber}</p>
-                        <p>Weekly Base: {this.props.user.Base}</p>
-                        <p>Bonus Flight: </p>
+                        <h5 className={[classes['text-center'], classes['card-title']].join(' ')} style={{color:'#fff'}}>First Last</h5>
+                        <p style={{color:'#fff'}}>AS400 ID: {this.props.user.AS400ID}</p>
+                        <p style={{color:'#fff'}}>HR Employee ID: {this.props.user.PayrollNumber}</p>
+                        <p style={{color:'#fff'}}>File Number: {this.props.user.FileNumber}</p>
+                        <p style={{color:'#fff'}}>Weekly Base: {this.props.user.Base}</p>
+                        <p style={{color:'#fff'}}>Bonus Flight: </p>
                         <div className={classes.row}>
                             <div className = {classes['col-sm-4']}>
                                 <input type='checkbox' className={classes['form-check-label']}/>
-                                <label className='form-check-label'>Seasonal</label>
+                                <label className='form-check-label' style={{color:'#fff'}}>Seasonal</label>
                             </div>
                             <div className = {classes['col-sm-4']}>
                                 <input type='checkbox' className={classes['form-check-label']}/>
-                                <label className='form-check-label'>Bonus</label>
+                                <label className='form-check-label' style={{color:'#fff'}}>Bonus</label>
                             </div>
                         </div>
                         <div className={[classes['col-sm-12']]}>
-                            <button onClick={this.editUserModal} className={[classes.btn, classes['btn-primary'], classes['offset-sm-3']].join(' ')}>Edit Employee</button>
+                            <button onClick={this.editUserModal} className={[classes.btn, classes['btn-primary'], classes['offset-sm-3']].join(' ')} style={{backgroundColor:'#006699'}}>Edit Employee</button>
                             <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
                                 <EditEmployeeForm user={this.props.user}/>
                             </Modal>

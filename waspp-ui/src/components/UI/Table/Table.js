@@ -19,7 +19,7 @@ const table = (props) =>{
         <Aux>
             <h3 className={classes.TableTitle}>{props.title}</h3>
             <table className={[bootStrapClasses.table, classes.Table].join(' ')}>
-                <thead style={{backgroundColor: '#007bff'}}>
+                <thead style={{backgroundColor: '#00449c'}}>
                     <tr className={classes.TableHeader}>
                         <th>HR EmployeeID</th>
                         <th>File Number</th>

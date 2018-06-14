@@ -3,8 +3,7 @@
 }
 .NavigationLinks {
     border-radius: 0px 0px 0px 0px;
-    background-color: #007bff;
-    color: white;
+    background-color: #006699;
     font-size: 25px;
     border: none;
     width: 100%;
@@ -12,18 +11,18 @@
 
 .NavigationLinks:hover,
 .ActiveLink {
-    background: linear-gradient(to bottom right, #007bff, #eee);
+    background: linear-gradient(to bottom right, #006699, #0099cc);
     text-decoration: none;
     width: 100%;
     border: dotted;
-    border-color: white;
+    border-color: #0099cc;
     border-width: 1px 1px 0px 1px;
 }
 
 .NavigationButton {
     border-radius: 0px 0px 0px 0px;
     background-color: transparent;
-    color: white;
+    color: #fff;
     font-size: 18px;
     border: none;
     padding: 14px;

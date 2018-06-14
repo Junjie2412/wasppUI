@@ -20,7 +20,7 @@ class EditUserTable extends Component{
     render(){
         return (
             <div style={{width: '43%', margin: '3% 0%'}}>
-                <div className={classes.card}>
+                <div className={classes.card} style={{backgroundColor: '#3399ff'}}>
                     <div className={[classes['card-body'], classes['shadow-lg']].join(' ')} style={{overflow: 'auto'}}>
                         <Table title={this.props.title ? this.props.title : 'Edit Adjustments'} tableData={['','','']}/>
                         <div className={classes.row}>
