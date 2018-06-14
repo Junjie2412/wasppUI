@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import bootStrapClasses from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import classes from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Modal from '../../UI/Modal/Modal';
 import EditEmployeeForm from './EditEmployeeForm/EditEmployeeForm';
 
