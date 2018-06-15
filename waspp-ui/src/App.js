@@ -11,8 +11,6 @@ import Help from "./containers/Help/Help";
 import classes from './App.css';
 
 
-//"navbar navbar-expand-sm navbar-light bg-primary"
-
 class App extends Component {
     render() {
       return (

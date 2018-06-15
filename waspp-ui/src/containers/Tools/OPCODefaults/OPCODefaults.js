@@ -4,7 +4,8 @@ import classes from './OPCODefaults.css';
 
 const opocDefaults = () =>{
     return(
-        <div>
+        <div className={[bootStrapClasses.card, classes.cardAlign].join(' ')} style={{overflow: 'auto', height: '600px', width: '97%'}}>
+            <div className={bootStrapClasses['card-body']}>
             <form className={bootStrapClasses['container-fluid']} style={{fontSize: '18px'}}>
                 <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                     <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>OPCO #</label>
@@ -140,6 +141,7 @@ const opocDefaults = () =>{
                     </div>
                 </div>
             </form>
+            </div>
         </div>
     );
 };

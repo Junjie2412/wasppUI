@@ -5,3 +5,7 @@
 .alignRadio{
     transform: translateY(11px);
 }
+
+.cardAlign{
+    transform: translateX(35px);
+}

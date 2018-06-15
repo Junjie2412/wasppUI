@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import classes from './User.css';
 import bootStrapClasses from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Modal from '../../UI/Modal/Modal';
 import EditEmployeeForm from './EditEmployeeForm/EditEmployeeForm';
@@ -18,27 +19,27 @@ class user extends Component{
 
     render(){
         return(
-            <div style={{width: '25%', margin: '3%'}}>
-                <div className={[[bootStrapClasses.card], bootStrapClasses['shadow-lg']].join(' ')} style={{backgroundColor:'#0099cc'}}>
-                    <div className={[bootStrapClasses['card-body']]}>
+            <div className={classes.Outer}>
+                <div className={[[bootStrapClasses.card], bootStrapClasses['shadow-lg'], classes.Card].join(' ')}>
+                    <div className={[bootStrapClasses['card-body'], classes.Form].join(' ')}>
                         <h5 className={[bootStrapClasses['text-center'], bootStrapClasses['card-title']].join(' ')} style={{color:'#fff'}}>First Last</h5>
-                        <p style={{color:'#fff'}}>AS400 ID: {this.props.user.AS400ID}</p>
-                        <p style={{color:'#fff'}}>HR Employee ID: {this.props.user.PayrollNumber}</p>
-                        <p style={{color:'#fff'}}>File Number: {this.props.user.FileNumber}</p>
-                        <p style={{color:'#fff'}}>Weekly Base: {this.props.user.Base}</p>
-                        <p style={{color:'#fff'}}>Bonus Flight: </p>
-                        <div className={bootStrapClasses.row}>
+                        <p>AS400 ID: {this.props.user.AS400ID}</p>
+                        <p>HR Employee ID: {this.props.user.PayrollNumber}</p>
+                        <p>File Number: {this.props.user.FileNumber}</p>
+                        <p>Weekly Base: {this.props.user.Base}</p>
+                        <p>Bonus Flight: </p>
+                        <div className={[bootStrapClasses.row, classes.Check].join(' ')}>
                             <div className = {bootStrapClasses['col-sm-4']}>
                                 <input type='checkbox' className={bootStrapClasses['form-check-label']}/>
-                                <label style={{color:'#fff'}}>Seasonal</label>
+                                <label>Seasonal</label>
                             </div>
                             <div className = {bootStrapClasses['col-sm-4']}>
                                 <input type='checkbox' className={bootStrapClasses['form-check-label']}/>
-                                <label style={{color:'#fff'}}>Bonus</label>
+                                <label>Bonus</label>
                             </div>
                         </div>
                         <div className={[bootStrapClasses['col-sm-12']]}>
-                            <button onClick={this.editUserModal} className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['offset-sm-3']].join(' ')} style={{backgroundColor:'#006699'}}>Edit Employee</button>
+                            <button onClick={this.editUserModal} className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['offset-sm-3'], classes.Button].join(' ')}>Edit Employee</button>
                             <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
                                 <EditEmployeeForm user={this.props.user}/>
                             </Modal>

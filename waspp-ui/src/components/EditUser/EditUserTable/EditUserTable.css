@@ -1,0 +1,12 @@
+.Outer {
+    width: 43%;
+    height:  345px;
+    margin: 3% 0%;
+    box-shadow: 0 8px 16px 0 #999;
+}
+
+.Card {
+    background-color: #66b3cc;
+    height: 100%;
+    border: none;
+}
