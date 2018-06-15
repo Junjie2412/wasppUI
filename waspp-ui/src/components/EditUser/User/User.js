@@ -30,11 +30,11 @@ class user extends Component{
                         <div className={bootStrapClasses.row}>
                             <div className = {bootStrapClasses['col-sm-4']}>
                                 <input type='checkbox' className={bootStrapClasses['form-check-label']}/>
-                                <label className='form-check-label' style={{color:'#fff'}}>Seasonal</label>
+                                <label style={{color:'#fff'}}>Seasonal</label>
                             </div>
                             <div className = {bootStrapClasses['col-sm-4']}>
                                 <input type='checkbox' className={bootStrapClasses['form-check-label']}/>
-                                <label className='form-check-label' style={{color:'#fff'}}>Bonus</label>
+                                <label style={{color:'#fff'}}>Bonus</label>
                             </div>
                         </div>
                         <div className={[bootStrapClasses['col-sm-12']]}>
