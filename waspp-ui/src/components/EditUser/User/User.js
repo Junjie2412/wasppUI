@@ -22,7 +22,7 @@ class user extends Component{
             <div className={classes.Outer}>
                 <div className={[[bootStrapClasses.card], bootStrapClasses['shadow-lg'], classes.Card].join(' ')}>
                     <div className={[bootStrapClasses['card-body'], classes.Form].join(' ')}>
-                        <h5 className={[bootStrapClasses['text-center'], bootStrapClasses['card-title']].join(' ')} style={{color:'#fff'}}>First Last</h5>
+                        <h5 className={[bootStrapClasses['text-center'], bootStrapClasses['card-title']].join(' ')} style={{color:'#fff'}}>Name: {this.props.user.FirstName} {this.props.user.LastName}</h5>
                         <p>AS400 ID: {this.props.user.AS400ID}</p>
                         <p>HR Employee ID: {this.props.user.PayrollNumber}</p>
                         <p>File Number: {this.props.user.FileNumber}</p>
