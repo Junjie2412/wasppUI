@@ -59,6 +59,7 @@ class EditBonuses extends Component {
                         title={this.state.currentTitle}
                         editState={this.state.currentEdit}
                         version={this.state.version}
+                        close={this.closeModal}
                     />
                 </Modal>
             </Aux>

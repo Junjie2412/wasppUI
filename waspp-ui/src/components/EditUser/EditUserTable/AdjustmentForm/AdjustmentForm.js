@@ -38,7 +38,7 @@ const adjustmentForm = (props) =>{
                 </div>
                 <div className={bootStrapClasses['col-sm-12']}>
                     <button onClick={props.submit} className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2']].join(' ')}>Save</button>
-                    <button className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['col-sm-2']].join(' ')} style={{margin: '4px'}}>Cancel</button>
+                    <button onClick={props.close} className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['col-sm-2']].join(' ')} style={{margin: '4px'}}>Cancel</button>
                 </div>
             </form>
         </div>

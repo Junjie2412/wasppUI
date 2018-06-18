@@ -92,7 +92,9 @@ const editBonus = (props) => {
                 </form>
                 <div className={bootStrapClasses['col-sm-12']}>
                     <button className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2']].join(' ')}>Save</button>
-                    <button className={[bootStrapClasses.btn, bootStrapClasses['btn-warning'],bootStrapClasses['col-sm-2']].join(' ')} style={{margin: '4px', backgroundColor: '#FF9900'}}>Cancel</button>
+                    <button onClick={props.close} 
+                    className={[bootStrapClasses.btn, bootStrapClasses['btn-warning'],bootStrapClasses['col-sm-2']].join(' ')} 
+                    style={{margin: '4px', backgroundColor: '#FF9900'}}>Cancel</button>
                     <button className={[bootStrapClasses.btn, bootStrapClasses['btn-danger'], bootStrapClasses['col-sm-2']].join(' ')}>Delete</button>
                 </div>
             </div>
