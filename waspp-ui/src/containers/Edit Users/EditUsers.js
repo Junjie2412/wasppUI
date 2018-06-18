@@ -20,6 +20,8 @@ class EditUsers extends Component {
         placeholder: 'Payroll Number',
         currentUser: {
             ADID: '',
+            FirstName: '',
+            LastName: '',
             AS400: '',
             Base: '',
             CommissionAdv: '',
