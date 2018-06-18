@@ -48,6 +48,8 @@ export const fetchUsers = () => {
 //************************************************************************//
 //************************************************************************//
 // The below actions will change the search list
+
+// This will change the searchlist to search by Payroll Number
 export const setPayrollSearch = (users) => {
 
     let searchData = [];
@@ -63,6 +65,7 @@ export const setPayrollSearch = (users) => {
     }
 }
 
+// This will change the searchlist to search by AS400 ID
 export const setAS400Search = (users) => {
     let searchData = [];
     for(let user in users ) {
@@ -77,6 +80,7 @@ export const setAS400Search = (users) => {
     }
 }
 
+// This will change the searchlist to search by Active Directory ID
 export const setADSearch = (users) => {
     let searchData = [];
     for(let user in users ) {
@@ -89,4 +93,79 @@ export const setADSearch = (users) => {
         searchList: searchData,
         placeholder: 'Active Directory ID'
     }
+}
+//************************************************************************//
+//************************************************************************//
+// The below functions will set the current user
+export const setCurrentUser = (searchBy, ID, users) => {
+
+    let currUser = {
+        ADID: '',
+        FirstName: '',
+        LastName: '',
+        AS400: '',
+        Base: '',
+        CommissionAdv: '',
+        PayrollNumber: '',
+        FileNumber: '',
+        TerrDescription: '',
+        TerrID: ''
+    };
+
+    console.log(searchBy, ID);
+
+    switch (searchBy) {
+        case 'AS400 ID':
+        {
+            for(let user in users){
+                if(users[user].AS400ID === ID){
+                    currUser = users[user];
+                    break;
+                }
+            }
+            break;
+        }
+        case 'Active Directory':
+        {
+            for(let user in users){
+                if(users[user].ADID === ID){
+                    currUser = users[user];
+                    break;
+                }
+            }
+            break;
+        }
+        case 'Payroll Number':
+        {
+            for(let user in users){
+                if(users[user].PayrollNumber === ID){
+                    currUser = users[user];
+                    break;
+                }
+            }
+            break;
+        }
+        default:
+        {
+            currUser = {
+                ADID: '',
+                FirstName: '',
+                LastName: '',
+                AS400: '',
+                Base: '',
+                CommissionAdv: '',
+                PayrollNumber: '',
+                FileNumber: '',
+                TerrDescription: '',
+                TerrID: ''
+            }
+            console.log('noooo');
+            break;
+        }
+
+    }
+    return {
+        type: actionTypes.SET_CURRENT_USER,
+        user: currUser
+    };
 }

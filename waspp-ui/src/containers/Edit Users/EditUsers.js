@@ -16,18 +16,6 @@ class EditUsers extends Component {
 
     state = {
         userLookup: '',
-        currentUser: {
-            ADID: '',
-            AS400: '',
-            Base: '',
-            CommissionAdv: '',
-            PayrollNumber: '',
-            FileNumber: '',
-            TerrDescription: '',
-            TerrID: '',
-            FirstName: '',
-            LastName: ''
-        }
     }
 
     componentDidMount() {
@@ -37,63 +25,13 @@ class EditUsers extends Component {
     //This handler changes what the value property is whenever we change the search input text
     onChangeText = (event) => {
         this.setState({userLookup: event.target.value});
-
-        switch (this.props.placeholder) {
-            case 'AS400 ID':
-                {
-                    let currUser = this.state.currentUser;
-
-                    for(let user in this.props.users){
-                        if(this.props.users[user].AS400ID === event.target.value){
-                            currUser = this.props.users[user];
-                        }
-                    }
-                    this.setState({currentUser: currUser});
-                    break;
-                }
-            case 'Active Directory':
-                {
-                    let currUser = this.state.currentUser;
-
-                    for(let user in this.props.users){
-                        if(this.props.users[user].ADID === event.target.value){
-                            currUser = this.props.users[user];
-                        }
-                    }
-                    this.setState({currentUser: currUser});
-                    break;
-                }
-            case 'Payroll Number':
-                {
-                    let currUser = this.state.currentUser;
-
-                    for(let user in this.props.users){
-                        if(this.props.users[user].PayrollNumber === event.target.value){
-                            currUser = this.props.users[user];
-                        }
-                    }
-                    this.setState({currentUser: currUser});
-                    break;
-                }
-            default:
-            {
-                let currUser = this.state.currentUser;
-
-                for(let user in this.props.users){
-                    if(this.props.users[user].PayrollNumber === event.target.value){
-                        currUser = this.props.users[user];
-                    }
-                }
-                this.setState({currentUser: currUser});
-                break;
-            }
-
-
-        }
+        this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users)
     }
 
     //This handler changes the state properties based on which value was selected
     onChangeSelect = (event) => {
+
+        this.setState({userLookup: ''});
 
         switch(event.target.value){
             case 'AS400 ID':
@@ -105,6 +43,7 @@ class EditUsers extends Component {
             default:
                 return this.props.onSetPayrollSearch(this.props.users);
         }
+
     }
 
     //This handler will post a new update to Adjustments
@@ -127,12 +66,12 @@ class EditUsers extends Component {
                         changeText={(event) => this.onChangeText(event)}/>
                 </div>
                 <div className={classes.row}>
-                    <User user={this.state.currentUser}/>
+                    <User user={this.props.currentUser}/>
                     <EditBonuses/>
                     <EditUserTable
                         title={'Edit Adjustments'}
                         addAdjustments={(adjustments) => this.addAdjustment(
-                            this.state.currentUser
+                            this.props.currentUser
                         )}
                     />
                     <AfterFloorAdjustments/>
@@ -148,7 +87,8 @@ const mapStateToProps = state => {
         loading: state.editUsers.loading,
         searchBy: state.editUsers.searchBy,
         searchList: state.editUsers.searchList,
-        placeholder: state.editUsers.placeholder
+        placeholder: state.editUsers.placeholder,
+        currentUser: state.editUsers.currentUser
     }
 }
 
@@ -158,6 +98,7 @@ const mapDispatchToProps = dispatch => {
         onSetPayrollSearch: (users) => dispatch(actions.setPayrollSearch(users)),
         onSetAS400Search: (users) => dispatch(actions.setAS400Search(users)),
         onSetADSearch: (users) => dispatch(actions.setADSearch(users)),
+        onSetCurrentUser: (searchBy, ID, users) => dispatch(actions.setCurrentUser(searchBy, ID, users))
     }
 }
 
