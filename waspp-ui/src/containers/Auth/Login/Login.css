@@ -8,3 +8,38 @@
 .styleCard{
     opacity: 0.7;
 }
+
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #fff !important;
+    border-color: #fff !important; 
+}
+
+.panel-default>.panel-footer {
+    color: #333;
+    background-color: #fff !important;
+    border-color: #fff !important; 
+}
+
+.panel-default {
+    opacity: 0.8;
+    margin-top:70px;
+}
+
+.md-form label, .btn {
+    font-size: 1.3rem;
+}
+
+.form-group.last {
+    margin-bottom:0px;
+}
+
+.pad-top {
+    padding-top: 20px;
+}
+
+.pad-full {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    font-size: 1.5em;
+}

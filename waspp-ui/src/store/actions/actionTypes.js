@@ -1,3 +1,9 @@
+export const FETCH_USERS_START = 'FETCH_USER_START';
+
+export const FETCH_USERS_SUCCESS = 'FETCH_USER_SUCCESS';
+
+export const FETCH_USERS = 'FETCH_USERS';
+
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 export const SET_SEARCH_BY = 'SET_SEARCH_BY';
