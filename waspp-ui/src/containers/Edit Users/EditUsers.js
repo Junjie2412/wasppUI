@@ -15,9 +15,7 @@ import {connect} from 'react-redux';
 class EditUsers extends Component {
 
     state = {
-        searchList: [],
         userLookup: '',
-        placeholder: 'Payroll Number',
         currentUser: {
             ADID: '',
             AS400: '',
@@ -32,8 +30,6 @@ class EditUsers extends Component {
         }
     }
 
-    test='dsdd';
-
     componentDidMount() {
         this.props.onFetchUsers();
     }
@@ -42,7 +38,7 @@ class EditUsers extends Component {
     onChangeText = (event) => {
         this.setState({userLookup: event.target.value});
 
-        switch (this.state.placeholder) {
+        switch (this.props.placeholder) {
             case 'AS400 ID':
                 {
                     let currUser = this.state.currentUser;
@@ -98,39 +94,16 @@ class EditUsers extends Component {
 
     //This handler changes the state properties based on which value was selected
     onChangeSelect = (event) => {
-        this.setState({placeholder: event.target.value, userLookup: ''});
-
-        let searchData = [];
 
         switch(event.target.value){
             case 'AS400 ID':
-                for(let user in this.props.users ) {
-                    searchData.push(
-                        this.props.users[user].AS400ID
-                    )
-                }
-                return this.setState({searchList: searchData});
+                return this.props.onSetAS400Search(this.props.users);
             case 'Active Directory':
-                for(let user in this.props.users ) {
-                    searchData.push(
-                        this.props.users[user].ADID
-                    )
-                }
-                return this.setState({searchList: searchData});
+                return this.props.onSetADSearch(this.props.users);
             case 'Payroll Number':
-                for(let user in this.props.users ) {
-                    searchData.push(
-                        this.props.users[user].PayrollNumber
-                    )
-                }
-                return this.setState({searchList: searchData});
+                return this.props.onSetPayrollSearch(this.props.users);
             default:
-                for(let user in this.props.users ) {
-                    searchData.push(
-                        this.props.users[user].PayrollNumber
-                    )
-                }
-                return;
+                return this.props.onSetPayrollSearch(this.props.users);
         }
     }
 
@@ -146,9 +119,9 @@ class EditUsers extends Component {
                 <h1 className={classes.Header}>Edit Users</h1>
                 <div style={{transform: 'translateX(2.3%)'}}>
                     <Search
-                        placeholder={this.state.placeholder}
+                        placeholder={this.props.placeholder}
                         options={this.props.searchBy}
-                        dataList={this.state.searchList}
+                        dataList={this.props.searchList}
                         change={(event) => this.onChangeSelect(event)}
                         value={this.state.userLookup}
                         changeText={(event) => this.onChangeText(event)}/>
@@ -173,13 +146,18 @@ const mapStateToProps = state => {
     return {
         users: state.editUsers.users,
         loading: state.editUsers.loading,
-        searchBy: state.editUsers.searchBy
+        searchBy: state.editUsers.searchBy,
+        searchList: state.editUsers.searchList,
+        placeholder: state.editUsers.placeholder
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchUsers: () => dispatch( actions.fetchUsers())
+        onFetchUsers: () => dispatch( actions.fetchUsers()),
+        onSetPayrollSearch: (users) => dispatch(actions.setPayrollSearch(users)),
+        onSetAS400Search: (users) => dispatch(actions.setAS400Search(users)),
+        onSetADSearch: (users) => dispatch(actions.setADSearch(users)),
     }
 }
 

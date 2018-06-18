@@ -15,6 +15,8 @@ const initialState = {
         TerrDescription: '',
         TerrID: ''
     },
+    searchList: [],
+    placeholder: 'Payroll Number',
     searchBy: ['Payroll Number','AS400 ID', 'Active Directory'],
     loading: false
 }
@@ -26,7 +28,28 @@ const fetchUsersStart = (state, action) => {
 const fetchUsersSuccess = (state, action) => {
     return updateObject( state, {
         users: action.users,
-        loading: false
+        loading: false,
+        searchList: action.searchList
+    })
+}
+
+const setPayrollSearch = (state, action) => {
+    return updateObject( state, {
+        searchList: action.searchList,
+        placeholder: action.placeholder
+    })
+}
+
+const setAS400Search = (state, action) => {
+    return updateObject( state, {
+        searchList: action.searchList,
+        placeholder: action.placeholder
+    })
+}
+const setADSearch = (state, action) => {
+    return updateObject( state, {
+        searchList: action.searchList,
+        placeholder: action.placeholder
     })
 }
 
@@ -38,10 +61,13 @@ const setSearchBy = (state, action) => {
     return state;
 }
 
-const reducer = (state=initialState, action) => {
+const reducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.FETCH_USERS_START: return fetchUsersStart(state, action);
         case actionTypes.FETCH_USERS_SUCCESS: return fetchUsersSuccess(state, action);
+        case actionTypes.SET_PAYROLL_SEARCH: return setPayrollSearch(state, action);
+        case actionTypes.SET_AD_SEARCH: return setADSearch(state, action);
+        case actionTypes.SET_AS400_SEARCH: return setAS400Search(state, action);
         case actionTypes.SET_CURRENT_USER: return setCurrentUser(state, action);
         case actionTypes.SET_SEARCH_BY: return setSearchBy(state, action);
         default: return state;
