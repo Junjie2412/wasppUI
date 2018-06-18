@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Payroll from '../../components/PayrollProcessing/Payrolls';
-
+import bsClasses from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import classes from './PayrollProcessing.css';
 class PayrollProcessing extends Component {
       state={
         showTable:"none"
@@ -18,24 +19,26 @@ class PayrollProcessing extends Component {
 
         return (
             <div>
+
                 <h1 style={{textAlign: 'center', marginTop: '20px'}}>
                     Payroll Processing
                 </h1>
-
-                <div className="row">
-                    <div className="col-md-4">
-                        <button onClick={this.showTable.bind(this)}> Process Payroll </button>
+                <br/>
+                <div className={bsClasses.row}>
+                    <div className={[bsClasses['col-md-4'], classes.BtnGroup].join(' ')}>
+                        <button className={[bsClasses["btn"], bsClasses["btn-lg"], classes.Button].join(' ')} onClick={this.showTable.bind(this)}> Process Payroll </button>
                     </div>
-                    <div className="col-md-4">
-                        <button> Proof Payroll </button>
+                    <div className={[bsClasses['col-md-4'], classes.BtnGroup].join(' ')}>
+                        <button className={[bsClasses["btn"], bsClasses["btn-lg"], classes.Button].join(' ')}> Proof Payroll </button>
                     </div>
-                    <div className="col-md-4">
-                        <button> Send CASI data </button>
+                    <div className={[bsClasses['col-md-4'], classes.BtnGroup].join(' ')}>
+                        <button className={[bsClasses["btn"], bsClasses["btn-lg"], classes.Button].join(' ')}> Send CASI data </button>
                     </div>
                 </div>
-                {/* <div className="row" style={{display:this.state.showTable}}>
-                  <Payroll title={'Compensation Recap Report'}/>
-                </div> */}
+                <div className={bsClasses["container-fluid"]} style={{display:this.state.showTable}}>
+                  <br/>
+                  <Payroll />
+                </div>
 
             </div>
           );

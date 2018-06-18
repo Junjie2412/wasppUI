@@ -1,0 +1,17 @@
+.Align{
+  text-align: center;
+}
+
+
+.table{
+  text-align: center;
+}
+
+.table thead{
+  background-color: #006699;
+  color: white;
+}
+
+.table tbody{
+  background-color: white;
+}

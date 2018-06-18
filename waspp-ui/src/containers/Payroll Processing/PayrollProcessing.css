@@ -1,0 +1,13 @@
+.BtnGroup{
+  text-align: center;
+}
+
+.Button{
+  background-color: #006699;
+  border: none;
+  color: white;
+}
+
+.Button:hover {
+    background-color: #376ec6;
+}
