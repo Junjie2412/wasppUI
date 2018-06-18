@@ -18,8 +18,9 @@ If your project does not work, run the following installs.
     npm install --save axios
     npm install --save moment
     npm install --save react-datepicker
+    npm install --save redux-thunk
     
-If we are forgetting something, or there are other things you would liek to install, please let me know.
+If we are forgetting something, or there are other things you would like to install, please let me know.
 
 # CSS MODULES
     
