@@ -6,10 +6,19 @@ import registerServiceWorker from './registerServiceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import editUserReducer from './store/reducers/editUserReducer';
+import thunk from 'redux-thunk';
 
-const store = createStore(editUserReducer);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const rootReducer = combineReducers({
+    editUsers: editUserReducer
+});
+
+const store = createStore(rootReducer, composeEnhancers(
+    applyMiddleware(thunk)
+));
 
 const app = (
     <Provider store={store}>

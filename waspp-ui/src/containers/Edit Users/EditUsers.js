@@ -9,12 +9,12 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import AfterFloorAdjustments from '../../components/EditUser/AfterFloorAdjustments/AfterFloorAdjustments';
 //import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import classes from './EditUser.css';
+import * as actions from '../../store/actions/index';
+import {connect} from 'react-redux';
 
 class EditUsers extends Component {
 
     state = {
-        users: [],
-        searchBy: ['Payroll Number','AS400 ID', 'Active Directory'],
         searchList: [],
         userLookup: '',
         placeholder: 'Payroll Number',
@@ -29,27 +29,13 @@ class EditUsers extends Component {
             TerrID: '',
             FirstName: '',
             LastName: ''
-        },
-        loading: false
+        }
     }
 
     test='dsdd';
 
     componentDidMount() {
-        this.setState({loading: true});
-        axios.get(links.EDIT_USERS_DB)
-            .then(response => {
-                const dataList = [];
-                let searchData = [];
-                for(let user in response.data ) {
-                    dataList.push( {
-                        ...response.data[user],
-                        id: [user]
-                    })
-                    searchData.push(response.data[user].PayrollNumber)
-                }
-                return this.setState({users: dataList, searchList: searchData, loading: false});
-            });
+        this.props.onFetchUsers();
     }
 
     //This handler changes what the value property is whenever we change the search input text
@@ -61,9 +47,9 @@ class EditUsers extends Component {
                 {
                     let currUser = this.state.currentUser;
 
-                    for(let user in this.state.users){
-                        if(this.state.users[user].AS400ID === event.target.value){
-                            currUser = this.state.users[user];
+                    for(let user in this.props.users){
+                        if(this.props.users[user].AS400ID === event.target.value){
+                            currUser = this.props.users[user];
                         }
                     }
                     this.setState({currentUser: currUser});
@@ -73,9 +59,9 @@ class EditUsers extends Component {
                 {
                     let currUser = this.state.currentUser;
 
-                    for(let user in this.state.users){
-                        if(this.state.users[user].ADID === event.target.value){
-                            currUser = this.state.users[user];
+                    for(let user in this.props.users){
+                        if(this.props.users[user].ADID === event.target.value){
+                            currUser = this.props.users[user];
                         }
                     }
                     this.setState({currentUser: currUser});
@@ -85,9 +71,9 @@ class EditUsers extends Component {
                 {
                     let currUser = this.state.currentUser;
 
-                    for(let user in this.state.users){
-                        if(this.state.users[user].PayrollNumber === event.target.value){
-                            currUser = this.state.users[user];
+                    for(let user in this.props.users){
+                        if(this.props.users[user].PayrollNumber === event.target.value){
+                            currUser = this.props.users[user];
                         }
                     }
                     this.setState({currentUser: currUser});
@@ -97,9 +83,9 @@ class EditUsers extends Component {
             {
                 let currUser = this.state.currentUser;
 
-                for(let user in this.state.users){
-                    if(this.state.users[user].PayrollNumber === event.target.value){
-                        currUser = this.state.users[user];
+                for(let user in this.props.users){
+                    if(this.props.users[user].PayrollNumber === event.target.value){
+                        currUser = this.props.users[user];
                     }
                 }
                 this.setState({currentUser: currUser});
@@ -118,30 +104,30 @@ class EditUsers extends Component {
 
         switch(event.target.value){
             case 'AS400 ID':
-                for(let user in this.state.users ) {
+                for(let user in this.props.users ) {
                     searchData.push(
-                        this.state.users[user].AS400ID
+                        this.props.users[user].AS400ID
                     )
                 }
                 return this.setState({searchList: searchData});
             case 'Active Directory':
-                for(let user in this.state.users ) {
+                for(let user in this.props.users ) {
                     searchData.push(
-                        this.state.users[user].ADID
+                        this.props.users[user].ADID
                     )
                 }
                 return this.setState({searchList: searchData});
             case 'Payroll Number':
-                for(let user in this.state.users ) {
+                for(let user in this.props.users ) {
                     searchData.push(
-                        this.state.users[user].PayrollNumber
+                        this.props.users[user].PayrollNumber
                     )
                 }
                 return this.setState({searchList: searchData});
             default:
-                for(let user in this.state.users ) {
+                for(let user in this.props.users ) {
                     searchData.push(
-                        this.state.users[user].PayrollNumber
+                        this.props.users[user].PayrollNumber
                     )
                 }
                 return;
@@ -149,19 +135,19 @@ class EditUsers extends Component {
     }
 
     //This handler will post a new update to Adjustments
-    AddAdjustment = (adjustments) => {
+    addAdjustment = (adjustments) => {
         axios.post(links.EDIT_ADJUSTMENTS_DB, adjustments)
     }
 
     render() {
         return (
-            this.state.loading ? <Spinner/>:
+            this.props.loading ? <Spinner/>:
             <div className={classes.EditUser}>
                 <h1 className={classes.Header}>Edit Users</h1>
                 <div style={{transform: 'translateX(2.3%)'}}>
                     <Search
                         placeholder={this.state.placeholder}
-                        options={this.state.searchBy}
+                        options={this.props.searchBy}
                         dataList={this.state.searchList}
                         change={(event) => this.onChangeSelect(event)}
                         value={this.state.userLookup}
@@ -172,9 +158,9 @@ class EditUsers extends Component {
                     <EditBonuses/>
                     <EditUserTable
                         title={'Edit Adjustments'}
-                        addAdjustments={(adjustments) => this.AddAdjustment({
-
-                        })}
+                        addAdjustments={(adjustments) => this.addAdjustment(
+                            this.state.currentUser
+                        )}
                     />
                     <AfterFloorAdjustments/>
                 </div>
@@ -183,4 +169,18 @@ class EditUsers extends Component {
     };
 }
 
-export default EditUsers;
+const mapStateToProps = state => {
+    return {
+        users: state.editUsers.users,
+        loading: state.editUsers.loading,
+        searchBy: state.editUsers.searchBy
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchUsers: () => dispatch( actions.fetchUsers())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditUsers);

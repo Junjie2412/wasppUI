@@ -14,6 +14,7 @@ class DateInput extends Component {
     }
 
     handleChange(date){
+        console.log(date._d.toLocaleDateString());
         this.setState({startDate: date});
     }
 
