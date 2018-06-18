@@ -148,6 +148,11 @@ class EditUsers extends Component {
         }
     }
 
+    //This handler will post a new update to Adjustments
+    AddAdjustment = (adjustments) => {
+        axios.post(links.EDIT_ADJUSTMENTS_DB, adjustments)
+    }
+
     render() {
         return (
             this.state.loading ? <Spinner/>:
@@ -165,7 +170,12 @@ class EditUsers extends Component {
                 <div className={classes.row}>
                     <User user={this.state.currentUser}/>
                     <EditBonuses/>
-                    <EditUserTable title={'Edit Adjustments'}/>
+                    <EditUserTable
+                        title={'Edit Adjustments'}
+                        addAdjustments={(adjustments) => this.AddAdjustment({
+
+                        })}
+                    />
                     <AfterFloorAdjustments/>
                 </div>
             </div>

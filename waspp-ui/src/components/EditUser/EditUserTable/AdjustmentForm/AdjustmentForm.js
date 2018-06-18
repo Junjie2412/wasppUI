@@ -2,7 +2,7 @@ import React from 'react';
 import bootStrapClasses from '../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import DateInput from '../../../UI/DateInput/DateInput';
 
-const adjustmentForm = () =>{
+const adjustmentForm = (props) =>{
     return(
         <div>
             <form>
@@ -25,7 +25,7 @@ const adjustmentForm = () =>{
                     </div>
                 </div>
                 <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
-                    <label className={[bootStrapClasses['col-sm-3'], bootStrapClasses['col-form-label']].join(' ')}>Start Date</label>
+                    <label className={[bootStrapClasses['col-sm-5'], bootStrapClasses['col-form-label']].join(' ')}>Adjustment Week End</label>
                     <div>
                         <DateInput />
                     </div>
@@ -35,6 +35,10 @@ const adjustmentForm = () =>{
                     <div>
                         <textarea className={[bootStrapClasses['form-control']]} style={{width: '300px', height: '200px'}}/>
                     </div>
+                </div>
+                <div className={bootStrapClasses['col-sm-12']}>
+                    <button onClick={props.submit} className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2']].join(' ')}>Save</button>
+                    <button className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['col-sm-2']].join(' ')} style={{margin: '4px'}}>Cancel</button>
                 </div>
             </form>
         </div>
