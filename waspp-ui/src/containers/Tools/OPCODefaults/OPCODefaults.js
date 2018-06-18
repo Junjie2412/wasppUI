@@ -10,12 +10,12 @@ const opocDefaults = () =>{
                     <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                         <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>OPCO #</label>
                         <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
-                        <input type = 'text' className={[bootStrapClasses['offset-sm-1'], bootStrapClasses['col-sm-6'],bootStrapClasses['form-control']].join(' ')}/>
+                        <input type = 'text' className={[bootStrapClasses['offset-sm-2'], bootStrapClasses['col-sm-6'],bootStrapClasses['form-control']].join(' ')}/>
                     </div>
                     <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                         <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Group Name</label>
                         <input type='text' className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
-                        <input type = 'text' className={[bootStrapClasses['offset-sm-1'], bootStrapClasses['col-sm-6'],bootStrapClasses['form-control']].join(' ')}/>
+                        <input type = 'text' className={[bootStrapClasses['offset-sm-2'], bootStrapClasses['col-sm-6'],bootStrapClasses['form-control']].join(' ')}/>
                     </div>
                     <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                         <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Commission Models</label>
@@ -35,8 +35,8 @@ const opocDefaults = () =>{
                     <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                         <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Floor</label>
                         <input type='text' className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
-                        <label className={[bootStrapClasses['col-sm-1'], bootStrapClasses['col-form-label']].join(' ')}>Org Level</label>
-                        <input type = 'text' className={[bootStrapClasses['col-sm-6'], bootStrapClasses['form-control']].join(' ')}/>
+                        <label className={[bootStrapClasses['offset-sm-1'], bootStrapClasses['col-sm-1'], bootStrapClasses['col-form-label']].join(' ')}>Org Level</label>
+                        <input type = 'text' className={[bootStrapClasses['col-sm-5'], bootStrapClasses['form-control']].join(' ')}/>
                     </div>
                     <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                         <div className={[bootStrapClasses['offset-sm-2'], bootStrapClasses['col-sm-2']].join(' ')}>
@@ -53,8 +53,8 @@ const opocDefaults = () =>{
                     <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                         <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>MA serve</label>
                         <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
-                        <label className={[bootStrapClasses['col-sm-1'], bootStrapClasses['col-form-label']].join(' ')}>Org level</label>
-                        <input type = 'text' className={[bootStrapClasses['col-sm-6'], bootStrapClasses['form-control']].join(' ')}/>
+                        <label className={[bootStrapClasses['offset-sm-1'], bootStrapClasses['col-sm-1'], bootStrapClasses['col-form-label']].join(' ')}>Org level</label>
+                        <input type = 'text' className={[bootStrapClasses['col-sm-5'], bootStrapClasses['form-control']].join(' ')}/>
                     </div>
                     <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                         <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Bonus Level</label>

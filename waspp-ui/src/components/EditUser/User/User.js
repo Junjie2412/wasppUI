@@ -31,6 +31,7 @@ class user extends Component{
                         <div className={[bootStrapClasses.row, classes.Check].join(' ')}>
                             <div className = {bootStrapClasses['col-sm-4']}>
                                 <input type='checkbox' className={bootStrapClasses['form-check-label']}/>
+
                                 <label>Seasonal</label>
                             </div>
                             <div className = {bootStrapClasses['col-sm-4']}>
