@@ -8,17 +8,17 @@ class DateInput extends Component {
     constructor(props){
         super(props)
         this.state={
-            startDate: moment()
+            date: moment()
         };
         this.handleChange=this.handleChange.bind(this);
     }
 
-    handleChange(date){
-        this.setState({startDate: date});
+    handleChange(newDate){
+        this.setState({date: newDate});
     }
 
     render(){
-        return <DatePicker selected={this.state.startDate}
+        return <DatePicker selected={this.state.date}
         onChange={this.handleChange} className={classes['react-datepicker-popper']}/>
     }
 }
