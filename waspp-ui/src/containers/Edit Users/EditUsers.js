@@ -28,7 +28,9 @@ class EditUsers extends Component {
             PayrollNumber: '',
             FileNumber: '',
             TerrDescription: '',
-            TerrID: ''
+            TerrID: '',
+            FirstName: '',
+            LastName: ''
         },
         loading: false
     }
