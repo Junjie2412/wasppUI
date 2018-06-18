@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     currentUser: {
@@ -18,7 +18,16 @@ const initialState = {
 
 const reducer = (state=initialState, action) => {
     switch(action.type) {
-        case
+        case actionTypes.SET_CURRENT_USER:
+            return {
+
+            };
+        case actionTypes.SET_SEARCH_BY:
+            return {
+
+            };
+        default:
+            return state;
     }
 };
 
