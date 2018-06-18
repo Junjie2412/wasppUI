@@ -42,7 +42,8 @@ class user extends Component{
                         <div className={[bootStrapClasses['col-sm-12']]}>
                             <button onClick={this.editUserModal} className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['offset-sm-3'], classes.Button].join(' ')}>Edit Employee</button>
                             <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
-                                <EditEmployeeForm user={this.props.user}/>
+                                <EditEmployeeForm user={this.props.user}
+                                close={this.closeModal}/>
                             </Modal>
                         </div>
                     </div>

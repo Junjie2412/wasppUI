@@ -34,7 +34,8 @@ class EditUserTable extends Component{
                     </div>
                 </div>
                 <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
-                    <AdjustmentForm submit={this.props.addAdjustments}/>
+                    <AdjustmentForm submit={this.props.addAdjustments}
+                    close={this.closeModal}/>
                 </Modal>
             </div>
         )

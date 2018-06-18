@@ -40,7 +40,8 @@ const editEmployeeForm = (props) =>{
             </form>
             <div className={classes['col-sm-12']}>
                 <button className={[classes.btn, classes['btn-success'], classes['col-sm-2']].join(' ')}>Save</button>
-                <button className={[classes.btn, classes['btn-warning'],classes['col-sm-2']].join(' ')} style={{margin: '4px', backgroundColor: '#FF9900'}}>Cancel</button>
+                <button onClick={props.close} className={[classes.btn, classes['btn-warning'],classes['col-sm-2']].join(' ')} 
+                style={{margin: '4px', backgroundColor: '#FF9900'}}>Cancel</button>
                 <button className={[classes.btn, classes['btn-danger'], classes['col-sm-2']].join(' ')}>Delete</button>
             </div>
         </div>
