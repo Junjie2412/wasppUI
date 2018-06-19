@@ -30,3 +30,8 @@
 .btnGroup button:hover {
     background-color: #0066;
 }
+
+.btnGroup button:disabled {
+    color: #ddd;
+    background-color: #808184;
+}

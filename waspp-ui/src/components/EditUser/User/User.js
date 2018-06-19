@@ -3,6 +3,7 @@ import classes from './User.css';
 import bootStrapClasses from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Modal from '../../UI/Modal/Modal';
 import EditEmployeeForm from './EditEmployeeForm/EditEmployeeForm';
+import {connect} from 'react-redux';
 
 class user extends Component{
     state = {
@@ -31,7 +32,6 @@ class user extends Component{
                         <div className={[bootStrapClasses.row, classes.Check].join(' ')}>
                             <div className = {bootStrapClasses['col-sm-4']}>
                                 <input type='checkbox' className={bootStrapClasses['form-check-label']}/>
-
                                 <label>Seasonal</label>
                             </div>
                             <div className = {bootStrapClasses['col-sm-4']}>
@@ -40,7 +40,7 @@ class user extends Component{
                             </div>
                         </div>
                         <div className={[bootStrapClasses['col-sm-12']]}>
-                            <button onClick={this.editUserModal} className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['offset-sm-3'], classes.Button].join(' ')}>Edit Employee</button>
+                            <button disabled={!this.props.selected} onClick={this.editUserModal} className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['offset-sm-3'], classes.Button].join(' ')}>Edit Employee</button>
                             <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
                                 <EditEmployeeForm user={this.props.user}
                                 close={this.closeModal}/>
@@ -52,4 +52,10 @@ class user extends Component{
         )
     }
 }
-export default user;
+
+const mapStateToProps = state => {
+    return  {
+        selected: state.editUsers.userSelected
+    }
+}
+export default connect(mapStateToProps)(user);

@@ -27,3 +27,7 @@
 .Button:hover {
     background-color: #0066;
 }
+
+.Button:disabled {
+    background-color: #808184;
+}

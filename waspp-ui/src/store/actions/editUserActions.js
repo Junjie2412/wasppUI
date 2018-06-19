@@ -100,6 +100,8 @@ export const setADSearch = (users) => {
 // The below functions will set the current user
 export const setCurrentUser = (searchBy, ID, users) => {
 
+    let selected = false;
+
     let currUser = {
         ADID: '',
         FirstName: '',
@@ -120,6 +122,7 @@ export const setCurrentUser = (searchBy, ID, users) => {
             for(let user in users){
                 if(users[user].AS400ID === ID){
                     currUser = users[user];
+                    selected = true;
                     break;
                 }
             }
@@ -130,6 +133,7 @@ export const setCurrentUser = (searchBy, ID, users) => {
             for(let user in users){
                 if(users[user].ADID === ID){
                     currUser = users[user];
+                    selected = true;
                     break;
                 }
             }
@@ -140,6 +144,7 @@ export const setCurrentUser = (searchBy, ID, users) => {
             for(let user in users){
                 if(users[user].PayrollNumber === ID){
                     currUser = users[user];
+                    selected = true;
                     break;
                 }
             }
@@ -158,13 +163,14 @@ export const setCurrentUser = (searchBy, ID, users) => {
                 FileNumber: '',
                 TerrDescription: '',
                 TerrID: ''
-            }
+            };
             break;
         }
 
     }
     return {
         type: actionTypes.SET_CURRENT_USER,
-        user: currUser
+        user: currUser,
+        selected: selected
     };
 }

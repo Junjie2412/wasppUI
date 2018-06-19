@@ -19,6 +19,7 @@ class EditUsers extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props.selected);
         this.props.onFetchUsers();
     }
 

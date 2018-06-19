@@ -3,6 +3,7 @@ import classes from './EditBonuses.css';
 import Modal from '../../UI/Modal/Modal';
 import EditBonus from './EditBonus/EditBonus';
 import Aux from '../../../hoc/Auxiliary/Auxiliary';
+import {connect} from 'react-redux';
 
 class EditBonuses extends Component {
 
@@ -50,9 +51,9 @@ class EditBonuses extends Component {
         return (
             <Aux>
                 <div className={classes.btnGroup}>
-                    <button onClick={this.editSubsidyModal}>{this.state.editStates[0]}</button>
-                    <button onClick={this.editBuyOutModal}>{this.state.editStates[1]}</button>
-                    <button onClick={this.editFloorsModal}>{this.state.editStates[2]}</button>
+                    <button disabled={!this.props.selected} onClick={this.editSubsidyModal}>{this.state.editStates[0]}</button>
+                    <button disabled={!this.props.selected} onClick={this.editBuyOutModal}>{this.state.editStates[1]}</button>
+                    <button disabled={!this.props.selected} onClick={this.editFloorsModal}>{this.state.editStates[2]}</button>
                 </div>
                 <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
                     <EditBonus
@@ -67,4 +68,10 @@ class EditBonuses extends Component {
     }
 }
 
-export default EditBonuses;
+const mapStateToProps = state => {
+    return  {
+        selected: state.editUsers.userSelected
+    }
+}
+
+export default connect(mapStateToProps)(EditBonuses);

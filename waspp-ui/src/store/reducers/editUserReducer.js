@@ -18,7 +18,8 @@ const initialState = {
     searchList: [],
     placeholder: 'Payroll Number',
     searchBy: ['Payroll Number','AS400 ID', 'Active Directory'],
-    loading: false
+    loading: false,
+    userSelected: false
 }
 
 const fetchUsersStart = (state, action) => {
@@ -56,7 +57,8 @@ const setADSearch = (state, action) => {
 
 const setCurrentUser = (state, action) => {
     return updateObject(state, {
-        currentUser: action.user
+        currentUser: action.user,
+        userSelected: action.selected
     })
 }
 
