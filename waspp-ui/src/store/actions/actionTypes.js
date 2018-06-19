@@ -13,3 +13,5 @@ export const SET_AD_SEARCH = 'SET_AD_SEARCH';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 export const SET_SEARCH_BY = 'SET_SEARCH_BY';
+
+export const SET_OPODefault = "SET_OPODefault";
