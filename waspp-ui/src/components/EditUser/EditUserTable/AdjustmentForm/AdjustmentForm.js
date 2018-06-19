@@ -34,7 +34,7 @@ const adjustmentForm = (props) => {
                 <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                     <label className={[bootStrapClasses['col-sm-5'], bootStrapClasses['col-form-label']].join(' ')}>Adjustment Amount</label>
                     <div>
-                        <input pattern='\d+(\.\d(2))?' onChange={(event) => props.onEditAmount(event.target.value)} title='Currency format: 00.00'/>
+                        <input pattern='\d+(\.\d{2})?' onChange={(event) => props.onEditAmount(event.target.value)} title='Currency format: 00.00'/>
                     </div>
                 </div>
                 <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
