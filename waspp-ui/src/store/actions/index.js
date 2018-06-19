@@ -2,5 +2,6 @@ export {
     fetchUsers,
     setADSearch,
     setPayrollSearch,
-    setAS400Search
+    setAS400Search,
+    setCurrentUser
 } from './editUserActions'

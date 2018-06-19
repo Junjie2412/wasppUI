@@ -29,7 +29,8 @@ const fetchUsersSuccess = (state, action) => {
     return updateObject( state, {
         users: action.users,
         loading: false,
-        searchList: action.searchList
+        searchList: action.searchList,
+        placeholder: 'Payroll Number'
     })
 }
 
@@ -54,7 +55,9 @@ const setADSearch = (state, action) => {
 }
 
 const setCurrentUser = (state, action) => {
-    return state;
+    return updateObject(state, {
+        currentUser: action.user
+    })
 }
 
 const setSearchBy = (state, action) => {
