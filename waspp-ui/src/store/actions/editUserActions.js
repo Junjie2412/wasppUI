@@ -3,6 +3,7 @@ import axios from 'axios';
 import * as links from '../../shared/Links';
 
 // ************************************************************************//
+// ************************************************************************//
 // The below functions will fetch the users list from the database
 
 // This will begin the fetch
@@ -91,7 +92,7 @@ export const setADSearch = (users) => {
     return {
         type: actionTypes.SET_AD_SEARCH,
         searchList: searchData,
-        placeholder: 'Active Directory ID'
+        placeholder: 'Active Directory'
     }
 }
 //************************************************************************//
@@ -112,7 +113,6 @@ export const setCurrentUser = (searchBy, ID, users) => {
         TerrID: ''
     };
 
-    console.log(searchBy, ID);
 
     switch (searchBy) {
         case 'AS400 ID':
@@ -159,7 +159,6 @@ export const setCurrentUser = (searchBy, ID, users) => {
                 TerrDescription: '',
                 TerrID: ''
             }
-            console.log('noooo');
             break;
         }
 

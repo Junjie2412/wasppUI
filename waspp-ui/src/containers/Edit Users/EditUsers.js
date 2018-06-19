@@ -15,7 +15,7 @@ import {connect} from 'react-redux';
 class EditUsers extends Component {
 
     state = {
-        userLookup: '',
+        userLookup: ''
     }
 
     componentDidMount() {

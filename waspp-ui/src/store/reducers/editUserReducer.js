@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import { updateObject} from "../utility";
+import { updateObject} from "../../shared/utility";
 
 const initialState = {
     users: [],
@@ -60,10 +60,6 @@ const setCurrentUser = (state, action) => {
     })
 }
 
-const setSearchBy = (state, action) => {
-    return state;
-}
-
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.FETCH_USERS_START: return fetchUsersStart(state, action);
@@ -72,7 +68,6 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_AD_SEARCH: return setADSearch(state, action);
         case actionTypes.SET_AS400_SEARCH: return setAS400Search(state, action);
         case actionTypes.SET_CURRENT_USER: return setCurrentUser(state, action);
-        case actionTypes.SET_SEARCH_BY: return setSearchBy(state, action);
         default: return state;
     }
 };
