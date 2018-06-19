@@ -9,13 +9,16 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import editUserReducer from './store/reducers/editUserReducer';
 import editAdjustmentsReducer from './store/reducers/editAdjustmentsReducer';
+import OPCODefaultsReducer from './store/reducers/OPCODefaultsReducer';
+
 import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     editUsers: editUserReducer,
-    editAdjustments: editAdjustmentsReducer
+    editAdjustments: editAdjustmentsReducer,
+    opcoDefaults: OPCODefaultsReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(
