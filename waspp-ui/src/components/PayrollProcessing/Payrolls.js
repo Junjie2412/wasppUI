@@ -24,14 +24,16 @@ import classes from './Payrolls.css';
 class Payrolls extends Component{
   render(){
     return (
-      <div className={bsClasses.row} style={{margin:"auto"}}>
+      <div>
+        <div className={bsClasses.row} style={{margin:"auto"}}>
 
           <div classname={[bsClasses["col-md-12"], classes.align].join(' ')}>
             <DateInput/>
           </div>
-
-          <div classname={[bsClasses["col-md-12"], classes.align].join(' ')}>
-            <table className={[bsClasses.table, classes.table].join(' ')}>
+        </div>
+        <div className={bsClasses.row}>
+          <div classname={[bsClasses["col-md-12"]].join(' ')}>
+            <table className={[bsClasses.table, classes.align, classes.table].join(' ')}>
               <thead>
                 <tr>
                   <th>AS400 ID</th>
@@ -69,6 +71,7 @@ class Payrolls extends Component{
             </table>
           </div>
         </div>
+      </div>
 
     )
   }
