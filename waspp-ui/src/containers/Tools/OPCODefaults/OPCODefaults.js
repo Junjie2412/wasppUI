@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import bootStrapClasses from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import classes from './OPCODefaults.css';
 import {connect} from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 class OPCODefaults extends Component{
+
+
     render(){
         return(
             <div className={[bootStrapClasses.card, classes.cardAlign].join(' ')} style={{overflow: 'auto', height: '500px', width: '97%'}}>
@@ -12,26 +15,33 @@ class OPCODefaults extends Component{
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>OPCO #</label>
                             <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
-                            <input type = 'text' 
+                            <input type = 'text' value={this.props.opcDefault.Location}
+                            onChange={((event) => this.props.onEditLocation(event.target.value))} 
                             className={[bootStrapClasses['offset-sm-2'], bootStrapClasses['col-sm-6'],bootStrapClasses['form-control']].join(' ')}/>
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Group Name</label>
-                            <input type='text' value={this.props.opcDefault.GroupName} 
+                            <input type='text' value={this.props.opcDefault.GroupName}
+                            onChange={((event) => this.props.onEditGroupName(event.target.value))} 
                             className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
-                            <input type = 'text' className={[bootStrapClasses['offset-sm-2'], bootStrapClasses['col-sm-6'],bootStrapClasses['form-control']].join(' ')}/>
+                            <input type = 'text' value={this.props.opcDefault.Email}
+                            onChange={((event) => this.props.onEditEmail(event.target.value))}
+                            className={[bootStrapClasses['offset-sm-2'], bootStrapClasses['col-sm-6'],bootStrapClasses['form-control']].join(' ')}/>
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Commission Models</label>
                             <input type='text' value={this.props.opcDefault.CommissionModels}
+                            onChange={((event) => this.props.onEditCommissionModel(event.target.value))}
                             className={[bootStrapClasses['col-sm-9'], bootStrapClasses['form-control']].join(' ')} />
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Floor</label>
                             <input type='text' value={this.props.opcDefault.Floor}
+                            onChange={(event) => this.props.onEditFloor(event.target.value)}
                             className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
                             <label className={[ bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Seasonal Floor</label>
                             <input type = 'text' value={this.props.opcDefault.SeasonalFloor}
+                            onChange={((event) => this.props.onEditSeasonalFloor(event.target.value))} 
                             className={[bootStrapClasses['col-sm-5'], bootStrapClasses['form-control']].join(' ')}/>
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
@@ -41,11 +51,13 @@ class OPCODefaults extends Component{
                             </div>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Guarantee Percentage</label>
                             <input type='text' value={this.props.opcDefault.GuaranteePercentage}
+                            onChange={((event) => this.props.onEditGuaranteePercentage(event.target.value))} 
                             className={[bootStrapClasses['col-sm-5'], bootStrapClasses['form-control']].join(' ')} />
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Bonus Models</label>
                             <input type='text' value={this.props.opcDefault.BonusModels}
+                            onChange={((event) => this.props.onEditBonusModels(event.target.value))} 
                             className={[bootStrapClasses['col-sm-9'], bootStrapClasses['form-control']].join(' ')} />
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
@@ -53,6 +65,7 @@ class OPCODefaults extends Component{
                             <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
                             <label className={[bootStrapClasses['offset-sm-1'], bootStrapClasses['col-sm-1'], bootStrapClasses['col-form-label']].join(' ')}>Org level</label>
                             <input type = 'text' value={this.props.opcDefault.OrgLevel}
+                            onChange={(event) => this.props.onEditOrgLevel(event.target.value)}
                             className={[bootStrapClasses['col-sm-5'], bootStrapClasses['form-control']].join(' ')}/>
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
@@ -157,7 +170,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        onEditGroupName: (groupName) => dispatch(actions.editGroupName(groupName)),
+        onEditCommissionModel: (commissionModel) => dispatch(actions.editCommissionModel(commissionModel)),
+        onEditFloor: (floor) => dispatch(actions.editFloor(floor)),
+        onEditSeasonalFloor: (seasonalFloor) => dispatch(actions.editSeasonalFloor(seasonalFloor)),
+        onEditGuaranteePercentage: (guaranteePercentage) => dispatch(actions.editGuaranteePercentage(guaranteePercentage)),
+        onEditBonusModels: (bonusModels) => dispatch(actions.editBonusModels(bonusModels)),
+        onEditOrgLevel: (orgLevel) => dispatch(actions.editOrgLevel(orgLevel)),
+        onEditLocation: (location) => dispatch(actions.editLocation(location)),
+        onEditEmail: (email) => dispatch(actions.editEmail(email))
     }
 }
 

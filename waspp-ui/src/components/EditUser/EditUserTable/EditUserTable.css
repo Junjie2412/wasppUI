@@ -5,8 +5,29 @@
     box-shadow: 0 8px 16px 0 #999;
 }
 
+.Title {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: white;
+}
+
 .Card {
     background-color: #66b3cc;
     height: 100%;
     border: none;
+}
+
+.AfterFloorCard {
+    background-color: #4b8396;
+}
+
+.Table {
+    overflow: auto;
+    height: 60%;
+}
+
+.ButtonGroup {
+    margin-top: 2%;
+    margin-left: 6%;
 }

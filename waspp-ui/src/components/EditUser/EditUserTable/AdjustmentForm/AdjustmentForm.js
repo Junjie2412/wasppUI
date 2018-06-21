@@ -16,9 +16,19 @@ const adjustmentForm = (props) => {
         });
     }
 
+    const addAfterFloorAdjustmentHandler = (event) => {
+        event.preventDefault();
+        props.onAddAfterFloorAdjustment({
+            user: props.user,
+            weekEndDate: props.afterFloorAdjustment.date._d.toLocaleDateString(),
+            comment: props.afterFloorAdjustment.comment,
+            amount: props.afterFloorAdjustment.amount
+        });
+    }
+
     return(
         <div>
-            <form onSubmit={(event) => addAdjustmentHandler(event)}>
+            <form onSubmit={props.isAfter ? ((event) => addAfterFloorAdjustmentHandler(event)) : ((event) => addAdjustmentHandler(event))}>
                 <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                     <label className={[bootStrapClasses['col-sm-4'], bootStrapClasses['col-form-label']].join(' ')}>HR Employee ID</label>
                     <div>
@@ -34,9 +44,7 @@ const adjustmentForm = (props) => {
                 <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                     <label className={[bootStrapClasses['col-sm-5'], bootStrapClasses['col-form-label']].join(' ')}>Adjustment Amount</label>
                     <div>
-                        <input pattern='\d+(\.\d{2})?' onChange={(event) => props.onEditAmount(event.target.value)} 
-                        title='Currency format: 00.00'
-                        className={bootStrapClasses['form-control']}/>
+                        <input pattern='\d+(\.\d{2})?' onChange={props.isAfter ?((event) => props.onEditAfterFloorAmount(event.target.value)) : ((event) => props.onEditAmount(event.target.value))} title='Currency format: 00.00'/>
                     </div>
                 </div>
                 <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
@@ -50,7 +58,7 @@ const adjustmentForm = (props) => {
                     <div>
                         <textarea className={[bootStrapClasses['form-control']]}
                                   style={{width: '300px', height: '100px'}}
-                                  onChange={(event) => props.onEditComment(event.target.value)}
+                                  onChange={props.isAfter ? ((event) => props.onEditAfterFloorComment(event.target.value)) : ((event) => props.onEditComment(event.target.value))}
                         />
                     </div>
                 </div>
@@ -67,7 +75,8 @@ const mapStateToProps = state => {
     return {
         loading: state.editAdjustments.loading,
         adjustment: state.editAdjustments.currentAdjustment,
-        user: state.editUsers.currentUser
+        user: state.editUsers.currentUser,
+        afterFloorAdjustment: state.editAfterFloorAdjustments.currentAdjustment
     }
 }
 
@@ -75,7 +84,10 @@ const mapDispatchToProps = dispatch => {
     return {
         onAddAdjustment: (adjustment) => dispatch(actions.addAdjustment(adjustment)),
         onEditComment: (comment) => dispatch(actions.editAdjustmentComment(comment)),
-        onEditAmount: (amount) =>dispatch(actions.editAdjustmentAmount(amount))
+        onEditAmount: (amount) =>dispatch(actions.editAdjustmentAmount(amount)),
+        onAddAfterFloorAdjustment: (adjustment) => dispatch(actions.addAfterFloorAdjustment(adjustment)),
+        onEditAfterFloorComment: (comment) => dispatch(actions.editAfterFloorAdjustmentComment(comment)),
+        onEditAfterFloorAmount: (amount) => dispatch(actions.editAfterFloorAdjustmentAmount(amount)),
     }
 }
 

@@ -9,6 +9,7 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import editUserReducer from './store/reducers/editUserReducer';
 import editAdjustmentsReducer from './store/reducers/editAdjustmentsReducer';
+import editAfterFloorAdjustmentsReducer from './store/reducers/editAfterFloorAdjustmentsReducer';
 import OPCODefaultsReducer from './store/reducers/OPCODefaultsReducer';
 
 import thunk from 'redux-thunk';
@@ -18,6 +19,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
     editUsers: editUserReducer,
     editAdjustments: editAdjustmentsReducer,
+    editAfterFloorAdjustments: editAfterFloorAdjustmentsReducer,
     opcoDefaults: OPCODefaultsReducer
 });
 

@@ -7,7 +7,7 @@ const initialState = {
         ADID: '',
         FirstName: '',
         LastName: '',
-        AS400: '',
+        AS400ID: '',
         Base: '',
         CommissionAdv: '',
         PayrollNumber: '',

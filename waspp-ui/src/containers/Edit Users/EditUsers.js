@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import Search from '../../components/UI/Search/Search';
-import axios from 'axios';
-import * as links from '../../shared/Links';
 import User from '../../components/EditUser/User/User';
 import EditBonuses from '../../components/EditUser/EditBonuses/EditBonuses';
 import EditUserTable from '../../components/EditUser/EditUserTable/EditUserTable';
@@ -11,6 +9,7 @@ import AfterFloorAdjustments from '../../components/EditUser/AfterFloorAdjustmen
 import classes from './EditUser.css';
 import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux';
+import {fetchAfterFloorAdjustments} from "../../store/actions/editAfterFloorAdjustmentActions";
 
 class EditUsers extends Component {
 
@@ -19,14 +18,15 @@ class EditUsers extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.selected);
         this.props.onFetchUsers();
+        this.props.onFetchAdjustments();
+        this.props.onFetchAfterFloorAdjustments();
     }
 
     //This handler changes what the value property is whenever we change the search input text
     onChangeText = (event) => {
         this.setState({userLookup: event.target.value});
-        this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users)
+        this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users, this.props.adjustments, this.props.afterFloorAdjustments)
     }
 
     //This handler changes the state properties based on which value was selected
@@ -48,9 +48,6 @@ class EditUsers extends Component {
     }
 
     //This handler will post a new update to Adjustments
-    addAdjustment = (adjustments) => {
-        axios.post(links.EDIT_ADJUSTMENTS_DB, adjustments)
-    }
 
     render() {
         return (
@@ -70,10 +67,7 @@ class EditUsers extends Component {
                     <User user={this.props.currentUser}/>
                     <EditBonuses/>
                     <EditUserTable
-                        title={'Edit Adjustments'}
-                        addAdjustments={(adjustments) => this.addAdjustment(
-                            this.props.currentUser
-                        )}
+                        afterFloor={false}
                     />
                     <AfterFloorAdjustments/>
                 </div>
@@ -89,7 +83,9 @@ const mapStateToProps = state => {
         searchBy: state.editUsers.searchBy,
         searchList: state.editUsers.searchList,
         placeholder: state.editUsers.placeholder,
-        currentUser: state.editUsers.currentUser
+        currentUser: state.editUsers.currentUser,
+        adjustments: state.editAdjustments.adjustments,
+        afterFloorAdjustments: state.editAfterFloorAdjustments.adjustments
     }
 }
 
@@ -99,8 +95,10 @@ const mapDispatchToProps = dispatch => {
         onSetPayrollSearch: (users) => dispatch(actions.setPayrollSearch(users)),
         onSetAS400Search: (users) => dispatch(actions.setAS400Search(users)),
         onSetADSearch: (users) => dispatch(actions.setADSearch(users)),
-        onSetCurrentUser: (searchBy, ID, users) => dispatch(actions.setCurrentUser(searchBy, ID, users))
-    }
+        onFetchAdjustments: () => dispatch(actions.fetchAdjustments()),
+        onFetchAfterFloorAdjustments: () => dispatch(actions.fetchAfterFloorAdjustments()),
+        onSetCurrentUser: (searchBy, ID, users, adjustments, afterFloorAdjustments) => dispatch(actions.setCurrentUser(searchBy, ID, users, adjustments, afterFloorAdjustments)),
+        }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditUsers);

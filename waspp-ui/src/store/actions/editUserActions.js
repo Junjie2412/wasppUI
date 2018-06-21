@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 import * as links from '../../shared/Links';
+import * as actions from '../actions/index';
 
 // ************************************************************************//
 // ************************************************************************//
@@ -97,80 +98,95 @@ export const setADSearch = (users) => {
 }
 //************************************************************************//
 //************************************************************************//
+
+
+
 // The below functions will set the current user
-export const setCurrentUser = (searchBy, ID, users) => {
 
-    let selected = false;
-
-    let currUser = {
-        ADID: '',
-        FirstName: '',
-        LastName: '',
-        AS400: '',
-        Base: '',
-        CommissionAdv: '',
-        PayrollNumber: '',
-        FileNumber: '',
-        TerrDescription: '',
-        TerrID: ''
-    };
-
-
-    switch (searchBy) {
-        case 'AS400 ID':
-        {
-            for(let user in users){
-                if(users[user].AS400ID === ID){
-                    currUser = users[user];
-                    selected = true;
-                    break;
-                }
-            }
-            break;
-        }
-        case 'Active Directory':
-        {
-            for(let user in users){
-                if(users[user].ADID === ID){
-                    currUser = users[user];
-                    selected = true;
-                    break;
-                }
-            }
-            break;
-        }
-        case 'Payroll Number':
-        {
-            for(let user in users){
-                if(users[user].PayrollNumber === ID){
-                    currUser = users[user];
-                    selected = true;
-                    break;
-                }
-            }
-            break;
-        }
-        default:
-        {
-            currUser = {
-                ADID: '',
-                FirstName: '',
-                LastName: '',
-                AS400: '',
-                Base: '',
-                CommissionAdv: '',
-                PayrollNumber: '',
-                FileNumber: '',
-                TerrDescription: '',
-                TerrID: ''
-            };
-            break;
-        }
-
-    }
+export const setCurrentUserInit = (currUser, selected) => {
     return {
         type: actionTypes.SET_CURRENT_USER,
         user: currUser,
         selected: selected
     };
+}
+
+export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjustments) => {
+    return dispatch => {
+        let selected = false;
+
+        let currUser = {
+            ADID: '',
+            FirstName: '',
+            LastName: '',
+            AS400: '',
+            Base: '',
+            CommissionAdv: '',
+            PayrollNumber: '',
+            FileNumber: '',
+            TerrDescription: '',
+            TerrID: ''
+        };
+
+
+        switch (searchBy) {
+            case 'AS400 ID':
+            {
+                for(let user in users){
+                    if(users[user].AS400ID === ID){
+                        currUser = users[user];
+                        selected = true;
+                        dispatch(actions.setCurrentUserAdjustments(adjustments, users[user], searchBy));
+                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user], searchBy))
+                        break;
+                    }
+                }
+
+                break;
+            }
+            case 'Active Directory':
+            {
+                for(let user in users){
+                    if(users[user].ADID === ID){
+                        currUser = users[user];
+                        selected = true;
+                        dispatch(actions.setCurrentUserAdjustments(adjustments, users[user], searchBy));
+                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user], searchBy))
+                        break;
+                    }
+                }
+                break;
+            }
+            case 'Payroll Number':
+            {
+                for(let user in users){
+                    if(users[user].PayrollNumber === ID){
+                        currUser = users[user];
+                        selected = true;
+                        dispatch(actions.setCurrentUserAdjustments(adjustments, users[user], searchBy));
+                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user], searchBy))
+                        break;
+                    }
+                }
+                break;
+            }
+            default:
+            {
+                currUser = {
+                    ADID: '',
+                    FirstName: '',
+                    LastName: '',
+                    AS400: '',
+                    Base: '',
+                    CommissionAdv: '',
+                    PayrollNumber: '',
+                    FileNumber: '',
+                    TerrDescription: '',
+                    TerrID: ''
+                };
+                break;
+            }
+        }
+        dispatch(setCurrentUserInit(currUser, selected));
+    }
 }
