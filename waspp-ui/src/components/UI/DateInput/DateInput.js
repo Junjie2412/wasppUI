@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import classes from 'react-datepicker/dist/react-datepicker-cssmodules.min.css';
-import {connect} from 'react-redux';
-import * as actions from '../../../store/actions/index';
 
 class DateInput extends Component {
     constructor(props){
@@ -13,7 +11,7 @@ class DateInput extends Component {
     handleChange(date){
         //console.log(date._d.toLocaleDateString());
         //this.setState({startDate: date});
-        this.props.onChangeDate(date);
+        this.props.changeDate(date);
     }
 
     render(){
@@ -22,16 +20,4 @@ class DateInput extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        date: state.editAdjustments.currentAdjustment.date
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onChangeDate: (date) => dispatch(actions.editAdjustmentDate(date))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DateInput);
+export default DateInput;

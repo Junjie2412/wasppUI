@@ -18,7 +18,8 @@ const addAfterFloorAdjustmentStart = (state, action ) => {
 }
 
 const addAfterFloorAdjustmentSuccess = (state, action) => {
-    return updateObject(state, {loading: false})
+    const newAdjustment = updateObject(action.data, {id: action.id});
+    return updateObject(state, {loading: false, currentUserAdjustments: state.currentUserAdjustments.concat(newAdjustment)})
 }
 
 const editAfterFloorAdjustmentDate = (state, action) => {

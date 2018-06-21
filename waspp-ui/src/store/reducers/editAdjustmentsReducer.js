@@ -10,7 +10,16 @@ const initialState = {
         amount: ''
     },
     currentUserAdjustments: [],
-    loading: false
+    loading: false,
+    confirming: false
+}
+
+const addAdjustmentInit = (state, action) => {
+    return updateObject(state, {confirming: true})
+}
+
+const addAdjustmentCancel = (state, action) => {
+    return updateObject(state, {confirming: false})
 }
 
 const addAdjustmentStart = (state, action ) => {
@@ -18,7 +27,8 @@ const addAdjustmentStart = (state, action ) => {
 }
 
 const addAdjustmentSuccess = (state, action) => {
-    return updateObject(state, {loading: false})
+    const newAdjustment = updateObject(action.data, {id: action.id});
+    return updateObject(state, {loading: false, currentUserAdjustments: state.currentUserAdjustments.concat(newAdjustment)})
 }
 
 const editAdjustmentDate = (state, action) => {
@@ -60,6 +70,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_ADJUSTMENTS_START: return fetchAdjustmentsStart(state, action);
         case actionTypes.FETCH_ADJUSTMENTS_SUCCESS: return fetchAdjustmentsSuccess(state, action);
         case actionTypes.SET_CURRENT_USER_ADJUSTMENTS: return setCurrentUserAdjustments(state, action);
+        case actionTypes.ADD_ADJUSTMENT_INIT: return addAdjustmentInit(state, action);
+        case actionTypes.ADD_ADJUSTMENT_CANCEL: return addAdjustmentCancel(state, action);
         default: return state;
     }
 };

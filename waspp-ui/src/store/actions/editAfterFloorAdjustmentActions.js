@@ -23,7 +23,7 @@ export const addAfterFloorAdjustmentSuccess = (id, adjustmentData) => {
 export const addAfterFloorAdjustment = (adjustmentData ) => {
     return dispatch => {
         dispatch( addAfterFloorAdjustmentStart() );
-        axios.post(links.EDIT_AFTER_FLOOR_ADJUSTMENTS_DB, adjustmentData)
+        axios.post(links.EDIT_AFTER_FLOOR_ADJUSTMENTS_DB+'.json', adjustmentData)
             .then(response => {
                 dispatch(addAfterFloorAdjustmentSuccess(response.data.name, adjustmentData))
             })
@@ -75,7 +75,7 @@ export const fetchAfterFloorAdjustmentsSuccess = (adjustmentsList) => {
 export const fetchAfterFloorAdjustments = () => {
     return dispatch => {
         dispatch(fetchAfterFloorAdjustmentsStart());
-        axios.get(links.EDIT_AFTER_FLOOR_ADJUSTMENTS_DB)
+        axios.get(links.EDIT_AFTER_FLOOR_ADJUSTMENTS_DB+'.json')
             .then(response => {
                 const dataList = [];
                 for(let adj in response.data ) {
@@ -92,15 +92,13 @@ export const fetchAfterFloorAdjustments = () => {
 export const setCurrentUserAfterFloorAdjustments = (adjustmentsList, selectedUser, setBy) => {
 
     const dataList = [];
-    console.log(setBy);
     switch(setBy) {
         case 'Payroll Number':
             for(let adj in adjustmentsList ) {
                 if (adjustmentsList[adj].user.PayrollNumber === selectedUser.PayrollNumber) {
-                    console.log(adjustmentsList[adj].user.PayrollNumber + ' === ' + selectedUser.PayrollNumber);
                     dataList.push( {
                         ...adjustmentsList[adj],
-                        id: [adj]
+                        id: [adjustmentsList[adj].id]
                     })
                 }
             }
@@ -111,10 +109,9 @@ export const setCurrentUserAfterFloorAdjustments = (adjustmentsList, selectedUse
         case 'AS400 ID':
             for(let adj in adjustmentsList ) {
                 if (adjustmentsList[adj].user.AS400ID === selectedUser.AS400ID) {
-                    console.log(adjustmentsList[adj].user.AS400ID + ' === ' + selectedUser.AS400ID);
                     dataList.push( {
                         ...adjustmentsList[adj],
-                        id: [adj]
+                        id: [adjustmentsList[adj].id]
                     })
                 }
             }
@@ -125,10 +122,9 @@ export const setCurrentUserAfterFloorAdjustments = (adjustmentsList, selectedUse
         case 'Active Directory':
             for(let adj in adjustmentsList ) {
                 if (adjustmentsList[adj].user.ADID === selectedUser.ADID) {
-                    console.log(adjustmentsList[adj].user.ADID + ' === ' + selectedUser.ADID);
                     dataList.push( {
                         ...adjustmentsList[adj],
-                        id: [adj]
+                        id: [adjustmentsList[adj].id]
                     })
                 }
             }
@@ -139,10 +135,9 @@ export const setCurrentUserAfterFloorAdjustments = (adjustmentsList, selectedUse
         default:
             for(let adj in adjustmentsList ) {
                 if (adjustmentsList[adj].user.PayrollNumber === selectedUser.PayrollNumber) {
-                    console.log(adjustmentsList[adj].user.PayrollNumber + ' === ' + selectedUser.PayrollNumber);
                     dataList.push( {
                         ...adjustmentsList[adj],
-                        id: [adj]
+                        id: [adjustmentsList[adj].id]
                     })
                 }
             }

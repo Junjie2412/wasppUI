@@ -48,7 +48,7 @@ class AfterFloorAdjustments extends Component {
                     </div>
                 </div>
                 <Modal show={this.state.modalOpened} modalClosed={this.closeModal}>
-                    <AdjustmentForm isAfter/>
+                    <AdjustmentForm isAfter close={this.closeModal}/>
                 </Modal>
             </Aux>
         )
