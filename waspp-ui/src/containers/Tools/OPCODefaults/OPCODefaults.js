@@ -17,7 +17,7 @@ class OPCODefaults extends Component{
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Group Name</label>
-                            <input type='text' value={this.props.opcDefault.GroupName}
+                            <input type='text' value={this.props.opcDefault.GroupName} 
                             className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
                             <input type = 'text' className={[bootStrapClasses['offset-sm-2'], bootStrapClasses['col-sm-6'],bootStrapClasses['form-control']].join(' ')}/>
                         </div>
