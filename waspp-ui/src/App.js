@@ -23,7 +23,7 @@ class App extends Component {
                 <Route path="/tools" exact component={Tools}/>
                 <Route path="/help" exact component={Help}/>
                 <Route path="/editUsers" exact component={EditUsers}/>
-                <Route path="/" component={Login}/>
+                <Route path="/" exact component={Login}/>
                 <Redirect to="/"/>
             </Switch>
         </div>

@@ -4,27 +4,14 @@ import moment from 'moment';
 
 const initialState = {
     adjustments: [],
-    afterFloorAdjustments: [],
     currentAdjustment: {
         date: moment(),
         comment: '',
         amount: ''
     },
-    user: {
-            ADID: '',
-            FirstName: '',
-            LastName: '',
-            AS400: '',
-            Base: '',
-            CommissionAdv: '',
-            PayrollNumber: '',
-            FileNumber: '',
-            TerrDescription: '',
-            TerrID: ''
-    },
+    currentUserAdjustments: [],
     loading: false
 }
-
 
 const addAdjustmentStart = (state, action ) => {
     return updateObject(state, { loading: true })
@@ -46,13 +33,33 @@ const editAdjustmentAmount = (state, action) => {
     return updateObject(state, {currentAdjustment: updateObject(state.currentAdjustment, {amount: action.amount})})
 }
 
+const fetchAdjustmentsStart = (state, action) => {
+    return updateObject( state, { loading: true} )
+}
+
+const fetchAdjustmentsSuccess = (state, action) => {
+    return updateObject( state, {
+        adjustments: action.adjustments,
+        loading: false
+    })
+}
+
+const setCurrentUserAdjustments = (state, action) => {
+    return updateObject( state, {
+        currentUserAdjustments: action.currentUserAdjustments
+    })
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_ADJUSTMENT_START: return addAdjustmentStart(state, action);
         case actionTypes.ADD_ADJUSTMENT_SUCCESS: return addAdjustmentSuccess(state, action);
         case actionTypes.EDIT_ADJUSTMENT_DATE: return editAdjustmentDate(state, action);
         case actionTypes.EDIT_ADJUSTMENT_COMMENT: return editAdjustmentComment(state, action);
-        case actionTypes.EDIT_ADJUSTMENT_AMOUNT: return editAdjustmentAmount(state, action)
+        case actionTypes.EDIT_ADJUSTMENT_AMOUNT: return editAdjustmentAmount(state, action);
+        case actionTypes.FETCH_ADJUSTMENTS_START: return fetchAdjustmentsStart(state, action);
+        case actionTypes.FETCH_ADJUSTMENTS_SUCCESS: return fetchAdjustmentsSuccess(state, action);
+        case actionTypes.SET_CURRENT_USER_ADJUSTMENTS: return setCurrentUserAdjustments(state, action);
         default: return state;
     }
 };

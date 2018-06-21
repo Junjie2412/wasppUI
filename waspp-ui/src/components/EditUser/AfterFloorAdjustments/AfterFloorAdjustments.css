@@ -40,6 +40,11 @@
     background-color: #376ec6;
 }
 
+.Button:disabled {
+    color: #ddd;
+    background-color: #808184;
+}
+
 .Text {
     transform: translateY(-10%);
 }

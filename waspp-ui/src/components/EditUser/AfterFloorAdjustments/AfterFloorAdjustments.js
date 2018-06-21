@@ -4,6 +4,7 @@ import classes from './AfterFloorAdjustments.css';
 import EditUserTable from '../../EditUser/EditUserTable/EditUserTable';
 import AdjustmentForm from '../../EditUser/EditUserTable/AdjustmentForm/AdjustmentForm';
 import Modal from '../../../components/UI/Modal/Modal';
+import {connect} from 'react-redux';
 
 class AfterFloorAdjustments extends Component {
 
@@ -14,7 +15,6 @@ class AfterFloorAdjustments extends Component {
 
     openModal = () => {
         this.setState({modalOpened: true});
-        console.log('hi');
     }
 
     closeModal = () => {
@@ -30,50 +30,35 @@ class AfterFloorAdjustments extends Component {
     }
 
     render() {
-/*
-        let editingAdjustments = null;
-
-        switch (this.state.editing) {
-            case true:
-                editingAdjustments = (
-                    <Aux>
-                        <Table/>
-                        <div>
-                            <button>Save</button>
-                            <button onClick={this.cancelEdit}>Cancel</button>
-                            <button>Delete</button>
-                        </div>
-                    </Aux>
-                );
-                break;
-            case false:
-                editingAdjustments = null;
-                break
-            default:
-                break;
-        }*/
 
         return (
             <Aux>
                 <div className={this.state.editing ?  classes.AFAOpened : classes.AFA}>
                     <div>
-                    <button onClick={this.state.editing ? this.cancelEdit : this.editAdjustments} className={classes.Button}>
+                    <button onClick={this.state.editing ? this.cancelEdit : this.editAdjustments} className={classes.Button} disabled={!this.props.selected}>
                         <p className={classes.Text} onClick={this.state.editing ? this.cancelEdit : this.editAdjustments}>Edit After Floor Adjustments</p>
                     </button>
                     </div>
-                    <div className={classes.Table} onClick={this.editAdjustments}>
+                    <div className={classes.Table} onClick={this.props.selected ? this.editAdjustments : null}>
                         <EditUserTable
-                            title={'Edit After Floor Adjustments'}
                             add={this.openModal}
+                            afterFloor
+                            test={'hello'}
                         />
                     </div>
                 </div>
                 <Modal show={this.state.modalOpened} modalClosed={this.closeModal}>
-                    <AdjustmentForm/>
+                    <AdjustmentForm isAfter/>
                 </Modal>
             </Aux>
         )
     }
 }
 
-export default AfterFloorAdjustments;
+const mapStateToProps = state => {
+    return {
+        selected: state.editUsers.userSelected
+    }
+}
+
+export default connect(mapStateToProps)(AfterFloorAdjustments);

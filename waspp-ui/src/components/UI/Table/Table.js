@@ -7,15 +7,14 @@ const table = (props) =>{
 
     const tableData = props.tableData.map(data => (
         <tr>
-            <td>000000000</td>
-            <td>000000000</td>
-            <td>000000000</td>
+            <td>{data.amount}</td>
+            <td>{data.weekEndDate}</td>
+            <td>{data.comment}</td>
         </tr>
     ));
     return(
 
         <Aux>
-            <h3 className={classes.TableTitle}>{props.title}</h3>
             <table className={[bootStrapClasses.table, classes.Table].join(' ')}>
                 <thead>
                     <tr className={classes.TableHeader}>

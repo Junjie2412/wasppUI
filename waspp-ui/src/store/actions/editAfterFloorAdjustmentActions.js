@@ -6,26 +6,26 @@ import * as links from '../../shared/Links';
 // ************************************************************************//
 // The below are functions that will follow upon adding an adjustment
 
-export const addAdjustmentStart = () => {
+export const addAfterFloorAdjustmentStart = () => {
     return {
-        type: actionTypes.ADD_ADJUSTMENT_START
+        type: actionTypes.ADD_AFTER_FLOOR_ADJUSTMENT_START
     };
 }
 
-export const addAdjustmentSuccess = (id, adjustmentData) => {
+export const addAfterFloorAdjustmentSuccess = (id, adjustmentData) => {
     return {
-        type: actionTypes.ADD_ADJUSTMENT_SUCCESS,
+        type: actionTypes.ADD_AFTER_FLOOR_ADJUSTMENT_SUCCESS,
         id: id,
         data: adjustmentData
     }
 }
 
-export const addAdjustment = (adjustmentData ) => {
+export const addAfterFloorAdjustment = (adjustmentData ) => {
     return dispatch => {
-        dispatch( addAdjustmentStart() );
-        axios.post(links.EDIT_ADJUSTMENTS_DB, adjustmentData)
+        dispatch( addAfterFloorAdjustmentStart() );
+        axios.post(links.EDIT_AFTER_FLOOR_ADJUSTMENTS_DB, adjustmentData)
             .then(response => {
-                dispatch(addAdjustmentSuccess(response.data.name, adjustmentData))
+                dispatch(addAfterFloorAdjustmentSuccess(response.data.name, adjustmentData))
             })
     };
 };
@@ -34,48 +34,48 @@ export const addAdjustment = (adjustmentData ) => {
 // ************************************************************************//
 // The below are functions that will follow upon changing the edit adjustments form
 
-export const editAdjustmentDate = (adjustmentDate) => {
+export const editAfterFloorAdjustmentDate = (adjustmentDate) => {
     return {
-        type: actionTypes.EDIT_ADJUSTMENT_DATE,
+        type: actionTypes.EDIT_AFTER_FLOOR_ADJUSTMENT_DATE,
         date: adjustmentDate
     }
 }
 
-export const editAdjustmentComment = (adjustmentComment) => {
+export const editAfterFloorAdjustmentComment = (adjustmentComment) => {
     return {
-        type: actionTypes.EDIT_ADJUSTMENT_COMMENT,
+        type: actionTypes.EDIT_AFTER_FLOOR_ADJUSTMENT_COMMENT,
         comment: adjustmentComment
     }
 }
 
-export const editAdjustmentAmount = (adjustmentAmount) => {
+export const editAfterFloorAdjustmentAmount = (adjustmentAmount) => {
     return {
-        type: actionTypes.EDIT_ADJUSTMENT_AMOUNT,
+        type: actionTypes.EDIT_AFTER_FLOOR_ADJUSTMENT_AMOUNT,
         amount: adjustmentAmount
     }
 }
 
 // ************************************************************************//
 // ************************************************************************//
-// The below are functions that will fetch the list of Adjustments
+// The below are functions that will fetch the list of After Floor Adjustments
 
-export const fetchAdjustmentsStart = () => {
+export const fetchAfterFloorAdjustmentsStart = () => {
     return {
-        type: actionTypes.FETCH_ADJUSTMENTS_START
+        type: actionTypes.FETCH_AFTER_FLOOR_ADJUSTMENTS_START
     };
 }
 
-export const fetchAdjustmentsSuccess = (adjustmentsList) => {
+export const fetchAfterFloorAdjustmentsSuccess = (adjustmentsList) => {
     return {
         adjustments: adjustmentsList,
-        type: actionTypes.FETCH_ADJUSTMENTS_SUCCESS
+        type: actionTypes.FETCH_AFTER_FLOOR_ADJUSTMENTS_SUCCESS
     };
 };
 
-export const fetchAdjustments = () => {
+export const fetchAfterFloorAdjustments = () => {
     return dispatch => {
-        dispatch(fetchAdjustmentsStart());
-        axios.get(links.EDIT_ADJUSTMENTS_DB)
+        dispatch(fetchAfterFloorAdjustmentsStart());
+        axios.get(links.EDIT_AFTER_FLOOR_ADJUSTMENTS_DB)
             .then(response => {
                 const dataList = [];
                 for(let adj in response.data ) {
@@ -84,12 +84,12 @@ export const fetchAdjustments = () => {
                         id: [adj]
                     })
                 }
-                dispatch(fetchAdjustmentsSuccess(dataList))
+                dispatch(fetchAfterFloorAdjustmentsSuccess(dataList))
             });
     }
 }
 
-export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) => {
+export const setCurrentUserAfterFloorAdjustments = (adjustmentsList, selectedUser, setBy) => {
 
     const dataList = [];
     console.log(setBy);
@@ -105,7 +105,7 @@ export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) 
                 }
             }
             return {
-                type: actionTypes.SET_CURRENT_USER_ADJUSTMENTS,
+                type: actionTypes.SET_CURRENT_USER_AFTER_FLOOR_ADJUSTMENTS,
                 currentUserAdjustments: dataList
             }
         case 'AS400 ID':
@@ -119,7 +119,7 @@ export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) 
                 }
             }
             return {
-                type: actionTypes.SET_CURRENT_USER_ADJUSTMENTS,
+                type: actionTypes.SET_CURRENT_USER_AFTER_FLOOR_ADJUSTMENTS,
                 currentUserAdjustments: dataList
             }
         case 'Active Directory':
@@ -133,7 +133,7 @@ export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) 
                 }
             }
             return {
-                type: actionTypes.SET_CURRENT_USER_ADJUSTMENTS,
+                type: actionTypes.SET_CURRENT_USER_AFTER_FLOOR_ADJUSTMENTS,
                 currentUserAdjustments: dataList
             }
         default:
@@ -147,8 +147,8 @@ export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) 
                 }
             }
             return {
-                type: actionTypes.SET_CURRENT_USER_ADJUSTMENTS,
+                type: actionTypes.SET_CURRENT_USER_AFTER_FLOOR_ADJUSTMENTS,
                 currentUserAdjustments: dataList
             }
-        }
+    }
 }
