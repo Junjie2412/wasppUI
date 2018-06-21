@@ -31,9 +31,17 @@ const adjustmentForm = (props) => {
         props.onAddConfirming();
     }
 
+    const cancelConfirmation = (event) => {
+        event.preventDefault();
+        props.close();
+        props.onCancelConfirming();
+    }
+
     const confirmAddAdjustment = (event) => {
         props.close();
         props.isAfter ? (addAfterFloorAdjustmentHandler(event)) : (addAdjustmentHandler(event));
+        props.onAddNotification(props.isAfter ? 'AFTER FLOOR ADJUSTMENT ADDED' : 'ADJUSTMENT ADDED', 'You have added an adjustment to ' + props.user.FirstName+ ' '+ props.user.LastName+'.')
+        props.onCancelConfirming();
     }
 
     let formConfirmation = (
@@ -80,7 +88,7 @@ const adjustmentForm = (props) => {
             </div>
             <div className={bootStrapClasses['col-sm-12']}>
                 <button className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2']].join(' ')}>Save</button>
-                <button onClick={props.close} className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['col-sm-2']].join(' ')} style={{margin: '4px'}}>Cancel</button>
+                <button onClick={(event) => cancelConfirmation(event)} className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['col-sm-2']].join(' ')} style={{margin: '4px'}}>Cancel</button>
             </div>
         </form>
     );
@@ -107,8 +115,10 @@ const adjustmentForm = (props) => {
                         <p className={[bootStrapClasses['form-control-plaintext']]}>{props.isAfter ? props.afterFloorAdjustment.comment : props.adjustment.comment}</p>
                     </div>
                 </div>
-                <button onClick={(event) => confirmAddAdjustment(event)}>Yes</button>
-                <button onClick={props.onCancelConfirming}>No</button>
+                <div className={bootStrapClasses['col-sm-12']}>
+                    <button className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2']].join(' ')} onClick={(event) => confirmAddAdjustment(event)}>Yes</button>
+                    <button className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['col-sm-2']].join(' ')} style={{margin: '4px'}} onClick={props.onCancelConfirming}>No</button>
+                </div>
             </Aux>
         )
     }
@@ -141,7 +151,8 @@ const mapDispatchToProps = dispatch => {
         onEditAfterFloorAmount: (amount) => dispatch(actions.editAfterFloorAdjustmentAmount(amount)),
         onEditAfterFloorDate: (date) => dispatch(actions.editAfterFloorAdjustmentDate(date)),
         onAddConfirming: () => dispatch(actions.editAdjustmentInit()),
-        onCancelConfirming: () => dispatch(actions.editAdjustmentCancel())
+        onCancelConfirming: () => dispatch(actions.editAdjustmentCancel()),
+        onAddNotification: (strong, text) => dispatch(actions.addNotification(strong, text))
     }
 }
 

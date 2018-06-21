@@ -37,3 +37,9 @@ export {
     editLocation,
     editEmail
 } from './OPCODefaultsActions'
+
+export {
+    addNotification,
+    removeNotification,
+    removeAllNotifications
+} from './notificationActions'

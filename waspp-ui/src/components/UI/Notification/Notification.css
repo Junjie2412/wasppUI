@@ -1,0 +1,37 @@
+.alert {
+    padding: 5px;
+    background-color: #669933;
+    color: white;
+    z-index: 1500;
+    border-radius: 5px;
+    width: 50%;
+    margin: auto;
+}
+
+.closebtn {
+    margin-top: -5px;
+    margin-left: 15px;
+    color: white;
+    float: right;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: transparent;
+    border: none;
+}
+
+.closebtn:hover {
+    background-color: transparent;
+    color: black;
+    border: none;
+}
+
+.closebtn:focus, .closebtn:active {
+    background-color: transparent;
+    color: black;
+    outline: none;
+}
+
+.text {
+    margin-top: 3px;
+}
