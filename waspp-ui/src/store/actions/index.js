@@ -23,5 +23,17 @@ export {
     editAfterFloorAdjustmentDate,
     editAfterFloorAdjustmentComment,
     fetchAfterFloorAdjustments,
-    setCurrentUserAfterFloorAdjustments,
+    setCurrentUserAfterFloorAdjustments
 } from './editAfterFloorAdjustmentActions'
+
+export {
+    editGroupName,
+    editCommissionModel,
+    editFloor,
+    editSeasonalFloor,
+    editGuaranteePercentage,
+    editBonusModels,
+    editOrgLevel,
+    editLocation,
+    editEmail
+} from './OPCODefaultsActions'
