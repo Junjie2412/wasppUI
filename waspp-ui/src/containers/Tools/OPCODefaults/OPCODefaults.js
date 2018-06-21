@@ -5,8 +5,6 @@ import {connect} from 'react-redux';
 import * as actions from '../../../store/actions/index';
 
 class OPCODefaults extends Component{
-
-
     render(){
         return(
             <div className={[bootStrapClasses.card, classes.cardAlign].join(' ')} style={{overflow: 'auto', height: '500px', width: '97%'}}>
@@ -46,7 +44,9 @@ class OPCODefaults extends Component{
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <div className={[bootStrapClasses['offset-sm-2'], bootStrapClasses['col-sm-2']].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
+                                <input type='radio' checked={this.props.opcDefault.GuaranteeBonus}
+                                onClick={(event) => this.props.onToggleGuaranteeBonus(!this.props.opcDefault.GuaranteeBonus)}
+                                className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Guarantee Bonus</label>
                             </div>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Guarantee Percentage</label>
@@ -71,38 +71,54 @@ class OPCODefaults extends Component{
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Bonus Level</label>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
+                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.Low}
+                                onClick={(event) => this.props.onToggleLow(!this.props.opcDefault.Low)} 
+                                className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Low</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
+                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.Medium}
+                                onClick={(event) => this.props.onToggleMedium(!this.props.opcDefault.Medium)}
+                                className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Medium</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
+                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.High}
+                                onClick={(event) => this.props.onToggleHigh(!this.props.opcDefault.High)}
+                                className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>High</label>
                             </div>
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Default Flights</label>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
+                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.A} name="DefaultFlights"
+                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.A, 'A')}
+                                className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Flight A</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
+                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.B} name="DefaultFlights"
+                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.B, 'B')}
+                                className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Flight B</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
+                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.C} name="DefaultFlights"
+                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.C, 'C')}
+                                className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Flight C</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
+                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.D} name="DefaultFlights"
+                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.D, 'D')}
+                                className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Flight D</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
+                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.E} name="DefaultFlights"
+                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.E, 'E')}
+                                className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Flight E</label>
                             </div>
                         </div>
@@ -117,24 +133,34 @@ class OPCODefaults extends Component{
                             <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Account Types</label>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
-                                <label className={bootStrapClasses['form-check-label']}>Flight E</label>
+                                <input type='checkbox' checked={this.props.opcDefault.TRS}
+                                onClick={(event) => this.props.onToggleTRS(!this.props.opcDefault.TRS)}
+                                className={bootStrapClasses['form-check-input']} />
+                                <label className={bootStrapClasses['form-check-label']}>TRS</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
-                                <label className={bootStrapClasses['form-check-label']}>Flight E</label>
+                                <input type='checkbox' checked={this.props.opcDefault.TRP}
+                                onClick={(event) => this.props.onToggleTRP(!this.props.opcDefault.TRP)}
+                                className={bootStrapClasses['form-check-input']} />
+                                <label className={bootStrapClasses['form-check-label']}>TRP</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
-                                <label className={bootStrapClasses['form-check-label']}>Flight E</label>
+                                <input type='checkbox' checked={this.props.opcDefault.LLC}
+                                onClick={(event) => this.props.onToggleDefaultLLC(!this.props.opcDefault.LLC)}
+                                className={bootStrapClasses['form-check-input']} />
+                                <label className={bootStrapClasses['form-check-label']}>LLC</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
-                                <label className={bootStrapClasses['form-check-label']}>Flight E</label>
+                                <input type='checkbox' checked={this.props.opcDefault.CMU}
+                                onClick={(event) => this.props.onToggleDefaultCMU(!this.props.opcDefault.CMU)}
+                                className={bootStrapClasses['form-check-input']} />
+                                <label className={bootStrapClasses['form-check-label']}>CMU</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
-                                <label className={bootStrapClasses['form-check-label']}>Flight E</label>
+                                <input type='checkbox' checked={this.props.opcDefault.OTH}
+                                onClick={(event) => this.props.onToggleOTH(!this.props.opcDefault.OTH)}
+                                className={bootStrapClasses['form-check-input']} />
+                                <label className={bootStrapClasses['form-check-label']}>OTH</label>
                             </div>
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
@@ -145,7 +171,7 @@ class OPCODefaults extends Component{
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
                                 <input type='radio' className={bootStrapClasses['form-check-input']} />
-                                <label className={bootStrapClasses['form-check-label']}>Meidum</label>
+                                <label className={bootStrapClasses['form-check-label']}>Medium</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
                                 <input type='radio' className={bootStrapClasses['form-check-input']} />
@@ -178,7 +204,17 @@ const mapDispatchToProps = dispatch => {
         onEditBonusModels: (bonusModels) => dispatch(actions.editBonusModels(bonusModels)),
         onEditOrgLevel: (orgLevel) => dispatch(actions.editOrgLevel(orgLevel)),
         onEditLocation: (location) => dispatch(actions.editLocation(location)),
-        onEditEmail: (email) => dispatch(actions.editEmail(email))
+        onEditEmail: (email) => dispatch(actions.editEmail(email)),
+        onToggleGuaranteeBonus: (guaranteeBonus) => dispatch(actions.toggleGuaranteeBonus(guaranteeBonus)),
+        onToggleLow: (low) => dispatch(actions.toggleLow(low)),
+        onToggleMedium: (medium) => dispatch(actions.toggleMedium(medium)),
+        onToggleHigh: (high) => dispatch(actions.toggleHigh(high)),
+        onToggleDefaultFlights: (flight, letter) => dispatch(actions.toggleDefaultFlights(flight, letter)),
+        onToggleTRS: (trs) => dispatch(actions.toggleTRS(trs)),
+        onToggleTRP: (trp) => dispatch(actions.toggleTRP(trp)),
+        onToggleLLC: (llc) => dispatch(actions.toggleLLC(llc)),
+        onToggleCMU: (cmu) => dispatch(actions.toggleCMU(cmu)),
+        onToggleOTH: (oth) => dispatch(actions.toggleOTH(oth))
     }
 }
 
