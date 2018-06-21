@@ -6,7 +6,7 @@ import Aux from '../../../hoc/Auxiliary/Auxiliary';
 const table = (props) =>{
 
     const tableData = props.tableData.map(data => (
-        <tr>
+        <tr key={data.id}>
             <td>{data.amount}</td>
             <td>{data.weekEndDate}</td>
             <td>{data.comment}</td>

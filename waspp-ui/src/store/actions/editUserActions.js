@@ -27,7 +27,7 @@ export const fetchUsersSuccess = (users, searchList) => {
 export const fetchUsers = () => {
     return dispatch => {
         dispatch(fetchUsersStart());
-        axios.get(links.EDIT_USERS_DB)
+        axios.get(links.EDIT_USERS_DB+'.json')
             .then(response => {
                 const dataList = [];
                 const searchData= [];

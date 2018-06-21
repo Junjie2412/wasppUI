@@ -5,6 +5,7 @@ import Modal from '../../UI/Modal/Modal';
 import AdjustmentForm from './AdjustmentForm/AdjustmentForm';
 import classes from './EditUserTable.css';
 import {connect} from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 class EditUserTable extends Component{
 
@@ -16,7 +17,8 @@ class EditUserTable extends Component{
     }
 
     closeModal = () => {
-        return this.setState({modalShow: false});
+        this.setState({modalShow: false});
+        this.props.onCancelConfirming();
     }
     
     render(){
@@ -53,4 +55,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(EditUserTable);
+const mapDispatchToProps = dispatch => {
+    return {
+        onCancelConfirming: () => dispatch(actions.editAdjustmentCancel())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditUserTable);
