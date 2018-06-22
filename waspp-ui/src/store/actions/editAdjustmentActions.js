@@ -23,7 +23,7 @@ export const addAdjustmentSuccess = (id, adjustmentData) => {
 export const addAdjustment = (adjustmentData ) => {
     return dispatch => {
         dispatch( addAdjustmentStart() );
-        axios.post(links.EDIT_ADJUSTMENTS_DB, adjustmentData)
+        axios.post(links.EDIT_ADJUSTMENTS_DB+'.json', adjustmentData)
             .then(response => {
                 dispatch(addAdjustmentSuccess(response.data.name, adjustmentData))
             })
@@ -75,7 +75,7 @@ export const fetchAdjustmentsSuccess = (adjustmentsList) => {
 export const fetchAdjustments = () => {
     return dispatch => {
         dispatch(fetchAdjustmentsStart());
-        axios.get(links.EDIT_ADJUSTMENTS_DB)
+        axios.get(links.EDIT_ADJUSTMENTS_DB+'.json')
             .then(response => {
                 const dataList = [];
                 for(let adj in response.data ) {
@@ -92,15 +92,13 @@ export const fetchAdjustments = () => {
 export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) => {
 
     const dataList = [];
-    console.log(setBy);
     switch(setBy) {
         case 'Payroll Number':
             for(let adj in adjustmentsList ) {
                 if (adjustmentsList[adj].user.PayrollNumber === selectedUser.PayrollNumber) {
-                    console.log(adjustmentsList[adj].user.PayrollNumber + ' === ' + selectedUser.PayrollNumber);
                     dataList.push( {
                         ...adjustmentsList[adj],
-                        id: [adj]
+                        id: [adjustmentsList[adj].id]
                     })
                 }
             }
@@ -111,10 +109,9 @@ export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) 
         case 'AS400 ID':
             for(let adj in adjustmentsList ) {
                 if (adjustmentsList[adj].user.AS400ID === selectedUser.AS400ID) {
-                    console.log(adjustmentsList[adj].user.AS400ID + ' === ' + selectedUser.AS400ID);
                     dataList.push( {
                         ...adjustmentsList[adj],
-                        id: [adj]
+                        id: [adjustmentsList[adj].id]
                     })
                 }
             }
@@ -125,10 +122,9 @@ export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) 
         case 'Active Directory':
             for(let adj in adjustmentsList ) {
                 if (adjustmentsList[adj].user.ADID === selectedUser.ADID) {
-                    console.log(adjustmentsList[adj].user.ADID + ' === ' + selectedUser.ADID);
                     dataList.push( {
                         ...adjustmentsList[adj],
-                        id: [adj]
+                        id: [adjustmentsList[adj].id]
                     })
                 }
             }
@@ -139,10 +135,9 @@ export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) 
         default:
             for(let adj in adjustmentsList ) {
                 if (adjustmentsList[adj].user.PayrollNumber === selectedUser.PayrollNumber) {
-                    console.log(adjustmentsList[adj].user.PayrollNumber + ' === ' + selectedUser.PayrollNumber);
                     dataList.push( {
                         ...adjustmentsList[adj],
-                        id: [adj]
+                        id: [adjustmentsList[adj].id]
                     })
                 }
             }
@@ -151,4 +146,19 @@ export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) 
                 currentUserAdjustments: dataList
             }
         }
+}
+
+// ************************************************************************//
+// ************************************************************************//
+// The below are functions that will confirm or cancel a confirmation
+export const editAdjustmentInit = () => {
+    return {
+        type: actionTypes.ADD_ADJUSTMENT_INIT
+    }
+}
+
+export const editAdjustmentCancel = () => {
+    return {
+        type: actionTypes.ADD_ADJUSTMENT_CANCEL
+    }
 }

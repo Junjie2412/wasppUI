@@ -5,11 +5,9 @@ import EditBonuses from '../../components/EditUser/EditBonuses/EditBonuses';
 import EditUserTable from '../../components/EditUser/EditUserTable/EditUserTable';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import AfterFloorAdjustments from '../../components/EditUser/AfterFloorAdjustments/AfterFloorAdjustments';
-//import classes from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import classes from './EditUser.css';
 import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux';
-import {fetchAfterFloorAdjustments} from "../../store/actions/editAfterFloorAdjustmentActions";
 
 class EditUsers extends Component {
 
@@ -51,7 +49,7 @@ class EditUsers extends Component {
 
     render() {
         return (
-            this.props.loading ? <Spinner/>:
+            (this.props.loadingUsers && this.props.loadingAdjustments && this.props.loadingAfterFloorAdjustments )? <Spinner/>:
             <div className={classes.EditUser}>
                 <h1 className={classes.Header}>Edit Users</h1>
                 <div style={{transform: 'translateX(2.3%)'}}>
@@ -79,7 +77,9 @@ class EditUsers extends Component {
 const mapStateToProps = state => {
     return {
         users: state.editUsers.users,
-        loading: state.editUsers.loading,
+        loadingUsers: state.editUsers.loading,
+        loadingAdjustments: state.editAdjustments.loading,
+        loadingAfterFloorAdjustments: state.editAfterFloorAdjustments.loading,
         searchBy: state.editUsers.searchBy,
         searchList: state.editUsers.searchList,
         placeholder: state.editUsers.placeholder,

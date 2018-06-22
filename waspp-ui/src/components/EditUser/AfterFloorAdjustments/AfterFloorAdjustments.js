@@ -5,6 +5,7 @@ import EditUserTable from '../../EditUser/EditUserTable/EditUserTable';
 import AdjustmentForm from '../../EditUser/EditUserTable/AdjustmentForm/AdjustmentForm';
 import Modal from '../../../components/UI/Modal/Modal';
 import {connect} from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 class AfterFloorAdjustments extends Component {
 
@@ -18,6 +19,7 @@ class AfterFloorAdjustments extends Component {
     }
 
     closeModal = () => {
+        this.props.onCancelConfirming();
         this.setState({modalOpened: false});
     }
 
@@ -48,7 +50,7 @@ class AfterFloorAdjustments extends Component {
                     </div>
                 </div>
                 <Modal show={this.state.modalOpened} modalClosed={this.closeModal}>
-                    <AdjustmentForm isAfter/>
+                    <AdjustmentForm isAfter close={this.closeModal}/>
                 </Modal>
             </Aux>
         )
@@ -61,4 +63,11 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(AfterFloorAdjustments);
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onCancelConfirming: () => dispatch(actions.editAdjustmentCancel())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AfterFloorAdjustments);
