@@ -67,6 +67,34 @@ const selectAdjustment = (state, action) => {
     })
 }
 
+const deleteAdjustmentStart = (state, action) => {
+    return updateObject(state, {
+        loading: true
+    })
+}
+
+const deleteAdjustmentSuccess = (state, action) => {
+    const newArray = state.currentUserAdjustments;
+    for (let data in newArray) {
+        console.log(action.id + '=====' + newArray[data].id)
+        if (newArray[data].id === action.id) {
+            console.log(newArray);
+            newArray.splice(data, 1);
+            console.log(newArray);
+        }
+    }
+    return updateObject(state, {
+        loading: false,
+        currentUserAdjustments: newArray,
+        selectedAdjustment: {
+            id: '',
+            weekEndDate: '',
+            comment: '',
+            amount: ''
+        }
+    })
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_ADJUSTMENT_START: return addAdjustmentStart(state, action);
@@ -78,6 +106,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_ADJUSTMENTS_SUCCESS: return fetchAdjustmentsSuccess(state, action);
         case actionTypes.SET_CURRENT_USER_ADJUSTMENTS: return setCurrentUserAdjustments(state, action);
         case actionTypes.SELECT_ADJUSTMENT: return selectAdjustment(state, action);
+        case actionTypes.DELETE_ADJUSTMENT_START: return deleteAdjustmentStart(state, action);
+        case actionTypes.DELETE_ADJUSTMENT_SUCCESS: return deleteAdjustmentSuccess(state, action);
         default: return state;
     }
 };

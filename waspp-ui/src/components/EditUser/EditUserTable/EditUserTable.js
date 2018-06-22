@@ -5,6 +5,7 @@ import Modal from '../../UI/Modal/Modal';
 import AddAdjustmentForm from './AddAdjustmentForm/AddAdjustmentForm';
 import classes from './EditUserTable.css';
 import {connect} from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 class EditUserTable extends Component{
 
@@ -27,6 +28,10 @@ class EditUserTable extends Component{
     closeUpdateModal = () => {
         this.setState({showUpdateModal: false});
     }
+
+    deleteAdjustment = (id) => {
+        return this.props.onDeleteAdjustment(id);
+    }
     
     render(){
 
@@ -47,7 +52,7 @@ class EditUserTable extends Component{
                                     className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['col-sm-2']].join(' ')}
                                     style={{margin: '4px'}}>Update</button>
                             <button disabled={!this.props.selected}
-                                    onClick={this.props.afterFloor ? this.props.delete : this.editDeleteModal}
+                                    onClick={this.props.afterFloor ? this.props.delete : (id) => this.deleteAdjustment(this.props.selectedAdjustment.id)}
                                     className={[bootStrapClasses.btn, bootStrapClasses['btn-danger'], bootStrapClasses['col-sm-2']].join(' ')}>Delete</button>
                         </div>
                     </div>
@@ -65,8 +70,17 @@ const mapStateToProps = state => {
         selected: state.editUsers.userSelected,
         currentUser: state.editUsers.currentUser,
         currentUserAdjustments: state.editAdjustments.currentUserAdjustments,
-        currentUserAfterFloorAdjustments: state.editAfterFloorAdjustments.currentUserAdjustments
+        currentUserAfterFloorAdjustments: state.editAfterFloorAdjustments.currentUserAdjustments,
+        selectedAdjustment: state.editAdjustments.selectedAdjustment,
+        selectedAfterFloorAdjustment: state.editAfterFloorAdjustments.selectedAdjustment
     }
 }
 
-export default connect(mapStateToProps)(EditUserTable);
+const mapDispatchToProps = dispatch => {
+    return {
+        onDeleteAdjustment: (id) => dispatch(actions.deleteAdjustment(id)),
+        onDeleteAfterFloorAdjustments: (id) => dispatch(actions.deleteAfterFloorAdjustment(id))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditUserTable);

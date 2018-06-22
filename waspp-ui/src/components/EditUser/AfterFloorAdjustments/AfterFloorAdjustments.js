@@ -5,7 +5,7 @@ import EditUserTable from '../../EditUser/EditUserTable/EditUserTable';
 import AdjustmentForm from '../EditUserTable/AddAdjustmentForm/AddAdjustmentForm';
 import Modal from '../../../components/UI/Modal/Modal';
 import {connect} from 'react-redux';
-import * as actions from '../../../store/actions/index';
+//import * as actions from '../../../store/actions/index';
 
 class AfterFloorAdjustments extends Component {
 

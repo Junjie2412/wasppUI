@@ -61,6 +61,34 @@ const setCurrentUserAfterFloorAdjustments = (state, action) => {
     })
 }
 
+const deleteAfterFloorAdjustmentStart = (state, action) => {
+    return updateObject(state, {
+        loading: true
+    })
+}
+
+const deleteAfterFloorAdjustmentSuccess = (state, action) => {
+    const newArray = state.currentUserAdjustments;
+    for (let data in newArray) {
+        console.log(action.id + '=====' + newArray[data].id)
+        if (newArray[data].id === action.id) {
+            console.log(newArray);
+            newArray.splice(data, 1);
+            console.log(newArray);
+        }
+    }
+    return updateObject(state, {
+        loading: false,
+        currentUserAdjustments: newArray,
+        selectedAdjustment: {
+            id: '',
+            weekEndDate: '',
+            comment: '',
+            amount: ''
+        }
+    })
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_AFTER_FLOOR_ADJUSTMENT_START: return addAfterFloorAdjustmentStart(state, action);
@@ -71,6 +99,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_AFTER_FLOOR_ADJUSTMENTS_START: return fetchAfterFloorAdjustmentsStart(state, action);
         case actionTypes.FETCH_AFTER_FLOOR_ADJUSTMENTS_SUCCESS: return fetchAfterFloorAdjustmentsSuccess(state, action);
         case actionTypes.SET_CURRENT_USER_AFTER_FLOOR_ADJUSTMENTS: return setCurrentUserAfterFloorAdjustments(state, action);
+        case actionTypes.DELETE_AFTER_FLOOR_ADJUSTMENT_START: return deleteAfterFloorAdjustmentStart(state, action);
+        case actionTypes.DELETE_AFTER_FLOOR_ADJUSTMENT_SUCCESS: return deleteAfterFloorAdjustmentSuccess(state, action);
         default: return state;
     }
 };

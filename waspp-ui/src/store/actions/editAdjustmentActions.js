@@ -178,8 +178,8 @@ export const deleteAdjustment = (id) => {
     return dispatch => {
         dispatch( deleteAdjustmentStart() );
         axios.delete(links.EDIT_ADJUSTMENTS_DB+'/'+id+'.json')
-            .then(response => {
-                dispatch(deleteAdjustmentSuccess(response.data.name))
-            })
+            .then(
+                dispatch(deleteAdjustmentSuccess(id))
+            )
     };
 }
