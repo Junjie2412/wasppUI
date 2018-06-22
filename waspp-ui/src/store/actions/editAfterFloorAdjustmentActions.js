@@ -147,3 +147,29 @@ export const setCurrentUserAfterFloorAdjustments = (adjustmentsList, selectedUse
             }
     }
 }
+
+// ************************************************************************//
+// ************************************************************************//
+// The below functions delete an adjustment
+export const deleteAfterFloorAdjustmentStart = () => {
+    return {
+        type: actionTypes.DELETE_AFTER_FLOOR_ADJUSTMENT_START
+    }
+}
+
+export const deleteAfterFloorAdjustmentSuccess = (id) => {
+    return {
+        type: actionTypes.DELETE_AFTER_FLOOR_ADJUSTMENT_SUCCESS,
+        id: id,
+    }
+}
+
+export const deleteAfterFloorAdjustment = (id) => {
+    return dispatch => {
+        dispatch( deleteAfterFloorAdjustmentStart() );
+        axios.delete(links.EDIT_AFTER_FLOOR_ADJUSTMENTS_DB+'/'+id+'.json')
+            .then(
+                dispatch(deleteAfterFloorAdjustmentSuccess(id))
+            )
+    };
+}

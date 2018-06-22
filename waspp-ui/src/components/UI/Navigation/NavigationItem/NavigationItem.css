@@ -27,3 +27,7 @@
     padding: 14px;
     width: 100%;
 }
+
+.NavigationButton:hover {
+    background: linear-gradient(to bottom right, #006699, #0099cc);
+}

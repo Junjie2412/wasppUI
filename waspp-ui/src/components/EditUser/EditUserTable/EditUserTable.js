@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Table from '../../UI/Table/Table';
 import bootStrapClasses from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Modal from '../../UI/Modal/Modal';
-import AdjustmentForm from './AdjustmentForm/AdjustmentForm';
+import AddAdjustmentForm from './AddAdjustmentForm/AddAdjustmentForm';
 import classes from './EditUserTable.css';
 import {connect} from 'react-redux';
 import * as actions from '../../../store/actions/index';
@@ -10,15 +10,27 @@ import * as actions from '../../../store/actions/index';
 class EditUserTable extends Component{
 
     state = {
-        modalShow: false
+        showAddModal: false,
+        showUpdateModal: false
     }
-    editAdjustmentFormModel = () => {
-        return this.setState({modalShow: true});
+    editAddModal = () => {
+        return this.setState({showAddModal: true});
     }
 
-    closeModal = () => {
-        this.setState({modalShow: false});
-        this.props.onCancelConfirming();
+    closeAddModal = () => {
+        this.setState({showAddModal: false});
+    }
+
+    editUpdateModal = () => {
+        return this.setState({showUpdateModal: true});
+    }
+
+    closeUpdateModal = () => {
+        this.setState({showUpdateModal: false});
+    }
+
+    deleteAdjustment = (id) => {
+        return this.props.onDeleteAdjustment(id);
     }
     
     render(){
@@ -32,14 +44,21 @@ class EditUserTable extends Component{
                     </div>
                     <div className={[bootStrapClasses.row, classes.ButtonGroup].join(' ')}>
                         <div className={bootStrapClasses['col-sm-12']}>
-                            <button disabled={!this.props.selected} onClick={this.props.add ? this.props.add : this.editAdjustmentFormModel} className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2']].join(' ')}>Add</button>
-                            <button disabled={!this.props.selected} className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['col-sm-2']].join(' ')} style={{margin: '4px'}}>Update</button>
-                            <button disabled={!this.props.selected} className={[bootStrapClasses.btn, bootStrapClasses['btn-danger'], bootStrapClasses['col-sm-2']].join(' ')}>Delete</button>
+                            <button disabled={!this.props.selected}
+                                    onClick={this.props.afterFloor ? this.props.add : this.editAddModal}
+                                    className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2']].join(' ')}>Add</button>
+                            <button disabled={!this.props.selected}
+                                    onClick={this.props.afterFloor ? this.props.update : this.editUpdateModal}
+                                    className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['col-sm-2']].join(' ')}
+                                    style={{margin: '4px'}}>Update</button>
+                            <button disabled={!this.props.selected}
+                                    onClick={this.props.afterFloor ? this.props.delete : (id) => this.deleteAdjustment(this.props.selectedAdjustment.id)}
+                                    className={[bootStrapClasses.btn, bootStrapClasses['btn-danger'], bootStrapClasses['col-sm-2']].join(' ')}>Delete</button>
                         </div>
                     </div>
                 </div>
-                <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
-                    <AdjustmentForm close={this.closeModal}/>
+                <Modal show={this.state.showAddModal} modalClosed={this.closeAddModal}>
+                    <AddAdjustmentForm close={this.closeAddModal}/>
                 </Modal>
             </div>
         )
@@ -51,13 +70,16 @@ const mapStateToProps = state => {
         selected: state.editUsers.userSelected,
         currentUser: state.editUsers.currentUser,
         currentUserAdjustments: state.editAdjustments.currentUserAdjustments,
-        currentUserAfterFloorAdjustments: state.editAfterFloorAdjustments.currentUserAdjustments
+        currentUserAfterFloorAdjustments: state.editAfterFloorAdjustments.currentUserAdjustments,
+        selectedAdjustment: state.editAdjustments.selectedAdjustment,
+        selectedAfterFloorAdjustment: state.editAfterFloorAdjustments.selectedAdjustment
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCancelConfirming: () => dispatch(actions.editAdjustmentCancel())
+        onDeleteAdjustment: (id) => dispatch(actions.deleteAdjustment(id)),
+        onDeleteAfterFloorAdjustments: (id) => dispatch(actions.deleteAfterFloorAdjustment(id))
     }
 }
 

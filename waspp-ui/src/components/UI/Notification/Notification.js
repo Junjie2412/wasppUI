@@ -5,7 +5,7 @@ import bootStrapClasses from '../../../../node_modules/bootstrap/dist/css/bootst
 const notification = (props) => {
     return (
         <div className={[classes.alert, bootStrapClasses['fixed-top']].join(' ')}>
-            <button className={classes.closebtn} onClick={props.close}>close</button>
+            <button className={classes.closebtn} onClick={props.close}>X</button>
             <button className={classes.closebtn} onClick={props.closeAll}>close all</button>
             <div className={classes.text}>
                 <strong> {props.strong} </strong> {props.text}
