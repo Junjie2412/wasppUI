@@ -14,7 +14,8 @@ export {
     fetchAdjustments,
     setCurrentUserAdjustments,
     editAdjustmentInit,
-    editAdjustmentCancel
+    editAdjustmentCancel,
+    selectAdjustment
 } from './editAdjustmentActions';
 
 export {

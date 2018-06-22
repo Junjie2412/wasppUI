@@ -9,6 +9,12 @@ const initialState = {
         comment: '',
         amount: ''
     },
+    selectedAdjustment: {
+        id: '',
+        weekEndDate: '',
+        comment: '',
+        amount: ''
+    },
     currentUserAdjustments: [],
     loading: false
 }
@@ -19,7 +25,11 @@ const addAfterFloorAdjustmentStart = (state, action ) => {
 
 const addAfterFloorAdjustmentSuccess = (state, action) => {
     const newAdjustment = updateObject(action.data, {id: action.id});
-    return updateObject(state, {loading: false, currentUserAdjustments: state.currentUserAdjustments.concat(newAdjustment)})
+    return updateObject(state, {loading: false, currentAdjustment: {
+        date: moment(),
+        comment: '',
+        amount: ''
+    }, currentUserAdjustments: state.currentUserAdjustments.concat(newAdjustment)})
 }
 
 const editAfterFloorAdjustmentDate = (state, action) => {

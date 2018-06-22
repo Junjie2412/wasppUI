@@ -20,7 +20,7 @@ export const addAdjustmentSuccess = (id, adjustmentData) => {
     }
 }
 
-export const addAdjustment = (adjustmentData ) => {
+export const addAdjustment = (adjustmentData) => {
     return dispatch => {
         dispatch( addAdjustmentStart() );
         axios.post(links.EDIT_ADJUSTMENTS_DB+'.json', adjustmentData)
@@ -150,15 +150,36 @@ export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) 
 
 // ************************************************************************//
 // ************************************************************************//
-// The below are functions that will confirm or cancel a confirmation
-export const editAdjustmentInit = () => {
+// The function below selects a current adjustment
+export const selectAdjustment = (adjustmentData) => {
     return {
-        type: actionTypes.ADD_ADJUSTMENT_INIT
+        type: actionTypes.SELECT_ADJUSTMENT,
+        data: adjustmentData
     }
 }
 
-export const editAdjustmentCancel = () => {
+// ************************************************************************//
+// ************************************************************************//
+// The below functions delete an adjustment
+export const deleteAdjustmentStart = () => {
     return {
-        type: actionTypes.ADD_ADJUSTMENT_CANCEL
+        type: actionTypes.DELETE_ADJUSTMENT_START
     }
+}
+
+export const deleteAdjustmentSuccess = (id) => {
+    return {
+        type: actionTypes.DELETE_ADJUSTMENT_SUCCESS,
+        id: id,
+    }
+}
+
+export const deleteAdjustment = (id) => {
+    return dispatch => {
+        dispatch( deleteAdjustmentStart() );
+        axios.delete(links.EDIT_ADJUSTMENTS_DB+'/'+id+'.json')
+            .then(response => {
+                dispatch(deleteAdjustmentSuccess(response.data.name))
+            })
+    };
 }

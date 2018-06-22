@@ -8,6 +8,8 @@ import AfterFloorAdjustments from '../../components/EditUser/AfterFloorAdjustmen
 import classes from './EditUser.css';
 import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux';
+import axios from 'axios';
+import * as links from '../../shared/Links';
 
 class EditUsers extends Component {
 
