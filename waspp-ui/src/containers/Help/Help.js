@@ -1,13 +1,24 @@
 import React, {Component} from 'react';
 import bootstrapClasses from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import classes from './Help.css';
 
 class Help extends Component {
+    
+    
+
     render() {
         return (
             <div>
                 <h1 style={{textAlign: 'center', marginTop: '20px'}}>
                     Help
                 </h1>
+
+                <button class={classes.collapsible}>Open Collapsible</button>
+                <div class={classes.content}>
+                    <p>Lorem ipsum...</p>
+                </div>
+
+                
                 {/* <div id="accordionExample" className={bootstrapClasses.accordian}>
                     <div className={bootstrapClasses.card}>
                         <div id="headingOne" className={bootstrapClasses['card-header']}>

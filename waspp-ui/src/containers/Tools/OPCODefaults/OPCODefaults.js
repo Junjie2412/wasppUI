@@ -71,19 +71,19 @@ class OPCODefaults extends Component{
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Bonus Level</label>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.Low}
+                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.Low} disabled
                                 onClick={(event) => this.props.onToggleLow(!this.props.opcDefault.Low)} 
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Low</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.Medium}
+                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.Medium} disabled
                                 onClick={(event) => this.props.onToggleMedium(!this.props.opcDefault.Medium)}
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Medium</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.High}
+                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.High} disabled
                                 onClick={(event) => this.props.onToggleHigh(!this.props.opcDefault.High)}
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>High</label>
@@ -163,7 +163,7 @@ class OPCODefaults extends Component{
                                 <label className={bootStrapClasses['form-check-label']}>OTH</label>
                             </div>
                         </div>
-                        <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
+                        {/* <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Default Flights</label>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
                                 <input type='radio' className={bootStrapClasses['form-check-input']} />
@@ -177,7 +177,7 @@ class OPCODefaults extends Component{
                                 <input type='radio' className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>High</label>
                             </div>
-                        </div>
+                        </div> */}
                         <button type="submit" className={[bootStrapClasses.btn, bootStrapClasses['btn-primary']].join(' ')}
                         style={{backgroundColor: '#006699'}}>Submit</button>
                     </form>
