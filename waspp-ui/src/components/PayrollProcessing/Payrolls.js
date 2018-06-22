@@ -28,13 +28,15 @@ class Payrolls extends Component{
         <div className={bsClasses.row}>
 
           <div className={[bsClasses["col-md-12"]].join(' ')} >
+
+            <h1> Weekly Commissions Proof</h1>
             <span>Week Ending: </span>
             <span style={{display:"inline-block"}}><DateInput/></span>
           </div>
         </div>
         <div className={bsClasses.row}>
           <div className={[bsClasses["col-md-12"]].join(' ')}>
-            <table className={[bsClasses.table,bsClasses["table-responsive"], classes.align, classes.table].join(' ')}>
+            <table className={[bsClasses.table,bsClasses["table-responsive"], classes.align, classes.table].join(' ')} id="table-to-xls">
               <thead>
                 <tr>
                   <th rowSpan="2">AS400 ID</th>

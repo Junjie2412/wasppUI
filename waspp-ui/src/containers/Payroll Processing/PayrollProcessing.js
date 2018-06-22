@@ -43,8 +43,10 @@ class PayrollProcessing extends Component {
                   </div>
                 </div>
               </div>
+
               <div className={bsClasses.row} style={{display:this.state.showTable}}>
                 <div className={bsClasses['col-md-12']}>
+                  
                   <br/>
                   <Payroll />
                 </div>

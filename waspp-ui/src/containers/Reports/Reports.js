@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Report from '../../components/Report/Report';
+import Payroll from '../../components/PayrollProcessing/Payrolls';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import classes from './Reports.css';
 import bsClasses from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -38,8 +40,15 @@ class Reports extends Component {
                 </div>
                 <div className={bsClasses.row}>
                   <div className={bsClasses['col-md-12']}>
-                      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                      <Report title={'Compensation Recap Report'}/>
+
+                      <ReactHTMLTableToExcel
+                            id="test-table-xls-button"
+                            className="download-table-xls-button"
+                            table="table-to-xls"
+                            filename="tablexls"
+                            sheet="tablexls"
+                            buttonText="Download Report"/>
+                      <Payroll/>
                     </div>
                 </div>
             </div>
