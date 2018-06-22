@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import OPCODefaults from './OPCODefaults/OPCODefaults';
 import ToolsToolbar from '../../components/UI/Navigation/ToolsToolbar/ToolsToolbar';
-import {Route, NavLink, Switch} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import classes from './Tools.css';
 
 class Tools extends Component {
@@ -11,14 +11,6 @@ class Tools extends Component {
                 <h1 className={classes.header}>Tools</h1>
                 <ToolsToolbar></ToolsToolbar>
                 <Route path='/tools/OPCODefaults' exact component={OPCODefaults} />
-                {/* <NavLink to='/somethingElse' exact>SomethingElse</NavLink> */}
-
-                {/* <Switch>
-                    <Route path="/tools/OPCODefaults" exact component={OPCODefaults}/>
-                </Switch> */}
-                {/* <h1 style={{textAlign: 'center', marginTop: '20px'}}>
-                    <OPCODefaults />
-                </h1> */}
             </div>
         );
     };

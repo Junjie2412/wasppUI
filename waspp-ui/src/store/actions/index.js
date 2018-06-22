@@ -36,7 +36,18 @@ export {
     editBonusModels,
     editOrgLevel,
     editLocation,
-    editEmail
+
+    editEmail,
+    toggleGuaranteeBonus,
+    toggleLow,
+    toggleMedium,
+    toggleHigh,
+    toggleDefaultFlights,
+    toggleTRS,
+    toggleTRP,
+    toggleLLC,
+    toggleCMU,
+    toggleOTH
 } from './OPCODefaultsActions'
 
 export {
