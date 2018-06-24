@@ -15,7 +15,7 @@ class EditUsers extends Component {
 
     state = {
         userLookup: ''
-    }
+    };
 
     componentDidMount() {
         this.props.onFetchUsers();
@@ -27,7 +27,7 @@ class EditUsers extends Component {
     onChangeText = (event) => {
         this.setState({userLookup: event.target.value});
         this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users, this.props.adjustments, this.props.afterFloorAdjustments)
-    }
+    };
 
     //This handler changes the state properties based on which value was selected
     onChangeSelect = (event) => {
@@ -44,8 +44,11 @@ class EditUsers extends Component {
             default:
                 return this.props.onSetPayrollSearch(this.props.users);
         }
+    };
 
-    }
+    clear = () => {
+        this.setState({userLookup: ''})
+    };
 
     //This handler will post a new update to Adjustments
 
@@ -61,6 +64,7 @@ class EditUsers extends Component {
                         dataList={this.props.searchList}
                         change={(event) => this.onChangeSelect(event)}
                         value={this.state.userLookup}
+                        click={this.clear}
                         changeText={(event) => this.onChangeText(event)}/>
                 </div>
                 <div className={classes.row}>

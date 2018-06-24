@@ -9,13 +9,14 @@ const initialState = {
         comment: '',
         amount: ''
     },
+    currentUserAdjustments: [],
     selectedAdjustment: {
         id: '',
         weekEndDate: '',
         comment: '',
         amount: ''
     },
-    currentUserAdjustments: [],
+    isSelected: false,
     loading: false
 }
 
@@ -63,7 +64,8 @@ const setCurrentUserAfterFloorAdjustments = (state, action) => {
 
 const selectAfterFloorAdjustment = (state, action) => {
     return updateObject(state, {
-        selectedAdjustment: action.data
+        selectedAdjustment: action.data,
+        isSelected: true
     })
 }
 
@@ -85,6 +87,7 @@ const deleteAfterFloorAdjustmentSuccess = (state, action) => {
     }
     return updateObject(state, {
         loading: false,
+        isSelected: false,
         currentUserAdjustments: newArray,
         selectedAdjustment: {
             id: '',

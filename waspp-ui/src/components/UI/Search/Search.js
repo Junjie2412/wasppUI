@@ -17,10 +17,6 @@ const search = (props) => {
         </option>
     ));
 
-    // const changeDetected = (event) =>{
-    //     console.log('Changed: ' + event.target.value);
-    // }
-
     return (
         <div className={classes.Search}>
             <select className={classes.SearchSelect} onChange={props.change}>
@@ -36,8 +32,9 @@ const search = (props) => {
                 <datalist id="data">
                     {dataList}
                 </datalist>
+            <button onClick={props.click} className={classes.Clear}>X</button>
         </div>
     );
-}
+};
 
 export default search
