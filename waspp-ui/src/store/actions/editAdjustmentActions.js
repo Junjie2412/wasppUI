@@ -146,7 +146,7 @@ export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) 
                 currentUserAdjustments: dataList
             }
         }
-}
+};
 
 // ************************************************************************//
 // ************************************************************************//
@@ -156,7 +156,7 @@ export const selectAdjustment = (adjustmentData) => {
         type: actionTypes.SELECT_ADJUSTMENT,
         data: adjustmentData
     }
-}
+};
 
 // ************************************************************************//
 // ************************************************************************//

@@ -44,7 +44,6 @@ class AfterFloorAdjustments extends Component {
                         <EditUserTable
                             add={this.openModal}
                             afterFloor
-                            test={'hello'}
                         />
                     </div>
                 </div>

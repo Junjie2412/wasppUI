@@ -61,6 +61,12 @@ const setCurrentUserAfterFloorAdjustments = (state, action) => {
     })
 }
 
+const selectAfterFloorAdjustment = (state, action) => {
+    return updateObject(state, {
+        selectedAdjustment: action.data
+    })
+}
+
 const deleteAfterFloorAdjustmentStart = (state, action) => {
     return updateObject(state, {
         loading: true
@@ -99,6 +105,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_AFTER_FLOOR_ADJUSTMENTS_START: return fetchAfterFloorAdjustmentsStart(state, action);
         case actionTypes.FETCH_AFTER_FLOOR_ADJUSTMENTS_SUCCESS: return fetchAfterFloorAdjustmentsSuccess(state, action);
         case actionTypes.SET_CURRENT_USER_AFTER_FLOOR_ADJUSTMENTS: return setCurrentUserAfterFloorAdjustments(state, action);
+        case actionTypes.SELECT_AFTER_FLOOR_ADJUSTMENT: return selectAfterFloorAdjustment(state, action);
         case actionTypes.DELETE_AFTER_FLOOR_ADJUSTMENT_START: return deleteAfterFloorAdjustmentStart(state, action);
         case actionTypes.DELETE_AFTER_FLOOR_ADJUSTMENT_SUCCESS: return deleteAfterFloorAdjustmentSuccess(state, action);
         default: return state;

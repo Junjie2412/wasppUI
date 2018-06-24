@@ -12,26 +12,30 @@ class EditUserTable extends Component{
     state = {
         showAddModal: false,
         showUpdateModal: false
-    }
+    };
     editAddModal = () => {
         return this.setState({showAddModal: true});
-    }
+    };
 
     closeAddModal = () => {
         this.setState({showAddModal: false});
-    }
+    };
 
     editUpdateModal = () => {
         return this.setState({showUpdateModal: true});
-    }
+    };
 
     closeUpdateModal = () => {
         this.setState({showUpdateModal: false});
-    }
+    };
 
     deleteAdjustment = (id) => {
         return this.props.onDeleteAdjustment(id);
-    }
+    };
+
+    deleteAfterFloorAdjustment = (id) => {
+        return this.props.onDeleteAfterFloorAdjustment(id);
+    };
     
     render(){
 
@@ -40,7 +44,8 @@ class EditUserTable extends Component{
                 <div className={this.props.afterFloor ? [bootStrapClasses.card, classes.Card, classes.AfterFloorCard].join(' ') : [bootStrapClasses.card, classes.Card].join(' ')}>
                     <h3 className={classes.Title}>{this.props.afterFloor ? 'Edit After Floor Adjustments' : 'Edit Adjustments'}</h3>
                     <div className={classes.Table}>
-                        <Table tableData={this.props.afterFloor ? this.props.currentUserAfterFloorAdjustments : this.props.currentUserAdjustments}/>
+                        <Table tableData={this.props.afterFloor ? this.props.currentUserAfterFloorAdjustments : this.props.currentUserAdjustments}
+                        isAfter={this.props.afterFloor}/>
                     </div>
                     <div className={[bootStrapClasses.row, classes.ButtonGroup].join(' ')}>
                         <div className={bootStrapClasses['col-sm-12']}>
@@ -52,7 +57,7 @@ class EditUserTable extends Component{
                                     className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['col-sm-2']].join(' ')}
                                     style={{margin: '4px'}}>Update</button>
                             <button disabled={!this.props.selected}
-                                    onClick={this.props.afterFloor ? this.props.delete : (id) => this.deleteAdjustment(this.props.selectedAdjustment.id)}
+                                    onClick={this.props.afterFloor ? (id) => this.deleteAfterFloorAdjustment(this.props.selectedAfterFloorAdjustment.id) : (id) => this.deleteAdjustment(this.props.selectedAdjustment.id)}
                                     className={[bootStrapClasses.btn, bootStrapClasses['btn-danger'], bootStrapClasses['col-sm-2']].join(' ')}>Delete</button>
                         </div>
                     </div>
@@ -79,7 +84,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onDeleteAdjustment: (id) => dispatch(actions.deleteAdjustment(id)),
-        onDeleteAfterFloorAdjustments: (id) => dispatch(actions.deleteAfterFloorAdjustment(id))
+        onDeleteAfterFloorAdjustment: (id) => dispatch(actions.deleteAfterFloorAdjustment(id))
     }
 }
 

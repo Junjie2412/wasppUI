@@ -9,8 +9,9 @@ const table = (props) =>{
 
     const tableData = props.tableData.map(data => (
         <tr key={data.id}
-            className={data.id===props.selectedAdjustment.id ? classes.Selected : classes.TableTr}
-            onClick={(adj) => props.onSelectAdjustment(data)}>
+            className={props.isAfter ? (data.id===props.selectedAfterFloorAdjustment.id ? classes.Selected : classes.TableTr)
+                : (data.id===props.selectedAdjustment.id ? classes.Selected : classes.TableTr)}
+            onClick={props.isAfter ? ((adj) => props.onSelectAfterFloorAdjustment(data)):((adj) => props.onSelectAdjustment(data))}>
             <td>{data.amount}</td>
             <td>{data.weekEndDate}</td>
             <td>{data.comment}</td>
@@ -37,13 +38,15 @@ const table = (props) =>{
 
 const mapStateToProps = state => {
     return {
-        selectedAdjustment: state.editAdjustments.selectedAdjustment
+        selectedAdjustment: state.editAdjustments.selectedAdjustment,
+        selectedAfterFloorAdjustment: state.editAfterFloorAdjustments.selectedAdjustment
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSelectAdjustment: (adjustment) => dispatch(actions.selectAdjustment(adjustment))
+        onSelectAdjustment: (adjustment) => dispatch(actions.selectAdjustment(adjustment)),
+        onSelectAfterFloorAdjustment: (adjustment) => dispatch(actions.selectAfterFloorAdjustment(adjustment))
     }
 }
 
