@@ -45,7 +45,7 @@ export const fetchUsers = () => {
                 dispatch(fetchUsersSuccess(dataList, searchData))
             });
     }
-}
+};
 
 //************************************************************************//
 //************************************************************************//
@@ -65,7 +65,7 @@ export const setPayrollSearch = (users) => {
         searchList: searchData,
         placeholder: 'Payroll Number'
     }
-}
+};
 
 // This will change the searchlist to search by AS400 ID
 export const setAS400Search = (users) => {
@@ -80,7 +80,7 @@ export const setAS400Search = (users) => {
         searchList: searchData,
         placeholder: 'AS400 ID'
     }
-}
+};
 
 // This will change the searchlist to search by Active Directory ID
 export const setADSearch = (users) => {
@@ -102,7 +102,6 @@ export const setADSearch = (users) => {
 
 
 // The below functions will set the current user
-
 export const setCurrentUserInit = (currUser, selected) => {
     return {
         type: actionTypes.SET_CURRENT_USER,

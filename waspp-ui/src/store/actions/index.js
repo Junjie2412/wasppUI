@@ -24,7 +24,8 @@ export {
     editAfterFloorAdjustmentComment,
     fetchAfterFloorAdjustments,
     setCurrentUserAfterFloorAdjustments,
-    deleteAfterFloorAdjustment
+    deleteAfterFloorAdjustment,
+    selectAfterFloorAdjustment
 } from './editAfterFloorAdjustmentActions'
 
 export {

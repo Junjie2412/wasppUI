@@ -10,7 +10,7 @@ export const addAfterFloorAdjustmentStart = () => {
     return {
         type: actionTypes.ADD_AFTER_FLOOR_ADJUSTMENT_START
     };
-}
+};
 
 export const addAfterFloorAdjustmentSuccess = (id, adjustmentData) => {
     return {
@@ -18,7 +18,7 @@ export const addAfterFloorAdjustmentSuccess = (id, adjustmentData) => {
         id: id,
         data: adjustmentData
     }
-}
+};
 
 export const addAfterFloorAdjustment = (adjustmentData ) => {
     return dispatch => {
@@ -39,21 +39,21 @@ export const editAfterFloorAdjustmentDate = (adjustmentDate) => {
         type: actionTypes.EDIT_AFTER_FLOOR_ADJUSTMENT_DATE,
         date: adjustmentDate
     }
-}
+};
 
 export const editAfterFloorAdjustmentComment = (adjustmentComment) => {
     return {
         type: actionTypes.EDIT_AFTER_FLOOR_ADJUSTMENT_COMMENT,
         comment: adjustmentComment
     }
-}
+};
 
 export const editAfterFloorAdjustmentAmount = (adjustmentAmount) => {
     return {
         type: actionTypes.EDIT_AFTER_FLOOR_ADJUSTMENT_AMOUNT,
         amount: adjustmentAmount
     }
-}
+};
 
 // ************************************************************************//
 // ************************************************************************//
@@ -63,7 +63,7 @@ export const fetchAfterFloorAdjustmentsStart = () => {
     return {
         type: actionTypes.FETCH_AFTER_FLOOR_ADJUSTMENTS_START
     };
-}
+};
 
 export const fetchAfterFloorAdjustmentsSuccess = (adjustmentsList) => {
     return {
@@ -87,7 +87,7 @@ export const fetchAfterFloorAdjustments = () => {
                 dispatch(fetchAfterFloorAdjustmentsSuccess(dataList))
             });
     }
-}
+};
 
 export const setCurrentUserAfterFloorAdjustments = (adjustmentsList, selectedUser, setBy) => {
 
@@ -105,7 +105,7 @@ export const setCurrentUserAfterFloorAdjustments = (adjustmentsList, selectedUse
             return {
                 type: actionTypes.SET_CURRENT_USER_AFTER_FLOOR_ADJUSTMENTS,
                 currentUserAdjustments: dataList
-            }
+            };
         case 'AS400 ID':
             for(let adj in adjustmentsList ) {
                 if (adjustmentsList[adj].user.AS400ID === selectedUser.AS400ID) {
@@ -118,7 +118,7 @@ export const setCurrentUserAfterFloorAdjustments = (adjustmentsList, selectedUse
             return {
                 type: actionTypes.SET_CURRENT_USER_AFTER_FLOOR_ADJUSTMENTS,
                 currentUserAdjustments: dataList
-            }
+            };
         case 'Active Directory':
             for(let adj in adjustmentsList ) {
                 if (adjustmentsList[adj].user.ADID === selectedUser.ADID) {
@@ -131,7 +131,7 @@ export const setCurrentUserAfterFloorAdjustments = (adjustmentsList, selectedUse
             return {
                 type: actionTypes.SET_CURRENT_USER_AFTER_FLOOR_ADJUSTMENTS,
                 currentUserAdjustments: dataList
-            }
+            };
         default:
             for(let adj in adjustmentsList ) {
                 if (adjustmentsList[adj].user.PayrollNumber === selectedUser.PayrollNumber) {
@@ -146,7 +146,17 @@ export const setCurrentUserAfterFloorAdjustments = (adjustmentsList, selectedUse
                 currentUserAdjustments: dataList
             }
     }
-}
+};
+
+// ************************************************************************//
+// ************************************************************************//
+// The function below selects a current adjustment
+export const selectAfterFloorAdjustment = (adjustmentData) => {
+    return {
+        type: actionTypes.SELECT_AFTER_FLOOR_ADJUSTMENT,
+        data: adjustmentData
+    }
+};
 
 // ************************************************************************//
 // ************************************************************************//
@@ -155,14 +165,14 @@ export const deleteAfterFloorAdjustmentStart = () => {
     return {
         type: actionTypes.DELETE_AFTER_FLOOR_ADJUSTMENT_START
     }
-}
+};
 
 export const deleteAfterFloorAdjustmentSuccess = (id) => {
     return {
         type: actionTypes.DELETE_AFTER_FLOOR_ADJUSTMENT_SUCCESS,
         id: id,
     }
-}
+};
 
 export const deleteAfterFloorAdjustment = (id) => {
     return dispatch => {
@@ -172,4 +182,4 @@ export const deleteAfterFloorAdjustment = (id) => {
                 dispatch(deleteAfterFloorAdjustmentSuccess(id))
             )
     };
-}
+};
