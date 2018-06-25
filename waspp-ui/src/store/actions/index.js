@@ -37,8 +37,8 @@ export {
     editBonusModels,
     editOrgLevel,
     editLocation,
-
     editEmail,
+
     toggleGuaranteeBonus,
     toggleLow,
     toggleMedium,
@@ -48,5 +48,8 @@ export {
     toggleTRP,
     toggleLLC,
     toggleCMU,
-    toggleOTH
+    toggleOTH,
+    selectMAServe,
+    selectBonusField,
+    selectColumnAxis
 } from './OPCODefaultsActions';

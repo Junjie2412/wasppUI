@@ -7,7 +7,7 @@ import * as actions from '../../../store/actions/index';
 class OPCODefaults extends Component{
     render(){
         return(
-            <div className={[bootStrapClasses.card, classes.cardAlign].join(' ')} style={{overflow: 'auto', height: '500px', width: '97%'}}>
+            <div className={[bootStrapClasses.card, classes.layout].join(' ')} style={{overflow: 'auto', height: '500px', width: '97%'}}>
                 <div className={bootStrapClasses['card-body']}>
                     <form className={bootStrapClasses['container-fluid']} style={{fontSize: '18px'}}>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
@@ -63,7 +63,8 @@ class OPCODefaults extends Component{
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>MA serve</label>
-                            <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')}>
+                            <select onChange={(event) => this.props.onSelectMAServe(event.target.value)} value={this.props.opcDefault.MAServe} 
+                            className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')}>
                                 <option>1 TERR</option>
                                 <option>A-AUS</option>
                                 <option>DER1</option>
@@ -140,7 +141,8 @@ class OPCODefaults extends Component{
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Row Axis</label>
                             <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Column Axis</label>
-                            <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')}>
+                            <select onChange={(event) => this.props.onSelectColumnAxis(event.target.value)} value={this.props.opcDefault.ColumnAxis} 
+                            className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')}>
                                 <option>ARGP Growth</option>
                                 <option>Cases</option>
                                 <option>CB GP Dollars</option>
@@ -150,7 +152,8 @@ class OPCODefaults extends Component{
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Bonus Field</label>
-                            <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')}>
+                            <select onChange={(event) => this.props.onSelectBonusField(event.target.value)} value={this.props.opcDefault.BonusField} 
+                            className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')}>
                                 <option>Grosspay Commissions</option>
                                 <option>NON Incentive Commissions</option>
                                 <option>This Year AP GP</option>
@@ -225,7 +228,10 @@ const mapDispatchToProps = dispatch => {
         onToggleTRP: (trp) => dispatch(actions.toggleTRP(trp)),
         onToggleLLC: (llc) => dispatch(actions.toggleLLC(llc)),
         onToggleCMU: (cmu) => dispatch(actions.toggleCMU(cmu)),
-        onToggleOTH: (oth) => dispatch(actions.toggleOTH(oth))
+        onToggleOTH: (oth) => dispatch(actions.toggleOTH(oth)),
+        onSelectMAServe: (maServe) => dispatch(actions.selectMAServe(maServe)),
+        onSelectBonusField: (bonusField) => dispatch(actions.selectBonusField(bonusField)),
+        onSelectColumnAxis: (columnAxis) => dispatch(actions.selectColumnAxis(columnAxis))
     }
 }
 

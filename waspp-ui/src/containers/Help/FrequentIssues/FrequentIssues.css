@@ -2,6 +2,7 @@
 .collapsible {
     background-color: #006699;
     /* box-shadow: 5px 10px 8px #888888; */
+    font-family: "Century Gothic";
     color: white;
     cursor: pointer;
     padding: 18px;
@@ -26,7 +27,8 @@
   .contentDisplayed {
     transition: 0.3s;
     padding: 0 18px;
+    font-family: "Century Gothic";
     overflow: hidden;
     color: white;
-    background-color: #66b3cc;
+    background-color: #0099cc;
   }
