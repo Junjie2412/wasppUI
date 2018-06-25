@@ -11,8 +11,9 @@ class Help extends Component {
                 <h1 style={{textAlign: 'center', marginTop: '20px'}}>
                     Help
                 </h1>
-
-                <FrequentIssues issues={Issues}/>
+                <div style={{overflow: 'auto'}}>
+                    <FrequentIssues issues={Issues}/>
+                </div>
             </div>
         );
     };
