@@ -6,7 +6,9 @@
     transform: translateY(11px);
 }
 
-.cardAlign{
+.layout{
     transform: translateX(35px);
-    background-color: #66b3cc;
+    background-color: #006699;
+    color: white;
+    font-family: "Century Gothic";
 }

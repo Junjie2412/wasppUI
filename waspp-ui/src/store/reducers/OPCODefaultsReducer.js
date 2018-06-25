@@ -13,7 +13,7 @@ const initialState = {
         CommissionModels: 'CommissionModels',
         GuaranteePercentage: 0,
         BonusModels: 'BonusModels',
-        MAServe: 'MAServe',
+        MAServe: '1 TERR',
         OrgLevel: 'OrgLevel',
         BonusLevel: 'BonusLevel',
         ColumnAxis: 'ColumnAxis',
@@ -132,6 +132,19 @@ const toggleOTH = (state, action) => {
     return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {OTH: action.oth})});
 }
 
+const selectMAServe = (state, action) => {
+    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {MAServe: action.maServe})});
+}
+
+const selectBonusField = (state, action) => {
+    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {BonusField: action.bonusField})});
+}
+
+
+const selectColumnAxis = (state, action) => {
+    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {ColumnAxis: action.columnAxis})});
+}
+
 const reducer = (state = initialState, action) =>{
     switch(action.type){
         case actionTypes.EDIT_OPCODEFAULT_GROUP_NAME: return editOPCODefault(state, action);
@@ -157,6 +170,9 @@ const reducer = (state = initialState, action) =>{
         case actionTypes.TOGGLE_OPCODEFAULT_LLC: return toggleLLC(state, action);
         case actionTypes.TOGGLE_OPCODEFAULT_CMU: return toggleCMU(state, action);
         case actionTypes.TOGGLE_OPCODEFAULT_OTH: return toggleOTH(state, action);
+        case actionTypes.SELECT_MA_SERVE: return selectMAServe(state, action);
+        case actionTypes.SELECT_BONUS_FIELDS: return selectBonusField(state, action);
+        case actionTypes.SELECT_COLUMN_AXIS: return selectColumnAxis(state, action);
         default: return state;
     }
 }

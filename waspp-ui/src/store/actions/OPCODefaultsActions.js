@@ -156,3 +156,24 @@ export const toggleOTH = oth => {
         oth: oth
     }
 }
+
+export const selectMAServe = maServe => {
+    return{
+        type: actionTypes.SELECT_MA_SERVE,
+        maServe: maServe
+    }
+}
+
+export const selectBonusField = bonusField => {
+    return{
+        type: actionTypes.SELECT_BONUS_FIELDS,
+        bonusField: bonusField
+    }
+}
+
+export const selectColumnAxis = columnAxis => {
+    return{
+        type: actionTypes.SELECT_COLUMN_AXIS,
+        columnAxis: columnAxis
+    }
+}
