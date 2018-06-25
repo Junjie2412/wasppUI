@@ -1,0 +1,14 @@
+.Help {
+    height: 100%;
+}
+
+.Header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.FAQ {
+    height: 81%;
+    overflow: auto;
+    width: 100%;
+}
