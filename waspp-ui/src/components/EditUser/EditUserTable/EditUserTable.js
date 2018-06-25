@@ -21,14 +21,6 @@ class EditUserTable extends Component{
         this.setState({showAddModal: false});
     };
 
-    editUpdateModal = () => {
-        return this.setState({showUpdateModal: true});
-    };
-
-    closeUpdateModal = () => {
-        this.setState({showUpdateModal: false});
-    };
-
     deleteAdjustment = (id) => {
         return this.props.onDeleteAdjustment(id);
     };
@@ -52,10 +44,6 @@ class EditUserTable extends Component{
                             <button disabled={!this.props.selected}
                                     onClick={this.props.afterFloor ? this.props.add : this.editAddModal}
                                     className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2']].join(' ')}>Add</button>
-                            <button disabled={!this.props.selected}
-                                    onClick={this.props.afterFloor ? this.props.update : this.editUpdateModal}
-                                    className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['col-sm-2']].join(' ')}
-                                    style={{margin: '4px'}}>Update</button>
                             <button disabled={!this.props.selected || (this.props.afterFloor ? !this.props.afterFloorAdjustmentSelected : !this.props.adjustmentSelected)}
                                     onClick={this.props.afterFloor ? (id) => this.deleteAfterFloorAdjustment(this.props.selectedAfterFloorAdjustment.id) : (id) => this.deleteAdjustment(this.props.selectedAdjustment.id)}
                                     className={[bootStrapClasses.btn, bootStrapClasses['btn-danger'], bootStrapClasses['col-sm-2']].join(' ')}>Delete</button>
