@@ -4,19 +4,21 @@ import bootStrapClasses from '../../../../node_modules/bootstrap/dist/css/bootst
 import Modal from '../../UI/Modal/Modal';
 import EditEmployeeForm from './EditEmployeeForm/EditEmployeeForm';
 import {connect} from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 class user extends Component{
     state = {
         modalShow: false
-    }
+    };
 
     editUserModal = () => {
-        return this.setState({modalShow: true});
-    }
+        this.setState({modalShow: true});
+        this.props.onSetEmployee(this.props.user);
+    };
 
     closeModal = () => {
         return this.setState({modalShow: false});
-    }
+    };
 
     render(){
         return(
@@ -28,7 +30,7 @@ class user extends Component{
                         <p>HR Employee ID: {this.props.user.PayrollNumber}</p>
                         <p>File Number: {this.props.user.FileNumber}</p>
                         <p>Weekly Base: {this.props.user.Base}</p>
-                        <p>Bonus Flight: </p>
+                        <p>Bonus Flight: {this.props.user.BonusFlight}</p>
                         <div className={[bootStrapClasses.row, classes.Check].join(' ')}>
                             <div className = {bootStrapClasses['col-sm-4']}>
                                 <input type='checkbox' className={bootStrapClasses['form-check-label']}/>
@@ -42,7 +44,7 @@ class user extends Component{
                         <div className={[bootStrapClasses['col-sm-12']]}>
                             <button disabled={!this.props.selected} onClick={this.editUserModal} className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['offset-sm-3'], classes.Button].join(' ')}>Edit Employee</button>
                             <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
-                                <EditEmployeeForm user={this.props.user}
+                                <EditEmployeeForm user={this.props.employee}
                                 close={this.closeModal}/>
                             </Modal>
                         </div>
@@ -55,7 +57,15 @@ class user extends Component{
 
 const mapStateToProps = state => {
     return  {
-        selected: state.editUsers.userSelected
+        selected: state.editUsers.userSelected,
+        employee: state.editEmployee.currentEmployee
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSetEmployee: (user) => dispatch(actions.setCurrentEmployee(user))
     }
 }
-export default connect(mapStateToProps)(user);
+
+export default connect(mapStateToProps, mapDispatchToProps)(user);

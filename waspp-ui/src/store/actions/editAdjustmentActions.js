@@ -39,21 +39,21 @@ export const editAdjustmentDate = (adjustmentDate) => {
         type: actionTypes.EDIT_ADJUSTMENT_DATE,
         date: adjustmentDate
     }
-}
+};
 
 export const editAdjustmentComment = (adjustmentComment) => {
     return {
         type: actionTypes.EDIT_ADJUSTMENT_COMMENT,
         comment: adjustmentComment
     }
-}
+};
 
 export const editAdjustmentAmount = (adjustmentAmount) => {
     return {
         type: actionTypes.EDIT_ADJUSTMENT_AMOUNT,
         amount: adjustmentAmount
     }
-}
+};
 
 // ************************************************************************//
 // ************************************************************************//
@@ -63,7 +63,7 @@ export const fetchAdjustmentsStart = () => {
     return {
         type: actionTypes.FETCH_ADJUSTMENTS_START
     };
-}
+};
 
 export const fetchAdjustmentsSuccess = (adjustmentsList) => {
     return {
@@ -87,65 +87,23 @@ export const fetchAdjustments = () => {
                 dispatch(fetchAdjustmentsSuccess(dataList))
             });
     }
-}
+};
 
-export const setCurrentUserAdjustments = (adjustmentsList, selectedUser, setBy) => {
+export const setCurrentUserAdjustments = (adjustmentsList, selectedUser) => {
 
     const dataList = [];
-    switch(setBy) {
-        case 'Payroll Number':
-            for(let adj in adjustmentsList ) {
-                if (adjustmentsList[adj].user.PayrollNumber === selectedUser.PayrollNumber) {
-                    dataList.push( {
-                        ...adjustmentsList[adj],
-                        id: [adjustmentsList[adj].id]
-                    })
-                }
-            }
-            return {
-                type: actionTypes.SET_CURRENT_USER_ADJUSTMENTS,
-                currentUserAdjustments: dataList
-            }
-        case 'AS400 ID':
-            for(let adj in adjustmentsList ) {
-                if (adjustmentsList[adj].user.AS400ID === selectedUser.AS400ID) {
-                    dataList.push( {
-                        ...adjustmentsList[adj],
-                        id: [adjustmentsList[adj].id]
-                    })
-                }
-            }
-            return {
-                type: actionTypes.SET_CURRENT_USER_ADJUSTMENTS,
-                currentUserAdjustments: dataList
-            }
-        case 'Active Directory':
-            for(let adj in adjustmentsList ) {
-                if (adjustmentsList[adj].user.ADID === selectedUser.ADID) {
-                    dataList.push( {
-                        ...adjustmentsList[adj],
-                        id: [adjustmentsList[adj].id]
-                    })
-                }
-            }
-            return {
-                type: actionTypes.SET_CURRENT_USER_ADJUSTMENTS,
-                currentUserAdjustments: dataList
-            }
-        default:
-            for(let adj in adjustmentsList ) {
-                if (adjustmentsList[adj].user.PayrollNumber === selectedUser.PayrollNumber) {
-                    dataList.push( {
-                        ...adjustmentsList[adj],
-                        id: [adjustmentsList[adj].id]
-                    })
-                }
-            }
-            return {
-                type: actionTypes.SET_CURRENT_USER_ADJUSTMENTS,
-                currentUserAdjustments: dataList
-            }
+    for(let adj in adjustmentsList ) {
+        if (adjustmentsList[adj].user.PayrollNumber === selectedUser.PayrollNumber) {
+            dataList.push( {
+                ...adjustmentsList[adj],
+                id: [adjustmentsList[adj].id]
+            })
         }
+    }
+    return {
+        type: actionTypes.SET_CURRENT_USER_ADJUSTMENTS,
+        currentUserAdjustments: dataList
+    };
 };
 
 // ************************************************************************//
@@ -165,14 +123,14 @@ export const deleteAdjustmentStart = () => {
     return {
         type: actionTypes.DELETE_ADJUSTMENT_START
     }
-}
+};
 
 export const deleteAdjustmentSuccess = (id) => {
     return {
         type: actionTypes.DELETE_ADJUSTMENT_SUCCESS,
         id: id,
     }
-}
+};
 
 export const deleteAdjustment = (id) => {
     return dispatch => {

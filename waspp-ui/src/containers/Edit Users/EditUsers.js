@@ -8,8 +8,8 @@ import AfterFloorAdjustments from '../../components/EditUser/AfterFloorAdjustmen
 import classes from './EditUser.css';
 import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux';
-import axios from 'axios';
-import * as links from '../../shared/Links';
+//import axios from 'axios';
+//import * as links from '../../shared/Links';
 
 class EditUsers extends Component {
 
@@ -34,6 +34,9 @@ class EditUsers extends Component {
 
         this.setState({userLookup: ''});
 
+        this.props.onFetchAdjustments();
+        this.props.onFetchAfterFloorAdjustments();
+
         switch(event.target.value){
             case 'AS400 ID':
                 return this.props.onSetAS400Search(this.props.users);
@@ -53,6 +56,11 @@ class EditUsers extends Component {
     //This handler will post a new update to Adjustments
 
     render() {
+
+        let adjustments = this.props.loadingAdjustments ? <Spinner/> : <EditUserTable afterFloor={false}/>;
+
+        let afterFloorAdjustments = this.props.loadingAfterFloorAdjustments ? <Spinner/> : <AfterFloorAdjustments/>;
+
         return (
             (this.props.loadingUsers && this.props.loadingAdjustments && this.props.loadingAfterFloorAdjustments )? <Spinner/>:
             <div className={classes.EditUser}>
@@ -70,10 +78,8 @@ class EditUsers extends Component {
                 <div className={classes.row}>
                     <User user={this.props.currentUser}/>
                     <EditBonuses/>
-                    <EditUserTable
-                        afterFloor={false}
-                    />
-                    <AfterFloorAdjustments/>
+                    {adjustments}
+                    {afterFloorAdjustments}
                 </div>
             </div>
         );
