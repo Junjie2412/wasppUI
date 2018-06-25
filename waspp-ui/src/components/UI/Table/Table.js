@@ -8,20 +8,25 @@ import DateInput from '../../UI/DateInput/DateInput';
 
 const table = (props) => {
 
-    let show=true;
-
-    const click=(show) => {
-        show=!show;
-    }
-
     const tableData = props.tableData.map(data => (
         <tr key={data.id}
             className={props.isAfter ? (data.id===props.selectedAfterFloorAdjustment.id ? classes.Selected : classes.TableTr)
                 : (data.id===props.selectedAdjustment.id ? classes.Selected : classes.TableTr)}
             onClick={props.isAfter ? ((adj) => props.onSelectAfterFloorAdjustment(data)):((adj) => props.onSelectAdjustment(data))}>
-            <td><div><input value={data.amount} style={{border: 'none'}}/></div></td>
-            <td>{data.weekEndDate}</td>
-            <td><input value={data.comment} className={classes.tdInput}/></td>
+            <td><input
+                className={props.isAfter ? (data.id===props.selectedAfterFloorAdjustment.id ? classes.InputSelected : classes.Input)
+                    : (data.id===props.selectedAdjustment.id ? classes.InputSelected : classes.Input)}
+                readOnly
+                value={data.amount}/></td>
+            <td><div className={props.isAfter ? (data.id===props.selectedAfterFloorAdjustment.id ? classes.DateSelected : classes.Date)
+                : (data.id===props.selectedAdjustment.id ? classes.DateSelected : classes.Date)}>
+                <DateInput/></div>
+                {data.weekEndDate}
+            </td>
+            <td><textarea
+                className={props.isAfter ? (data.id===props.selectedAfterFloorAdjustment.id ? classes.TextAreaSelected : classes.TextArea)
+                    : (data.id===props.selectedAdjustment.id ? classes.TextAreaSelected : classes.TextArea)}
+                value={data.comment}/></td>
         </tr>
     ));
     return(

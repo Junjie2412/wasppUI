@@ -3,6 +3,7 @@ import {updateObject} from "../../shared/utility";
 import moment from 'moment';
 
 const initialState = {
+    isOpened: false,
     adjustments: [],
     currentAdjustment: {
         date: moment(),
@@ -18,7 +19,15 @@ const initialState = {
     },
     isSelected: false,
     loading: false
-}
+};
+
+const openAfterFloor = (state, action) => {
+    return updateObject(state, {isOpened: true})
+};
+
+const closeAfterFloor = (state, action) => {
+    return updateObject(state, {isOpened: false})
+};
 
 const addAfterFloorAdjustmentStart = (state, action ) => {
     return updateObject(state, { loading: true })
@@ -100,6 +109,8 @@ const deleteAfterFloorAdjustmentSuccess = (state, action) => {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.OPEN_AFTER_FLOOR: return openAfterFloor(state, action);
+        case actionTypes.CLOSE_AFTER_FLOOR: return closeAfterFloor(state, action);
         case actionTypes.ADD_AFTER_FLOOR_ADJUSTMENT_START: return addAfterFloorAdjustmentStart(state, action);
         case actionTypes.ADD_AFTER_FLOOR_ADJUSTMENT_SUCCESS: return addAfterFloorAdjustmentSuccess(state, action);
         case actionTypes.EDIT_AFTER_FLOOR_ADJUSTMENT_DATE: return editAfterFloorAdjustmentDate(state, action);

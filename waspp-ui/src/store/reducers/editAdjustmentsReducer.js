@@ -18,11 +18,11 @@ const initialState = {
     },
     isSelected: false,
     loading: false
-}
+};
 
 const addAdjustmentStart = (state, action ) => {
     return updateObject(state, { loading: true })
-}
+};
 
 const addAdjustmentSuccess = (state, action) => {
     const newAdjustment = updateObject(action.data, {id: action.id});
@@ -31,49 +31,49 @@ const addAdjustmentSuccess = (state, action) => {
             comment: '',
             amount: ''
     }, currentUserAdjustments: state.currentUserAdjustments.concat(newAdjustment)})
-}
+};
 
 const editAdjustmentDate = (state, action) => {
     return updateObject(state, {currentAdjustment: updateObject(state.currentAdjustment, {date: action.date})})
-}
+};
 
 const editAdjustmentComment = (state, action) => {
     return updateObject(state, {currentAdjustment: updateObject(state.currentAdjustment, {comment: action.comment})})
-}
+};
 
 const editAdjustmentAmount = (state, action) => {
     return updateObject(state, {currentAdjustment: updateObject(state.currentAdjustment, {amount: action.amount})})
-}
+};
 
 const fetchAdjustmentsStart = (state, action) => {
     return updateObject( state, { loading: true} )
-}
+};
 
 const fetchAdjustmentsSuccess = (state, action) => {
     return updateObject( state, {
         adjustments: action.adjustments,
         loading: false
     })
-}
+};
 
 const setCurrentUserAdjustments = (state, action) => {
     return updateObject( state, {
         currentUserAdjustments: action.currentUserAdjustments
     })
-}
+};
 
 const selectAdjustment = (state, action) => {
     return updateObject(state, {
         selectedAdjustment: action.data,
         isSelected: true
     })
-}
+};
 
 const deleteAdjustmentStart = (state, action) => {
     return updateObject(state, {
         loading: true
     })
-}
+};
 
 const deleteAdjustmentSuccess = (state, action) => {
     const newArray = state.currentUserAdjustments;
@@ -96,7 +96,7 @@ const deleteAdjustmentSuccess = (state, action) => {
             amount: ''
         }
     })
-}
+};
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
