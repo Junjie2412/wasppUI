@@ -7,11 +7,11 @@ class Help extends Component {
     render() {
       
         return (
-            <div>                
+            <div style={{height: '100%'}}>
                 <h1 style={{textAlign: 'center', marginTop: '20px'}}>
                     Help
                 </h1>
-                <div style={{overflow: 'auto'}}>
+                <div style={{overflow: 'auto', height: '81%', width: '100%'}}>
                     <FrequentIssues issues={Issues}/>
                 </div>
             </div>
