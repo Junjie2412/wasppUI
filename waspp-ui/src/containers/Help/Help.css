@@ -14,7 +14,14 @@
     overflow: auto;
     height: 81%;
     width: 100%;
-    background: linear-gradient(to bottom right , #0099cc, #006699);    
+    background: linear-gradient(to bottom right , #0099cc, #006699);  
+    position: fixed;  
+}
+
+.innerCardStyle{
+    background-color: #40ade2;
+    box-shadow: inset 3px 3px 1px #006699;
+
 }
 
 .FAQ {
@@ -28,21 +35,27 @@ h3{
     color: white;
 }
 
+div > a{
+    color: white;
+    margin-left: 4px;
+    margin-right: 4px
+}
+
 /* scrollbar styling */
 ::-webkit-scrollbar-track{
-    background-color: white;
+    background-color: 0099cc;
     border-radius: 10px;
-    box-shadow: inset 3px 3px 10px #888888;
+    box-shadow: inset 3px 3px 15px #173b61;
 
 }
 
 ::-webkit-scrollbar{
-    background-color: white;
+    background-color: #0099cc;
     border-radius: 10px;
     width: 11px;
 }
 
 ::-webkit-scrollbar-thumb{
-    background-color: #0099cc;
+    background-color: #173b61;
     border-radius: 10px;
 }
