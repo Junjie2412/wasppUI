@@ -35,7 +35,7 @@ h3{
     color: white;
 }
 
-div > a{
+.anchorStyle{
     color: white;
     margin-left: 4px;
     margin-right: 4px

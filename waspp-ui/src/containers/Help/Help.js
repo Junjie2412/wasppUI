@@ -20,9 +20,9 @@ class Help extends Component {
                                 <h2 style={{color: '#173b61'}}>Jump To: </h2>
                                 <div className={bootStrapClasses.row}>
                                     <span style={{marginRight: '10px'}}/>
-                                    <a href='#ponies'>Ponies</a>
+                                    <a className={classes.anchorStyle} href='#ponies'>Ponies</a>
                                     <p>|</p>
-                                    <a href='#unicorns'>Unicorns</a>
+                                    <a className={classes.anchorStyle} href='#unicorns'>Unicorns</a>
                                 </div>
                             </div>
                         </div>
