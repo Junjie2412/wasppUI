@@ -13,7 +13,7 @@ class Help extends Component {
                 <h1 className={classes.Header}>
                     Help
                 </h1>
-                <div className={[bootStrapClasses.card, classes.cardStyle].join(' ')}>
+                <div className={[bootStrapClasses.card, bootStrapClasses['shadow-lg'], classes.cardStyle].join(' ')} >
                     <div className={bootStrapClasses['card-body']}>
                         <div className={classes.FAQ}>
                             <h3>Ponies</h3>
