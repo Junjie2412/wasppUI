@@ -5,10 +5,23 @@
 .Header {
     text-align: center;
     margin-top: 20px;
+    font-family: 'Century Gothic';
+    color: #006699;
+}
+
+.cardStyle{
+    transform: scaleX(.89);
+    overflow: auto;
+    height: 81%;
+    width: 100%;
 }
 
 .FAQ {
     height: 81%;
     overflow: auto;
     width: 100%;
+}
+
+h3{
+    text-align: center;
 }

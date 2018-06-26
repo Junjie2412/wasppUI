@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import classes from './FrequentIssues.css';
 import bootStrapClasses from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-class FrequentIssues extends Component{
+const  FrequentIssues = (props) =>{
 
-    toggleDisplay = (event) =>{
+    const toggleDisplay = (event) =>{
         let element = event.target.nextElementSibling;
         let arrow = element;
         let errorCaught = false;
@@ -45,13 +45,12 @@ class FrequentIssues extends Component{
         }
     }
 
-    render(){
-        const populateFAQ = this.props.issues.map(data => (
+        const populateFAQ = props.issues.map(data => (
             <div key={data.Issue} className={bootStrapClasses.container} >               
-                <button class={classes.collapsible} onClick={this.toggleDisplay}>
+                <button class={classes.collapsible} onClick={toggleDisplay}>
                     {data.Issue}
                     <div className={[bootStrapClasses['offset-sm-11'], bootStrapClasses['col-sm-1']].join(' ')}>
-                        <i className={"fas fa-chevron-circle-down"} />
+                        <i className={"fas fa-chevron-circle-down"}/>
                         <i className={'arrow'}/>
                     </div>
                     <i className='error'/>
@@ -61,15 +60,14 @@ class FrequentIssues extends Component{
                         <p>{data.Solution}</p>
                     </div>
                 </div>
-            </div> 
-        ));
+            </div>));
 
         return(
             <div>
                 {populateFAQ}
             </div> 
-        )
+        );
     }
-}
+
 
 export default FrequentIssues;
