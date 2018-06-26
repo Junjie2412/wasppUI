@@ -1,15 +1,10 @@
-NavLink > button {
-    border-radius: 0px 0px 0px 0px;
-    background-color: #006699;
-    font-size: 15px;
-    border: none;
-}
 
 .button {
     background-color: transparent;
-    transform: translateX(38px);
+    transform: translateY(-3px);
     font-size: 20px;
     color: white;
+    font-family: 'Century Gothic';
     border: none;
 
 }
@@ -19,12 +14,24 @@ NavLink > button {
     cursor: pointer;
 }
 
+.button:focus{
+    outline: none;
+    background: linear-gradient(to bottom right, #006699, #0099cc);
+}
+
 .NavLink {
-    transform: translateX(38px);
-    font-size: 25px;
+    font-size: 24px;
     color: white;
-    border-bottom: none;
-    background: black;
+    border: none;
+    background: #006699;
 
 }
 
+.NavLink:hover{
+    background: linear-gradient(to bottom right, #006699, #0099cc);
+    cursor: pointer;
+}
+
+.placement{
+    transform: translate(36px, 4px);
+}
