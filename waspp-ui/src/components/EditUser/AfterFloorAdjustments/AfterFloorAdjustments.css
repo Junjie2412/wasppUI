@@ -8,7 +8,7 @@
 
 .AFA:hover {
     right: -85%;
-    pointer: cursor;
+    cursor: pointer;
 }
 
 .AFAOpened {
@@ -35,7 +35,11 @@
 
 .Button:disabled {
     color: #ddd;
-    background-color: #808184;
+    background-color: #40ade2;
+}
+
+.Button:hover {
+    background-color: #1482c5;
 }
 
 .Text {
