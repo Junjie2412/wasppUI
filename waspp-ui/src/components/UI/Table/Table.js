@@ -4,7 +4,6 @@ import classes from './Table.css';
 import Aux from '../../../hoc/Auxiliary/Auxiliary';
 import * as actions from '../../../store/actions/index';
 import {connect} from 'react-redux';
-import DateInput from '../../UI/DateInput/DateInput';
 
 const table = (props) => {
 

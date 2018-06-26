@@ -32,7 +32,7 @@ const search = (props) => {
                 <datalist id="data">
                     {dataList}
                 </datalist>
-            <button onClick={props.click} className={classes.Clear}>X</button>
+            <button onClick={props.click} className={classes.Clear}><i className={"fas fa-times-circle"}/></button>
         </div>
     );
 };
