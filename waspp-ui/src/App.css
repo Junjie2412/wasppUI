@@ -1,12 +1,21 @@
 .App {
     overflow: hidden;
-    background-color: #ccc;
+    background-color: #ddd;
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     height: 95%;
     margin-top: 90px;
+}
+
+.Background {
+    background-image: url('./assets/grid-pattern.png');
+    position: fixed;
+    z-index: -1000;
+    opacity: .4;
+    width: 100%;
+    height: 100%;
 }
 
 .NeedOverflow {

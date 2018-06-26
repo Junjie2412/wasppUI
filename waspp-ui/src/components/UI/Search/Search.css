@@ -1,5 +1,5 @@
 .Search {
-    width: 350px;
+    width: 387px;
     padding: 10px;
     margin-left: 10px;
     margin-right: 10px;
@@ -7,7 +7,7 @@
     box-sizing: border-box;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0px 4px 8px 0px #999;
-    background-color: #66b3cc;
+    background-color: #0099cc;
 }
 
 .SearchText {
@@ -36,8 +36,11 @@
     background-color: #006699;
     border-radius: 10px;
     border: none;
-    color: white;
     cursor: pointer;
+}
+
+.Clear i {
+    color: white;
 }
 
 @media (max-width: 500px) {

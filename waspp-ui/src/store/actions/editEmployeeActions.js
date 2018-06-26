@@ -47,11 +47,17 @@ export const editEmployeeSuccess = (newEmployee) => {
     }
 };
 
-export const editEmployee = (newEmployee) => {
+export const editEmployee = (newEmployee, adjustments, afterFloorAdjustments) => {
     return dispatch => {
         dispatch(editEmployeeStart());
         axios.put(links.EDIT_USERS_DB+'/'+newEmployee.id+'.json', newEmployee)
             .then(response => {
+                for(let adj in adjustments) {
+                    axios.put(links.EDIT_ADJUSTMENTS_DB+'/'+adjustments[adj].id+'/user.json', newEmployee);
+                }
+                for(let adj in afterFloorAdjustments) {
+                    axios.put(links.EDIT_AFTER_FLOOR_ADJUSTMENTS_DB+'/'+afterFloorAdjustments[adj].id+'/user.json', newEmployee);
+                }
                 dispatch(editEmployeeSuccess(newEmployee));
             })
     }

@@ -17,7 +17,7 @@ const editEmployeeForm = (props) =>{
     const editEmployee = (event) => {
         event.preventDefault();
         props.close();
-        props.onEditEmployee(props.user);
+        props.onEditEmployee(props.user, props.adjustments, props.afterFloorAdjustments);
         props.onQuickSetCurrentUser(props.user);
     };
 
@@ -66,13 +66,20 @@ const editEmployeeForm = (props) =>{
     )
 };
 
+const mapStateToProps = state => {
+    return {
+        adjustments: state.editAdjustments.currentUserAdjustments,
+        afterFloorAdjustments: state.editAfterFloorAdjustments.currentUserAdjustments
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         onEditAS400ID: (value) => dispatch(actions.editEmployeeAS400ID(value)),
         onEditFlight: (value) => dispatch(actions.editEmployeeBonusFlight(value)),
-        onEditEmployee: (employee) => dispatch(actions.editEmployee(employee)),
+        onEditEmployee: (employee, adjustments, afterFloorAdjustments) => dispatch(actions.editEmployee(employee, adjustments, afterFloorAdjustments)),
         onQuickSetCurrentUser: (user) => dispatch(actions.quickSetCurrentUser(user))
     };
 };
 
-export default connect(null, mapDispatchToProps)(editEmployeeForm);
+export default connect(mapStateToProps, mapDispatchToProps)(editEmployeeForm);

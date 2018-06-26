@@ -9,7 +9,7 @@
 
 .Card {
     border: none;
-    background-color: #66b3cc;
+    background-color: #0099cc;
 }
 
 .Form p {
@@ -21,13 +21,17 @@
 }
 
 .Button {
+    width: 100%;
     background-color: #006699;
+    border-color: #127ba3;
+    border-style: solid;
+    border-width: 0 1px 4px 1px;
 }
 
 .Button:hover {
-    background-color: #0066;
+    background-color: #1482c5;
 }
 
 .Button:disabled {
-    background-color: #808184;
+    background-color: #40ade2;
 }
