@@ -43,10 +43,10 @@ class EditUserTable extends Component{
                         <div className={bootStrapClasses['col-sm-12']}>
                             <button disabled={!this.props.selected}
                                     onClick={this.props.afterFloor ? this.props.add : this.editAddModal}
-                                    className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2']].join(' ')}>Add</button>
+                                    className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2'],classes.AddButton].join(' ')}>Add</button>
                             <button disabled={!this.props.selected || (this.props.afterFloor ? !this.props.afterFloorAdjustmentSelected : !this.props.adjustmentSelected)}
                                     onClick={this.props.afterFloor ? (id) => this.deleteAfterFloorAdjustment(this.props.selectedAfterFloorAdjustment.id) : (id) => this.deleteAdjustment(this.props.selectedAdjustment.id)}
-                                    className={[bootStrapClasses.btn, bootStrapClasses['btn-danger'], bootStrapClasses['col-sm-2']].join(' ')}>Delete</button>
+                                    className={[bootStrapClasses.btn, bootStrapClasses['btn-danger'], bootStrapClasses['col-sm-2'], classes.DeleteButton].join(' ')}>Delete</button>
                         </div>
                     </div>
                 </div>

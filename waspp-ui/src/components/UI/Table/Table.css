@@ -34,30 +34,3 @@
 .Selected:hover {
     background-color: gray;
 }
-
-.Input {
-    border: none;
-}
-
-.InputSelected {
-    border: 1px solid black;
-}
-
-.Date {
-    display: none
-}
-
-.DateSelected {
-    display: flex;
-}
-
-.TextArea {
-    resize: none;
-    border: none;
-    height: 26px;
-}
-
-.TextAreaSelected {
-    border: 1px solid black;
-}
-

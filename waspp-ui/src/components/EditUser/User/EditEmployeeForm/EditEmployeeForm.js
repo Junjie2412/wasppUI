@@ -21,6 +21,15 @@ const editEmployeeForm = (props) =>{
         props.onQuickSetCurrentUser(props.user);
     };
 
+    const cancel = (event) => {
+        event.preventDefault();
+        props.close();
+    }
+
+    const flights = props.bonusFlights.map(data => (
+        <option key={data} value={data}>{data}</option>
+    ));
+
     return(
         <div>
             <form onSubmit={(event) => editEmployee(event)}>
@@ -52,12 +61,14 @@ const editEmployeeForm = (props) =>{
                 <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                     <label className={[bootStrapClasses['col-sm-4'], bootStrapClasses['col-form-label']].join(' ')}>Bonus Flight</label>
                     <div>
-                        <input type='text' className={bootStrapClasses['form-control']} value={props.user.BonusFlight} onChange={(event) => editBonusFlight(event)}/>
+                        <select type='text' className={bootStrapClasses['form-control']} value={props.user.BonusFlight} onChange={(event) => editBonusFlight(event)}>
+                            {flights}
+                        </select>
                     </div>
                 </div>
                 <div className={bootStrapClasses['col-sm-12']}>
                     <button className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2']].join(' ')}>Save</button>
-                    <button onClick={props.close} className={[bootStrapClasses.btn, bootStrapClasses['btn-warning'],bootStrapClasses['col-sm-2']].join(' ')}
+                    <button onClick={(event)=>cancel(event)} className={[bootStrapClasses.btn, bootStrapClasses['btn-warning'],bootStrapClasses['col-sm-2']].join(' ')}
                             style={{margin: '4px', backgroundColor: '#FF9900'}}>Cancel</button>
                     <button className={[bootStrapClasses.btn, bootStrapClasses['btn-danger'], bootStrapClasses['col-sm-2']].join(' ')} disabled>Delete</button>
                 </div>
@@ -69,7 +80,8 @@ const editEmployeeForm = (props) =>{
 const mapStateToProps = state => {
     return {
         adjustments: state.editAdjustments.currentUserAdjustments,
-        afterFloorAdjustments: state.editAfterFloorAdjustments.currentUserAdjustments
+        afterFloorAdjustments: state.editAfterFloorAdjustments.currentUserAdjustments,
+        bonusFlights: state.editEmployee.BonusFlights
     }
 }
 
