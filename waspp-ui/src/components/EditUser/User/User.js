@@ -25,12 +25,56 @@ class user extends Component{
             <div className={classes.Outer}>
                 <div className={[[bootStrapClasses.card], bootStrapClasses['shadow-lg'], classes.Card].join(' ')}>
                     <div className={[bootStrapClasses['card-body'], classes.Form].join(' ')}>
-                        <h5 className={[bootStrapClasses['text-center'], bootStrapClasses['card-title']].join(' ')} style={{color:'#fff'}}>Name: {this.props.user.FirstName} {this.props.user.LastName}</h5>
-                        <p>AS400 ID: {this.props.user.AS400ID}</p>
-                        <p>HR Employee ID: {this.props.user.PayrollNumber}</p>
-                        <p>File Number: {this.props.user.FileNumber}</p>
-                        <p>Weekly Base: {this.props.user.Base}</p>
-                        <p>Bonus Flight: {this.props.user.BonusFlight}</p>
+                        <table className={classes.Table}>
+                            <tr>
+                                <td>
+                                    <h5 className={[bootStrapClasses['text-center'], bootStrapClasses['card-title']].join(' ')}>Name </h5>
+                                </td>
+                                <td>
+                                    <h5>{this.props.user.FirstName} {this.props.user.LastName}</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>AS400 ID </p>
+                                </td>
+                                <td>
+                                    <p>{this.props.user.AS400ID}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>HR Employee ID</p>
+                                </td>
+                                <td>
+                                    <p>{this.props.user.PayrollNumber}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>File Number</p>
+                                </td>
+                                <td>
+                                    <p>{this.props.user.FileNumber}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Weekly Base</p>
+                                </td>
+                                <td>
+                                    <p>{this.props.user.Base}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Bonus Flight</p>
+                                </td>
+                                <td>
+                                    <p>{this.props.user.BonusFlight}</p>
+                                </td>
+                            </tr>
+                        </table>
                         <div className={[bootStrapClasses.row, classes.Check].join(' ')}>
                             <div className = {bootStrapClasses['col-sm-4']}>
                                 <input type='checkbox' className={bootStrapClasses['form-check-label']}/>

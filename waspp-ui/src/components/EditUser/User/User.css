@@ -16,12 +16,51 @@
     color: #fff;
 }
 
+.Table {
+    margin: 0 0 0 6%;
+}
+
+.Table tr td{
+    border: 1px #aaa dotted;
+    padding: 4px 0;
+}
+
+.Table tr td:nth-child(1) h5{
+    margin: 3px;
+    text-align: left;
+    color: #fff;
+    font: 20px 'Century Gothic';
+}
+
+.Table tr td:nth-child(2) h5{
+    margin: 2px;
+    color: #fff;
+    text-align: left;
+    font: 20px 'Century Gothic';
+}
+
+.Table tr td:nth-child(1) p{
+    text-align: left;
+    margin: 6% 0 6% 0%;
+    font: 16px 'Century Gothic';
+}
+
+.Table tr td:nth-child(2) p{
+    margin: 0 0 0 20%;
+    font: 16px 'Century Gothic';
+}
+
+.Check {
+    margin-left: 10%
+}
+
 .Check label {
     color: #fff;
 }
 
 .Button {
     width: 100%;
+    font: 20px 'Century Gothic';
     background-color: #006699;
     border-color: #127ba3;
     border-style: solid;
@@ -34,4 +73,5 @@
 
 .Button:disabled {
     background-color: #40ade2;
+    border-color: #0c66b1;
 }
