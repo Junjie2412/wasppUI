@@ -13,20 +13,15 @@ const table = (props) => {
             className={props.isAfter ? (data.id===props.selectedAfterFloorAdjustment.id ? classes.Selected : classes.TableTr)
                 : (data.id===props.selectedAdjustment.id ? classes.Selected : classes.TableTr)}
             onClick={props.isAfter ? ((adj) => props.onSelectAfterFloorAdjustment(data)):((adj) => props.onSelectAdjustment(data))}>
-            <td><input
-                className={props.isAfter ? (data.id===props.selectedAfterFloorAdjustment.id ? classes.InputSelected : classes.Input)
-                    : (data.id===props.selectedAdjustment.id ? classes.InputSelected : classes.Input)}
-                readOnly
-                value={data.amount}/></td>
-            <td><div className={props.isAfter ? (data.id===props.selectedAfterFloorAdjustment.id ? classes.DateSelected : classes.Date)
-                : (data.id===props.selectedAdjustment.id ? classes.DateSelected : classes.Date)}>
-                <DateInput/></div>
+            <td>
+                {data.amount}
+            </td>
+            <td>
                 {data.weekEndDate}
             </td>
-            <td><textarea
-                className={props.isAfter ? (data.id===props.selectedAfterFloorAdjustment.id ? classes.TextAreaSelected : classes.TextArea)
-                    : (data.id===props.selectedAdjustment.id ? classes.TextAreaSelected : classes.TextArea)}
-                value={data.comment}/></td>
+            <td>
+                {data.comment}
+            </td>
         </tr>
     ));
     return(
