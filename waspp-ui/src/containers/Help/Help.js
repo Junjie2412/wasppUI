@@ -17,7 +17,7 @@ class Help extends Component {
                     <div className={bootStrapClasses['card-body']}>
                         <div className={[bootStrapClasses.card, classes.innerCardStyle].join(' ')}>
                             <div className={bootStrapClasses['card-body']}>
-                                <h2 style={{color: 'white'}}>Jump To: </h2>
+                                <h2 style={{color: '#173b61'}}>Jump To: </h2>
                                 <div className={bootStrapClasses.row}>
                                     <span style={{marginRight: '10px'}}/>
                                     <a className={classes.anchorStyle} href='#ponies'>Section 1</a>
@@ -27,9 +27,9 @@ class Help extends Component {
                             </div>
                         </div>
                         <div className={classes.FAQ}>
-                            <h3 id='ponies'>Payroll Processing</h3>
+                            <h3 id='ponies'>Section 1</h3>
                             <FrequentIssues issues={Issues}/>
-                            <h3 id='unicorns'>Editing Users</h3>
+                            <h3 id='unicorns'>Section 2</h3>
                             <FrequentIssues issues={Issues}/>
                         </div>
                     </div>
