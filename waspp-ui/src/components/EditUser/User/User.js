@@ -26,6 +26,7 @@ class user extends Component{
                 <div className={[[bootStrapClasses.card], bootStrapClasses['shadow-lg'], classes.Card].join(' ')}>
                     <div className={[bootStrapClasses['card-body'], classes.Form].join(' ')}>
                         <table className={classes.Table}>
+                            <tbody>
                             <tr>
                                 <td>
                                     <h5 className={[bootStrapClasses['text-center'], bootStrapClasses['card-title']].join(' ')}>Name </h5>
@@ -74,6 +75,7 @@ class user extends Component{
                                     <p>{this.props.user.BonusFlight}</p>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                         <div className={[bootStrapClasses.row, classes.Check].join(' ')}>
                             <div className = {bootStrapClasses['col-sm-4']}>

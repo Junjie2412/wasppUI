@@ -20,16 +20,16 @@
     margin: 0 0 0 6%;
 }
 
-.Table tr td{
-    border: 1px #aaa dotted;
-    padding: 4px 0;
+.Table tr td {
+    border: 1px #bbb dotted;
+    padding: 4px 1px;
 }
 
 .Table tr td:nth-child(1) h5{
     margin: 3px;
     text-align: left;
     color: #fff;
-    font: 20px 'Century Gothic';
+    font: 20px 'Century Gothic', serif;
 }
 
 .Table tr td:nth-child(2) h5{
@@ -42,20 +42,21 @@
 .Table tr td:nth-child(1) p{
     text-align: left;
     margin: 6% 0 6% 0%;
-    font: 16px 'Century Gothic';
+    font: 16px 'Century Gothic', serif;
 }
 
 .Table tr td:nth-child(2) p{
     margin: 0 0 0 20%;
-    font: 16px 'Century Gothic';
+    font: 16px 'Century Gothic', serif;
 }
 
 .Check {
-    margin-left: 10%
+    margin-left: 8%
 }
 
 .Check label {
     color: #fff;
+    font: 15px 'Century Gothic', serif;
 }
 
 .Button {

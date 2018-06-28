@@ -21,7 +21,7 @@ class EditBonuses extends Component {
         return this.setState({
             currentTitle: 'Edit Subsidy',
             modalShow: true,
-            currentEdit: 'Original Subsidy',
+            currentEdit: 'Subsidy Amount',
             version: 'version 1'
         });
     }

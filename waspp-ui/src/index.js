@@ -14,12 +14,14 @@ import editAfterFloorAdjustmentsReducer from './store/reducers/editAfterFloorAdj
 import OPCODefaultsReducer from './store/reducers/OPCODefaultsReducer';
 import thunk from 'redux-thunk';
 import notificationReducer from "./store/reducers/notificationReducer";
+import editFloorsReducer from "./store/reducers/editFloorsReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     editUsers: editUserReducer,
     editEmployee: editEmployerReducer,
+    editFloors: editFloorsReducer,
     editAdjustments: editAdjustmentsReducer,
     editAfterFloorAdjustments: editAfterFloorAdjustmentsReducer,
     opcoDefaults: OPCODefaultsReducer,

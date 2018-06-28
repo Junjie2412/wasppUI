@@ -25,12 +25,13 @@
     font-size: 20px;
     color: white;
     border: none;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0 0;
     background-color: #006699;
     transform: rotate(270deg) translateY(-150px) translateX(-250px);
     cursor: pointer;
     z-index: 200;
     margin: 0;
+    font-family: "Century Gothic", serif;
 }
 
 .Button:disabled {

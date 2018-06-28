@@ -43,7 +43,7 @@ const  FrequentIssues = (props) =>{
             arrow.classList.remove('fa-chevron-circle-up');
             arrow.classList.add('fa-chevron-circle-down');
         }
-    }
+    };
 
         const populateFAQ = props.issues.map(data => (
             <div key={data.Issue} className={bootStrapClasses.container} >               

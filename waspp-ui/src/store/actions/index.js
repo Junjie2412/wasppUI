@@ -15,6 +15,13 @@ export {
 } from './editEmployeeActions';
 
 export {
+    editFloorEndDate,
+    editFloorStartDate,
+    editFloorAmount,
+    editFloorComment
+} from './editFloorsActions';
+
+export {
     addAdjustment,
     editAdjustmentDate,
     editAdjustmentComment,
