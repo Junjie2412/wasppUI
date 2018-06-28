@@ -15,7 +15,7 @@ class DateInput extends Component {
     }
 
     render(){
-        return <DatePicker selected={this.props.date}
+        return <DatePicker selected={this.props.date} required={this.props.required}
         onChange={this.handleChange} className={classes['react-datepicker-popper']}/>
     }
 }

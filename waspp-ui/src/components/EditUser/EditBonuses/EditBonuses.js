@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import classes from './EditBonuses.css';
 import Modal from '../../UI/Modal/Modal';
-import EditBonus from './EditBonus/EditBonus';
+import EditBonus from './EditBonusForm/EditBonusForm';
 import Aux from '../../../hoc/Auxiliary/Auxiliary';
 import {connect} from 'react-redux';
 import bootStrapClasses from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Spinner from '../../UI/Spinner/Spinner';
 
 class EditBonuses extends Component {
 
@@ -50,6 +51,7 @@ class EditBonuses extends Component {
 
     render() {
         return (
+            this.props.loading ? <Spinner/> :
             <Aux>
                 <div className={classes.btnGroup}>
                     <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editSubsidyModal}>{this.state.titleStates[0]}</button>
@@ -71,7 +73,8 @@ class EditBonuses extends Component {
 
 const mapStateToProps = state => {
     return  {
-        selected: state.editUsers.userSelected
+        selected: state.editUsers.userSelected,
+        loadingFloors: state.editFloors.loading
     }
 }
 

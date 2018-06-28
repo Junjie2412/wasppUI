@@ -21,6 +21,7 @@ class EditUsers extends Component {
         this.props.onFetchUsers();
         this.props.onFetchAdjustments();
         this.props.onFetchAfterFloorAdjustments();
+        this.props.onFetchFloors();
     }
 
     //This handler changes what the value property is whenever we change the search input text
@@ -107,6 +108,7 @@ const mapDispatchToProps = dispatch => {
         onSetPayrollSearch: (users) => dispatch(actions.setPayrollSearch(users)),
         onSetAS400Search: (users) => dispatch(actions.setAS400Search(users)),
         onSetADSearch: (users) => dispatch(actions.setADSearch(users)),
+        onFetchFloors: () => dispatch(actions.fetchFloors()),
         onFetchAdjustments: () => dispatch(actions.fetchAdjustments()),
         onFetchAfterFloorAdjustments: () => dispatch(actions.fetchAfterFloorAdjustments()),
         onSetCurrentUser: (searchBy, ID, users, adjustments, afterFloorAdjustments) => dispatch(actions.setCurrentUser(searchBy, ID, users, adjustments, afterFloorAdjustments)),

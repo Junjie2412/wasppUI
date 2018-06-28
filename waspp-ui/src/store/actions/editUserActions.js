@@ -34,7 +34,7 @@ export const fetchUsers = () => {
                 for(let user in response.data ) {
                     dataList.push( {
                         ...response.data[user],
-                        id: [user]
+                        id: user
                     })
                 }
                 for(let user in dataList ) {
