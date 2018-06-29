@@ -16,16 +16,6 @@ class Login extends Component {
 
     }
 
-    onLogin = (event) =>{ 
-        console.log(this.props.history.location.pathname);       
-        this.props.history.push('/editUsers');
-        console.log(this.props.history.location.pathname);       
-        if(this.props.history.location.pathname === '/editUsers'){
-            console.log('Yeah Buddyy');
-        }
-
-    }
-
     render() {
         return (
                 
@@ -42,8 +32,7 @@ class Login extends Component {
                                         <form>
                                             <div className='md-form'>
                                                 <i className='fa fa-user prefix grey-text'></i>
-                                                <input type='text' className={[bootStrapClasses['form-control']]}></input>
-                                                <label>Username</label>
+                                                <input type='text' className={[bootStrapClasses['form-control']]} placeholder='Username'></input>
                                             </div>
                                             <div className='md-form'>
                                                 <i className='fa fa-lock prefix grey-text'></i>
@@ -52,7 +41,7 @@ class Login extends Component {
                                             </div>
                                             <div className={[bootStrapClasses['text-center']]}>
                                                 <button className={[bootStrapClasses.btn, bootStrapClasses['btn-default'], bootStrapClasses['btn-block']].join(' ')}
-                                                onClick={(event) => this.onLogin(event)}>Login</button>
+                                                >Login</button>
                                             </div>
                                         </form>
                                     </div>
