@@ -17,6 +17,8 @@ import notificationReducer from "./store/reducers/notificationReducer";
 import editSubsidyReducer from "./store/reducers/editSubsidyReducer";
 import editBuyOutReducer from "./store/reducers/editBuyOutReducer";
 import editFloorsReducer from "./store/reducers/editFloorsReducer";
+import MonthlyBonusProofReducer from './store/reducers/MonthlyBonusProofReducer';
+import CompensationRecapReducer from './store/reducers/CompensationRecapReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -29,7 +31,9 @@ const rootReducer = combineReducers({
     editAdjustments: editAdjustmentsReducer,
     editAfterFloorAdjustments: editAfterFloorAdjustmentsReducer,
     opcoDefaults: OPCODefaultsReducer,
-    notifications: notificationReducer
+    notifications: notificationReducer,
+    monthlyBonusProof: MonthlyBonusProofReducer,
+    compensationRecap: CompensationRecapReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(
