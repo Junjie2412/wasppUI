@@ -16,8 +16,14 @@ class Login extends Component {
 
     }
 
-    onLogin = (event) =>{        
+    onLogin = (event) =>{ 
+        console.log(this.props.history.location.pathname);       
         this.props.history.push('/editUsers');
+        console.log(this.props.history.location.pathname);       
+        if(this.props.history.location.pathname === '/editUsers'){
+            console.log('Yeah Buddyy');
+        }
+
     }
 
     render() {
