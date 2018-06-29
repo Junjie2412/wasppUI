@@ -18,6 +18,7 @@ class Help extends Component {
                             <div className={[bootStrapClasses.card, classes.innerCardStyle].join(' ')}>
                                 <div className={bootStrapClasses['card-body']}>
                                     <h2 style={{color: '#173b61'}}>Jump To: </h2>
+                                    {/* <input className={classes.searchBar} type='text' placeholder='Search...'/> */}
                                     <div className={bootStrapClasses.row}>
                                         <span style={{marginRight: '10px'}}/>
                                         <a className={classes.anchorStyle} href='#ponies'>Section 1</a>
