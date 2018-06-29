@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Report from '../../components/Report/Report';
+//import Report from '../../components/Report/Report';
 import Payroll from '../../components/PayrollProcessing/Payrolls';
 import MonthlyBonus from '../../components/Report/MonthlyBonus';
 import CompensationRecap from '../../components/Report/CompensationRecap';
@@ -14,7 +14,7 @@ class Reports extends Component {
             monthlyBonus:"none",
             weeklyCommission:"none",
             compensationRecap:"none"
-        }
+        };
         this.weeklyCommission=this.weeklyCommission.bind(this);
         this.monthlyBonus=this.monthlyBonus.bind(this);
         this.compensationRecap=this.compensationRecap.bind(this);
@@ -25,7 +25,7 @@ class Reports extends Component {
             monthlyBonus:"none",
             weeklyCommission:"block",
             compensationRecap:"none"
-        })
+        });
         console.log(this.state)
     }
 
@@ -34,7 +34,7 @@ class Reports extends Component {
             monthlyBonus:"block",
             weeklyCommission:"none",
             compensationRecap:"none"
-        })
+        });
         console.log(this.state)
     }
 
@@ -43,12 +43,15 @@ class Reports extends Component {
             monthlyBonus:"none",
             weeklyCommission:"none",
             compensationRecap:"block"
-        })
+        });
         console.log(this.state)
     }
 
     render() {
 
+        // I commented out the Reports.js import since it was not being used
+        // Comment it back in if it is
+        // - Junjie \\
         return (
             <div className={bsClasses["container-fluid"]}>
                 <div className={bsClasses.row}>

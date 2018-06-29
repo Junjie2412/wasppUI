@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from './components/Banner/Banner';
+import Banner from './components/Banner/Banner';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import Login from "./containers/Auth/Login/Login";
 import EditUsers from "./containers/Edit Users/EditUsers";
@@ -19,7 +19,7 @@ class App extends Component {
       return (
         <div className={classes.App}>
             <div className={classes.Background}/>
-            <Navbar />
+            <Banner />
                 <Switch>
                     <Route path="/payrollProcessing" exact component={Toolbar}/>
                     <Route path="/reports" exact component={Toolbar}/>

@@ -22,7 +22,7 @@ const editBonusForm = (props) => {
     const EditStartDate = (event) => {
         switch (props.editState) {
             case 'Subsidy Amount': return props.onEditSubsidyStartDate(event);
-            case 'Buy Out Amount': return props.editBuyOutStartDate(event);
+            case 'Buy Out Amount': return props.onEditBuyOutStartDate(event);
             case 'Floor Amount': return props.onEditFloorStartDate(event);
             default: return;
         }
