@@ -1,7 +1,7 @@
 .Outer {
     width: 43%;
     height:  345px;
-    margin: 3% 0%;
+    margin: 3% 0;
     box-shadow: 0 8px 16px 0 #999;
 }
 
@@ -10,16 +10,17 @@
     margin-top: 2%;
     margin-bottom: 2%;
     color: white;
+    font-family: "Century Gothic", serif;
 }
 
 .Card {
-    background-color: #66b3cc;
+    background-color: #0099cc;
     height: 100%;
     border: none;
 }
 
 .AfterFloorCard {
-    background-color: #4b8396;
+    background-color: #173b61;
 }
 
 .Table {
@@ -30,4 +31,35 @@
 .ButtonGroup {
     margin-top: 2%;
     margin-left: 6%;
+}
+
+.AddButton {
+    border-color: #006633;
+    border-style: solid;
+    border-width: 0 1px 4px 1px;
+    background-color: #339900;
+}
+
+.AddButton:hover {
+    background-color: #6bb445;
+}
+
+.AddButton:disabled {
+    background-color: #66cc33;
+}
+
+.DeleteButton {
+    border-color: #660000;
+    border-style: solid;
+    border-width: 0 1px 4px 1px;
+    margin-left: 6px;
+    background-color: #990000;
+}
+
+.DeleteButton:hover {
+    background-color: #cc0000;
+}
+
+.DeleteButton:disabled {
+
 }

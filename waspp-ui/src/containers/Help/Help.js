@@ -1,30 +1,39 @@
 import React, {Component} from 'react';
-import bootstrapClasses from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import FrequentIssues from '../../components/Help/FrequentIssues/FrequentIssues';
+import { Issues } from '../../shared/Issues';
+import classes from './Help.css';
+import bootStrapClasses from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class Help extends Component {
+
     render() {
+      
         return (
-            <div>
-                <h1 style={{textAlign: 'center', marginTop: '20px'}}>
+            <div className={classes.Help}>
+                <h1 className={classes.Header}>
                     Help
                 </h1>
-                {/* <div id="accordionExample" className={bootstrapClasses.accordian}>
-                    <div className={bootstrapClasses.card}>
-                        <div id="headingOne" className={bootstrapClasses['card-header']}>
-                            <h5 className={bootstrapClasses['mb-0']}>
-                                <button type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" 
-                                className={[bootstrapClasses.btn, bootstrapClasses['btn-link']].join(' ')}>
-                                I AM A QUESTION
-                                </button>
-                            </h5>
+                <div className={[bootStrapClasses.card, bootStrapClasses['shadow-lg'], classes.cardStyle].join(' ')} >
+                    <div className={bootStrapClasses['card-body']}>
+                        <div className={[bootStrapClasses.card, classes.innerCardStyle].join(' ')}>
+                            <div className={bootStrapClasses['card-body']}>
+                                <h2 style={{color: '#173b61'}}>Jump To: </h2>
+                                <div className={bootStrapClasses.row}>
+                                    <span style={{marginRight: '10px'}}/>
+                                    <a className={classes.anchorStyle} href='#ponies'>Section 1</a>
+                                    <p>|</p>
+                                    <a className={classes.anchorStyle} href='#unicorns'>Section 2</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={classes.FAQ}>
+                            <h3 id='ponies'>Section 1</h3>
+                            <FrequentIssues issues={Issues}/>
+                            <h3 id='unicorns'>Section 2</h3>
+                            <FrequentIssues issues={Issues}/>
                         </div>
                     </div>
-                    <div id="collapseOne" className={[bootstrapClasses.collapse, bootstrapClasses.show].join(' ')} aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div className={bootstrapClasses['class-body']}>
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div> */}
+                </div>
             </div>
         );
     };

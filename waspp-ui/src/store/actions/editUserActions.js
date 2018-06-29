@@ -45,12 +45,11 @@ export const fetchUsers = () => {
                 dispatch(fetchUsersSuccess(dataList, searchData))
             });
     }
-}
+};
 
 //************************************************************************//
 //************************************************************************//
 // The below actions will change the search list
-
 // This will change the searchlist to search by Payroll Number
 export const setPayrollSearch = (users) => {
 
@@ -65,7 +64,7 @@ export const setPayrollSearch = (users) => {
         searchList: searchData,
         placeholder: 'Payroll Number'
     }
-}
+};
 
 // This will change the searchlist to search by AS400 ID
 export const setAS400Search = (users) => {
@@ -80,7 +79,7 @@ export const setAS400Search = (users) => {
         searchList: searchData,
         placeholder: 'AS400 ID'
     }
-}
+};
 
 // This will change the searchlist to search by Active Directory ID
 export const setADSearch = (users) => {
@@ -95,21 +94,20 @@ export const setADSearch = (users) => {
         searchList: searchData,
         placeholder: 'Active Directory'
     }
-}
+};
 //************************************************************************//
 //************************************************************************//
 
 
 
 // The below functions will set the current user
-
 export const setCurrentUserInit = (currUser, selected) => {
     return {
         type: actionTypes.SET_CURRENT_USER,
         user: currUser,
         selected: selected
     };
-}
+};
 
 export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjustments) => {
     return dispatch => {
@@ -136,8 +134,8 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                     if(users[user].AS400ID === ID){
                         currUser = users[user];
                         selected = true;
-                        dispatch(actions.setCurrentUserAdjustments(adjustments, users[user], searchBy));
-                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user], searchBy))
+                        dispatch(actions.setCurrentUserAdjustments(adjustments, users[user]));
+                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]))
                         break;
                     }
                 }
@@ -150,8 +148,8 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                     if(users[user].ADID === ID){
                         currUser = users[user];
                         selected = true;
-                        dispatch(actions.setCurrentUserAdjustments(adjustments, users[user], searchBy));
-                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user], searchBy))
+                        dispatch(actions.setCurrentUserAdjustments(adjustments, users[user]));
+                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]))
                         break;
                     }
                 }
@@ -163,8 +161,8 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                     if(users[user].PayrollNumber === ID){
                         currUser = users[user];
                         selected = true;
-                        dispatch(actions.setCurrentUserAdjustments(adjustments, users[user], searchBy));
-                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user], searchBy))
+                        dispatch(actions.setCurrentUserAdjustments(adjustments, users[user]));
+                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]))
                         break;
                     }
                 }
@@ -174,6 +172,7 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
             {
                 currUser = {
                     ADID: '',
+                    BonusFlight: '',
                     FirstName: '',
                     LastName: '',
                     AS400: '',
@@ -189,4 +188,15 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
         }
         dispatch(setCurrentUserInit(currUser, selected));
     }
-}
+};
+
+//************************************************************************//
+//************************************************************************//
+// The below functions will quickly set the current user before being put in the database
+
+export const quickSetCurrentUser = (user) => {
+    return {
+        type: actionTypes.QUICK_SET_CURRENT_USER,
+        user: user
+    }
+};

@@ -43,3 +43,13 @@
     padding-bottom: 25px;
     font-size: 1.5em;
 }
+
+.background {
+    background-image: url('../../../assets/sppay_bg_buildings.jpg');
+    /* background-position: center; */
+    position: fixed;
+    z-index: -1000;
+    width: 100%;
+    height: 100%;	
+    background-size: cover;
+}

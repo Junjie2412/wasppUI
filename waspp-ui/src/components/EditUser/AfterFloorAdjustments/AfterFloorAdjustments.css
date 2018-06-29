@@ -2,9 +2,10 @@
     position: absolute;
     right: -90%;
     transition: 0.3s;
-    transform: translateY(38%);
-    width: 100%;
+    transform: translateY(-12%) translateX(-80%);
+    width: 50%;
 }
+
 .AFA:hover {
     right: -85%;
     cursor: pointer;
@@ -13,13 +14,9 @@
 .AFAOpened {
     position: absolute;
     right: -47%;
+    transform: translateY(-12%) translateX(-80%);
     transition: 0.3s;
-    transform: translateY(38%);
-    width: 100%;
-}
-
-.ButtonWrap {
-
+    width: 50%;
 }
 
 .Button {
@@ -28,21 +25,22 @@
     font-size: 20px;
     color: white;
     border: none;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0 0;
     background-color: #006699;
-    transform: rotate(270deg);
+    transform: rotate(270deg) translateY(-150px) translateX(-250px);
     cursor: pointer;
     z-index: 200;
     margin: 0;
-}
-
-.Button:hover {
-    background-color: #376ec6;
+    font-family: "Century Gothic", serif;
 }
 
 .Button:disabled {
     color: #ddd;
-    background-color: #808184;
+    background-color: #40ade2;
+}
+
+.Button:hover {
+    background-color: #1482c5;
 }
 
 .Text {
@@ -50,6 +48,6 @@
 }
 
 .Table {
-    transform: translateY(-73%) translateX(150px);
+    width: 200%;
     z-index: 100;
 }

@@ -1,13 +1,15 @@
 .Table {
     margin-top: 0px;
-    width: 100%;
+    width: 96%;
     box-shadow: none;
     border: none;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .TableHeader {
     box-shadow: none;
-    border: none;
+    border: 2px solid white;
 }
 
 .TableHeader th {
@@ -15,9 +17,20 @@
     text-decoration: none;
     font-weight: 400;
     background-color: #006699;
-    transform: translateY(-3px);
 }
 
-tbody tr:hover{
+.TableBody {
+    background-color: white;
+}
+
+.TableTr:hover{
     background-color: lightgray;
+}
+
+.Selected {
+    background-color: darkgray;
+}
+
+.Selected:hover {
+    background-color: gray;
 }

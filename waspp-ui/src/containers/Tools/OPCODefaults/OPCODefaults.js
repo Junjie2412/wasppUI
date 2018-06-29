@@ -7,15 +7,16 @@ import * as actions from '../../../store/actions/index';
 class OPCODefaults extends Component{
     render(){
         return(
-            <div className={[bootStrapClasses.card, classes.cardAlign].join(' ')} style={{overflow: 'auto', height: '500px', width: '97%'}}>
+            <div className={[bootStrapClasses.card, classes.layout].join(' ')} style={{overflow: 'auto', height: '500px', width: '97%'}}>
                 <div className={bootStrapClasses['card-body']}>
                     <form className={bootStrapClasses['container-fluid']} style={{fontSize: '18px'}}>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>OPCO #</label>
-                            <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
+                            <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')}>
+                            </select>
                             <input type = 'text' value={this.props.opcDefault.Location}
                             onChange={((event) => this.props.onEditLocation(event.target.value))} 
-                            className={[bootStrapClasses['offset-sm-2'], bootStrapClasses['col-sm-6'],bootStrapClasses['form-control']].join(' ')}/>
+                            className={[bootStrapClasses['offset-sm-3'], bootStrapClasses['col-sm-5'],bootStrapClasses['form-control']].join(' ')}/>
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Group Name</label>
@@ -24,7 +25,7 @@ class OPCODefaults extends Component{
                             className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
                             <input type = 'text' value={this.props.opcDefault.Email}
                             onChange={((event) => this.props.onEditEmail(event.target.value))}
-                            className={[bootStrapClasses['offset-sm-2'], bootStrapClasses['col-sm-6'],bootStrapClasses['form-control']].join(' ')}/>
+                            className={[bootStrapClasses['offset-sm-3'], bootStrapClasses['col-sm-5'],bootStrapClasses['form-control']].join(' ')}/>
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Commission Models</label>
@@ -37,7 +38,7 @@ class OPCODefaults extends Component{
                             <input type='text' value={this.props.opcDefault.Floor}
                             onChange={(event) => this.props.onEditFloor(event.target.value)}
                             className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
-                            <label className={[ bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Seasonal Floor</label>
+                            <label className={[bootStrapClasses['offset-sm-1'], bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Seasonal Floor</label>
                             <input type = 'text' value={this.props.opcDefault.SeasonalFloor}
                             onChange={((event) => this.props.onEditSeasonalFloor(event.target.value))} 
                             className={[bootStrapClasses['col-sm-5'], bootStrapClasses['form-control']].join(' ')}/>
@@ -49,7 +50,7 @@ class OPCODefaults extends Component{
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Guarantee Bonus</label>
                             </div>
-                            <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Guarantee Percentage</label>
+                            <label className={[bootStrapClasses['offset-sm-1'], bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Guarantee Percentage</label>
                             <input type='text' value={this.props.opcDefault.GuaranteePercentage}
                             onChange={((event) => this.props.onEditGuaranteePercentage(event.target.value))} 
                             className={[bootStrapClasses['col-sm-5'], bootStrapClasses['form-control']].join(' ')} />
@@ -62,8 +63,22 @@ class OPCODefaults extends Component{
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>MA serve</label>
-                            <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
-                            <label className={[bootStrapClasses['offset-sm-1'], bootStrapClasses['col-sm-1'], bootStrapClasses['col-form-label']].join(' ')}>Org level</label>
+                            <select onChange={(event) => this.props.onSelectMAServe(event.target.value)} value={this.props.opcDefault.MAServe} 
+                            className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')}>
+                                <option>1 TERR</option>
+                                <option>A-AUS</option>
+                                <option>DER1</option>
+                                <option>STEST</option>
+                                <option>STRT</option>
+                                <option>STWST</option>
+                                <option>TO1</option>
+                                <option>TERR</option>
+                                <option>TERST</option>
+                                <option>TRADE</option>
+                                <option>TRR</option>
+                                <option>STRET</option>
+                            </select>
+                            <label className={[bootStrapClasses['offset-sm-1'], bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Org level</label>
                             <input type = 'text' value={this.props.opcDefault.OrgLevel}
                             onChange={(event) => this.props.onEditOrgLevel(event.target.value)}
                             className={[bootStrapClasses['col-sm-5'], bootStrapClasses['form-control']].join(' ')}/>
@@ -71,19 +86,19 @@ class OPCODefaults extends Component{
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Bonus Level</label>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.Low}
+                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.Low} disabled
                                 onClick={(event) => this.props.onToggleLow(!this.props.opcDefault.Low)} 
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Low</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.Medium}
+                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.Medium} disabled
                                 onClick={(event) => this.props.onToggleMedium(!this.props.opcDefault.Medium)}
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Medium</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.High}
+                                <input type='radio' name='BonusLevel' checked={this.props.opcDefault.High} disabled
                                 onClick={(event) => this.props.onToggleHigh(!this.props.opcDefault.High)}
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>High</label>
@@ -125,13 +140,27 @@ class OPCODefaults extends Component{
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Row Axis</label>
                             <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
-                            <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Column Axis</label>
-                            <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
+                            <label className={[bootStrapClasses['offset-sm-1'], bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Column Axis</label>
+                            <select onChange={(event) => this.props.onSelectColumnAxis(event.target.value)} value={this.props.opcDefault.ColumnAxis} 
+                            className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')}>
+                                <option>ARGP Growth</option>
+                                <option>Cases</option>
+                                <option>CB GP Dollars</option>
+                                <option>PIECES</option>
+                                <option>SALES Dollars</option>
+                            </select>
                         </div>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Bonus Field</label>
-                            <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')} />
-                            <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Account Types</label>
+                            <select onChange={(event) => this.props.onSelectBonusField(event.target.value)} value={this.props.opcDefault.BonusField} 
+                            className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')}>
+                                <option>Grosspay Commissions</option>
+                                <option>NON Incentive Commissions</option>
+                                <option>This Year AP GP</option>
+                                <option>This Year CP GP</option>
+                                <option>This Year Sales</option>
+                            </select>
+                            <label className={[bootStrapClasses['offset-sm-1'], bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Account Types</label>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
                                 <input type='checkbox' checked={this.props.opcDefault.TRS}
                                 onClick={(event) => this.props.onToggleTRS(!this.props.opcDefault.TRS)}
@@ -146,13 +175,13 @@ class OPCODefaults extends Component{
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
                                 <input type='checkbox' checked={this.props.opcDefault.LLC}
-                                onClick={(event) => this.props.onToggleDefaultLLC(!this.props.opcDefault.LLC)}
+                                onClick={(event) => this.props.onToggleLLC(!this.props.opcDefault.LLC)}
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>LLC</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
                                 <input type='checkbox' checked={this.props.opcDefault.CMU}
-                                onClick={(event) => this.props.onToggleDefaultCMU(!this.props.opcDefault.CMU)}
+                                onClick={(event) => this.props.onToggleCMU(!this.props.opcDefault.CMU)}
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>CMU</label>
                             </div>
@@ -163,23 +192,8 @@ class OPCODefaults extends Component{
                                 <label className={bootStrapClasses['form-check-label']}>OTH</label>
                             </div>
                         </div>
-                        <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
-                            <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Default Flights</label>
-                            <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
-                                <label className={bootStrapClasses['form-check-label']}>Low</label>
-                            </div>
-                            <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
-                                <label className={bootStrapClasses['form-check-label']}>Medium</label>
-                            </div>
-                            <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' className={bootStrapClasses['form-check-input']} />
-                                <label className={bootStrapClasses['form-check-label']}>High</label>
-                            </div>
-                        </div>
-                        <button type="submit" className={[bootStrapClasses.btn, bootStrapClasses['btn-primary']].join(' ')}
-                        style={{backgroundColor: '#006699'}}>Submit</button>
+                        <button type="submit" className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['offset-sm-4'], bootStrapClasses['col-sm-4']].join(' ')} 
+                        style={{backgroundColor: '#0099cc'}}>Submit</button>
                     </form>
                 </div>
             </div>
@@ -214,7 +228,10 @@ const mapDispatchToProps = dispatch => {
         onToggleTRP: (trp) => dispatch(actions.toggleTRP(trp)),
         onToggleLLC: (llc) => dispatch(actions.toggleLLC(llc)),
         onToggleCMU: (cmu) => dispatch(actions.toggleCMU(cmu)),
-        onToggleOTH: (oth) => dispatch(actions.toggleOTH(oth))
+        onToggleOTH: (oth) => dispatch(actions.toggleOTH(oth)),
+        onSelectMAServe: (maServe) => dispatch(actions.selectMAServe(maServe)),
+        onSelectBonusField: (bonusField) => dispatch(actions.selectBonusField(bonusField)),
+        onSelectColumnAxis: (columnAxis) => dispatch(actions.selectColumnAxis(columnAxis))
     }
 }
 

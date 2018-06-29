@@ -8,12 +8,14 @@ import AfterFloorAdjustments from '../../components/EditUser/AfterFloorAdjustmen
 import classes from './EditUser.css';
 import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux';
+//import axios from 'axios';
+//import * as links from '../../shared/Links';
 
 class EditUsers extends Component {
 
     state = {
         userLookup: ''
-    }
+    };
 
     componentDidMount() {
         this.props.onFetchUsers();
@@ -25,12 +27,15 @@ class EditUsers extends Component {
     onChangeText = (event) => {
         this.setState({userLookup: event.target.value});
         this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users, this.props.adjustments, this.props.afterFloorAdjustments)
-    }
+    };
 
     //This handler changes the state properties based on which value was selected
     onChangeSelect = (event) => {
 
         this.setState({userLookup: ''});
+
+        this.props.onFetchAdjustments();
+        this.props.onFetchAfterFloorAdjustments();
 
         switch(event.target.value){
             case 'AS400 ID':
@@ -42,12 +47,20 @@ class EditUsers extends Component {
             default:
                 return this.props.onSetPayrollSearch(this.props.users);
         }
+    };
 
-    }
+    clear = () => {
+        this.setState({userLookup: ''})
+    };
 
     //This handler will post a new update to Adjustments
 
     render() {
+
+        let adjustments = this.props.loadingAdjustments ? <Spinner/> : <EditUserTable afterFloor={false}/>;
+
+        let afterFloorAdjustments = this.props.loadingAfterFloorAdjustments ? <Spinner/> : <AfterFloorAdjustments/>;
+
         return (
             (this.props.loadingUsers && this.props.loadingAdjustments && this.props.loadingAfterFloorAdjustments )? <Spinner/>:
             <div className={classes.EditUser}>
@@ -59,15 +72,14 @@ class EditUsers extends Component {
                         dataList={this.props.searchList}
                         change={(event) => this.onChangeSelect(event)}
                         value={this.state.userLookup}
+                        click={this.clear}
                         changeText={(event) => this.onChangeText(event)}/>
                 </div>
                 <div className={classes.row}>
                     <User user={this.props.currentUser}/>
                     <EditBonuses/>
-                    <EditUserTable
-                        afterFloor={false}
-                    />
-                    <AfterFloorAdjustments/>
+                    {adjustments}
+                    {afterFloorAdjustments}
                 </div>
             </div>
         );
