@@ -20,6 +20,7 @@ class Login extends Component {
         this.props.history.push('/editUsers');
     };
 
+
     render() {
         return (
                 <Aux>
@@ -35,8 +36,7 @@ class Login extends Component {
                                         <form>
                                             <div className='md-form'>
                                                 <i className='fa fa-user prefix grey-text'></i>
-                                                <input type='text' className={[bootStrapClasses['form-control']]}></input>
-                                                <label>Username</label>
+                                                <input type='text' className={[bootStrapClasses['form-control']]} placeholder='Username'></input>
                                             </div>
                                             <div className='md-form'>
                                                 <i className='fa fa-lock prefix grey-text'></i>
