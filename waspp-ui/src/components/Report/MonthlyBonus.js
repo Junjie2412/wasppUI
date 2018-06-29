@@ -1,27 +1,9 @@
 import React, {Component} from 'react';
 import DateInput from '../UI/DateInput/DateInput';
 import bsClasses from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import classes from './Payrolls.css';
+import classes from './Report.css';
 
-// const tableData = props.tableData.map(data => (
-//     <tr>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//     </tr>
-// ));
-
-
-
-class Payrolls extends Component{
+class MonthlyBonus extends Component{
   render(){
     return (
       <div>
@@ -29,14 +11,14 @@ class Payrolls extends Component{
 
           <div className={[bsClasses["col-md-12"]].join(' ')} >
 
-            <h3> Weekly Commissions Proof</h3>
+            <h3> Monthly Bonus Proof </h3>
             <span>Week Ending: </span>
             <span style={{display:"inline-block"}}><DateInput/></span>
           </div>
         </div>
         <div className={bsClasses.row}>
           <div className={[bsClasses["col-md-12"]].join(' ')}>
-            <table className={[bsClasses.table,bsClasses["table-responsive"], bsClasses["table-bordered"], classes.align, classes.table].join(' ')} id="weeklyCommission">
+            <table className={[bsClasses.table,bsClasses["table-responsive"], bsClasses["table-bordered"], classes.align, classes.table].join(' ')} id="monthlyBonus">
               <thead>
                 <tr>
                   <th rowSpan="2">AS400 ID</th>
@@ -97,4 +79,4 @@ class Payrolls extends Component{
     )
   }
 }
-export default Payrolls;
+export default MonthlyBonus;

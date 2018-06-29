@@ -1,6 +1,17 @@
-.Table {
-    margin: 0px 0px;
-    display: inline-block;
-    width: 70%;
-    transform: translateY(-90%);
+.align{
+  text-align: left;
+}
+
+
+.table{
+  text-align: center;
+}
+
+.table thead{
+  background-color: #006699;
+  color: white;
+}
+
+.table tbody{
+  background-color: white;
 }

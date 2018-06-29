@@ -82,6 +82,9 @@ const editBonusForm = (props) => {
             defaultComment=props.editSubsidy.comment;
             break;
         case 'Buy Out Amount':
+            defaultAmount=props.editBuyOut.amount;
+            defaultStartDate.date=props.editBuyOut.startDate;
+            defaultComment=props.editBuyOut.comment;
             break;
         case 'Floor Amount':
             defaultAmount=props.editFloor.amount;
