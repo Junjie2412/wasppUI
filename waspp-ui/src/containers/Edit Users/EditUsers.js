@@ -21,6 +21,7 @@ class EditUsers extends Component {
         this.props.onFetchUsers();
         this.props.onFetchAdjustments();
         this.props.onFetchAfterFloorAdjustments();
+        this.props.onFetchFloors();
     }
 
     //This handler changes what the value property is whenever we change the search input text
@@ -63,25 +64,25 @@ class EditUsers extends Component {
 
         return (
             (this.props.loadingUsers && this.props.loadingAdjustments && this.props.loadingAfterFloorAdjustments )? <Spinner/>:
-            <div className={classes.EditUser}>
-                <h1 className={classes.Header}>Edit Users</h1>
-                <div style={{transform: 'translateX(2.3%)'}}>
-                    <Search
-                        placeholder={this.props.placeholder}
-                        options={this.props.searchBy}
-                        dataList={this.props.searchList}
-                        change={(event) => this.onChangeSelect(event)}
-                        value={this.state.userLookup}
-                        click={this.clear}
-                        changeText={(event) => this.onChangeText(event)}/>
+                <div className={classes.EditUser}>
+                    <h1 className={classes.Header}>Edit Users</h1>
+                    <div style={{transform: 'translateX(2.3%)'}}>
+                        <Search
+                            placeholder={this.props.placeholder}
+                            options={this.props.searchBy}
+                            dataList={this.props.searchList}
+                            change={(event) => this.onChangeSelect(event)}
+                            value={this.state.userLookup}
+                            click={this.clear}
+                            changeText={(event) => this.onChangeText(event)}/>
+                    </div>
+                    <div className={classes.row}>
+                        <User user={this.props.currentUser}/>
+                        <EditBonuses/>
+                        {adjustments}
+                        {afterFloorAdjustments}
+                    </div>
                 </div>
-                <div className={classes.row}>
-                    <User user={this.props.currentUser}/>
-                    <EditBonuses/>
-                    {adjustments}
-                    {afterFloorAdjustments}
-                </div>
-            </div>
         );
     };
 }
@@ -107,6 +108,7 @@ const mapDispatchToProps = dispatch => {
         onSetPayrollSearch: (users) => dispatch(actions.setPayrollSearch(users)),
         onSetAS400Search: (users) => dispatch(actions.setAS400Search(users)),
         onSetADSearch: (users) => dispatch(actions.setADSearch(users)),
+        onFetchFloors: () => dispatch(actions.fetchFloors()),
         onFetchAdjustments: () => dispatch(actions.fetchAdjustments()),
         onFetchAfterFloorAdjustments: () => dispatch(actions.fetchAfterFloorAdjustments()),
         onSetCurrentUser: (searchBy, ID, users, adjustments, afterFloorAdjustments) => dispatch(actions.setCurrentUser(searchBy, ID, users, adjustments, afterFloorAdjustments)),

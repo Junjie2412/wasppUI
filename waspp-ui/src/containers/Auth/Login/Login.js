@@ -10,15 +10,19 @@ class Login extends Component {
     state = {
         username: 'Steve',
         password: 'Stoove'
-    }
+    };
 
     loginHandler() {
 
     }
 
+    onLogin = (event) => {
+        this.props.history.push('/editUsers');
+    };
+
+
     render() {
         return (
-                
                 <Aux>
                     <div className={classes.background} />
                     <div className={bootStrapClasses.container}>
@@ -41,7 +45,7 @@ class Login extends Component {
                                             </div>
                                             <div className={[bootStrapClasses['text-center']]}>
                                                 <button className={[bootStrapClasses.btn, bootStrapClasses['btn-default'], bootStrapClasses['btn-block']].join(' ')}
-                                                >Login</button>
+                                                onClick={(event) => this.onLogin(event)}>Login</button>
                                             </div>
                                         </form>
                                     </div>
