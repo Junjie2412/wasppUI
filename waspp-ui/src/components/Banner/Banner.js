@@ -2,7 +2,7 @@ import React from 'react';
 import bootStrapClasses from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {NavLink} from 'react-router-dom';
 import classes from './Banner.css';
-import logo from '../../assets/SPPay_simple_white2.png';
+import logo from '../../assets/SPPay_simple_white_outlined.png';
 
 const navbar = (props) =>{
 
