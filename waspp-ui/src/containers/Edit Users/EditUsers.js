@@ -64,25 +64,25 @@ class EditUsers extends Component {
 
         return (
             (this.props.loadingUsers && this.props.loadingAdjustments && this.props.loadingAfterFloorAdjustments )? <Spinner/>:
-            <div className={classes.EditUser}>
-                <h1 className={classes.Header}>Edit Users</h1>
-                <div style={{transform: 'translateX(2.3%)'}}>
-                    <Search
-                        placeholder={this.props.placeholder}
-                        options={this.props.searchBy}
-                        dataList={this.props.searchList}
-                        change={(event) => this.onChangeSelect(event)}
-                        value={this.state.userLookup}
-                        click={this.clear}
-                        changeText={(event) => this.onChangeText(event)}/>
+                <div className={classes.EditUser}>
+                    <h1 className={classes.Header}>Edit Users</h1>
+                    <div style={{transform: 'translateX(2.3%)'}}>
+                        <Search
+                            placeholder={this.props.placeholder}
+                            options={this.props.searchBy}
+                            dataList={this.props.searchList}
+                            change={(event) => this.onChangeSelect(event)}
+                            value={this.state.userLookup}
+                            click={this.clear}
+                            changeText={(event) => this.onChangeText(event)}/>
+                    </div>
+                    <div className={classes.row}>
+                        <User user={this.props.currentUser}/>
+                        <EditBonuses/>
+                        {adjustments}
+                        {afterFloorAdjustments}
+                    </div>
                 </div>
-                <div className={classes.row}>
-                    <User user={this.props.currentUser}/>
-                    <EditBonuses/>
-                    {adjustments}
-                    {afterFloorAdjustments}
-                </div>
-            </div>
         );
     };
 }

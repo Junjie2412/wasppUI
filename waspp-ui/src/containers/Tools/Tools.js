@@ -7,11 +7,11 @@ import classes from './Tools.css';
 class Tools extends Component {
     render() {
         return (
-            <div>
-                <h1 className={classes.header}>Tools</h1>
-                <ToolsToolbar></ToolsToolbar>
-                <Route path='/tools/OPCODefaults' exact component={OPCODefaults} />
-            </div>
+                <div>
+                    <h1 className={classes.header}>Tools</h1>
+                    <ToolsToolbar></ToolsToolbar>
+                    <Route path='/tools/OPCODefaults' exact component={OPCODefaults} />
+                </div>
         );
     };
 }

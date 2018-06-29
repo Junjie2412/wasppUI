@@ -4,26 +4,26 @@ import * as actionTypes from './actionTypes';
 
 // ************************************************************************//
 // ************************************************************************//
-// The below are functions that will follow upon changing the edit subsidies
+// The below are functions that will follow upon changing the edit buy outs
 
-export const editSubsidyAmount = (amount) => {
+export const editBuyOutAmount = (amount) => {
     return {
-        type: actionTypes.EDIT_SUBSIDY_AMOUNT,
+        type: actionTypes.EDIT_BUYOUT_AMOUNT,
         amount: amount
     }
 };
 
-export const editSubsidyStartDate = (date) => {
+export const editBuyOutStartDate = (date) => {
     return {
-        type: actionTypes.EDIT_SUBSIDY_START_DATE,
+        type: actionTypes.EDIT_BUYOUT_START_DATE,
         date: date
     }
 };
 
 
-export const editSubsidyComment = (comment) => {
+export const editBuyOutComment = (comment) => {
     return {
-        type: actionTypes.EDIT_SUBSIDY_COMMENT,
+        type: actionTypes.EDIT_BUYOUT_COMMENT,
         comment: comment
     }
 };

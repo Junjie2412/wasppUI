@@ -15,6 +15,7 @@ import OPCODefaultsReducer from './store/reducers/OPCODefaultsReducer';
 import thunk from 'redux-thunk';
 import notificationReducer from "./store/reducers/notificationReducer";
 import editSubsidyReducer from "./store/reducers/editSubsidyReducer";
+import editBuyOutReducer from "./store/reducers/editBuyOutReducer";
 import editFloorsReducer from "./store/reducers/editFloorsReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
     editEmployee: editEmployerReducer,
     editFloors: editFloorsReducer,
     editSubsidies: editSubsidyReducer,
+    editBuyOuts: editBuyOutReducer,
     editAdjustments: editAdjustmentsReducer,
     editAfterFloorAdjustments: editAfterFloorAdjustmentsReducer,
     opcoDefaults: OPCODefaultsReducer,

@@ -12,7 +12,7 @@ const editBonusForm = (props) => {
     const EditAmount = (event) => {
         switch (props.editState) {
             case 'Subsidy Amount': return props.onEditSubsidyAmount(event.target.value);
-            case 'Buy Out Amount': return;
+            case 'Buy Out Amount': return props.onEditBuyOutAmount(event.target.value);
             case 'Floor Amount': return props.onEditFloorAmount(event.target.value);
             default: return;
         }
@@ -22,7 +22,7 @@ const editBonusForm = (props) => {
     const EditStartDate = (event) => {
         switch (props.editState) {
             case 'Subsidy Amount': return props.onEditSubsidyStartDate(event);
-            case 'Buy Out Amount': return;
+            case 'Buy Out Amount': return props.editBuyOutStartDate(event);
             case 'Floor Amount': return props.onEditFloorStartDate(event);
             default: return;
         }
@@ -40,7 +40,7 @@ const editBonusForm = (props) => {
     const EditComment = (event) => {
         switch (props.editState) {
             case 'Subsidy Amount': return props.onEditSubsidyComment(event.target.value);
-            case 'Buy Out Amount': return;
+            case 'Buy Out Amount': return props.onEditBuyOutComment(event.target.value);
             case 'Floor Amount': return props.onEditFloorComment(event.target.value);
             default: return;
         }
@@ -173,8 +173,9 @@ const editBonusForm = (props) => {
 
 const mapStateToProps = state => {
     return {
-        editFloor: state.editFloors.currentEditFloor,
         editSubsidy: state.editSubsidies.currentEditSubsidy,
+        editFloor: state.editFloors.currentEditFloor,
+        editBuyOut: state.editBuyOuts.currentEditBuyOut,
         user: state.editUsers.currentUser
     }
 };
@@ -188,7 +189,10 @@ const mapDispatchToProps = dispatch => {
         onAddEditFloor: (floorData) => dispatch(actions.postEditFloors(floorData)),
         onEditSubsidyAmount: (amount) => dispatch(actions.editSubsidyAmount(amount)),
         onEditSubsidyStartDate: (date) => dispatch(actions.editSubsidyStartDate(date)),
-        onEditSubsidyComment: (comment) => dispatch(actions.editSubsidyComment(comment))
+        onEditSubsidyComment: (comment) => dispatch(actions.editSubsidyComment(comment)),
+        onEditBuyOutAmount: (amount) => dispatch(actions.editBuyOutAmount(amount)),
+        onEditBuyOutStartDate: (date) => dispatch(actions.editBuyOutStartDate(date)),
+        onEditBuyOutComment: (comment) => dispatch(actions.editBuyOutComment(comment)),
     }
 };
 

@@ -10,19 +10,18 @@ class Login extends Component {
     state = {
         username: 'Steve',
         password: 'Stoove'
-    }
+    };
 
     loginHandler() {
 
     }
 
-    onLogin = (event) =>{        
+    onLogin = (event) => {
         this.props.history.push('/editUsers');
-    }
+    };
 
     render() {
         return (
-                
                 <Aux>
                     <div className={classes.background} />
                     <div className={bootStrapClasses.container}>
