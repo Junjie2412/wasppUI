@@ -27,7 +27,7 @@ class EditUsers extends Component {
     //This handler changes what the value property is whenever we change the search input text
     onChangeText = (event) => {
         this.setState({userLookup: event.target.value});
-        this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users, this.props.adjustments, this.props.afterFloorAdjustments)
+        this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users, this.props.adjustments, this.props.afterFloorAdjustments, this.props.editFloorList);
     };
 
     //This handler changes the state properties based on which value was selected
@@ -98,9 +98,10 @@ const mapStateToProps = state => {
         placeholder: state.editUsers.placeholder,
         currentUser: state.editUsers.currentUser,
         adjustments: state.editAdjustments.adjustments,
-        afterFloorAdjustments: state.editAfterFloorAdjustments.adjustments
+        afterFloorAdjustments: state.editAfterFloorAdjustments.adjustments,
+        editFloorList: state.editFloors.editFloors
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -111,8 +112,10 @@ const mapDispatchToProps = dispatch => {
         onFetchFloors: () => dispatch(actions.fetchFloors()),
         onFetchAdjustments: () => dispatch(actions.fetchAdjustments()),
         onFetchAfterFloorAdjustments: () => dispatch(actions.fetchAfterFloorAdjustments()),
-        onSetCurrentUser: (searchBy, ID, users, adjustments, afterFloorAdjustments) => dispatch(actions.setCurrentUser(searchBy, ID, users, adjustments, afterFloorAdjustments)),
-        }
-}
+        onSetCurrentUser: (searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors) => dispatch(actions.setCurrentUser(searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors)),
+        onSetHasFloorTrue: () => dispatch(actions.currentUserHasFloor()),
+        onSetHasFloorFalse: () => dispatch(actions.currentUserDoesNotHaveFloor())
+    }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditUsers);

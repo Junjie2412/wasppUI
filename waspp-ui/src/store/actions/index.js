@@ -22,7 +22,10 @@ export {
     postEditFloors,
     putEditFloors,
     deleteEditFloor,
-    fetchFloors
+    fetchFloors,
+    currentUserHasFloor,
+    currentUserDoesNotHaveFloor,
+    setCurrentEditFloor
 } from './editFloorsActions';
 
 export {

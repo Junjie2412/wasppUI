@@ -54,13 +54,23 @@ const editBonusForm = (props) => {
     const onSubmit = (event) => {
         event.preventDefault();
         props.close();
+
+        for (let floor in props.editFloorList) {
+            if (props.editFloorList[floor].user.id === props.user.id) {
+                props.onSetHasFloorTrue();
+            }
+        }
+
         switch (props.editState) {
             case 'Subsidy Amount': return;
             case 'Buy Out Amount': return;
-            case 'Floor Amount': return props.onAddEditFloor({
-                user: props.user,
-                floorAdjustments: props.editFloor
-            });
+            case 'Floor Amount': if (!props.hasFloor) {
+                props.onAddEditFloor({
+                    user: props.user,
+                    floorAdjustments: props.editFloor
+                });
+            }
+            break;
             default: return;
         }
     };
@@ -77,20 +87,20 @@ const editBonusForm = (props) => {
     let defaultComment = '';
     switch (props.editState) {
         case 'Subsidy Amount':
-            defaultAmount=props.editSubsidy.amount;
-            defaultStartDate.date=props.editSubsidy.startDate;
-            defaultComment=props.editSubsidy.comment;
+            defaultAmount = props.editSubsidy.amount;
+            defaultStartDate.date = props.editSubsidy.startDate;
+            defaultComment = props.editSubsidy.comment;
             break;
         case 'Buy Out Amount':
-            defaultAmount=props.editBuyOut.amount;
-            defaultStartDate.date=props.editBuyOut.startDate;
-            defaultComment=props.editBuyOut.comment;
+            defaultAmount = props.editBuyOut.amount;
+            defaultStartDate.date = props.editBuyOut.startDate;
+            defaultComment = props.editBuyOut.comment;
             break;
         case 'Floor Amount':
-            defaultAmount=props.editFloor.amount;
-            defaultStartDate.date=props.editFloor.startDate;
-            defaultEndDate.date=props.editFloor.endDate;
-            defaultComment=props.editFloor.comment;
+            defaultAmount = props.editFloor.amount;
+            defaultStartDate.date = props.editFloor.startDate;
+            defaultEndDate.date = props.editFloor.endDate;
+            defaultComment = props.editFloor.comment;
             break;
         default:
             break;
@@ -179,7 +189,11 @@ const mapStateToProps = state => {
         editSubsidy: state.editSubsidies.currentEditSubsidy,
         editFloor: state.editFloors.currentEditFloor,
         editBuyOut: state.editBuyOuts.currentEditBuyOut,
-        user: state.editUsers.currentUser
+        editSubsidyList: state.editSubsidies.editSubsidies,
+        editFloorList: state.editFloors.editFloors,
+        editBuyOutList: state.editBuyOuts.editBuyOuts,
+        user: state.editUsers.currentUser,
+        hasFloor: state.editFloors.currentUserHasFloor
     }
 };
 
@@ -196,6 +210,9 @@ const mapDispatchToProps = dispatch => {
         onEditBuyOutAmount: (amount) => dispatch(actions.editBuyOutAmount(amount)),
         onEditBuyOutStartDate: (date) => dispatch(actions.editBuyOutStartDate(date)),
         onEditBuyOutComment: (comment) => dispatch(actions.editBuyOutComment(comment)),
+        onSetHasFloorTrue: () => dispatch(actions.currentUserHasFloor()),
+        onSetHasFloorFalse: () => dispatch(actions.currentUserDoesNotHaveFloor()),
+        onSetCurrentEditFloor: (floorData) => dispatch(actions.setCurrentEditFloor(floorData))
     }
 };
 

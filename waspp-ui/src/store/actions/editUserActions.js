@@ -109,7 +109,7 @@ export const setCurrentUserInit = (currUser, selected) => {
     };
 };
 
-export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjustments) => {
+export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors) => {
     return dispatch => {
         let selected = false;
 
@@ -135,7 +135,13 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                         currUser = users[user];
                         selected = true;
                         dispatch(actions.setCurrentUserAdjustments(adjustments, users[user]));
-                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]))
+                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]));
+                        dispatch(actions.currentUserDoesNotHaveFloor());
+                        for (let floor in editFloors) {
+                            if (editFloors[floor].user.id === users[user].id) {
+                                dispatch(actions.currentUserHasFloor());
+                            }
+                        }
                         break;
                     }
                 }
@@ -149,7 +155,13 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                         currUser = users[user];
                         selected = true;
                         dispatch(actions.setCurrentUserAdjustments(adjustments, users[user]));
-                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]))
+                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]));
+                        dispatch(actions.currentUserDoesNotHaveFloor());
+                        for (let floor in editFloors) {
+                            if (editFloors[floor].user.id === users[user].id) {
+                                dispatch(actions.currentUserHasFloor());
+                            }
+                        }
                         break;
                     }
                 }
@@ -162,7 +174,14 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                         currUser = users[user];
                         selected = true;
                         dispatch(actions.setCurrentUserAdjustments(adjustments, users[user]));
-                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]))
+                        dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]));
+                        dispatch(actions.currentUserDoesNotHaveFloor());
+                        for (let floor in editFloors) {
+                            if (editFloors[floor].user.id === users[user].id) {
+                                dispatch(actions.currentUserHasFloor());
+                                dispatch(actions.setCurrentEditFloor(editFloors[floor]));
+                            }
+                        }
                         break;
                     }
                 }

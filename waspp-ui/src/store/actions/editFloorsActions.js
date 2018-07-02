@@ -43,25 +43,27 @@ export const editFloorsStart = () => {
     };
 };
 
-export const editFloorsSuccess = (id, adjustmentData) => {
+export const editFloorsSuccess = (id, floorData) => {
     return {
         type: actionTypes.EDIT_FLOORS_SUCCESS,
         id: id,
-        data: adjustmentData
+        data: floorData
     }
 };
 
 export const postEditFloors = (floorData) => {
     return dispatch => {
-        dispatch( editFloorsStart() );
+        dispatch( editFloorsStart());
+        dispatch(setCurrentEditFloor(floorData));
+        dispatch(currentUserHasFloor());
         axios.post(links.EDIT_FLOORS+'.json', floorData)
             .then(response => {
-                dispatch(editFloorsSuccess(response.data.name, floorData))
-            })
+                dispatch(editFloorsSuccess(response.data.name, floorData));
+            });
     };
 };
 
-
+/*
 export const putEditFloors = (floorData, id) => {
     return dispatch => {
         dispatch( editFloorsStart() );
@@ -70,7 +72,7 @@ export const putEditFloors = (floorData, id) => {
                 dispatch(editFloorsSuccess(response.data.name, floorData))
             })
     };
-};
+};*/
 
 // ************************************************************************//
 // ************************************************************************//
@@ -125,9 +127,34 @@ export const fetchFloors = () => {
                         ...response.data[floor],
                         id: floor
                     })
-                    console.log(floor)
                 }
                 dispatch(fetchEditFloorsSuccess(dataList))
             });
     }
 };
+
+// ************************************************************************//
+// ************************************************************************//
+// The below are functions that will change the state of whether the current user has a floor or not.
+
+export const currentUserHasFloor = () => {
+    return {
+        type: actionTypes.CURRENT_USER_HAS_FLOOR
+    }
+};
+
+export const currentUserDoesNotHaveFloor = () => {
+    return {
+        type: actionTypes.CURRENT_USER_DOES_NOT_HAVE_FLOOR
+    }
+};
+
+// ************************************************************************//
+// ************************************************************************//
+// The below are functions that will change the current user's edit floor if he/she has one
+export const setCurrentEditFloor = (floorData) => {
+    return {
+        type: actionTypes.SET_CURRENT_EDIT_FLOOR,
+        data: floorData
+    }
+}

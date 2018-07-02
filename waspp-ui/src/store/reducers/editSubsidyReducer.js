@@ -2,9 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject} from "../../shared/utility";
 
 const initialState = {
-    editSubsidies: {
-
-    },
+    editSubsidies: [],
     currentEditSubsidy: {
         id: '',
         amount: '',

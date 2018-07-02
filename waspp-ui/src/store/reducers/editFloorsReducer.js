@@ -2,9 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject} from "../../shared/utility";
 
 const initialState = {
-    editFloors: {
-
-    },
+    editFloors: [],
     currentEditFloor: {
         id: '',
         amount: '',
@@ -12,6 +10,7 @@ const initialState = {
         endDate: null,
         comment: ''
     },
+    currentUserHasFloor: false,
     loading: false
 };
 
@@ -35,13 +34,8 @@ const editFloorsStart = (state, action ) => {
 };
 
 const editFloorsSuccess = (state, action) => {
-    return updateObject(state, {loading: false, currentEditFloor: {
-        id: '',
-        amount: '',
-        startDate: null,
-        endDate: null,
-        comment: ''
-    }});
+    const newFloor = updateObject(action.data, {id: action.id});
+    return updateObject(state, {loading: false, editFloors: state.editFloors.concat(newFloor)});
 };
 
 const fetchEditFloorsStart = (state, action) => {
@@ -67,6 +61,24 @@ const deleteEditFloorsSuccess = (state, action) => {
     })
 };
 
+const currentUserHasFloor = (state, action) => {
+    return updateObject(state, {
+        currentUserHasFloor: true
+    })
+};
+
+const currentUserDoesNotHaveFloor = (state, action) => {
+    return updateObject(state, {
+        currentUserHasFloor: false
+    })
+};
+
+const setCurrentEditFloor = (state, action) => {
+    return updateObject(state, {
+        currentEditFloor: action.data
+    })
+};
+
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.EDIT_FLOOR_AMOUNT: return editFloorAmount(state, action);
@@ -79,6 +91,9 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_EDIT_FLOORS_SUCCESS: return fetchEditFloorsSuccess(state, action);
         case actionTypes.DELETE_EDIT_FLOOR_START: return deleteEditFloorsStart(state, action);
         case actionTypes.DELETE_ADJUSTMENT_SUCCESS: return deleteEditFloorsSuccess(state, action);
+        case actionTypes.CURRENT_USER_HAS_FLOOR: return currentUserHasFloor(state, action);
+        case actionTypes.CURRENT_USER_DOES_NOT_HAVE_FLOOR: return currentUserDoesNotHaveFloor(state, action);
+        case actionTypes.SET_CURRENT_EDIT_FLOOR: return setCurrentEditFloor(state, action)
         default: return state;
     }
 };
