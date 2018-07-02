@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import bootStrapClasses from '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import classes from './Login.css';
 import Aux from '../../../hoc/Auxiliary/Auxiliary';
+import loginLogo from '../../../assets/SPPay_color.png';
 
 
 
@@ -25,13 +26,14 @@ class Login extends Component {
         return (
                 <Aux>
                     <div className={classes.background} />
-                    <div className={bootStrapClasses.container}>
+                    <div className={bootStrapClasses.container} style={{transform: 'translateY(40px)'}}>
                         <div className={bootStrapClasses.row}>
-                            <div className={[bootStrapClasses['offset-md-7'], bootStrapClasses['col-md-4']].join(' ')}>
+                            <div className={[bootStrapClasses['offset-md-4'], bootStrapClasses['col-md-4']].join(' ')}>
                                 <div className={[bootStrapClasses.card, classes['card-default']].join(' ')}>
                                     <div className={bootStrapClasses['card-body']}>
                                         <div className={[bootStrapClasses['card-title'], bootStrapClasses['text-center'], classes['pad-full']].join(' ')}>
-                                            <strong>Sysco</strong>
+                                            {/* <strong>Sysco</strong> */}
+                                            <img src={loginLogo} alt='okay...' width="110" height="85" />
                                         </div>
                                         <form>
                                             <div className='md-form'>
