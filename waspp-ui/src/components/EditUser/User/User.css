@@ -16,38 +16,25 @@
     color: #fff;
 }
 
+.Name {
+    color: white;
+    text-align: center;
+}
+
 .Table {
     margin: 0 0 0 6%;
 }
 
 .Table tr td {
-    border: 1px #bbb dotted;
+    border: 1px white dotted;
     padding: 4px 1px;
+    width: 178px;
 }
 
-.Table tr td:nth-child(1) h5{
-    margin: 3px;
+.Table tr td p{
     text-align: left;
-    color: #fff;
-    font: 20px 'Century Gothic', serif;
-}
-
-.Table tr td:nth-child(2) h5{
-    margin: 2px;
-    color: #fff;
-    text-align: left;
-    font: 20px 'Century Gothic';
-}
-
-.Table tr td:nth-child(1) p{
-    text-align: left;
-    margin: 6% 0 6% 0%;
     font: 16px 'Century Gothic', serif;
-}
-
-.Table tr td:nth-child(2) p{
-    margin: 0 0 0 20%;
-    font: 16px 'Century Gothic', serif;
+    margin: 6% 0 6% 12%;
 }
 
 .Check {
