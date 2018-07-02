@@ -59,7 +59,7 @@ export {
     selectAfterFloorAdjustment,
     openAfterFloor,
     closeAfterFloor
-} from './editAfterFloorAdjustmentActions'
+} from './editAfterFloorAdjustmentActions';
 
 export {
     editGroupName,
@@ -88,9 +88,13 @@ export {
 } from './OPCODefaultsActions';
 
 export{
+    fetchWeeklyBonusProofs
+} from './weeklyBonusProofActions';
+
+export{
     fetchMonthlyBonusProofs
-} from './monthlyBonusProofActions'
+} from './monthlyBonusProofActions';
 
 export{
     fetchCompensationRecapReports
-} from './compensationRecapActions'
+} from './compensationRecapActions';
