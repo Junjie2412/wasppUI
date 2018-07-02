@@ -86,3 +86,7 @@ export {
     selectBonusField,
     selectColumnAxis
 } from './OPCODefaultsActions';
+
+export{
+    fetchMonthlyBonusProofs
+} from './monthlyBonusProofActions'

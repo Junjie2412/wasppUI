@@ -9,7 +9,8 @@ class CompensationRecap extends Component {
   render() {
 
     const populateRows = this.props.compensationRows.map(data => (
-      <tr>
+      //TEMP
+      <tr key={data.DSM}>
         <td>{data.DSM}</td>
         <td>{data.MaName}</td>
         <td>{data.Sales}</td>

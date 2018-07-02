@@ -1,3 +1,6 @@
+import {updateObject} from "../../shared/utility";
+import * as actionTypes from '../actions/actionTypes';
+
 const initialState = {
     rows:[{
         AS400ID: '000',
@@ -6,11 +9,11 @@ const initialState = {
         FileNumber: '000',
         TerritoryID: '000',
         BASE: '000',
-        CommissionsAdvane: '000',
+        CommissionsAdvance: '000',
         Subsidy: '000',
         Comm: '000',
         BonusFloor: '000',
-        BuyOuts: '000',
+        Buyouts: '000',
         CalculatedPay: '000',
         Floor: '000',
         BonusMatrixAmount: '000',
@@ -22,8 +25,18 @@ const initialState = {
     }]
 };
 
+const fetchAdjustmentsSuccess = (state, action) => {
+    console.log(action.mbProofList);
+    return updateObject( state, {
+        rows: action.data
+    })
+};
+
 const reducer = (state = initialState, action) =>{
-    return state;
+    switch(action.type){
+        case actionTypes.FETCH_MONTHLY_BONUS_PROOFS_SUCCESS: return fetchAdjustmentsSuccess(state, action);
+        default: return state;
+    }
 }
 
 export default reducer;

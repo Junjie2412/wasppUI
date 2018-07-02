@@ -6,6 +6,8 @@ import CompensationRecap from '../../components/Report/CompensationRecap';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import classes from './Reports.css';
 import bsClasses from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import {connect} from 'react-redux';
+import * as actions from '../../store/actions/index';
 
 class Reports extends Component {
     constructor(props){
@@ -18,6 +20,10 @@ class Reports extends Component {
         this.weeklyCommission=this.weeklyCommission.bind(this);
         this.monthlyBonus=this.monthlyBonus.bind(this);
         this.compensationRecap=this.compensationRecap.bind(this);
+    }
+
+    componentDidMount(){
+        this.props.onFetchMonthlyBonusProofs();
     }
 
     weeklyCommission(){
@@ -117,4 +123,10 @@ class Reports extends Component {
     };
 }
 
-export default Reports;
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchMonthlyBonusProofs: () => dispatch(actions.fetchMonthlyBonusProofs())
+        }
+}
+
+export default connect(null, mapDispatchToProps)(Reports);

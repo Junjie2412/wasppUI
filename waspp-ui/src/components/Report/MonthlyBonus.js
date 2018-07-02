@@ -9,18 +9,19 @@ class MonthlyBonus extends Component {
   render() {
 
     const populateRows = this.props.monthlyBonusRows.map(data => (
-      <tr>
+      //TEMP
+      <tr key={data.AS400ID}>
         <td>{data.AS400ID}</td>
         <td>{data.TerritoryDescription}</td>
         <td>{data.EmployeeID}</td>
         <td>{data.FileNumber}</td>
         <td>{data.TerritoryID}</td>
         <td>{data.BASE}</td>
-        <td>{data.CommissionsAdvane}</td>
+        <td>{data.CommissionsAdvance}</td>
         <td>{data.Subsidy}</td>
         <td>{data.Comm}</td>
         <td>{data.BonusFloor}</td>
-        <td>{data.BuyOuts}</td>
+        <td>{data.Buyouts}</td>
         <td>{data.CalculatedPay}</td>
         <td>{data.Floor}</td>
         <td>{data.BonusMatrixAmount}</td>
