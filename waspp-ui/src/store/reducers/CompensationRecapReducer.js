@@ -15,7 +15,6 @@ const initialState = {
         Buyout: '000',
         TotalWeeklyCompensation: '000',
         Weeks: '000',
-        Pieces: '000',
         WithoutBonus: '000',
         Bonus: '000',
         TotalCompPerPiece: '000'
@@ -24,6 +23,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) =>{
     return state;
-}
+};
 
 export default reducer;
