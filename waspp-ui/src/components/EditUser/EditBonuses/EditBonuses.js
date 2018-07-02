@@ -54,9 +54,18 @@ class EditBonuses extends Component {
             this.props.loading ? <Spinner/> :
             <Aux>
                 <div className={classes.btnGroup}>
-                    <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editSubsidyModal}>{this.state.titleStates[0]}</button>
-                    <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editBuyOutModal}>{this.state.titleStates[1]}</button>
-                    <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editFloorsModal}>{this.state.titleStates[2]}</button>
+                    <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editSubsidyModal}>
+                        {this.state.titleStates[0]}
+                        <div className={classes.Screen}>$120000.00</div>
+                    </button>
+                    <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editBuyOutModal}>
+                        {this.state.titleStates[1]}
+                        <div className={classes.Screen}>$1200000.00</div>
+                        </button>
+                    <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editFloorsModal}>
+                        {this.state.titleStates[2]}
+                        <div className={classes.Screen}>$1200.00</div>
+                        </button>
                 </div>
                 <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
                     <EditBonus

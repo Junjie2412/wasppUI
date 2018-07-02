@@ -34,3 +34,18 @@
     color: #ddd;
     background-color: #40ade2;
 }
+
+.Screen {
+    height: 30px;
+    width: 100px;
+
+    float: right;
+
+    padding: 0 10px;
+
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);
+
+    font-weight: bold;
+}
