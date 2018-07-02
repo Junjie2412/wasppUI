@@ -12,7 +12,7 @@ class CompensationRecap extends Component {
       //TEMP
       <tr key={data.DSM}>
         <td>{data.DSM}</td>
-        <td>{data.MaName}</td>
+        <td>{data.MAName}</td>
         <td>{data.Sales}</td>
         <td>{data.SalesGrowth}</td>
         <td>{data.GPTaxDollars}</td>

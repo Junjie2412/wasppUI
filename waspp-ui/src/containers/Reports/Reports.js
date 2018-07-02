@@ -24,6 +24,7 @@ class Reports extends Component {
 
     componentDidMount(){
         this.props.onFetchMonthlyBonusProofs();
+        this.props.onFetchCompensationRecapReports();
     }
 
     weeklyCommission(){
@@ -125,8 +126,9 @@ class Reports extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchMonthlyBonusProofs: () => dispatch(actions.fetchMonthlyBonusProofs())
-        }
+        onFetchMonthlyBonusProofs: () => dispatch(actions.fetchMonthlyBonusProofs()),
+        onFetchCompensationRecapReports: () => dispatch(actions.fetchCompensationRecapReports())
+    }
 }
 
 export default connect(null, mapDispatchToProps)(Reports);

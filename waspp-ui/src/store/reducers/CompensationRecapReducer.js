@@ -1,3 +1,6 @@
+import {updateObject} from "../../shared/utility";
+import * as actionTypes from '../actions/actionTypes';
+
 const initialState = {
     rows:[{
         DSM: '000',
@@ -15,15 +18,24 @@ const initialState = {
         Buyout: '000',
         TotalWeeklyCompensation: '000',
         Weeks: '000',
-        // Pieces: '000',
+        Pieces2: '000',
         WithoutBonus: '000',
         Bonus: '000',
         TotalCompPerPiece: '000'
     }]
 };
 
+const fetchCompensationRecapReportSuccess = (state, action) =>{
+    return updateObject(state, {
+        rows: action.data
+    });
+}
+
 const reducer = (state = initialState, action) =>{
-    return state;
+    switch(action.type){
+        case actionTypes.FETCH_COMPENSATION_RECAP_REPORTS_SUCCESS: return fetchCompensationRecapReportSuccess(state, action);
+        default: return state;
+    }
 };
 
 export default reducer;

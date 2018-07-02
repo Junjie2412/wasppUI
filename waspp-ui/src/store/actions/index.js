@@ -90,3 +90,7 @@ export {
 export{
     fetchMonthlyBonusProofs
 } from './monthlyBonusProofActions'
+
+export{
+    fetchCompensationRecapReports
+} from './compensationRecapActions'

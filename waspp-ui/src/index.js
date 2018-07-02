@@ -18,7 +18,7 @@ import editSubsidyReducer from "./store/reducers/editSubsidyReducer";
 import editBuyOutReducer from "./store/reducers/editBuyOutReducer";
 import editFloorsReducer from "./store/reducers/editFloorsReducer";
 import MonthlyBonusProofReducer from './store/reducers/monthlyBonusProofReducer';
-import CompensationRecapReducer from './store/reducers/CompensationRecapReducer';
+import CompensationRecapReducer from './store/reducers/compensationRecapReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

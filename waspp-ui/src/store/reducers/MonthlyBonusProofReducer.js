@@ -21,12 +21,11 @@ const initialState = {
         NetBonus: '000',
         AfterFloorAdjustment: '000',
         CheckTotal: '000',
-        CommissionDate: '000',
+        CommissionDate: '000'
     }]
 };
 
-const fetchAdjustmentsSuccess = (state, action) => {
-    console.log(action.mbProofList);
+const fetchMonthlyBonusProofsSuccess = (state, action) => {
     return updateObject( state, {
         rows: action.data
     })
@@ -34,7 +33,7 @@ const fetchAdjustmentsSuccess = (state, action) => {
 
 const reducer = (state = initialState, action) =>{
     switch(action.type){
-        case actionTypes.FETCH_MONTHLY_BONUS_PROOFS_SUCCESS: return fetchAdjustmentsSuccess(state, action);
+        case actionTypes.FETCH_MONTHLY_BONUS_PROOFS_SUCCESS: return fetchMonthlyBonusProofsSuccess(state, action);
         default: return state;
     }
 }
