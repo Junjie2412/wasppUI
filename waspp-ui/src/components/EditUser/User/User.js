@@ -25,16 +25,9 @@ class user extends Component{
             <div className={classes.Outer}>
                 <div className={[[bootStrapClasses.card], bootStrapClasses['shadow-lg'], classes.Card].join(' ')}>
                     <div className={[bootStrapClasses['card-body'], classes.Form].join(' ')}>
+                        <h5 className = {classes.Name}>{this.props.user.FirstName} {this.props.user.LastName}</h5>
                         <table className={classes.Table}>
                             <tbody>
-                            <tr>
-                                <td>
-                                    <h5 className={[bootStrapClasses['text-center'], bootStrapClasses['card-title']].join(' ')}>Name </h5>
-                                </td>
-                                <td>
-                                    <h5>{this.props.user.FirstName} {this.props.user.LastName}</h5>
-                                </td>
-                            </tr>
                             <tr>
                                 <td>
                                     <p>AS400 ID </p>
