@@ -3,8 +3,14 @@ import OPCODefaults from './OPCODefaults/OPCODefaults';
 import ToolsToolbar from '../../components/UI/Navigation/ToolsToolbar/ToolsToolbar';
 import { Route } from 'react-router-dom';
 import classes from './Tools.css';
+import * as actions from '../../store/actions/index';
+import {connect} from 'react-redux';
+
 
 class Tools extends Component {
+    componentDidMount(){
+        this.props.onFetchOpcodeDefaults();
+    }
     render() {
         return (
                 <div>
@@ -16,4 +22,9 @@ class Tools extends Component {
     };
 }
 
-export default Tools;
+const mapDispatchToProps = dispatch =>{
+    return{
+        onFetchOpcodeDefaults: () => dispatch(actions.fetchOPCODefaults())
+    }
+}
+export default connect(null, mapDispatchToProps)(Tools);

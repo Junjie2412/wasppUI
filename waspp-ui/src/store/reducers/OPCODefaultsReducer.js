@@ -4,7 +4,7 @@ import { updateObject} from "../../shared/utility";
 const initialState = {
     opcodeNumbers: [],
     currentOPCODefault: {
-        OPCONumber: 'OPCONumber',
+        // OPCONumber: 'OPCONumber',
         Location: 'Location',
         Email: 'Email',
         GroupName: 'GroupName',
@@ -145,6 +145,12 @@ const selectColumnAxis = (state, action) => {
     return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {ColumnAxis: action.columnAxis})});
 }
 
+const fetchOPCODefaultsSuccess =(state, action) => {
+    return updateObject( state, {
+        currentOPCODefault: action.data
+    });
+}
+
 const reducer = (state = initialState, action) =>{
     switch(action.type){
         case actionTypes.EDIT_OPCODEFAULT_GROUP_NAME: return editOPCODefault(state, action);
@@ -173,6 +179,7 @@ const reducer = (state = initialState, action) =>{
         case actionTypes.SELECT_MA_SERVE: return selectMAServe(state, action);
         case actionTypes.SELECT_BONUS_FIELDS: return selectBonusField(state, action);
         case actionTypes.SELECT_COLUMN_AXIS: return selectColumnAxis(state, action);
+        case actionTypes.FETCH_OPCODEFAULTS_SUCCESS: return fetchOPCODefaultsSuccess(state, action);
         default: return state;
     }
 }

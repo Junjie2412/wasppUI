@@ -87,7 +87,9 @@ export {
     toggleOTH,
     selectMAServe,
     selectBonusField,
-    selectColumnAxis
+    selectColumnAxis,
+
+    fetchOPCODefaults
 } from './OPCODefaultsActions';
 
 export{

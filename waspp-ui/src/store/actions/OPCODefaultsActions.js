@@ -1,4 +1,6 @@
 import * as actionTypes from './actionTypes';
+import axios from 'axios';
+import * as links from '../../shared/Links';
 
 export const editGroupName = groupName => {
     return{
@@ -177,3 +179,28 @@ export const selectColumnAxis = columnAxis => {
         columnAxis: columnAxis
     }
 }
+
+// ************************************************************************//
+// ************************************************************************//
+// The below are functions that will fetch the OPCODefaults from the database
+export const fetchOPCODefaults = () =>{
+    return dispatch =>{
+        axios.get(links.OPCODEFAULTS + '.json')
+        .then(response =>{
+            const responseData = [];
+            for(let OPCODefaults in response.data){
+                responseData.push({
+                    ...response.data[OPCODefaults]
+                });
+            }
+            dispatch(fetchOPCODefaultsSuccess(responseData));
+        });
+    }
+};
+
+const fetchOPCODefaultsSuccess = (opcoDefaultsList) =>{
+    return{
+        type: actionTypes.FETCH_OPCODEFAULTS_SUCCESS,
+        data: opcoDefaultsList
+    }
+};
