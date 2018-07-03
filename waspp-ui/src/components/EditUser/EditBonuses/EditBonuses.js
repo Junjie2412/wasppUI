@@ -67,16 +67,22 @@ class EditBonuses extends Component {
             Add Subsidy
         </button>;
 
+        let editBuyOutButton = null;
+        this.props.hasBuyOut ? editBuyOutButton = <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editBuyOutModal}>
+            View Buy Out
+            <div className={classes.Screen}>$ {this.props.currentUserEditBuyOut.amount}</div>
+        </button> : editBuyOutButton = <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editBuyOutModal}>
+            Add Buy Out
+        </button>;
+
 
         return (
-            (this.props.loadingFloors && this.props.loadingSubsidy) ? <Spinner/> :
+            (this.props.loadingFloors && this.props.loadingSubsidy && this.props.loadingBuyOut) ? <Spinner/> :
             <Aux>
                 <div className={classes.btnGroup}>
                     <h3 className={classes.Title}>Edit Bonuses</h3>
                     {editSubsidyButton}
-                    <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editBuyOutModal}>
-                        {this.state.titleStates[1]}
-                        </button>
+                    {editBuyOutButton}
                     {editFloorButton}
                 </div>
                 <Modal show={this.state.modalShow} modalClosed={this.closeModal}>
@@ -100,7 +106,10 @@ const mapStateToProps = state => {
         currentUserEditFloor: state.editFloors.currentEditFloor,
         loadingSubsidy: state.editSubsidies.loading,
         hasSubsidy: state.editSubsidies.currentUserHasSubsidy,
-        currentUserEditSubsidy: state.editSubsidies.currentEditSubsidy
+        currentUserEditSubsidy: state.editSubsidies.currentEditSubsidy,
+        loadingBuyOut: state.editBuyOuts.loading,
+        hasBuyOut: state.editBuyOuts.currentUserHasBuyOut,
+        currentUserEditBuyOut: state.editBuyOuts.currentEditBuyOut
 
     }
 };

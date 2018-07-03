@@ -23,12 +23,13 @@ class EditUsers extends Component {
         this.props.onFetchAfterFloorAdjustments();
         this.props.onFetchFloors();
         this.props.onFetchSubsidies();
+        this.props.onFetchEditBuyOuts();
     }
 
     //This handler changes what the value property is whenever we change the search input text
     onChangeText = (event) => {
         this.setState({userLookup: event.target.value});
-        this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users, this.props.adjustments, this.props.afterFloorAdjustments, this.props.editFloorList, this.props.editSubsidiesList);
+        this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users, this.props.adjustments, this.props.afterFloorAdjustments, this.props.editFloorList, this.props.editSubsidiesList, this.props.editBuyOutsList);
     };
 
     //This handler changes the state properties based on which value was selected
@@ -101,7 +102,8 @@ const mapStateToProps = state => {
         adjustments: state.editAdjustments.adjustments,
         afterFloorAdjustments: state.editAfterFloorAdjustments.adjustments,
         editFloorList: state.editFloors.editFloors,
-        editSubsidiesList: state.editSubsidies.editSubsidies
+        editSubsidiesList: state.editSubsidies.editSubsidies,
+        editBuyOutsList: state.editBuyOuts.editBuyOuts
     }
 };
 
@@ -113,9 +115,10 @@ const mapDispatchToProps = dispatch => {
         onSetADSearch: (users) => dispatch(actions.setADSearch(users)),
         onFetchFloors: () => dispatch(actions.fetchFloors()),
         onFetchSubsidies: () => dispatch(actions.fetchSubsidies()),
+        onFetchEditBuyOuts: () => dispatch(actions.fetchBuyOuts()),
         onFetchAdjustments: () => dispatch(actions.fetchAdjustments()),
         onFetchAfterFloorAdjustments: () => dispatch(actions.fetchAfterFloorAdjustments()),
-        onSetCurrentUser: (searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors, editSubsidies) => dispatch(actions.setCurrentUser(searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors, editSubsidies))
+        onSetCurrentUser: (searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors, editSubsidies, editBuyOut) => dispatch(actions.setCurrentUser(searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors, editSubsidies, editBuyOut))
     }
 };
 

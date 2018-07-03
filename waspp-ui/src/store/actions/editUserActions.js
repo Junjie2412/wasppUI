@@ -109,7 +109,7 @@ export const setCurrentUserInit = (currUser, selected) => {
     };
 };
 
-export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors, editSubsidies) => {
+export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors, editSubsidies, editBuyOuts) => {
     return dispatch => {
         let selected = false;
 
@@ -132,6 +132,7 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
             {
                 dispatch(actions.clearEditFloor());
                 dispatch(actions.clearEditSubsidy());
+                dispatch(actions.clearEditBuyOut());
                 for(let user in users){
                     if(users[user].AS400ID === ID){
                         currUser = users[user];
@@ -140,6 +141,7 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                         dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]));
                         dispatch(actions.currentUserDoesNotHaveFloor());
                         dispatch(actions.currentUserDoesNotHaveSubsidies());
+                        dispatch(actions.currentUserDoesNotHaveBuyOuts());
                         for (let floor in editFloors) {
                             if (editFloors[floor].user.id === users[user].id) {
                                 dispatch(actions.currentUserHasFloor());
@@ -151,6 +153,13 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                             if (editSubsidies[subsidy].user.id === users[user].id) {
                                 dispatch(actions.currentUserHasSubsidies());
                                 dispatch(actions.setCurrentEditSubsidy(editSubsidies[subsidy]));
+                                break;
+                            }
+                        }
+                        for (let buyout in editBuyOuts) {
+                            if (editBuyOuts[buyout].user.id === users[user].id) {
+                                dispatch(actions.currentUserHasBuyOuts());
+                                dispatch(actions.setCurrentEditBuyOut(editBuyOuts[buyout]));
                                 break;
                             }
                         }
@@ -164,6 +173,7 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
             {
                 dispatch(actions.clearEditFloor());
                 dispatch(actions.clearEditSubsidy());
+                dispatch(actions.clearEditBuyOut());
                 for(let user in users){
                     if(users[user].ADID === ID){
                         currUser = users[user];
@@ -172,6 +182,7 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                         dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]));
                         dispatch(actions.currentUserDoesNotHaveFloor());
                         dispatch(actions.currentUserDoesNotHaveSubsidies());
+                        dispatch(actions.currentUserDoesNotHaveBuyOuts());
                         for (let floor in editFloors) {
                             if (editFloors[floor].user.id === users[user].id) {
                                 dispatch(actions.currentUserHasFloor());
@@ -183,6 +194,13 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                             if (editSubsidies[subsidy].user.id === users[user].id) {
                                 dispatch(actions.currentUserHasSubsidies());
                                 dispatch(actions.setCurrentEditSubsidy(editSubsidies[subsidy]));
+                                break;
+                            }
+                        }
+                        for (let buyout in editBuyOuts) {
+                            if (editBuyOuts[buyout].user.id === users[user].id) {
+                                dispatch(actions.currentUserHasBuyOuts());
+                                dispatch(actions.setCurrentEditBuyOut(editBuyOuts[buyout]));
                                 break;
                             }
                         }
@@ -195,6 +213,7 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
             {
                 dispatch(actions.clearEditFloor());
                 dispatch(actions.clearEditSubsidy());
+                dispatch(actions.clearEditBuyOut());
                 for(let user in users){
                     if(users[user].PayrollNumber === ID){
                         currUser = users[user];
@@ -203,6 +222,7 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                         dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]));
                         dispatch(actions.currentUserDoesNotHaveFloor());
                         dispatch(actions.currentUserDoesNotHaveSubsidies());
+                        dispatch(actions.currentUserDoesNotHaveBuyOuts());
                         for (let floor in editFloors) {
                             if (editFloors[floor].user.id === users[user].id) {
                                 dispatch(actions.currentUserHasFloor());
@@ -214,6 +234,13 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                             if (editSubsidies[subsidy].user.id === users[user].id) {
                                 dispatch(actions.currentUserHasSubsidies());
                                 dispatch(actions.setCurrentEditSubsidy(editSubsidies[subsidy]));
+                                break;
+                            }
+                        }
+                        for (let buyout in editBuyOuts) {
+                            if (editBuyOuts[buyout].user.id === users[user].id) {
+                                dispatch(actions.currentUserHasBuyOuts());
+                                dispatch(actions.setCurrentEditBuyOut(editBuyOuts[buyout]));
                                 break;
                             }
                         }

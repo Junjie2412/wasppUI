@@ -71,7 +71,21 @@ const editBonusForm = (props) => {
                     });
                 }
                 break;
-            case 'Buy Out Amount': return;
+            case 'Buy Out Amount':
+                if (!props.hasBuyOut) {
+                    for (let buyout in props.editBuyOutsList) {
+                        if (props.editBuyOutsList[buyout].user.id === props.user.id) {
+                            props.onSetHasBuyOutTrue();
+                        }
+                    }
+                    props.onAddEditBuyOut({
+                        user: props.user,
+                        amount: props.editBuyOut.amount,
+                        startDate: props.editBuyOut.startDate._d.toLocaleDateString(),
+                        comment: props.editBuyOut.comment
+                    });
+                }
+                break;
             case 'Floor Amount':
                 if (!props.hasFloor) {
                     for (let floor in props.editFloorList) {
@@ -101,7 +115,11 @@ const editBonusForm = (props) => {
                     props.onDeleteEditSubsidy(props.editSubsidy.id);
                 }
                 break;
-            case 'Buy Out Amount': return;
+            case 'Buy Out Amount':
+                if (props.hasBuyOut) {
+                    props.onDeleteEditBuyOut(props.editBuyOut.id);
+                }
+                break;
             case 'Floor Amount':
                 if (props.hasFloor) {
                     props.onDeleteEditFloor(props.editFloor.id);
@@ -146,6 +164,10 @@ const editBonusForm = (props) => {
             defaultAmount = props.editBuyOut.amount;
             defaultStartDate.date = props.editBuyOut.startDate;
             defaultComment = props.editBuyOut.comment;
+            viewDelete = props.hasBuyOut;
+            viewAmount = viewDelete ? props.editBuyOut.amount : null;
+            viewStartDate = viewDelete ? props.editBuyOut.startDate : null;
+            viewComment = viewDelete ? props.editBuyOut.comment : null;
             break;
         case 'Floor Amount':
             defaultAmount = props.editFloor.amount;
@@ -248,15 +270,16 @@ const editBonusForm = (props) => {
 
 const mapStateToProps = state => {
     return {
+        user: state.editUsers.currentUser,
         editSubsidy: state.editSubsidies.currentEditSubsidy,
         editFloor: state.editFloors.currentEditFloor,
         editBuyOut: state.editBuyOuts.currentEditBuyOut,
         editSubsidyList: state.editSubsidies.editSubsidies,
         editFloorList: state.editFloors.editFloors,
         editBuyOutList: state.editBuyOuts.editBuyOuts,
-        user: state.editUsers.currentUser,
         hasFloor: state.editFloors.currentUserHasFloor,
-        hasSubsidy: state.editSubsidies.currentUserHasSubsidy
+        hasSubsidy: state.editSubsidies.currentUserHasSubsidy,
+        hasBuyOut: state.editBuyOuts.currentUserHasBuyOut
     }
 };
 
@@ -271,6 +294,9 @@ const mapDispatchToProps = dispatch => {
         onEditBuyOutAmount: (amount) => dispatch(actions.editBuyOutAmount(amount)),
         onEditBuyOutStartDate: (date) => dispatch(actions.editBuyOutStartDate(date)),
         onEditBuyOutComment: (comment) => dispatch(actions.editBuyOutComment(comment)),
+        onAddEditBuyOut: (buyOutData) => dispatch(actions.postEditBuyOut(buyOutData)),
+        onDeleteEditBuyOut: (id) => dispatch(actions.deleteEditBuyOut(id)),
+        onSetHasBuyOutTrue: () => dispatch(actions.currentUserHasBuyOuts()),
         onEditFloorAmount: (amount) => dispatch(actions.editFloorAmount(amount)),
         onEditFloorStartDate: (date) => dispatch(actions.editFloorStartDate(date)),
         onEditFloorEndDate: (date) => dispatch(actions.editFloorEndDate(date)),
