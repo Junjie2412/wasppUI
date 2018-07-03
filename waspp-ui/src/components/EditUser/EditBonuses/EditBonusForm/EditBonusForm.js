@@ -55,22 +55,76 @@ const editBonusForm = (props) => {
         event.preventDefault();
         props.close();
 
-        for (let floor in props.editFloorList) {
-            if (props.editFloorList[floor].user.id === props.user.id) {
-                props.onSetHasFloorTrue();
-            }
-        }
-
         switch (props.editState) {
-            case 'Subsidy Amount': return;
-            case 'Buy Out Amount': return;
-            case 'Floor Amount': if (!props.hasFloor) {
-                props.onAddEditFloor({
-                    user: props.user,
-                    floorAdjustments: props.editFloor
-                });
-            }
+            case 'Subsidy Amount':
+                if (!props.hasSubsidy) {
+                    for (let subsidy in props.editSubsidyList) {
+                        if (props.editSubsidyList[subsidy].user.id === props.user.id) {
+                            props.onSetHasSubsidyTrue();
+                        }
+                    }
+                    props.onAddEditSubsidy({
+                        user: props.user,
+                        amount: props.editSubsidy.amount,
+                        startDate: props.editSubsidy.startDate._d.toLocaleDateString(),
+                        comment: props.editSubsidy.comment
+                    });
+                }
+                break;
+            case 'Buy Out Amount':
+                if (!props.hasBuyOut) {
+                    for (let buyout in props.editBuyOutsList) {
+                        if (props.editBuyOutsList[buyout].user.id === props.user.id) {
+                            props.onSetHasBuyOutTrue();
+                        }
+                    }
+                    props.onAddEditBuyOut({
+                        user: props.user,
+                        amount: props.editBuyOut.amount,
+                        startDate: props.editBuyOut.startDate._d.toLocaleDateString(),
+                        comment: props.editBuyOut.comment
+                    });
+                }
+                break;
+            case 'Floor Amount':
+                if (!props.hasFloor) {
+                    for (let floor in props.editFloorList) {
+                        if (props.editFloorList[floor].user.id === props.user.id) {
+                            props.onSetHasFloorTrue();
+                        }
+                    }
+                    props.onAddEditFloor({
+                        user: props.user,
+                        amount: props.editFloor.amount,
+                        startDate: props.editFloor.startDate._d.toLocaleDateString(),
+                        endDate: props.editFloor.endDate._d.toLocaleDateString(),
+                        comment: props.editFloor.comment
+                    });
+                }
             break;
+            default: return;
+        }
+    };
+
+    const onDelete = (event) => {
+        event.preventDefault();
+        props.close();
+        switch (props.editState) {
+            case 'Subsidy Amount':
+                if (props.hasSubsidy) {
+                    props.onDeleteEditSubsidy(props.editSubsidy.id);
+                }
+                break;
+            case 'Buy Out Amount':
+                if (props.hasBuyOut) {
+                    props.onDeleteEditBuyOut(props.editBuyOut.id);
+                }
+                break;
+            case 'Floor Amount':
+                if (props.hasFloor) {
+                    props.onDeleteEditFloor(props.editFloor.id);
+                }
+                break;
             default: return;
         }
     };
@@ -85,22 +139,46 @@ const editBonusForm = (props) => {
         date:  moment()
     };
     let defaultComment = '';
+
+    let viewAmount = '';
+    let viewStartDate = {
+        date:  moment()
+    };
+    let viewEndDate = {
+        date:  moment()
+    };
+    let viewComment = '';
+
+    let viewDelete = false;
     switch (props.editState) {
         case 'Subsidy Amount':
             defaultAmount = props.editSubsidy.amount;
             defaultStartDate.date = props.editSubsidy.startDate;
             defaultComment = props.editSubsidy.comment;
+            viewDelete = props.hasSubsidy;
+            viewAmount = viewDelete ? props.editSubsidy.amount : null;
+            viewStartDate = viewDelete ? props.editSubsidy.startDate : null;
+            viewComment = viewDelete ? props.editSubsidy.comment : null;
             break;
         case 'Buy Out Amount':
             defaultAmount = props.editBuyOut.amount;
             defaultStartDate.date = props.editBuyOut.startDate;
             defaultComment = props.editBuyOut.comment;
+            viewDelete = props.hasBuyOut;
+            viewAmount = viewDelete ? props.editBuyOut.amount : null;
+            viewStartDate = viewDelete ? props.editBuyOut.startDate : null;
+            viewComment = viewDelete ? props.editBuyOut.comment : null;
             break;
         case 'Floor Amount':
             defaultAmount = props.editFloor.amount;
             defaultStartDate.date = props.editFloor.startDate;
             defaultEndDate.date = props.editFloor.endDate;
             defaultComment = props.editFloor.comment;
+            viewDelete = props.hasFloor;
+            viewAmount = viewDelete ? props.editFloor.amount : null;
+            viewStartDate = viewDelete ? props.editFloor.startDate : null;
+            viewEndDate = viewDelete ? props.editFloor.endDate : null;
+            viewComment = viewDelete ? props.editFloor.comment : null;
             break;
         default:
             break;
@@ -116,11 +194,11 @@ const editBonusForm = (props) => {
                 <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                     <label className={[bootStrapClasses['col-sm-4'], bootStrapClasses['col-form-label']].join(' ')}>End Date</label>
                     <div>
-                        <DatePicker
+                        {viewDelete ? viewEndDate :<DatePicker
                             date={defaultEndDate.date}
                             required
                             changeDate={(event) => EditEndDate(event)}
-                        />
+                        />}
                     </div>
                 </div>
             );
@@ -143,18 +221,19 @@ const editBonusForm = (props) => {
                                 className={bootStrapClasses['form-control']}
                                 onChange={(event) => EditAmount(event)}
                                 pattern='\d+(\.\d{2})?'
-                                value={defaultAmount}
+                                readOnly={viewDelete}
+                                value={viewDelete ?  viewAmount : defaultAmount}
                             />
                         </div>
                     </div>
                     <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                         <label className={[bootStrapClasses['col-sm-4'], bootStrapClasses['col-form-label']].join(' ')}>Start Date</label>
                         <div>
-                            <DatePicker
+                            {viewDelete ? viewStartDate :<DatePicker
                                 date={defaultStartDate.date}
                                 required
                                 changeDate={(event) => EditStartDate(event)}
-                            />
+                            />}
                         </div>
                     </div>
                     {content}
@@ -165,18 +244,23 @@ const editBonusForm = (props) => {
                                 type='text'
                                 className={bootStrapClasses['form-control']}
                                 onChange={(event) => EditComment(event)}
-                                value={defaultComment}
+                                readOnly={viewDelete}
+                                value={viewDelete ?  viewComment : defaultComment}
                             />
                         </div>
                     </div>
                     <div className={bootStrapClasses['col-sm-12']}>
                         <button
-                            className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2']].join(' ')}>Save</button>
+                            className={[bootStrapClasses.btn, bootStrapClasses['btn-success'], bootStrapClasses['col-sm-2']].join(' ')}
+                            style={viewDelete ? {display: 'none'} : {margin: '2px'}}>Save</button>
+                        <button
+                            className={[bootStrapClasses.btn, bootStrapClasses['btn-danger'], bootStrapClasses['col-sm-2']].join(' ')}
+                            style={viewDelete ? {margin: '2px'} : {display: 'none'}}
+                            onClick={(event)=> onDelete(event)}>Delete</button>
                         <button
                             onClick={(event) => onCancel(event)}
                             className={[bootStrapClasses.btn, bootStrapClasses['btn-warning'],bootStrapClasses['col-sm-2']].join(' ')}
-                            style={{margin: '4px', backgroundColor: '#FF9900'}}>Cancel</button>
-                        <button className={[bootStrapClasses.btn, bootStrapClasses['btn-danger'], bootStrapClasses['col-sm-2']].join(' ')}>Delete</button>
+                            style={{margin: '2px', backgroundColor: '#FF9900'}}>Cancel</button>
                     </div>
                 </form>
             </div>
@@ -186,33 +270,40 @@ const editBonusForm = (props) => {
 
 const mapStateToProps = state => {
     return {
+        user: state.editUsers.currentUser,
         editSubsidy: state.editSubsidies.currentEditSubsidy,
         editFloor: state.editFloors.currentEditFloor,
         editBuyOut: state.editBuyOuts.currentEditBuyOut,
         editSubsidyList: state.editSubsidies.editSubsidies,
         editFloorList: state.editFloors.editFloors,
         editBuyOutList: state.editBuyOuts.editBuyOuts,
-        user: state.editUsers.currentUser,
-        hasFloor: state.editFloors.currentUserHasFloor
+        hasFloor: state.editFloors.currentUserHasFloor,
+        hasSubsidy: state.editSubsidies.currentUserHasSubsidy,
+        hasBuyOut: state.editBuyOuts.currentUserHasBuyOut
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        onEditSubsidyAmount: (amount) => dispatch(actions.editSubsidyAmount(amount)),
+        onEditSubsidyStartDate: (date) => dispatch(actions.editSubsidyStartDate(date)),
+        onEditSubsidyComment: (comment) => dispatch(actions.editSubsidyComment(comment)),
+        onAddEditSubsidy: (subsidyData) => dispatch(actions.postEditSubsidies(subsidyData)),
+        onDeleteEditSubsidy: (id) => dispatch(actions.deleteEditSubsidy(id)),
+        onSetHasSubsidyTrue: () => dispatch(actions.currentUserHasSubsidies()),
+        onEditBuyOutAmount: (amount) => dispatch(actions.editBuyOutAmount(amount)),
+        onEditBuyOutStartDate: (date) => dispatch(actions.editBuyOutStartDate(date)),
+        onEditBuyOutComment: (comment) => dispatch(actions.editBuyOutComment(comment)),
+        onAddEditBuyOut: (buyOutData) => dispatch(actions.postEditBuyOut(buyOutData)),
+        onDeleteEditBuyOut: (id) => dispatch(actions.deleteEditBuyOut(id)),
+        onSetHasBuyOutTrue: () => dispatch(actions.currentUserHasBuyOuts()),
         onEditFloorAmount: (amount) => dispatch(actions.editFloorAmount(amount)),
         onEditFloorStartDate: (date) => dispatch(actions.editFloorStartDate(date)),
         onEditFloorEndDate: (date) => dispatch(actions.editFloorEndDate(date)),
         onEditFloorComment: (comment) => dispatch(actions.editFloorComment(comment)),
         onAddEditFloor: (floorData) => dispatch(actions.postEditFloors(floorData)),
-        onEditSubsidyAmount: (amount) => dispatch(actions.editSubsidyAmount(amount)),
-        onEditSubsidyStartDate: (date) => dispatch(actions.editSubsidyStartDate(date)),
-        onEditSubsidyComment: (comment) => dispatch(actions.editSubsidyComment(comment)),
-        onEditBuyOutAmount: (amount) => dispatch(actions.editBuyOutAmount(amount)),
-        onEditBuyOutStartDate: (date) => dispatch(actions.editBuyOutStartDate(date)),
-        onEditBuyOutComment: (comment) => dispatch(actions.editBuyOutComment(comment)),
-        onSetHasFloorTrue: () => dispatch(actions.currentUserHasFloor()),
-        onSetHasFloorFalse: () => dispatch(actions.currentUserDoesNotHaveFloor()),
-        onSetCurrentEditFloor: (floorData) => dispatch(actions.setCurrentEditFloor(floorData))
+        onDeleteEditFloor: (id) => dispatch(actions.deleteEditFloor(id)),
+        onSetHasFloorTrue: () => dispatch(actions.currentUserHasFloor())
     }
 };
 
