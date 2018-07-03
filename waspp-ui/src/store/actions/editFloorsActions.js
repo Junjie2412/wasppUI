@@ -54,25 +54,14 @@ export const editFloorsSuccess = (id, floorData) => {
 export const postEditFloors = (floorData) => {
     return dispatch => {
         dispatch( editFloorsStart());
-        dispatch(setCurrentEditFloor(floorData));
-        dispatch(currentUserHasFloor());
+        dispatch( setCurrentEditFloor(floorData));
+        dispatch( currentUserHasFloor());
         axios.post(links.EDIT_FLOORS+'.json', floorData)
             .then(response => {
                 dispatch(editFloorsSuccess(response.data.name, floorData));
             });
     };
 };
-
-/*
-export const putEditFloors = (floorData, id) => {
-    return dispatch => {
-        dispatch( editFloorsStart() );
-        axios.put(links.EDIT_FLOORS+'/'+id+'.json', floorData)
-            .then(response => {
-                dispatch(editFloorsSuccess(response.data.name, floorData))
-            })
-    };
-};*/
 
 // ************************************************************************//
 // ************************************************************************//
@@ -89,10 +78,12 @@ export const deleteEditFloorSuccess = (id) => {
         id: id,
     }
 };
-export const deleteEditFloor = (floorData, id) => {
+export const deleteEditFloor = (id) => {
     return dispatch => {
         dispatch( deleteEditFloorStart() );
-        axios.delete(links.EDIT_FLOORS+'/'+id+'.json', floorData)
+        dispatch( clearEditFloor());
+        dispatch( currentUserDoesNotHaveFloor());
+        axios.delete(links.EDIT_FLOORS+'/'+id+'.json')
             .then(response => {
                 dispatch(deleteEditFloorSuccess(id))
             })
@@ -157,4 +148,13 @@ export const setCurrentEditFloor = (floorData) => {
         type: actionTypes.SET_CURRENT_EDIT_FLOOR,
         data: floorData
     }
-}
+};
+
+// ************************************************************************//
+// ************************************************************************//
+// The below are functions that will clear the edit floors form
+export const clearEditFloor = () => {
+    return {
+        type: actionTypes.CLEAR_EDIT_FLOOR
+    }
+};

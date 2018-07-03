@@ -20,18 +20,25 @@ export {
     editFloorAmount,
     editFloorComment,
     postEditFloors,
-    putEditFloors,
     deleteEditFloor,
     fetchFloors,
     currentUserHasFloor,
     currentUserDoesNotHaveFloor,
-    setCurrentEditFloor
+    setCurrentEditFloor,
+    clearEditFloor
 } from './editFloorsActions';
 
 export {
     editSubsidyComment,
     editSubsidyStartDate,
-    editSubsidyAmount
+    editSubsidyAmount,
+    postEditSubsidies,
+    deleteEditSubsidy,
+    fetchSubsidies,
+    currentUserHasSubsidies,
+    currentUserDoesNotHaveSubsidies,
+    setCurrentEditSubsidy,
+    clearEditSubsidy
 } from './editSubsidyActions';
 
 export {

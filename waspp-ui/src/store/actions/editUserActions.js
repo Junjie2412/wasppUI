@@ -109,7 +109,7 @@ export const setCurrentUserInit = (currUser, selected) => {
     };
 };
 
-export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors) => {
+export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors, editSubsidies) => {
     return dispatch => {
         let selected = false;
 
@@ -130,6 +130,8 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
         switch (searchBy) {
             case 'AS400 ID':
             {
+                dispatch(actions.clearEditFloor());
+                dispatch(actions.clearEditSubsidy());
                 for(let user in users){
                     if(users[user].AS400ID === ID){
                         currUser = users[user];
@@ -137,9 +139,19 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                         dispatch(actions.setCurrentUserAdjustments(adjustments, users[user]));
                         dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]));
                         dispatch(actions.currentUserDoesNotHaveFloor());
+                        dispatch(actions.currentUserDoesNotHaveSubsidies());
                         for (let floor in editFloors) {
                             if (editFloors[floor].user.id === users[user].id) {
                                 dispatch(actions.currentUserHasFloor());
+                                dispatch(actions.setCurrentEditFloor(editFloors[floor]));
+                                break;
+                            }
+                        }
+                        for (let subsidy in editSubsidies) {
+                            if (editSubsidies[subsidy].user.id === users[user].id) {
+                                dispatch(actions.currentUserHasSubsidies());
+                                dispatch(actions.setCurrentEditSubsidy(editSubsidies[subsidy]));
+                                break;
                             }
                         }
                         break;
@@ -150,6 +162,8 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
             }
             case 'Active Directory':
             {
+                dispatch(actions.clearEditFloor());
+                dispatch(actions.clearEditSubsidy());
                 for(let user in users){
                     if(users[user].ADID === ID){
                         currUser = users[user];
@@ -157,9 +171,19 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                         dispatch(actions.setCurrentUserAdjustments(adjustments, users[user]));
                         dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]));
                         dispatch(actions.currentUserDoesNotHaveFloor());
+                        dispatch(actions.currentUserDoesNotHaveSubsidies());
                         for (let floor in editFloors) {
                             if (editFloors[floor].user.id === users[user].id) {
                                 dispatch(actions.currentUserHasFloor());
+                                dispatch(actions.setCurrentEditFloor(editFloors[floor]));
+                                break;
+                            }
+                        }
+                        for (let subsidy in editSubsidies) {
+                            if (editSubsidies[subsidy].user.id === users[user].id) {
+                                dispatch(actions.currentUserHasSubsidies());
+                                dispatch(actions.setCurrentEditSubsidy(editSubsidies[subsidy]));
+                                break;
                             }
                         }
                         break;
@@ -169,6 +193,8 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
             }
             case 'Payroll Number':
             {
+                dispatch(actions.clearEditFloor());
+                dispatch(actions.clearEditSubsidy());
                 for(let user in users){
                     if(users[user].PayrollNumber === ID){
                         currUser = users[user];
@@ -176,10 +202,19 @@ export const setCurrentUser = (searchBy, ID, users, adjustments, afterFloorAdjus
                         dispatch(actions.setCurrentUserAdjustments(adjustments, users[user]));
                         dispatch(actions.setCurrentUserAfterFloorAdjustments(afterFloorAdjustments, users[user]));
                         dispatch(actions.currentUserDoesNotHaveFloor());
+                        dispatch(actions.currentUserDoesNotHaveSubsidies());
                         for (let floor in editFloors) {
                             if (editFloors[floor].user.id === users[user].id) {
                                 dispatch(actions.currentUserHasFloor());
                                 dispatch(actions.setCurrentEditFloor(editFloors[floor]));
+                                break;
+                            }
+                        }
+                        for (let subsidy in editSubsidies) {
+                            if (editSubsidies[subsidy].user.id === users[user].id) {
+                                dispatch(actions.currentUserHasSubsidies());
+                                dispatch(actions.setCurrentEditSubsidy(editSubsidies[subsidy]));
+                                break;
                             }
                         }
                         break;

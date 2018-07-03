@@ -22,12 +22,13 @@ class EditUsers extends Component {
         this.props.onFetchAdjustments();
         this.props.onFetchAfterFloorAdjustments();
         this.props.onFetchFloors();
+        this.props.onFetchSubsidies();
     }
 
     //This handler changes what the value property is whenever we change the search input text
     onChangeText = (event) => {
         this.setState({userLookup: event.target.value});
-        this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users, this.props.adjustments, this.props.afterFloorAdjustments, this.props.editFloorList);
+        this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users, this.props.adjustments, this.props.afterFloorAdjustments, this.props.editFloorList, this.props.editSubsidiesList);
     };
 
     //This handler changes the state properties based on which value was selected
@@ -99,7 +100,8 @@ const mapStateToProps = state => {
         currentUser: state.editUsers.currentUser,
         adjustments: state.editAdjustments.adjustments,
         afterFloorAdjustments: state.editAfterFloorAdjustments.adjustments,
-        editFloorList: state.editFloors.editFloors
+        editFloorList: state.editFloors.editFloors,
+        editSubsidiesList: state.editSubsidies.editSubsidies
     }
 };
 
@@ -110,11 +112,10 @@ const mapDispatchToProps = dispatch => {
         onSetAS400Search: (users) => dispatch(actions.setAS400Search(users)),
         onSetADSearch: (users) => dispatch(actions.setADSearch(users)),
         onFetchFloors: () => dispatch(actions.fetchFloors()),
+        onFetchSubsidies: () => dispatch(actions.fetchSubsidies()),
         onFetchAdjustments: () => dispatch(actions.fetchAdjustments()),
         onFetchAfterFloorAdjustments: () => dispatch(actions.fetchAfterFloorAdjustments()),
-        onSetCurrentUser: (searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors) => dispatch(actions.setCurrentUser(searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors)),
-        onSetHasFloorTrue: () => dispatch(actions.currentUserHasFloor()),
-        onSetHasFloorFalse: () => dispatch(actions.currentUserDoesNotHaveFloor())
+        onSetCurrentUser: (searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors, editSubsidies) => dispatch(actions.setCurrentUser(searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors, editSubsidies))
     }
 };
 

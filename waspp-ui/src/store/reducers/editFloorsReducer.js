@@ -79,6 +79,18 @@ const setCurrentEditFloor = (state, action) => {
     })
 };
 
+const clearEditFloor = (state, action) => {
+    return updateObject(state, {
+        currentEditFloor: {
+            id: '',
+            amount: '',
+            startDate: null,
+            endDate: null,
+            comment: ''
+        }
+    })
+};
+
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.EDIT_FLOOR_AMOUNT: return editFloorAmount(state, action);
@@ -93,7 +105,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.DELETE_ADJUSTMENT_SUCCESS: return deleteEditFloorsSuccess(state, action);
         case actionTypes.CURRENT_USER_HAS_FLOOR: return currentUserHasFloor(state, action);
         case actionTypes.CURRENT_USER_DOES_NOT_HAVE_FLOOR: return currentUserDoesNotHaveFloor(state, action);
-        case actionTypes.SET_CURRENT_EDIT_FLOOR: return setCurrentEditFloor(state, action)
+        case actionTypes.SET_CURRENT_EDIT_FLOOR: return setCurrentEditFloor(state, action);
+        case actionTypes.CLEAR_EDIT_FLOOR: return clearEditFloor(state, action);
         default: return state;
     }
 };

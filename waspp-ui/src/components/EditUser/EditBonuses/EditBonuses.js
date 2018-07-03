@@ -54,23 +54,28 @@ class EditBonuses extends Component {
         let editFloorButton = null;
         this.props.hasFloor ? editFloorButton = <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editFloorsModal}>
             View Floor Adjustment
-            <div className={classes.Screen}>$ {this.props.currentUserEditFloor.floorAdjustments.amount}</div>
+            <div className={classes.Screen}>$ {this.props.currentUserEditFloor.amount}</div>
         </button> : editFloorButton = <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editFloorsModal}>
             Add Floor Adjustment
         </button>;
 
+        let editSubsidyButton = null;
+        this.props.hasSubsidy ? editSubsidyButton = <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editSubsidyModal}>
+            View Subsidy
+            <div className={classes.Screen}>$ {this.props.currentUserEditSubsidy.amount}</div>
+        </button> : editSubsidyButton = <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editSubsidyModal}>
+            Add Subsidy
+        </button>;
+
+
         return (
-            this.props.loading ? <Spinner/> :
+            (this.props.loadingFloors && this.props.loadingSubsidy) ? <Spinner/> :
             <Aux>
                 <div className={classes.btnGroup}>
                     <h3 className={classes.Title}>Edit Bonuses</h3>
-                    <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editSubsidyModal}>
-                        {this.state.titleStates[0]}
-                        <div className={classes.Screen}>Has Subsidy</div>
-                    </button>
+                    {editSubsidyButton}
                     <button className={[bootStrapClasses.btn, classes.Button].join(' ')} disabled={!this.props.selected} onClick={this.editBuyOutModal}>
                         {this.state.titleStates[1]}
-                        <div className={classes.Screen}>Has Buy Out</div>
                         </button>
                     {editFloorButton}
                 </div>
@@ -92,7 +97,11 @@ const mapStateToProps = state => {
         selected: state.editUsers.userSelected,
         loadingFloors: state.editFloors.loading,
         hasFloor: state.editFloors.currentUserHasFloor,
-        currentUserEditFloor: state.editFloors.currentEditFloor
+        currentUserEditFloor: state.editFloors.currentEditFloor,
+        loadingSubsidy: state.editSubsidies.loading,
+        hasSubsidy: state.editSubsidies.currentUserHasSubsidy,
+        currentUserEditSubsidy: state.editSubsidies.currentEditSubsidy
+
     }
 };
 
