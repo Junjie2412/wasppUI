@@ -47,7 +47,7 @@ export const editEmployeeSuccess = (newEmployee) => {
     }
 };
 
-export const editEmployee = (newEmployee, adjustments, afterFloorAdjustments) => {
+export const editEmployee = (newEmployee, adjustments, afterFloorAdjustments, subsidy, buyout, editFloor) => {
     return dispatch => {
         dispatch(editEmployeeStart());
         axios.put(links.EDIT_USERS_DB+'/'+newEmployee.id+'.json', newEmployee)
@@ -57,6 +57,24 @@ export const editEmployee = (newEmployee, adjustments, afterFloorAdjustments) =>
                 }
                 for(let adj in afterFloorAdjustments) {
                     axios.put(links.EDIT_AFTER_FLOOR_ADJUSTMENTS_DB+'/'+afterFloorAdjustments[adj].id+'/user.json', newEmployee);
+                }
+                for(let sub in subsidy) {
+                    if (newEmployee.PayrollNumber === subsidy[sub].user.PayrollNumber) {
+                        console.log('has sub');
+                        axios.put(links.EDIT_SUBSIDIES+'/'+subsidy[sub].id+'/user.json', newEmployee);
+                    }
+                }
+                for(let bo in buyout) {
+                    if (newEmployee.PayrollNumber === buyout[bo].user.PayrollNumber) {
+                        console.log('has bo');
+                        axios.put(links.EDIT_BUY_OUTS+'/'+buyout[bo].id+'/user.json', newEmployee);
+                    }
+                }
+                for(let fl in editFloor) {
+                    if (newEmployee.PayrollNumber === editFloor[fl].user.PayrollNumber) {
+                        console.log('has fl');
+                        axios.put(links.EDIT_FLOORS+'/'+editFloor[fl].id+'/user.json', newEmployee);
+                    }
                 }
                 dispatch(editEmployeeSuccess(newEmployee));
             })
