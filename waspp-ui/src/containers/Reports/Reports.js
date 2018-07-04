@@ -85,6 +85,7 @@ class Reports extends Component {
                       <Payroll/>
                     </div>
                   </div>
+
                   <div className={bsClasses.row} style={{display:this.state.monthlyBonus}}>
                     <div className={bsClasses['col-md-12']}>
 
