@@ -10,7 +10,7 @@ export const addAdjustmentStart = () => {
     return {
         type: actionTypes.ADD_ADJUSTMENT_START
     };
-}
+};
 
 export const addAdjustmentSuccess = (id, adjustmentData) => {
     return {
@@ -18,7 +18,7 @@ export const addAdjustmentSuccess = (id, adjustmentData) => {
         id: id,
         data: adjustmentData
     }
-}
+};
 
 export const addAdjustment = (adjustmentData) => {
     return dispatch => {
@@ -81,7 +81,7 @@ export const fetchAdjustments = () => {
                 for(let adj in response.data ) {
                     dataList.push( {
                         ...response.data[adj],
-                        id: [adj]
+                        id: adj
                     })
                 }
                 dispatch(fetchAdjustmentsSuccess(dataList))
@@ -140,4 +140,4 @@ export const deleteAdjustment = (id) => {
                 dispatch(deleteAdjustmentSuccess(id))
             )
     };
-}
+};

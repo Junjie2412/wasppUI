@@ -21,12 +21,15 @@ class EditUsers extends Component {
         this.props.onFetchUsers();
         this.props.onFetchAdjustments();
         this.props.onFetchAfterFloorAdjustments();
+        this.props.onFetchFloors();
+        this.props.onFetchSubsidies();
+        this.props.onFetchEditBuyOuts();
     }
 
     //This handler changes what the value property is whenever we change the search input text
     onChangeText = (event) => {
         this.setState({userLookup: event.target.value});
-        this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users, this.props.adjustments, this.props.afterFloorAdjustments)
+        this.props.onSetCurrentUser(this.props.placeholder, event.target.value, this.props.users, this.props.adjustments, this.props.afterFloorAdjustments, this.props.editFloorList, this.props.editSubsidiesList, this.props.editBuyOutsList);
     };
 
     //This handler changes the state properties based on which value was selected
@@ -63,25 +66,25 @@ class EditUsers extends Component {
 
         return (
             (this.props.loadingUsers && this.props.loadingAdjustments && this.props.loadingAfterFloorAdjustments )? <Spinner/>:
-            <div className={classes.EditUser}>
-                <h1 className={classes.Header}>Edit Users</h1>
-                <div style={{transform: 'translateX(2.3%)'}}>
-                    <Search
-                        placeholder={this.props.placeholder}
-                        options={this.props.searchBy}
-                        dataList={this.props.searchList}
-                        change={(event) => this.onChangeSelect(event)}
-                        value={this.state.userLookup}
-                        click={this.clear}
-                        changeText={(event) => this.onChangeText(event)}/>
+                <div className={classes.EditUser}>
+                    <h1 className={classes.Header}>Edit Users</h1>
+                    <div style={{transform: 'translateX(2.3%)'}}>
+                        <Search
+                            placeholder={this.props.placeholder}
+                            options={this.props.searchBy}
+                            dataList={this.props.searchList}
+                            change={(event) => this.onChangeSelect(event)}
+                            value={this.state.userLookup}
+                            click={this.clear}
+                            changeText={(event) => this.onChangeText(event)}/>
+                    </div>
+                    <div className={classes.row}>
+                        <User user={this.props.currentUser}/>
+                        <EditBonuses/>
+                        {adjustments}
+                        {afterFloorAdjustments}
+                    </div>
                 </div>
-                <div className={classes.row}>
-                    <User user={this.props.currentUser}/>
-                    <EditBonuses/>
-                    {adjustments}
-                    {afterFloorAdjustments}
-                </div>
-            </div>
         );
     };
 }
@@ -97,9 +100,12 @@ const mapStateToProps = state => {
         placeholder: state.editUsers.placeholder,
         currentUser: state.editUsers.currentUser,
         adjustments: state.editAdjustments.adjustments,
-        afterFloorAdjustments: state.editAfterFloorAdjustments.adjustments
+        afterFloorAdjustments: state.editAfterFloorAdjustments.adjustments,
+        editFloorList: state.editFloors.editFloors,
+        editSubsidiesList: state.editSubsidies.editSubsidies,
+        editBuyOutsList: state.editBuyOuts.editBuyOuts
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -107,10 +113,13 @@ const mapDispatchToProps = dispatch => {
         onSetPayrollSearch: (users) => dispatch(actions.setPayrollSearch(users)),
         onSetAS400Search: (users) => dispatch(actions.setAS400Search(users)),
         onSetADSearch: (users) => dispatch(actions.setADSearch(users)),
+        onFetchFloors: () => dispatch(actions.fetchFloors()),
+        onFetchSubsidies: () => dispatch(actions.fetchSubsidies()),
+        onFetchEditBuyOuts: () => dispatch(actions.fetchBuyOuts()),
         onFetchAdjustments: () => dispatch(actions.fetchAdjustments()),
         onFetchAfterFloorAdjustments: () => dispatch(actions.fetchAfterFloorAdjustments()),
-        onSetCurrentUser: (searchBy, ID, users, adjustments, afterFloorAdjustments) => dispatch(actions.setCurrentUser(searchBy, ID, users, adjustments, afterFloorAdjustments)),
-        }
-}
+        onSetCurrentUser: (searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors, editSubsidies, editBuyOut) => dispatch(actions.setCurrentUser(searchBy, ID, users, adjustments, afterFloorAdjustments, editFloors, editSubsidies, editBuyOut))
+    }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditUsers);

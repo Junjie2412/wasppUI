@@ -96,7 +96,7 @@ export const fetchAfterFloorAdjustments = () => {
                 for(let adj in response.data ) {
                     dataList.push( {
                         ...response.data[adj],
-                        id: [adj]
+                        id: adj
                     })
                 }
                 dispatch(fetchAfterFloorAdjustmentsSuccess(dataList))

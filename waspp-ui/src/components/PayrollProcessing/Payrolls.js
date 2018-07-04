@@ -1,28 +1,37 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import DateInput from '../UI/DateInput/DateInput';
 import bsClasses from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import classes from './Payrolls.css';
-
-// const tableData = props.tableData.map(data => (
-//     <tr>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//         <td>000000000</td>
-//     </tr>
-// ));
-
-
+import { connect } from 'react-redux';
 
 class Payrolls extends Component{
   render(){
+
+    const populateRows = this.props.weeklyBonusRows.map(data => (
+      //TEMP
+      <tr key={data.AS400ID}>
+        <td>{data.AS400ID}</td>
+        <td>{data.TerritoryDescription}</td>
+        <td>{data.EmployeeID}</td>
+        <td>{data.FileNumber}</td>
+        <td>{data.TerritoryID}</td>
+        <td>{data.BASE}</td>
+        <td>{data.CommissionsAdvance}</td>
+        <td>{data.Subsidy}</td>
+        <td>{data.Comm}</td>
+        <td>{data.BonusFloor}</td>
+        <td>{data.Buyouts}</td>
+        <td>{data.CalculatedPay}</td>
+        <td>{data.Floor}</td>
+        <td>{data.BonusMatrixAmount}</td>
+        <td>{data.FloorPayments}</td>
+        <td>{data.NetBonus}</td>
+        <td>{data.AfterFloorAdjustment}</td>
+        <td>{data.CheckTotal}</td>
+        <td>{data.CommissionDate}</td>
+      </tr>
+    ));
+
     return (
       <div>
         <div className={bsClasses.row}>
@@ -66,28 +75,7 @@ class Payrolls extends Component{
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-                  <td>000</td>
-
-                </tr>
+                {populateRows}
               </tbody>
             </table>
           </div>
@@ -97,4 +85,11 @@ class Payrolls extends Component{
     )
   }
 }
-export default Payrolls;
+
+const mapStateToProps = state =>{
+  return{
+    weeklyBonusRows: state.weeklyBonusProof.rows
+  };
+}
+
+export default connect(mapStateToProps)(Payrolls);

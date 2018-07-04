@@ -14,7 +14,12 @@ import editAfterFloorAdjustmentsReducer from './store/reducers/editAfterFloorAdj
 import OPCODefaultsReducer from './store/reducers/OPCODefaultsReducer';
 import thunk from 'redux-thunk';
 import notificationReducer from "./store/reducers/notificationReducer";
+import editSubsidyReducer from "./store/reducers/editSubsidyReducer";
+import editBuyOutReducer from "./store/reducers/editBuyOutReducer";
 import editFloorsReducer from "./store/reducers/editFloorsReducer";
+import MonthlyBonusProofReducer from './store/reducers/monthlyBonusProofReducer';
+import WeeklyBonusProofReducer from './store/reducers/weeklyBonusProofReducer';
+import CompensationRecapReducer from './store/reducers/compensationRecapReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -22,10 +27,15 @@ const rootReducer = combineReducers({
     editUsers: editUserReducer,
     editEmployee: editEmployerReducer,
     editFloors: editFloorsReducer,
+    editSubsidies: editSubsidyReducer,
+    editBuyOuts: editBuyOutReducer,
     editAdjustments: editAdjustmentsReducer,
     editAfterFloorAdjustments: editAfterFloorAdjustmentsReducer,
     opcoDefaults: OPCODefaultsReducer,
-    notifications: notificationReducer
+    notifications: notificationReducer,
+    monthlyBonusProof: MonthlyBonusProofReducer,
+    weeklyBonusProof: WeeklyBonusProofReducer,
+    compensationRecap: CompensationRecapReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(
