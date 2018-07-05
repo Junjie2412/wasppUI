@@ -1,7 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject} from "../../shared/utility";
-import { currentUserDoesNotHaveFloor } from '../actions';
-// import { selectOPCO } from '../actions';
 
 const initialState = {
     opcodeNumbers: [],
