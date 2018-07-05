@@ -5,14 +5,29 @@ import {connect} from 'react-redux';
 import * as actions from '../../../store/actions/index';
 
 class OPCODefaults extends Component{
+
     render(){
+        const populateOpcoNumbers = this.props.opcNumbers.map(data => (
+            <option>{data}</option>
+        ))
+
+        const selectOpco = (opco) =>{
+            for(let opcoInfo of this.props.opcInfo){
+                if(opcoInfo.OPCONumber === opco){
+                    this.props.onSelectOPCO(opco, opcoInfo);
+                }
+            }
+        }
+
         return(
             <div className={[bootStrapClasses.card, classes.layout].join(' ')} style={{overflow: 'auto', height: '500px', width: '97%'}}>
                 <div className={bootStrapClasses['card-body']}>
                     <form className={bootStrapClasses['container-fluid']} style={{fontSize: '18px'}}>
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>OPCO #</label>
-                            <select className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')}>
+                            <select onChange={(event) => selectOpco(event.target.value)} value={this.props.opcDefault.OPCONumber} 
+                            className={[bootStrapClasses['col-sm-2'], bootStrapClasses['form-control']].join(' ')}>
+                                {populateOpcoNumbers}
                             </select>
                             <input type = 'text' value={this.props.opcDefault.Location}
                             onChange={((event) => this.props.onEditLocation(event.target.value))} 
@@ -107,32 +122,32 @@ class OPCODefaults extends Component{
                         <div className={[bootStrapClasses['form-group'], bootStrapClasses.row].join(' ')}>
                             <label className={[bootStrapClasses['col-sm-2'], bootStrapClasses['col-form-label']].join(' ')}>Default Flights</label>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.A} name="DefaultFlights"
-                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.A, 'A')}
+                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.FlightA} name="DefaultFlights"
+                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.FlightA, 'A')}
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Flight A</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.B} name="DefaultFlights"
-                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.B, 'B')}
+                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.FlightB} name="DefaultFlights"
+                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.FlightB, 'B')}
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Flight B</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.C} name="DefaultFlights"
-                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.C, 'C')}
+                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.FlightC} name="DefaultFlights"
+                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.FlightC, 'C')}
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Flight C</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.D} name="DefaultFlights"
-                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.D, 'D')}
+                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.FlightD} name="DefaultFlights"
+                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.FlightD, 'D')}
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Flight D</label>
                             </div>
                             <div className={[bootStrapClasses['col-sm-1'], classes.alignRadio].join(' ')}>
-                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.E} name="DefaultFlights"
-                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.E, 'E')}
+                                <input type='radio' checked={this.props.opcDefault.DefaultFlights.FlightE} name="DefaultFlights"
+                                onClick={(event) => this.props.onToggleDefaultFlights(!this.props.opcDefault.DefaultFlights.FlightE, 'E')}
                                 className={bootStrapClasses['form-check-input']} />
                                 <label className={bootStrapClasses['form-check-label']}>Flight E</label>
                             </div>
@@ -204,7 +219,9 @@ class OPCODefaults extends Component{
 
 const mapStateToProps = state => {
     return{
-        opcDefault: state.opcoDefaults.currentOPCODefault
+        opcDefault: state.opcoDefaults.currentOPCODefault,
+        opcNumbers: state.opcoDefaults.opcodeNumbers,
+        opcInfo: state.opcoDefaults.opcoInformation
     };
 }
 
@@ -231,7 +248,8 @@ const mapDispatchToProps = dispatch => {
         onToggleOTH: (oth) => dispatch(actions.toggleOTH(oth)),
         onSelectMAServe: (maServe) => dispatch(actions.selectMAServe(maServe)),
         onSelectBonusField: (bonusField) => dispatch(actions.selectBonusField(bonusField)),
-        onSelectColumnAxis: (columnAxis) => dispatch(actions.selectColumnAxis(columnAxis))
+        onSelectColumnAxis: (columnAxis) => dispatch(actions.selectColumnAxis(columnAxis)),
+        onSelectOPCO: (opco, opcoInfo) => dispatch(actions.selectOPCO(opco, opcoInfo))
     }
 }
 

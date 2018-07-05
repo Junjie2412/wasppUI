@@ -99,9 +99,11 @@ export {
     toggleLLC,
     toggleCMU,
     toggleOTH,
+
     selectMAServe,
     selectBonusField,
     selectColumnAxis,
+    selectOPCO,
 
     fetchOPCODefaults
 } from './OPCODefaultsActions';

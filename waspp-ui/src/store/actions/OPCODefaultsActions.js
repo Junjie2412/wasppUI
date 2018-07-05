@@ -180,6 +180,14 @@ export const selectColumnAxis = columnAxis => {
     }
 }
 
+export const selectOPCO = (opco, opcoInfo) =>{
+    return{
+        type: actionTypes.SELECT_OPCO,
+        opco: opco,
+        opcoInfo, opcoInfo 
+    }
+}
+
 // ************************************************************************//
 // ************************************************************************//
 // The below are functions that will fetch the OPCODefaults from the database
@@ -188,19 +196,26 @@ export const fetchOPCODefaults = () =>{
         axios.get(links.OPCODEFAULTS + '.json')
         .then(response =>{
             const responseData = [];
+            const opcoNumbers = [];
             for(let OPCODefaults in response.data){
                 responseData.push({
                     ...response.data[OPCODefaults]
                 });
             }
-            dispatch(fetchOPCODefaultsSuccess(responseData));
+            for(let opcoNums in responseData){
+                opcoNumbers.push(
+                    responseData[opcoNums].OPCONumber
+                );
+            }
+            dispatch(fetchOPCODefaultsSuccess(responseData, opcoNumbers));
         });
     }
 };
 
-const fetchOPCODefaultsSuccess = (opcoDefaultsList) =>{
+const fetchOPCODefaultsSuccess = (opcoDefaultsList, opcoNumbers) =>{
     return{
         type: actionTypes.FETCH_OPCODEFAULTS_SUCCESS,
-        data: opcoDefaultsList
+        opcoData: opcoDefaultsList,
+        opcoNumbers: opcoNumbers
     }
 };

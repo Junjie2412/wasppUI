@@ -1,10 +1,13 @@
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject} from "../../shared/utility";
+import { currentUserDoesNotHaveFloor } from '../actions';
+// import { selectOPCO } from '../actions';
 
 const initialState = {
     opcodeNumbers: [],
+    opcoInformation: [],
     currentOPCODefault: {
-        // OPCONumber: 'OPCONumber',
+        OPCONumber: 'OPCONumber',
         Location: 'Location',
         Email: 'Email',
         GroupName: 'GroupName',
@@ -93,23 +96,23 @@ const toggleHigh = (state, action) => {
 }
 
 const toggleFlightA = (state, action) => {
-    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {FlightA: action.flightA, flightB: false, flightC: false, flightD: false, flightE: false})});
+    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {DefaultFlights: updateObject(state.currentOPCODefault.DefaultFlights, {FlightA: action.flightA, FlightB: false, FlightC: false, FlightD: false, FlightE: false})})});
 }
 
 const toggleFlightB = (state, action) => {
-    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {FlightA: false, flightB: action.flightB, flightC: false, flightD: false, flightE: false})});
+    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {DefaultFlights: updateObject(state.currentOPCODefault.DefaultFlights, {FlightA: false, FlightB: action.flightB, FlightC: false, FlightD: false, FlightE: false})})});
 }
 
 const toggleFlightC = (state, action) => {
-    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {FlightA: false, flightB: false, flightC: action.flightC, flightD: false, flightE: false})});
+    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {DefaultFlights: updateObject(state.currentOPCODefault.DefaultFlights, {FlightA: false, FlightB: false, FlightC: action.flightC, FlightD: false, FlightE: false})})});
 }
 
 const toggleFlightD = (state, action) => {
-    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {FlightA: false, flightB: false, flightC: false, flightD: action.flightD, flightE: false})});
+    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {DefaultFlights: updateObject(state.currentOPCODefault.DefaultFlights, {FlightA: false, FlightB: false, FlightC: false, FlightD: action.flightD, FlightE: false})})});
 }
 
 const toggleFlightE = (state, action) => {
-    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {FlightA: false, flightB: false, flightC: false, flightD: false, flightE: action.flightE})});
+    return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {DefaultFlights: updateObject(state.currentOPCODefault.DefaultFlights, {FlightA: false, FlightB: false, FlightC: false, FlightD: false, FlightE: action.flightE})})});
 }
 
 const toggleTRS = (state, action) => {
@@ -145,10 +148,15 @@ const selectColumnAxis = (state, action) => {
     return updateObject(state, {currentOPCODefault: updateObject(state.currentOPCODefault, {ColumnAxis: action.columnAxis})});
 }
 
+const selectOPCO = (state, action) => {
+    return updateObject(state, {currentOPCODefault: action.opcoInfo});
+}
+
 const fetchOPCODefaultsSuccess =(state, action) => {
     return updateObject( state, {
-        currentOPCODefault: action.data
-    });
+        opcodeNumbers: action.opcoNumbers,
+        opcoInformation: action.opcoData
+    })
 }
 
 const reducer = (state = initialState, action) =>{
@@ -179,6 +187,7 @@ const reducer = (state = initialState, action) =>{
         case actionTypes.SELECT_MA_SERVE: return selectMAServe(state, action);
         case actionTypes.SELECT_BONUS_FIELDS: return selectBonusField(state, action);
         case actionTypes.SELECT_COLUMN_AXIS: return selectColumnAxis(state, action);
+        case actionTypes.SELECT_OPCO: return selectOPCO(state, action);
         case actionTypes.FETCH_OPCODEFAULTS_SUCCESS: return fetchOPCODefaultsSuccess(state, action);
         default: return state;
     }

@@ -16,10 +16,18 @@ class Tools extends Component {
                 <div>
                     <h1 className={classes.header}>Tools</h1>
                     <ToolsToolbar></ToolsToolbar>
-                    <Route path='/tools/OPCODefaults' exact component={OPCODefaults} />
+                    <Route path='/tools/OPCODefaults' exact component={OPCODefaults} opcoInformation={this.props.opcoInformation}/>
+                    {/* <Route path='/tools/OPCODefaults' exact render={()=><OPCODefaults opcoInformation={this.props.opcoInformation}/>}/> */}
+
                 </div>
         );
     };
+}
+
+const mapStateToProps = state =>{
+    return{
+        opcoInformation: state.opcoDefaults.opcoInformation
+    }
 }
 
 const mapDispatchToProps = dispatch =>{
@@ -27,4 +35,5 @@ const mapDispatchToProps = dispatch =>{
         onFetchOpcodeDefaults: () => dispatch(actions.fetchOPCODefaults())
     }
 }
-export default connect(null, mapDispatchToProps)(Tools);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tools);

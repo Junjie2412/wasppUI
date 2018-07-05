@@ -16,4 +16,4 @@ export const MONTHLY_BONUS_PAYROLLS = 'https://waspp-fake-data.firebaseio.com/mo
 
 export const COMPENSATION_RECAP_REPORTS = 'https://waspp-fake-data.firebaseio.com/CompensationRecapReports';
 
-export const OPCODEFAULTS = 'https://console.firebase.google.com/u/0/project/waspp-fake-data/database/waspp-fake-data/data/OPCO';
+export const OPCODEFAULTS = 'https://waspp-fake-data.firebaseio.com/OPCO';
