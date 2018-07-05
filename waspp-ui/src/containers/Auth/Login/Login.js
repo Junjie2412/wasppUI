@@ -32,7 +32,6 @@ class Login extends Component {
                                 <div className={[bootStrapClasses.card, classes['card-default']].join(' ')}>
                                     <div className={bootStrapClasses['card-body']}>
                                         <div className={[bootStrapClasses['card-title'], bootStrapClasses['text-center'], classes['pad-full']].join(' ')}>
-                                            {/* <strong>Sysco</strong> */}
                                             <img src={loginLogo} alt='okay...' width="110" height="85" />
                                         </div>
                                         <form>
