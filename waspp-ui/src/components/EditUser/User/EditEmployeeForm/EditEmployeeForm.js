@@ -17,7 +17,7 @@ const editEmployeeForm = (props) =>{
     const editEmployee = (event) => {
         event.preventDefault();
         props.close();
-        props.onEditEmployee(props.user, props.adjustments, props.afterFloorAdjustments);
+        props.onEditEmployee(props.user, props.adjustments, props.afterFloorAdjustments, props.editSubsidies, props.editBuyOuts, props.editFloors);
         props.onQuickSetCurrentUser(props.user);
     };
 
@@ -81,6 +81,9 @@ const mapStateToProps = state => {
     return {
         adjustments: state.editAdjustments.currentUserAdjustments,
         afterFloorAdjustments: state.editAfterFloorAdjustments.currentUserAdjustments,
+        editFloors: state.editFloors.editFloors,
+        editSubsidies: state.editSubsidies.editSubsidies,
+        editBuyOuts: state.editBuyOuts.editBuyOuts,
         bonusFlights: state.editEmployee.BonusFlights
     }
 }
@@ -89,7 +92,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onEditAS400ID: (value) => dispatch(actions.editEmployeeAS400ID(value)),
         onEditFlight: (value) => dispatch(actions.editEmployeeBonusFlight(value)),
-        onEditEmployee: (employee, adjustments, afterFloorAdjustments) => dispatch(actions.editEmployee(employee, adjustments, afterFloorAdjustments)),
+        onEditEmployee: (employee, adjustments, afterFloorAdjustments, subsidies, buyouts, editFloors) => dispatch(actions.editEmployee(employee, adjustments, afterFloorAdjustments, subsidies, buyouts, editFloors)),
         onQuickSetCurrentUser: (user) => dispatch(actions.quickSetCurrentUser(user))
     };
 };
