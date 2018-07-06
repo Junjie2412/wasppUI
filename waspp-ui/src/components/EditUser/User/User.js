@@ -23,7 +23,7 @@ class user extends Component{
     render(){
         return(
             <div className={classes.Outer}>
-                <div className={[[bootStrapClasses.card], bootStrapClasses['shadow-lg'], classes.Card].join(' ')}>
+                <div className={[[bootStrapClasses.card], classes.Card].join(' ')}>
                     <div className={[bootStrapClasses['card-body'], classes.Form].join(' ')}>
                         <h5 className = {classes.Name}>{this.props.user.FirstName} {this.props.user.LastName}</h5>
                         <table className={classes.Table}>
