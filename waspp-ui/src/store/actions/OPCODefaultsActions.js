@@ -184,7 +184,7 @@ export const selectOPCO = (opco, opcoInfo) =>{
     return{
         type: actionTypes.SELECT_OPCO,
         opco: opco,
-        opcoInfo, opcoInfo 
+        opcoInfo: opcoInfo 
     }
 }
 
@@ -199,7 +199,8 @@ export const fetchOPCODefaults = () =>{
             const opcoNumbers = [];
             for(let OPCODefaults in response.data){
                 responseData.push({
-                    ...response.data[OPCODefaults]
+                    ...response.data[OPCODefaults],
+                    id: OPCODefaults
                 });
             }
             for(let opcoNums in responseData){
@@ -219,3 +220,13 @@ const fetchOPCODefaultsSuccess = (opcoDefaultsList, opcoNumbers) =>{
         opcoNumbers: opcoNumbers
     }
 };
+
+// ************************************************************************//
+// ************************************************************************//
+// The below are functions that will update OPCODefault in database
+
+export const putOPCODefault = (opcoInfo) => {
+    return dispatch => {
+        axios.put(links.OPCODEFAULTS +'/'+ opcoInfo.id + '.json', opcoInfo);
+    };
+}

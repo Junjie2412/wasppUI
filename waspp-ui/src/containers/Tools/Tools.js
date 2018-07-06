@@ -16,9 +16,7 @@ class Tools extends Component {
                 <div>
                     <h1 className={classes.header}>Tools</h1>
                     <ToolsToolbar></ToolsToolbar>
-                    <Route path='/tools/OPCODefaults' exact component={OPCODefaults} opcoInformation={this.props.opcoInformation}/>
-                    {/* <Route path='/tools/OPCODefaults' exact render={()=><OPCODefaults opcoInformation={this.props.opcoInformation}/>}/> */}
-
+                    <Route path='/tools/OPCODefaults' exact component={OPCODefaults} />
                 </div>
         );
     };
