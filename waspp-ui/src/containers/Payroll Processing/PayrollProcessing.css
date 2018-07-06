@@ -1,0 +1,11 @@
+.ButtonGroup {
+    background-color: #006699;
+    color:white;
+    border: 1px solid lightsteelblue;
+
+}
+
+
+button:hover {
+    background-color: #376ec6;
+}

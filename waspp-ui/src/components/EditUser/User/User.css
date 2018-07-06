@@ -1,0 +1,66 @@
+.Outer {
+    width: 29%;
+    height: 345px;
+    margin: 3%;
+    -moz-box-shadow: 0 8px 16px 0 #999;
+    -webkit-box-shadow: 0 8px 16px 0 #999;
+    box-shadow: 0 8px 16px 0 #999;
+}
+
+.Card {
+    border: none;
+    background-color: #0099cc;
+    box-shadow: 0 8px 16px 0 #999;
+}
+
+.Form p {
+    color: #fff;
+}
+
+.Name {
+    color: white;
+    text-align: center;
+}
+
+.Table {
+    margin: 0 0 0 6%;
+}
+
+.Table tr td {
+    border: 1px white dotted;
+    padding: 4px 1px;
+    width: 178px;
+}
+
+.Table tr td p{
+    text-align: left;
+    font: 16px 'Century Gothic', serif;
+    margin: 6% 0 6% 12%;
+}
+
+.Check {
+    margin-left: 8%
+}
+
+.Check label {
+    color: #fff;
+    font: 15px 'Century Gothic', serif;
+}
+
+.Button {
+    width: 100%;
+    font: 20px 'Century Gothic';
+    background-color: #006699;
+    border-color: #127ba3;
+    border-style: solid;
+    border-width: 0 1px 4px 1px;
+}
+
+.Button:hover {
+    background-color: #1482c5;
+}
+
+.Button:disabled {
+    background-color: #40ade2;
+    border-color: #0c66b1;
+}

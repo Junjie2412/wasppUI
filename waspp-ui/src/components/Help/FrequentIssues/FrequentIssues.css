@@ -1,0 +1,34 @@
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+    background-color: #006699;
+    /* box-shadow: 5px 10px 8px #888888; */
+    font-family: "Century Gothic";
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .collapsible:hover {
+    background: linear-gradient(to bottom right, #006699, #0099cc);
+  }
+  
+  /* Style the collapsible content. Note: hidden by default */
+  .contentHidden {
+    display: none;
+  }
+
+  /* Style the collapsible content. Note: hidden by default */
+  .contentDisplayed {
+    transition: 0.3s;
+    padding: 0 18px;
+    font-family: "Century Gothic";
+    overflow: hidden;
+    color: white;
+    background-color: #0099cc;
+  }

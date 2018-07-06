@@ -1,0 +1,18 @@
+.radioText{
+    font-size: 14px;
+}
+
+.alignRadio{
+    transform: translateY(11px);
+}
+
+.layout{
+    transform: translateX(35px);
+    background-color: #006699;
+    color: white;
+    font-family: "Century Gothic";
+}
+
+.buttonStyle{
+    background-color: black !important;
+}

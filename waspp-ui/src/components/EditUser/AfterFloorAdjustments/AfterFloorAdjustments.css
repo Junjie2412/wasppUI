@@ -1,0 +1,53 @@
+.AFA {
+    position: absolute;
+    right: -90%;
+    transition: 0.3s;
+    transform: translateY(-12%) translateX(-80%);
+    width: 50%;
+}
+
+.AFA:hover {
+    right: -85%;
+    cursor: pointer;
+}
+
+.AFAOpened {
+    position: absolute;
+    right: -60%;
+    transform: translateY(-12%) translateX(-80%);
+    transition: 0.3s;
+    width: 50%;
+}
+
+.Button {
+    width: 280px;
+    height: 60px;
+    font-size: 20px;
+    color: white;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    background-color: #006699;
+    transform: rotate(270deg) translateY(-150px) translateX(-250px);
+    cursor: pointer;
+    z-index: 200;
+    margin: 0;
+    font-family: "Century Gothic", serif;
+}
+
+.Button:disabled {
+    color: #ddd;
+    background-color: #40ade2;
+}
+
+.Button:hover {
+    background-color: #1482c5;
+}
+
+.Text {
+    transform: translateY(-10%);
+}
+
+.Table {
+    width: 200%;
+    z-index: 100;
+}

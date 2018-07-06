@@ -1,0 +1,66 @@
+.Help {
+    height: 100%;
+}
+
+.Header {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Century Gothic';
+    color: #006699;
+}
+
+.cardStyle{
+    transform: scaleX(.89);
+    overflow: auto;
+    height: 81%;
+    width: 100%;
+    background: linear-gradient(to bottom right , #0099cc, #006699);  
+    position: fixed;  
+}
+
+.innerCardStyle{
+    background-color: #40ade2;
+    box-shadow: inset 3px 3px 1px #006699;
+
+}
+
+.FAQ {
+    height: 81%;
+    overflow: auto;
+    width: 100%;
+}
+
+h3{
+    text-align: center;
+    color: white;
+}
+
+.anchorStyle{
+    color: white;
+    margin-left: 4px;
+    margin-right: 4px
+}
+
+.searchBar{
+    transform: translateX(1000px);
+    display:inline-block;
+}
+
+/* scrollbar styling */
+::-webkit-scrollbar-track{
+    background-color: 0099cc;
+    border-radius: 10px;
+    box-shadow: inset 3px 3px 15px #173b61;
+
+}
+
+::-webkit-scrollbar{
+    background-color: #0099cc;
+    border-radius: 10px;
+    width: 11px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #173b61;
+    border-radius: 10px;
+}

@@ -1,0 +1,33 @@
+.NavigationItem {
+    width: 20%;
+}
+.NavigationLinks {
+    background-color: #006699;
+    font-size: 25px;
+    border: none;
+    width: 100%;
+}
+
+.NavigationLinks:hover,
+.ActiveLink {
+    background: linear-gradient(to bottom right, #006699, #0099cc);
+    text-decoration: none;
+    width: 100%;
+    border:dotted #0099cc;
+    border-width: 1px 1px 0px 1px;
+}
+
+.NavigationButton {
+    border-radius: 0;
+    background-color: transparent;
+    color: #fff;
+    font-family: "Century Gothic", serif;
+    font-size: 18px;
+    border: none;
+    padding: 14px;
+    width: 100%;
+}
+
+.NavigationButton:hover {
+    background: linear-gradient(to bottom right, #006699, #0099cc);
+}
