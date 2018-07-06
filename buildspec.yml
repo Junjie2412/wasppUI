@@ -17,5 +17,3 @@ phases:
     commands:
       # Run the build command to generate build folder output
       - npm run build
-      # Use AWS SAM to package the application by using AWS CloudFormation
-      - aws s3 cp --recursive build/ s3://$WEBSITE_S3_BUCKET/public/ #--grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
