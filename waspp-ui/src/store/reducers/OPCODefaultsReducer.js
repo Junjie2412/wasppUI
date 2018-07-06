@@ -38,7 +38,8 @@ const initialState = {
         TRP: false,
         LLC: false,
         CMU: false,
-        OTH: false
+        OTH: false,
+        id: ''
     }
 }
 

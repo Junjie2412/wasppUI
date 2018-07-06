@@ -105,7 +105,8 @@ export {
     selectColumnAxis,
     selectOPCO,
 
-    fetchOPCODefaults
+    fetchOPCODefaults,
+    putOPCODefault
 } from './OPCODefaultsActions';
 
 export{

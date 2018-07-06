@@ -19,6 +19,11 @@ class OPCODefaults extends Component{
             }
         }
 
+        const updateOpco = () => {
+            console.log('ouch');
+            this.props.updateCurrentOPCO(this.props.opcDefault);
+        }
+
         return(
             <div className={[bootStrapClasses.card, classes.layout].join(' ')} style={{overflow: 'auto', height: '500px', width: '97%'}}>
                 <div className={bootStrapClasses['card-body']}>
@@ -207,9 +212,11 @@ class OPCODefaults extends Component{
                                 <label className={bootStrapClasses['form-check-label']}>OTH</label>
                             </div>
                         </div>
-                        <button type="submit" className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['offset-sm-4'], bootStrapClasses['col-sm-4']].join(' ')} 
-                        style={{backgroundColor: '#0099cc'}}>Submit</button>
                     </form>
+                    <button 
+                        onClick={updateOpco}
+                        className={[bootStrapClasses.btn, bootStrapClasses['btn-primary'], bootStrapClasses['offset-sm-4'], bootStrapClasses['col-sm-4']].join(' ')} 
+                        style={{backgroundColor: '#0099cc'}}>Submit</button>
                 </div>
             </div>
             
@@ -249,7 +256,8 @@ const mapDispatchToProps = dispatch => {
         onSelectMAServe: (maServe) => dispatch(actions.selectMAServe(maServe)),
         onSelectBonusField: (bonusField) => dispatch(actions.selectBonusField(bonusField)),
         onSelectColumnAxis: (columnAxis) => dispatch(actions.selectColumnAxis(columnAxis)),
-        onSelectOPCO: (opco, opcoInfo) => dispatch(actions.selectOPCO(opco, opcoInfo))
+        onSelectOPCO: (opco, opcoInfo) => dispatch(actions.selectOPCO(opco, opcoInfo)),
+        updateCurrentOPCO: (currentOPCO) => dispatch(actions.putOPCODefault(currentOPCO))
     }
 }
 
