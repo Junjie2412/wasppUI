@@ -20,6 +20,7 @@ import editFloorsReducer from "./store/reducers/editFloorsReducer";
 import MonthlyBonusProofReducer from './store/reducers/monthlyBonusProofReducer';
 import WeeklyBonusProofReducer from './store/reducers/weeklyBonusProofReducer';
 import CompensationRecapReducer from './store/reducers/compensationRecapReducer';
+import unlockCASIReducer from './store/reducers/unlockCASIReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -35,7 +36,8 @@ const rootReducer = combineReducers({
     notifications: notificationReducer,
     monthlyBonusProof: MonthlyBonusProofReducer,
     weeklyBonusProof: WeeklyBonusProofReducer,
-    compensationRecap: CompensationRecapReducer
+    compensationRecap: CompensationRecapReducer,
+    unlockCASI: unlockCASIReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

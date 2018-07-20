@@ -8,6 +8,7 @@ import Reports from "./containers/Reports/Reports";
 import Tools from "./containers/Tools/Tools";
 import Help from "./containers/Help/Help";
 import OPCODefaults from './containers/Tools/OPCODefaults/OPCODefaults';
+import UnlockCASI from './containers/Tools/UnlockCASI';
 import classes from './App.css';
 import Toolbar from "./components/UI/Navigation/Toolbar/Toolbar";
 
@@ -27,6 +28,8 @@ class App extends Component {
                     <Route path="/help" exact component={Toolbar}/>
                     <Route path="/editUsers" exact component={Toolbar}/>
                     <Route path="/tools/OPCODefaults" exact component={Toolbar}/>
+                    <Route path="/tools/CASI" exact component={Toolbar}/>
+
                 </Switch>
                 <Switch>
                     <Route path="/payrollProcessing" exact component={PayrollProcessing}/>
@@ -36,10 +39,12 @@ class App extends Component {
                     <Route path="/editUsers" exact component={EditUsers}/>
                     <Route path="/" component={Login}/>
                     <Route path="/tools/OPCODefaults" exact component={OPCODefaults}/>
+                    <Route path="/tools/CASI" exact component={UnlockCASI}/>
+
                     <Redirect to="/"/>
                 </Switch>
         </div>
-        
+
       );
   }
 }

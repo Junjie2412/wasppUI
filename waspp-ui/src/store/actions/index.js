@@ -120,3 +120,7 @@ export{
 export{
     fetchCompensationRecapReports
 } from './compensationRecapActions';
+
+export{
+    unlockCASI
+} from './unlockCASIActions';
